@@ -8,7 +8,7 @@
     <link href="/2024/02/28/%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BAReactNative%E9%A1%B9%E7%9B%AE/"/>
     <url>/2024/02/28/%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BAReactNative%E9%A1%B9%E7%9B%AE/</url>
     
-    <content type="html"><![CDATA[<h3 id="1-创建项目"><a href="#1-创建项目" class="headerlink" title="1.创建项目"></a>1.创建项目</h3><pre><code class="hljs">react-native init DadiDriver --version react-native@0.68.2</code></pre><p>指定react-native的固定版本号0.68.2<br>DadiDriver 项目名称</p><h3 id="2-将原来的项目通过beyond-compare把相关的src等文件同步到新的项目，保持新项目的名字不变"><a href="#2-将原来的项目通过beyond-compare把相关的src等文件同步到新的项目，保持新项目的名字不变" class="headerlink" title="2.将原来的项目通过beyond compare把相关的src等文件同步到新的项目，保持新项目的名字不变"></a>2.将原来的项目通过beyond compare把相关的src等文件同步到新的项目，保持新项目的名字不变</h3><h3 id="3-更改android的包名，启动图，启动logo，签名"><a href="#3-更改android的包名，启动图，启动logo，签名" class="headerlink" title="3.更改android的包名，启动图，启动logo，签名"></a>3.更改android的包名，启动图，启动logo，签名</h3><h3 id="4-用code-push命令创建项目"><a href="#4-用code-push命令创建项目" class="headerlink" title="4.用code-push命令创建项目"></a>4.用code-push命令创建项目</h3><h3 id="5-更改热更新服务器的地址，替换对应的key"><a href="#5-更改热更新服务器的地址，替换对应的key" class="headerlink" title="5.更改热更新服务器的地址，替换对应的key"></a>5.更改热更新服务器的地址，替换对应的key</h3><h3 id="6-更改ios的启动图，启动logo，bundleId"><a href="#6-更改ios的启动图，启动logo，bundleId" class="headerlink" title="6.更改ios的启动图，启动logo，bundleId"></a>6.更改ios的启动图，启动logo，bundleId</h3><h3 id="一键生成启动图标"><a href="#一键生成启动图标" class="headerlink" title="一键生成启动图标"></a>一键生成启动图标</h3><blockquote><p>可以通过用户给的logo,用下面的网站一键生成android和ios的启动图标</p><footer><strong>一键生成</strong><cite><a href="https://icon.wuruihong.com/">启动图标(ios,android)</a></cite></footer></blockquote><img src="/2024/02/28/%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BAReactNative%E9%A1%B9%E7%9B%AE/1.png" class="" width="800" title="生成应用启动图标">]]></content>
+    <content type="html"><![CDATA[<h3 id="1-创建项目"><a href="#1-创建项目" class="headerlink" title="1.创建项目"></a>1.创建项目</h3><pre><code class="hljs">react-native init DadiDriver --version react-native@0.68.2</code></pre><p>指定react-native的固定版本号0.68.2<br>DadiDriver 项目名称</p><h3 id="2-将原来的项目通过beyond-compare把相关的src等文件同步到新的项目，保持新项目的名字不变"><a href="#2-将原来的项目通过beyond-compare把相关的src等文件同步到新的项目，保持新项目的名字不变" class="headerlink" title="2.将原来的项目通过beyond compare把相关的src等文件同步到新的项目，保持新项目的名字不变"></a>2.将原来的项目通过beyond compare把相关的src等文件同步到新的项目，保持新项目的名字不变</h3><h3 id="3-更改android的包名，启动图，启动logo，签名"><a href="#3-更改android的包名，启动图，启动logo，签名" class="headerlink" title="3.更改android的包名，启动图，启动logo，签名"></a>3.更改android的包名，启动图，启动logo，签名</h3><h3 id="4-用code-push命令创建项目"><a href="#4-用code-push命令创建项目" class="headerlink" title="4.用code-push命令创建项目"></a>4.用code-push命令创建项目</h3><h3 id="5-更改热更新服务器的地址，替换对应的key"><a href="#5-更改热更新服务器的地址，替换对应的key" class="headerlink" title="5.更改热更新服务器的地址，替换对应的key"></a>5.更改热更新服务器的地址，替换对应的key</h3><h3 id="6-更改ios的启动图，启动logo，bundleId"><a href="#6-更改ios的启动图，启动logo，bundleId" class="headerlink" title="6.更改ios的启动图，启动logo，bundleId"></a>6.更改ios的启动图，启动logo，bundleId</h3><h3 id="一键生成启动图标"><a href="#一键生成启动图标" class="headerlink" title="一键生成启动图标"></a>一键生成启动图标</h3><blockquote><p>可以通过用户给的logo,用下面的网站一键生成android和ios的启动图标</p><footer><strong>一键生成</strong><cite><a href="https://icon.wuruihong.com/">启动图标(ios,android)</a></cite></footer></blockquote><img src="/2024/02/28/%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BAReactNative%E9%A1%B9%E7%9B%AE/1.png" class="" width="800" title="生成应用启动图标"><img src="/2024/02/28/%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BAReactNative%E9%A1%B9%E7%9B%AE/2.png" class="" title="下载生成的图标">]]></content>
     
     
     <categories>
@@ -79,9 +79,9 @@
     
     <categories>
       
-      <category>技术分享</category>
-      
       <category>工具分享</category>
+      
+      <category>技术分享</category>
       
       <category>教程</category>
       
