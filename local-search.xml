@@ -4,11 +4,11 @@
   
   
   <entry>
-    <title>adb常用命令</title>
+    <title>adb常用命令及将android手机屏幕共享到电脑上</title>
     <link href="/2024/02/28/adb%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/"/>
     <url>/2024/02/28/adb%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</url>
     
-    <content type="html"><![CDATA[<pre><code class="hljs">准备    1.在电脑上安装adb工具或者安装android sdk    2.配置环境变量     3.打开手机usb调试模式    4.用线连接电脑和手机，输入命令 adb tcp 5555    5.确保手机和电脑用的连接同一个wifi或路由器命令    1.连接手机        adb connect 192.168.3.9  --192.168.3.9代表的是手机的局域网ip    2.断开连接        adb disconnect 192.168.3.9  --192.168.3.9代表的是手机的局域网ip    3.查看当前电脑连接的设备(手机)        adb devices</code></pre><img src="/2024/02/28/adb%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/1.png" class="" title="查看当前电脑连接的设备">]]></content>
+    <content type="html"><![CDATA[<h3 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h3><p> 1.在电脑上安装adb工具或者安装android sdk<br> 2.配置环境变量<br> 3.打开手机usb调试模式<br> 4.用线连接电脑和手机，输入命令 adb tcp 5555<br> 5.确保手机和电脑用的连接同一个wifi或路由器</p><h4 id="第一次通过adb命令连接手机会弹出下面的授权提示-点击允许"><a href="#第一次通过adb命令连接手机会弹出下面的授权提示-点击允许" class="headerlink" title="第一次通过adb命令连接手机会弹出下面的授权提示,点击允许"></a>第一次通过adb命令连接手机会弹出下面的授权提示,点击允许</h4><img src="/2024/02/28/adb%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/2.jpg" class="" width="400" title="第一次通过adb命令连接手机会弹出下面的授权提示"><h3 id="命令"><a href="#命令" class="headerlink" title="命令"></a>命令</h3><h4 id="1-连接手机"><a href="#1-连接手机" class="headerlink" title="1.连接手机"></a>1.连接手机</h4><pre><code class="hljs">adb connect 192.168.3.9  </code></pre><p>192.168.3.9代表的是手机的局域网ip</p><h4 id="2-断开连接"><a href="#2-断开连接" class="headerlink" title="2.断开连接"></a>2.断开连接</h4><pre><code class="hljs">adb disconnect 192.168.3.9  </code></pre><p>192.168.3.9代表的是手机的局域网ip</p><h4 id="3-查看当前电脑连接的设备-手机"><a href="#3-查看当前电脑连接的设备-手机" class="headerlink" title="3.查看当前电脑连接的设备(手机)"></a>3.查看当前电脑连接的设备(手机)</h4><pre><code class="hljs">adb devices</code></pre><img src="/2024/02/28/adb%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/1.png" class="" title="查看当前电脑连接的设备"><h3 id="将手机投屏到电脑"><a href="#将手机投屏到电脑" class="headerlink" title="将手机投屏到电脑"></a>将手机投屏到电脑</h3><p> 前提：要先用adb命令通过电脑连接手机</p><h4 id="电脑端安装：scrcpy"><a href="#电脑端安装：scrcpy" class="headerlink" title="电脑端安装：scrcpy"></a>电脑端安装：scrcpy</h4><h4 id="手机投屏电脑命令"><a href="#手机投屏电脑命令" class="headerlink" title="手机投屏电脑命令"></a>手机投屏电脑命令</h4><pre><code class="hljs">scrcpy --push-target /sdcard/脚本 --always-on-top --max-size 1080 --video-bit-rate 5M -s 192.168.3.73</code></pre><p> 5M表示带宽也就是传输速率，不是越大越好，也要看你的网络<br> 192.168.3.73 手机的局域网ip</p>]]></content>
     
     
     <categories>
@@ -27,31 +27,6 @@
       <tag>命令</tag>
       
       <tag>文章</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>2024年eSIM卡介绍及各种类型的eSIM的比较</title>
-    <link href="/2024/02/24/2024%E5%B9%B4eSIM%E5%8D%A1%E4%BB%8B%E7%BB%8D%E5%8F%8A%E5%90%84%E7%A7%8D%E7%B1%BB%E5%9E%8B%E7%9A%84eSIM%E7%9A%84%E6%AF%94%E8%BE%83/"/>
-    <url>/2024/02/24/2024%E5%B9%B4eSIM%E5%8D%A1%E4%BB%8B%E7%BB%8D%E5%8F%8A%E5%90%84%E7%A7%8D%E7%B1%BB%E5%9E%8B%E7%9A%84eSIM%E7%9A%84%E6%AF%94%E8%BE%83/</url>
-    
-    <content type="html"><![CDATA[<p>这是一篇测试文章</p><img src="/2024/02/24/2024%E5%B9%B4eSIM%E5%8D%A1%E4%BB%8B%E7%BB%8D%E5%8F%8A%E5%90%84%E7%A7%8D%E7%B1%BB%E5%9E%8B%E7%9A%84eSIM%E7%9A%84%E6%AF%94%E8%BE%83/test.png" class="" title="图片引用方法一"><p><img src="/test.png" alt="图片引用方法二"></p><p><img src="/images/test.png" alt="图片引用方法三"></p>]]></content>
-    
-    
-    <categories>
-      
-      <category>工具分享</category>
-      
-    </categories>
-    
-    
-    <tags>
-      
-      <tag>原创</tag>
       
     </tags>
     
