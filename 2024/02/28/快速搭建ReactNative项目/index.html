@@ -16,16 +16,16 @@
   <meta name="author" content="spatacus">
   <meta name="keywords" content="自由码农,技术博客,工具分享，网站开发，App开发，小程序开发，H5开发">
   
-    <meta name="description" content="1.创建项目react-native init DadiDriver --version react-native@0.68.2  指定react-native的固定版本号0.68.2DadiDriver 项目名称 2.将原来的项目通过Beyond Compare把相关的src等文件同步到新的项目，保持新项目的名字不变   3.更改android的包名，启动图，启动logo，签名4.用code-p">
+    <meta name="description" content="1.创建项目react-native init DadiDriver --version react-native@0.68.2  指定react-native的固定版本号0.68.2DadiDriver 项目名称 2.通过Beyond Compare把将原来的项目相关的src，android文件夹及其他js文件同步到新的项目，保持新项目的名字不变   3.项目根目录下执行yarn命令，安装项目依">
 <meta property="og:type" content="article">
 <meta property="og:title" content="快速搭建ReactNative项目">
 <meta property="og:url" content="https://blog.fxcxy.com/2024/02/28/%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BAReactNative%E9%A1%B9%E7%9B%AE/index.html">
 <meta property="og:site_name" content="自由码农">
-<meta property="og:description" content="1.创建项目react-native init DadiDriver --version react-native@0.68.2  指定react-native的固定版本号0.68.2DadiDriver 项目名称 2.将原来的项目通过Beyond Compare把相关的src等文件同步到新的项目，保持新项目的名字不变   3.更改android的包名，启动图，启动logo，签名4.用code-p">
+<meta property="og:description" content="1.创建项目react-native init DadiDriver --version react-native@0.68.2  指定react-native的固定版本号0.68.2DadiDriver 项目名称 2.通过Beyond Compare把将原来的项目相关的src，android文件夹及其他js文件同步到新的项目，保持新项目的名字不变   3.项目根目录下执行yarn命令，安装项目依">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://blog.fxcxy.com/img/rn.png">
 <meta property="article:published_time" content="2024-02-28T04:34:58.000Z">
-<meta property="article:modified_time" content="2024-02-28T07:41:27.339Z">
+<meta property="article:modified_time" content="2024-02-29T06:47:33.190Z">
 <meta property="article:author" content="spatacus">
 <meta property="article:tag" content="react native">
 <meta property="article:tag" content="项目搭建">
@@ -257,7 +257,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          294 字
+          432 字
         
       </span>
     
@@ -268,7 +268,7 @@
         
         
         
-          3 分钟
+          4 分钟
         
       </span>
     
@@ -321,12 +321,11 @@
                 <h3 id="1-创建项目"><a href="#1-创建项目" class="headerlink" title="1.创建项目"></a>1.创建项目</h3><pre><code class="hljs">react-native init DadiDriver --version react-native@0.68.2
 </code></pre>
 <p>指定react-native的固定版本号0.68.2<br>DadiDriver 项目名称</p>
-<h3 id="2-将原来的项目通过Beyond-Compare把相关的src等文件同步到新的项目，保持新项目的名字不变"><a href="#2-将原来的项目通过Beyond-Compare把相关的src等文件同步到新的项目，保持新项目的名字不变" class="headerlink" title="2.将原来的项目通过Beyond Compare把相关的src等文件同步到新的项目，保持新项目的名字不变"></a>2.将原来的项目通过Beyond Compare把相关的src等文件同步到新的项目，保持新项目的名字不变</h3><img src="/2024/02/28/%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BAReactNative%E9%A1%B9%E7%9B%AE/3.png" srcset="/img/loading.gif" lazyload class="" title="同步代码">
-<img src="/2024/02/28/%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BAReactNative%E9%A1%B9%E7%9B%AE/4.png" srcset="/img/loading.gif" lazyload class="" title="同步代码">
-<img src="/2024/02/28/%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BAReactNative%E9%A1%B9%E7%9B%AE/5.png" srcset="/img/loading.gif" lazyload class="" title="同步代码">
-<h3 id="3-更改android的包名，启动图，启动logo，签名"><a href="#3-更改android的包名，启动图，启动logo，签名" class="headerlink" title="3.更改android的包名，启动图，启动logo，签名"></a>3.更改android的包名，启动图，启动logo，签名</h3><h3 id="4-用code-push命令创建项目"><a href="#4-用code-push命令创建项目" class="headerlink" title="4.用code-push命令创建项目"></a>4.用code-push命令创建项目</h3><h3 id="5-更改热更新服务器的地址，替换对应的key"><a href="#5-更改热更新服务器的地址，替换对应的key" class="headerlink" title="5.更改热更新服务器的地址，替换对应的key"></a>5.更改热更新服务器的地址，替换对应的key</h3><h3 id="6-更改ios的启动图，启动logo，bundleId"><a href="#6-更改ios的启动图，启动logo，bundleId" class="headerlink" title="6.更改ios的启动图，启动logo，bundleId"></a>6.更改ios的启动图，启动logo，bundleId</h3><h3 id="7-项目根目录下执行yarn命令，安装项目依赖包"><a href="#7-项目根目录下执行yarn命令，安装项目依赖包" class="headerlink" title="7.项目根目录下执行yarn命令，安装项目依赖包"></a>7.项目根目录下执行yarn命令，安装项目依赖包</h3><pre><code class="hljs">yarn
+<h3 id="2-通过Beyond-Compare把将原来的项目相关的src，android文件夹及其他js文件同步到新的项目，保持新项目的名字不变"><a href="#2-通过Beyond-Compare把将原来的项目相关的src，android文件夹及其他js文件同步到新的项目，保持新项目的名字不变" class="headerlink" title="2.通过Beyond Compare把将原来的项目相关的src，android文件夹及其他js文件同步到新的项目，保持新项目的名字不变"></a>2.通过Beyond Compare把将原来的项目相关的src，android文件夹及其他js文件同步到新的项目，保持新项目的名字不变</h3><img src="/2024/02/28/%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BAReactNative%E9%A1%B9%E7%9B%AE/16.png" srcset="/img/loading.gif" lazyload class="" title="同步代码"> 
+
+<h3 id="3-项目根目录下执行yarn命令，安装项目依赖包"><a href="#3-项目根目录下执行yarn命令，安装项目依赖包" class="headerlink" title="3.项目根目录下执行yarn命令，安装项目依赖包"></a>3.项目根目录下执行yarn命令，安装项目依赖包</h3><pre><code class="hljs">yarn
 </code></pre>
-<h3 id="8-ios目录下，执行pod-install"><a href="#8-ios目录下，执行pod-install" class="headerlink" title="8.ios目录下，执行pod install"></a>8.ios目录下，执行pod install</h3><pre><code class="hljs">cd ios
+<h3 id="4-更改android的包名，启动图，启动logo，签名"><a href="#4-更改android的包名，启动图，启动logo，签名" class="headerlink" title="4.更改android的包名，启动图，启动logo，签名"></a>4.更改android的包名，启动图，启动logo，签名</h3><h3 id="5-通过Beyond-Compare把Podfile文件通过到ios目录下。然后在ios目录下，执行pod-install"><a href="#5-通过Beyond-Compare把Podfile文件通过到ios目录下。然后在ios目录下，执行pod-install" class="headerlink" title="5.通过Beyond Compare把Podfile文件通过到ios目录下。然后在ios目录下，执行pod install"></a>5.通过Beyond Compare把Podfile文件通过到ios目录下。然后在ios目录下，执行pod install</h3><pre><code class="hljs">cd ios
 pod install
 </code></pre>
 <img src="/2024/02/28/%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BAReactNative%E9%A1%B9%E7%9B%AE/6.png" srcset="/img/loading.gif" lazyload class="" title="同步代码">
@@ -334,6 +333,8 @@ pod install
             <p>pod install执行时经常因为网络原因终端，需要多次执行这条命令，直到所有的依赖包下载完成</p>
           </div>
 <img src="/2024/02/28/%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BAReactNative%E9%A1%B9%E7%9B%AE/7.png" srcset="/img/loading.gif" lazyload class="" title="同步代码">
+<p>pod install执行成功</p>
+<img src="/2024/02/28/%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BAReactNative%E9%A1%B9%E7%9B%AE/8.png" srcset="/img/loading.gif" lazyload class="" title="pod install执行成功">
 
 
     <div class="fold">
@@ -347,7 +348,26 @@ pod install
       </div>
     </div>
 
-<h3 id="一键生成启动图标"><a href="#一键生成启动图标" class="headerlink" title="一键生成启动图标"></a>一键生成启动图标</h3><blockquote><p>可以通过用户给的logo,用下面的网站一键生成android和ios的启动图标</p>
+<p>双击双击DadiDriver.xcworkspace，用xcode打开项目</p>
+<img src="/2024/02/28/%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BAReactNative%E9%A1%B9%E7%9B%AE/9.png" srcset="/img/loading.gif" lazyload class="" title="用xcode打开项目">
+
+<p>新建DadiDriver.swfit文件</p>
+<img src="/2024/02/28/%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BAReactNative%E9%A1%B9%E7%9B%AE/10.png" srcset="/img/loading.gif" lazyload class="" title="新建DadiDriver.swfit文件">
+<img src="/2024/02/28/%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BAReactNative%E9%A1%B9%E7%9B%AE/11.png" srcset="/img/loading.gif" lazyload class="" title="新建DadiDriver.swfit文件">
+<img src="/2024/02/28/%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BAReactNative%E9%A1%B9%E7%9B%AE/12.png" srcset="/img/loading.gif" lazyload class="" title="新建DadiDriver.swfit文件">
+<img src="/2024/02/28/%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BAReactNative%E9%A1%B9%E7%9B%AE/13.png" srcset="/img/loading.gif" lazyload class="" title="新建DadiDriver.swfit文件">
+
+<p>将原项目的img和MyMoudule文件夹拖入项目中</p>
+<img src="/2024/02/28/%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BAReactNative%E9%A1%B9%E7%9B%AE/14.png" srcset="/img/loading.gif" lazyload class="" title="将原项目的img和MyMoudule文件夹拖入项目中">
+<img src="/2024/02/28/%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BAReactNative%E9%A1%B9%E7%9B%AE/15.png" srcset="/img/loading.gif" lazyload class="" title="将原项目的img和MyMoudule文件夹拖入项目中">
+
+<p>把字体库文件拖入到项目中<br>% asset_img 18.png  把字体库文件拖入到项目中 %}<br>% asset_img 19.png  把字体库文件拖入到项目中 %}</p>
+<p>把project.pbxproj文件相应的代码通过到新的项目</p>
+<img src="/2024/02/28/%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BAReactNative%E9%A1%B9%E7%9B%AE/17.png" srcset="/img/loading.gif" lazyload class="" title="把project.pbxproj文件相应的代码通过到新的项目">
+<p>同步代码只同步设置，不要把项目的名字同步到新的项目</p>
+<img src="/2024/02/28/%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BAReactNative%E9%A1%B9%E7%9B%AE/20.png" srcset="/img/loading.gif" lazyload class="" title="把project.pbxproj文件相应的代码通过到新的项目">
+<h3 id="6-更改ios的启动图，启动logo，bundleId"><a href="#6-更改ios的启动图，启动logo，bundleId" class="headerlink" title="6.更改ios的启动图，启动logo，bundleId"></a>6.更改ios的启动图，启动logo，bundleId</h3><img src="/2024/02/28/%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BAReactNative%E9%A1%B9%E7%9B%AE/21.png" srcset="/img/loading.gif" lazyload class="" title="更改项目的名称，bundleId，签名证书">
+<h3 id="7-用code-push命令创建项目"><a href="#7-用code-push命令创建项目" class="headerlink" title="7.用code-push命令创建项目"></a>7.用code-push命令创建项目</h3><h3 id="8-更改热更新服务器的地址，替换对应的key"><a href="#8-更改热更新服务器的地址，替换对应的key" class="headerlink" title="8.更改热更新服务器的地址，替换对应的key"></a>8.更改热更新服务器的地址，替换对应的key</h3><h3 id="一键生成启动图标"><a href="#一键生成启动图标" class="headerlink" title="一键生成启动图标"></a>一键生成启动图标</h3><blockquote><p>可以通过用户给的logo,用下面的网站一键生成android和ios的启动图标</p>
 <footer><strong>一键生成</strong><cite><a target="_blank" rel="noopener" href="https://icon.wuruihong.com/">启动图标(ios,android)</a></cite></footer></blockquote>
 <img src="/2024/02/28/%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BAReactNative%E9%A1%B9%E7%9B%AE/1.png" srcset="/img/loading.gif" lazyload class="" width="800" title="生成应用启动图标">
 <img src="/2024/02/28/%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BAReactNative%E9%A1%B9%E7%9B%AE/2.png" srcset="/img/loading.gif" lazyload class="" title="下载生成的图标">
