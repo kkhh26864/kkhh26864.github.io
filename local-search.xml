@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  
+  
+  
+  <entry>
+    <title>不用验证手机号创建谷歌账号</title>
+    <link href="/2024/03/02/%E4%B8%8D%E7%94%A8%E9%AA%8C%E8%AF%81%E6%89%8B%E6%9C%BA%E5%8F%B7%E5%88%9B%E5%BB%BA%E8%B0%B7%E6%AD%8C%E8%B4%A6%E5%8F%B7/"/>
+    <url>/2024/03/02/%E4%B8%8D%E7%94%A8%E9%AA%8C%E8%AF%81%E6%89%8B%E6%9C%BA%E5%8F%B7%E5%88%9B%E5%BB%BA%E8%B0%B7%E6%AD%8C%E8%B4%A6%E5%8F%B7/</url>
+    
+    <content type="html"><![CDATA[<h3 id="环境及工具准备"><a href="#环境及工具准备" class="headerlink" title="环境及工具准备"></a>环境及工具准备</h3><p>1.iphone手机<br>2.开启代理，我用的是美国的节点</p><h3 id="创建流程"><a href="#创建流程" class="headerlink" title="创建流程"></a>创建流程</h3><p>1.打开iPhone手机自带的邮件App</p><p>2.如果不是第一次通过这个App创建，可以跳过下面的2,3,4步骤，直接看第5步<br>3.点击设置-邮件-账户-删除账户。删除原来创建的账户</p><p>4.点击设置-邮件-账户-添加账户。<br>5.选择google-切换语言为English(United States)-Create account<br>6.后面的流程按照提示输入即可，注意生日要设置年龄大于18岁，其他可以跳过的步骤都跳过就行。</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>技术教程</category>
+      
+      <category>视频教程</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>google账号</tag>
+      
+      <tag>技术教程</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>快速搭建ReactNative项目</title>
+    <link href="/2024/02/28/%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BAReactNative%E9%A1%B9%E7%9B%AE/"/>
+    <url>/2024/02/28/%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BAReactNative%E9%A1%B9%E7%9B%AE/</url>
+    
+    <content type="html"><![CDATA[<h3 id="1-创建项目"><a href="#1-创建项目" class="headerlink" title="1.创建项目"></a>1.创建项目</h3><pre><code class="hljs">react-native init DadiDriver --version react-native@0.68.2</code></pre><p>指定react-native的固定版本号0.68.2<br>DadiDriver 项目名称</p><h3 id="2-通过Beyond-Compare把将原来的项目相关的src，android文件夹及其他js文件同步到新的项目，保持新项目的名字不变"><a href="#2-通过Beyond-Compare把将原来的项目相关的src，android文件夹及其他js文件同步到新的项目，保持新项目的名字不变" class="headerlink" title="2.通过Beyond Compare把将原来的项目相关的src，android文件夹及其他js文件同步到新的项目，保持新项目的名字不变"></a>2.通过Beyond Compare把将原来的项目相关的src，android文件夹及其他js文件同步到新的项目，保持新项目的名字不变</h3><img src="/2024/02/28/%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BAReactNative%E9%A1%B9%E7%9B%AE/16.png" class="" title="同步代码"> <h3 id="3-项目根目录下执行yarn命令，安装项目依赖包"><a href="#3-项目根目录下执行yarn命令，安装项目依赖包" class="headerlink" title="3.项目根目录下执行yarn命令，安装项目依赖包"></a>3.项目根目录下执行yarn命令，安装项目依赖包</h3><pre><code class="hljs">yarn</code></pre><h3 id="4-更改android的包名，启动图，启动logo，签名"><a href="#4-更改android的包名，启动图，启动logo，签名" class="headerlink" title="4.更改android的包名，启动图，启动logo，签名"></a>4.更改android的包名，启动图，启动logo，签名</h3><h3 id="5-通过Beyond-Compare把Podfile文件通过到ios目录下。然后在ios目录下，执行pod-install"><a href="#5-通过Beyond-Compare把Podfile文件通过到ios目录下。然后在ios目录下，执行pod-install" class="headerlink" title="5.通过Beyond Compare把Podfile文件通过到ios目录下。然后在ios目录下，执行pod install"></a>5.通过Beyond Compare把Podfile文件通过到ios目录下。然后在ios目录下，执行pod install</h3><pre><code class="hljs">cd iospod install</code></pre><img src="/2024/02/28/%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BAReactNative%E9%A1%B9%E7%9B%AE/6.png" class="" title="同步代码"><div class="note note-warning @title">            <p>pod install执行时经常因为网络原因终端，需要多次执行这条命令，直到所有的依赖包下载完成</p>          </div><img src="/2024/02/28/%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BAReactNative%E9%A1%B9%E7%9B%AE/7.png" class="" title="同步代码"><p>pod install执行成功</p><img src="/2024/02/28/%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BAReactNative%E9%A1%B9%E7%9B%AE/8.png" class="" title="pod install执行成功">    <div class="fold">      <div class="fold-title fold-warning collapsed" data-toggle="collapse" href="#collapse-494eeaaf" role="button" aria-expanded="false" aria-controls="collapse-494eeaaf">        <div class="fold-arrow">▶</div>Tips：IOS同步代码及操作步骤注意事项      </div>      <div class="fold-collapse collapse" id="collapse-494eeaaf">        <div class="fold-content">          <p>ios先同步Podfile，同步的时候注意别把项目名覆盖了。<br>然后执行pod install<br>最后再用xcode打开项目，添加一个以项目名为名称的swift文件，再把img文件夹和MyModule文件夹拖入项目当中</p>        </div>      </div>    </div><p>双击双击DadiDriver.xcworkspace，用xcode打开项目</p><img src="/2024/02/28/%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BAReactNative%E9%A1%B9%E7%9B%AE/9.png" class="" title="用xcode打开项目"><p>新建DadiDriver.swfit文件</p><img src="/2024/02/28/%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BAReactNative%E9%A1%B9%E7%9B%AE/10.png" class="" title="新建DadiDriver.swfit文件"><img src="/2024/02/28/%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BAReactNative%E9%A1%B9%E7%9B%AE/11.png" class="" title="新建DadiDriver.swfit文件"><img src="/2024/02/28/%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BAReactNative%E9%A1%B9%E7%9B%AE/12.png" class="" title="新建DadiDriver.swfit文件"><img src="/2024/02/28/%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BAReactNative%E9%A1%B9%E7%9B%AE/13.png" class="" title="新建DadiDriver.swfit文件"><p>将原项目的img和MyMoudule文件夹拖入项目中</p><img src="/2024/02/28/%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BAReactNative%E9%A1%B9%E7%9B%AE/14.png" class="" title="将原项目的img和MyMoudule文件夹拖入项目中"><img src="/2024/02/28/%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BAReactNative%E9%A1%B9%E7%9B%AE/15.png" class="" title="将原项目的img和MyMoudule文件夹拖入项目中"><p>把字体库文件拖入到项目中<br>% asset_img 18.png  把字体库文件拖入到项目中 %}<br>% asset_img 19.png  把字体库文件拖入到项目中 %}</p><p>把project.pbxproj文件相应的代码通过到新的项目</p><img src="/2024/02/28/%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BAReactNative%E9%A1%B9%E7%9B%AE/17.png" class="" title="把project.pbxproj文件相应的代码通过到新的项目"><p>同步代码只同步设置，不要把项目的名字同步到新的项目</p><img src="/2024/02/28/%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BAReactNative%E9%A1%B9%E7%9B%AE/20.png" class="" title="把project.pbxproj文件相应的代码通过到新的项目"><h3 id="6-更改ios的启动图，启动logo，bundleId"><a href="#6-更改ios的启动图，启动logo，bundleId" class="headerlink" title="6.更改ios的启动图，启动logo，bundleId"></a>6.更改ios的启动图，启动logo，bundleId</h3><img src="/2024/02/28/%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BAReactNative%E9%A1%B9%E7%9B%AE/21.png" class="" title="更改项目的名称，bundleId，签名证书"><h3 id="7-用code-push命令创建项目"><a href="#7-用code-push命令创建项目" class="headerlink" title="7.用code-push命令创建项目"></a>7.用code-push命令创建项目</h3><h3 id="8-更改热更新服务器的地址，替换对应的key"><a href="#8-更改热更新服务器的地址，替换对应的key" class="headerlink" title="8.更改热更新服务器的地址，替换对应的key"></a>8.更改热更新服务器的地址，替换对应的key</h3><h3 id="一键生成启动图标"><a href="#一键生成启动图标" class="headerlink" title="一键生成启动图标"></a>一键生成启动图标</h3><blockquote><p>可以通过用户给的logo,用下面的网站一键生成android和ios的启动图标</p><footer><strong>一键生成</strong><cite><a href="https://icon.wuruihong.com/">启动图标(ios,android)</a></cite></footer></blockquote><img src="/2024/02/28/%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BAReactNative%E9%A1%B9%E7%9B%AE/1.png" class="" width="800" title="生成应用启动图标"><img src="/2024/02/28/%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BAReactNative%E9%A1%B9%E7%9B%AE/2.png" class="" title="下载生成的图标">]]></content>
+    
+    
+    <categories>
+      
+      <category>技术分享</category>
+      
+      <category>android</category>
+      
+      <category>ios</category>
+      
+      <category>ReactNative</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>react native</tag>
+      
+      <tag>项目搭建</tag>
+      
+      <tag>笔记</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>adb常用命令及将android手机屏幕共享到电脑上</title>
+    <link href="/2024/02/28/adb%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/"/>
+    <url>/2024/02/28/adb%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</url>
+    
+    <content type="html"><![CDATA[<h3 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h3><p> 1.在电脑上安装adb工具或者安装android sdk<br> 2.配置环境变量<br> 3.打开手机usb调试模式<br> 4.用线连接电脑和手机，输入命令 adb tcp 5555<br> 5.确保手机和电脑用的连接同一个wifi或路由器</p><h4 id="第一次通过adb命令连接手机会弹出下面的授权提示-点击允许"><a href="#第一次通过adb命令连接手机会弹出下面的授权提示-点击允许" class="headerlink" title="第一次通过adb命令连接手机会弹出下面的授权提示,点击允许"></a>第一次通过adb命令连接手机会弹出下面的授权提示,点击允许</h4><img src="/2024/02/28/adb%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/2.jpg" class="" width="400" title="第一次通过adb命令连接手机会弹出下面的授权提示"><h3 id="命令"><a href="#命令" class="headerlink" title="命令"></a>命令</h3><h4 id="1-连接手机"><a href="#1-连接手机" class="headerlink" title="1.连接手机"></a>1.连接手机</h4><pre><code class="hljs">adb connect 192.168.3.9  </code></pre><p>192.168.3.9代表的是手机的局域网ip</p><h4 id="2-断开连接"><a href="#2-断开连接" class="headerlink" title="2.断开连接"></a>2.断开连接</h4><pre><code class="hljs">adb disconnect 192.168.3.9  </code></pre><p>192.168.3.9代表的是手机的局域网ip</p><h4 id="3-查看当前电脑连接的设备-手机"><a href="#3-查看当前电脑连接的设备-手机" class="headerlink" title="3.查看当前电脑连接的设备(手机)"></a>3.查看当前电脑连接的设备(手机)</h4><pre><code class="hljs">adb devices</code></pre><h4 id="4-adb命令安装apk"><a href="#4-adb命令安装apk" class="headerlink" title="4.adb命令安装apk"></a>4.adb命令安装apk</h4><pre><code class="hljs">adb install -r 文件目录/app.apkadb install -t 文件目录/app.apk</code></pre><p>-r 覆盖安装<br>-t 安装测试版，一般是程序员编译运行的代码，不是发布版本。需要用这个参数</p><h4 id="4-adb连接了多台设备，在执行adb命令时，需要指定设备-s-设备"><a href="#4-adb连接了多台设备，在执行adb命令时，需要指定设备-s-设备" class="headerlink" title="4.adb连接了多台设备，在执行adb命令时，需要指定设备 -s 设备"></a>4.adb连接了多台设备，在执行adb命令时，需要指定设备 -s 设备</h4><pre><code class="hljs">adb -s 192.168.3.9:5555 install -r 文件目录/app.apk </code></pre><p>192.168.3.9:5555可以通过adb devices查看到</p><img src="/2024/02/28/adb%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/1.png" class="" title="查看当前电脑连接的设备"><h3 id="将手机投屏到电脑"><a href="#将手机投屏到电脑" class="headerlink" title="将手机投屏到电脑"></a>将手机投屏到电脑</h3><p> 前提：要先用adb命令通过电脑连接手机</p><h4 id="电脑端安装：scrcpy"><a href="#电脑端安装：scrcpy" class="headerlink" title="电脑端安装：scrcpy"></a>电脑端安装：scrcpy</h4><h4 id="手机投屏电脑命令"><a href="#手机投屏电脑命令" class="headerlink" title="手机投屏电脑命令"></a>手机投屏电脑命令</h4><pre><code class="hljs">scrcpy --push-target /sdcard/脚本 --always-on-top --max-size 1080 --video-bit-rate 5M -s 192.168.3.73</code></pre><p> 5M表示带宽也就是传输速率，不是越大越好，也要看你的网络<br> 192.168.3.73 手机的局域网ip</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>技术分享</category>
+      
+      <category>android</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>adb</tag>
+      
+      <tag>命令</tag>
+      
+      <tag>文章</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>使用Charles实现移动App接口数据抓包教程</title>
+    <link href="/2023/12/23/%E4%BD%BF%E7%94%A8Charles%E5%AE%9E%E7%8E%B0%E7%A7%BB%E5%8A%A8App%E6%8E%A5%E5%8F%A3%E6%95%B0%E6%8D%AE%E6%8A%93%E5%8C%85%E6%95%99%E7%A8%8B/"/>
+    <url>/2023/12/23/%E4%BD%BF%E7%94%A8Charles%E5%AE%9E%E7%8E%B0%E7%A7%BB%E5%8A%A8App%E6%8E%A5%E5%8F%A3%E6%95%B0%E6%8D%AE%E6%8A%93%E5%8C%85%E6%95%99%E7%A8%8B/</url>
+    
+    <content type="html"><![CDATA[<pre><code class="hljs">准备工具    charles,anroid手机/ios手机charles下载地址:    </code></pre>]]></content>
+    
+    
+    <categories>
+      
+      <category>工具分享</category>
+      
+      <category>技术分享</category>
+      
+      <category>教程</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>charles</tag>
+      
+      <tag>抓包</tag>
+      
+      <tag>App</tag>
+      
+      <tag>教程</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  
+</search>
