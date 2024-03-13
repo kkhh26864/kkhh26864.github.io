@@ -4,6 +4,45 @@
   
   
   <entry>
+    <title>LocalSend:一款免费的本地文件互传工具，支持PC(windows,macOS,Linux)和移动端(Android,iOS)</title>
+    <link href="/2024/03/13/LocalSend%E4%B8%80%E6%AC%BE%E5%85%8D%E8%B4%B9%E7%9A%84%E6%9C%AC%E5%9C%B0%E6%96%87%E4%BB%B6%E4%BA%92%E4%BC%A0%E5%B7%A5%E5%85%B7/"/>
+    <url>/2024/03/13/LocalSend%E4%B8%80%E6%AC%BE%E5%85%8D%E8%B4%B9%E7%9A%84%E6%9C%AC%E5%9C%B0%E6%96%87%E4%BB%B6%E4%BA%92%E4%BC%A0%E5%B7%A5%E5%85%B7/</url>
+    
+    <content type="html"><![CDATA[<h3 id="环境要求"><a href="#环境要求" class="headerlink" title="环境要求"></a>环境要求</h3><p>所有设备在同一个局域网内</p><h3 id="系统要求"><a href="#系统要求" class="headerlink" title="系统要求"></a>系统要求</h3><p>windows,macOS,Linux,Android,iOS</p><h3 id="下载地址"><a href="#下载地址" class="headerlink" title="下载地址"></a>下载地址</h3><p><a href="https://localsend.org/#/download">官网下载</a><br><a href="https://apps.apple.com/us/app/localsend/id1661733229?l=zh-Hans-CN">iOS版</a><br><a href="https://url49.ctfile.com/d/26918949-60364489-965fac?p=4499">windows,macOS,Android下载</a>, (访问密码: 4499)</p><h3 id="使用教程"><a href="#使用教程" class="headerlink" title="使用教程"></a>使用教程</h3><p>macOS端</p><img src="/2024/03/13/LocalSend%E4%B8%80%E6%AC%BE%E5%85%8D%E8%B4%B9%E7%9A%84%E6%9C%AC%E5%9C%B0%E6%96%87%E4%BB%B6%E4%BA%92%E4%BC%A0%E5%B7%A5%E5%85%B7/1.png" class="" width="488"><p>&nbsp;<br>Android端</p><img src="/2024/03/13/LocalSend%E4%B8%80%E6%AC%BE%E5%85%8D%E8%B4%B9%E7%9A%84%E6%9C%AC%E5%9C%B0%E6%96%87%E4%BB%B6%E4%BA%92%E4%BC%A0%E5%B7%A5%E5%85%B7/2.png" class="" width="488"><p>&nbsp;<br>Android端给mac端发送文件</p><img src="/2024/03/13/LocalSend%E4%B8%80%E6%AC%BE%E5%85%8D%E8%B4%B9%E7%9A%84%E6%9C%AC%E5%9C%B0%E6%96%87%E4%BB%B6%E4%BA%92%E4%BC%A0%E5%B7%A5%E5%85%B7/3.png" class="" width="488"><p>&nbsp;<br>macOS端收到接受文件请求</p><img src="/2024/03/13/LocalSend%E4%B8%80%E6%AC%BE%E5%85%8D%E8%B4%B9%E7%9A%84%E6%9C%AC%E5%9C%B0%E6%96%87%E4%BB%B6%E4%BA%92%E4%BC%A0%E5%B7%A5%E5%85%B7/4.png" class="" width="488"><p>&nbsp;<br>macOS端接受文件</p><img src="/2024/03/13/LocalSend%E4%B8%80%E6%AC%BE%E5%85%8D%E8%B4%B9%E7%9A%84%E6%9C%AC%E5%9C%B0%E6%96%87%E4%BB%B6%E4%BA%92%E4%BC%A0%E5%B7%A5%E5%85%B7/5.png" class="" width="488"><p>&nbsp;<br>macOS端文件存储位置</p><img src="/2024/03/13/LocalSend%E4%B8%80%E6%AC%BE%E5%85%8D%E8%B4%B9%E7%9A%84%E6%9C%AC%E5%9C%B0%E6%96%87%E4%BB%B6%E4%BA%92%E4%BC%A0%E5%B7%A5%E5%85%B7/6.png" class="" width="488"><p>&nbsp;</p><h3 id="博主点评"><a href="#博主点评" class="headerlink" title="博主点评"></a>博主点评</h3><p>这款本地互传软件对比我之前用的LANDROP好太多了，这个款软我最欣赏的地方是能通过他发送android apk文件，这个简直是太有用了，真的值得推荐！</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>工具分享</category>
+      
+      <category>文件互传</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>windows</tag>
+      
+      <tag>LocalSend</tag>
+      
+      <tag>文件互传</tag>
+      
+      <tag>macOS</tag>
+      
+      <tag>Linux</tag>
+      
+      <tag>Android</tag>
+      
+      <tag>iOS</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>如何获取苹果开发者账号的APNs Auth Key</title>
     <link href="/2024/03/12/%E5%A6%82%E4%BD%95%E8%8E%B7%E5%8F%96%E8%8B%B9%E6%9E%9C%E5%BC%80%E5%8F%91%E8%80%85%E8%B4%A6%E5%8F%B7%E7%9A%84APNs-Auth-Key/"/>
     <url>/2024/03/12/%E5%A6%82%E4%BD%95%E8%8E%B7%E5%8F%96%E8%8B%B9%E6%9E%9C%E5%BC%80%E5%8F%91%E8%80%85%E8%B4%A6%E5%8F%B7%E7%9A%84APNs-Auth-Key/</url>
