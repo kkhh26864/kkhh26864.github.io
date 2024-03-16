@@ -13,6 +13,8 @@
     
     <categories>
       
+      <category>视频教程</category>
+      
       <category>软件工具</category>
       
       <category>破解软件</category>
@@ -90,6 +92,8 @@
       <category>工具分享</category>
       
       <category>文件互传</category>
+      
+      <category>视频教程</category>
       
     </categories>
     
@@ -322,9 +326,9 @@
       
       <category>Android</category>
       
-      <category>IOS</category>
+      <category>IOS开发</category>
       
-      <category>ReactNative</category>
+      <category>ReactNative开发</category>
       
     </categories>
     
