@@ -31,7 +31,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://blog.fxcxy.com/img/nginx.png">
 <meta property="article:published_time" content="2024-04-11T09:00:48.000Z">
-<meta property="article:modified_time" content="2024-04-12T13:35:48.008Z">
+<meta property="article:modified_time" content="2024-04-13T05:50:03.266Z">
 <meta property="article:author" content="spatacus">
 <meta property="article:tag" content="域名">
 <meta property="article:tag" content="https证书">
@@ -391,7 +391,7 @@
 <img src="/2024/04/11/Manager%E7%9A%84%E9%85%8D%E7%BD%AE%E5%92%8C%E4%BD%BF%E7%94%A8/19.png" srcset="/img/loading.gif" lazyload class="" width="488">
 <p>&nbsp;</p>
 <div class="note note-warning">
-            <p>注意：注意这个目录的问题，要将项目资源拷贝到nginx-proxy-manager的数据存放目录中。因为&#x2F;指向的是docker的数据目录，而不是服务器的&#x2F;目录。</p>
+            <p>注意这个目录的问题，要将项目资源拷贝到nginx-proxy-manager的数据存放目录中。因为&#x2F;指向的是docker的数据目录，而不是服务器的&#x2F;目录。</p>
           </div>
 <img src="/2024/04/11/Manager%E7%9A%84%E9%85%8D%E7%BD%AE%E5%92%8C%E4%BD%BF%E7%94%A8/20.png" srcset="/img/loading.gif" lazyload class="" width="488">
 <p>&nbsp;</p>
@@ -401,10 +401,10 @@
 <img src="/2024/04/11/Manager%E7%9A%84%E9%85%8D%E7%BD%AE%E5%92%8C%E4%BD%BF%E7%94%A8/22.png" srcset="/img/loading.gif" lazyload class="" width="488">
 <p>&nbsp;</p>
 <h5 id="3-配置SSL"><a href="#3-配置SSL" class="headerlink" title="3.配置SSL"></a>3.配置SSL</h5><p>对于不需要ssl的这一步可以省略，完成上面两步就可以通过<a target="_blank" rel="noopener" href="http://admin.xxx.com访问./">http://admin.xxx.com访问。</a><br>编辑之前添加的代理服务配置，找到SSL,选择前面创建的SSL证书</p>
-<img src="/2024/04/11/Manager%E7%9A%84%E9%85%8D%E7%BD%AE%E5%92%8C%E4%BD%BF%E7%94%A8/22.png" srcset="/img/loading.gif" lazyload class="" width="488">
+<img src="/2024/04/11/Manager%E7%9A%84%E9%85%8D%E7%BD%AE%E5%92%8C%E4%BD%BF%E7%94%A8/23.png" srcset="/img/loading.gif" lazyload class="" width="488">
 <p>&nbsp;</p>
 <h4 id="II-部署服务器上的其他服务-主要是运行需要在特定的端口，比如frp服务运行在8090端口"><a href="#II-部署服务器上的其他服务-主要是运行需要在特定的端口，比如frp服务运行在8090端口" class="headerlink" title="II.部署服务器上的其他服务,主要是运行需要在特定的端口，比如frp服务运行在8090端口"></a>II.部署服务器上的其他服务,主要是运行需要在特定的端口，比如frp服务运行在8090端口</h4><div class="note note-warning">
-            <p>操作步骤与上面相同，唯一需要注意的是端口要设置为服务运行的端口。<br>如果没有特殊要求，自定义nginx配置不需要添加任何内容，之前nginx的方式是添加proxy_pass <a href="http://127.0.0.1:8090;现在不需要在加这个！">http://127.0.0.1:8090;现在不需要在加这个！</a><br>我的做法是把所有的静态项目都拷贝到nginx-proxy-manager数据存放目录下，让nginx proxy manager的端口来做转发。其他带特定端口的服务不需要移动！</p>
+            <p>操作步骤与上面相同，唯一需要注意的是端口要设置为服务运行的端口。<br>如果没有特殊要求，自定义nginx配置不需要添加任何内容，之前nginx的方式是添加proxy_pass <a href="http://127.0.0.1:8090;现在不需要再加这个！">http://127.0.0.1:8090;现在不需要再加这个！</a><br>我的做法是把所有的静态项目都拷贝到nginx-proxy-manager数据存放目录下，让nginx proxy manager的端口来做转发。其他带特定端口的服务不需要移动！</p>
           </div> 
 
 <img src="/2024/04/11/Manager%E7%9A%84%E9%85%8D%E7%BD%AE%E5%92%8C%E4%BD%BF%E7%94%A8/24.png" srcset="/img/loading.gif" lazyload class="" width="488">
@@ -449,7 +449,7 @@
 <p>&nbsp;</p>
 <img src="/2024/04/11/Manager%E7%9A%84%E9%85%8D%E7%BD%AE%E5%92%8C%E4%BD%BF%E7%94%A8/15.png" srcset="/img/loading.gif" lazyload class="" width="488">
 <p>&nbsp;</p>
-<h4 id="3-部署java项目，访问不了"><a href="#3-部署java项目，访问不了" class="headerlink" title="3.部署java项目，访问不了"></a>3.部署java项目，访问不了</h4><p>java项目部署在8080端口，但是之前nginx配置的反向代理，没有开启8080端口。我是直接配置转发端口8080，但是无法访问。通过ip+端口也同样访问不了。但是通过命令查看java项目确实是允许在8080端口。<br>解决办法：到安全策略中开启8080端口。在能访问之后，再关闭8080端口即可。<br>这个问题也想了很久，但是总的思路是先想办法查看服务是否运行，然后再去打开端口，先保证不用域名的情况下能正常访问。下一步再去设置域名访问，能访问之后，再关闭端口对外访问。</p>
+<h4 id="3-部署java项目，访问不了"><a href="#3-部署java项目，访问不了" class="headerlink" title="3.部署java项目，访问不了"></a>3.部署java项目，访问不了</h4><p>java项目部署在8080端口，但是之前nginx配置的反向代理，没有开启8080端口。我是直接配置转发端口8080，但是无法访问。通过ip+端口也同样访问不了。但是通过命令查看java项目确实是运行在8080端口。<br>解决办法：到安全策略中开启8080端口。在能访问之后，再关闭8080端口即可。<br>这个问题也想了很久，但是总的思路是先想办法查看服务是否运行，然后再去打开端口，先保证不用域名的情况下能正常访问。下一步再去设置域名访问，能访问之后，再关闭端口对外访问。</p>
 <figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs nginx"><span class="hljs-section">server</span> &#123;<br>        <span class="hljs-attribute">listen</span> <span class="hljs-number">443</span> ssl;<br>        <span class="hljs-attribute">server_name</span> enn.fxcxy.com;<br>        <span class="hljs-attribute">ssl_certificate</span> /usr/local/nginx/2023CA/10023018_enn.xxx.com.pem;<br>        <span class="hljs-attribute">ssl_certificate_key</span> /usr/local/nginx/2023CA/10023018_enn.xxx.com.key;<br>        <span class="hljs-attribute">ssl_session_timeout</span> <span class="hljs-number">5m</span>;<br>        <span class="hljs-attribute">ssl_protocols</span> TLSv1 TLSv1.<span class="hljs-number">1</span> TLSv1.<span class="hljs-number">2</span>; <span class="hljs-comment">#按照这个协议配置</span><br>        <span class="hljs-attribute">ssl_ciphers</span> ECDHE-RSA-AES128-GCM-SHA256:HIGH:!aNULL:!MD5:!RC4:!DHE;<span class="hljs-comment">#按照这个套件配置</span><br>        <span class="hljs-attribute">ssl_prefer_server_ciphers</span> <span class="hljs-literal">on</span>;<br><br>	<span class="hljs-section">location</span> /e8GqKhfyEw.txt &#123;<br>		<span class="hljs-attribute">charset</span> UTF-<span class="hljs-number">8</span>;<br>                <span class="hljs-attribute">default_type</span> text/html;<br>                <span class="hljs-attribute">return</span> <span class="hljs-number">200</span> <span class="hljs-string">&#x27;71e2e1a495b3387802f76cbe7aefce21&#x27;</span>;<br>	&#125;<br>        <span class="hljs-section">location</span> / &#123;<br><br>                <span class="hljs-attribute">proxy_pass</span> http://xxxx/;<br>                <span class="hljs-attribute">add_header</span> From enn.xxx.com;<br>                <span class="hljs-attribute">proxy_cookie_path</span> / /;<br>                <span class="hljs-attribute">proxy_set_header</span> Cookie <span class="hljs-variable">$http_cookie</span>;<br>                <span class="hljs-attribute">proxy_set_header</span> Host  <span class="hljs-variable">$host</span>;<br>                <span class="hljs-attribute">proxy_set_header</span> Remote_Addr <span class="hljs-variable">$remote_addr</span>;<br>                <span class="hljs-attribute">proxy_set_header</span> X-Real-IP <span class="hljs-variable">$remote_addr</span>;<br>                <span class="hljs-attribute">proxy_set_header</span> X-Forwarded-For <span class="hljs-variable">$proxy_add_x_forwarded_for</span>;<br>         &#125;<br>    &#125;<br><br></code></pre></td></tr></table></figure>
 
 
