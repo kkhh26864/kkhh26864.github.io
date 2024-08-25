@@ -11,42 +11,40 @@
   <link rel="icon" href="/img/logo.png">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <meta name="twitter:card" content="/img/stc.png" />
+    <meta name="twitter:card" content="/img/bt-gitlab.png" />
     <meta name="twitter:site" content="自由码农" />
     <meta name="twitter:creator" content="@spatacus1986">
-    <meta name="twitter:title" content="前端开发利器—图片生成代码 - 自由码农" />
-    <meta name="twitter:description" content="一、背景最近在开发前端应用的时候，发现了一个很有趣的工具——screenshot-to-code，可以将图片转化为代码，支持多种大型AI模型，可以生成HTML、CSS，可以用来快速搭建页面。 二、安装环境及条件系统环境:可以选择安装在Windows、Mac、Linux等系统上。网络条件:1.必须是除了中国大陆和香港以外地区的网络。对于中国大陆和香港的用户来说，只能使用这两个地区以外的服务器2.有公" />
-    <meta name="twitter:image" content="/img/stc.png" />
+    <meta name="twitter:title" content="宝塔安装配置gitlab-ce - 自由码农" />
+    <meta name="twitter:description" content="宝塔安装配置gitlab-ce前言 宝塔是一款基于Linux的Web面板，可以实现Web服务器的管理、网站的部署、数据库的管理、FTP的管理、SSL证书的管理、系统监控等功能。本文将介绍如何在宝塔上安装并配置gitlab-ce。本想直接在宝塔的软件商店中搜索并安装gitlab-ce，但发现软件商店中安装失败，因此打算手动安装。于是通过命令行手动安装，但是命令行执行安装命令也失败，懒得折腾环境，所以" />
+    <meta name="twitter:image" content="/img/bt-gitlab.png" />
   
   <meta name="theme-color" content="#2f4154">
   <meta name="author" content="spatacus">
   <meta name="keywords" content="自由码农,技术博客,工具分享，网站开发，App开发，小程序开发，H5开发">
   
-    <meta name="description" content="一、背景最近在开发前端应用的时候，发现了一个很有趣的工具——screenshot-to-code，可以将图片转化为代码，支持多种大型AI模型，可以生成HTML、CSS，可以用来快速搭建页面。 二、安装环境及条件系统环境:可以选择安装在Windows、Mac、Linux等系统上。网络条件:1.必须是除了中国大陆和香港以外地区的网络。对于中国大陆和香港的用户来说，只能使用这两个地区以外的服务器2.有公">
+    <meta name="description" content="宝塔安装配置gitlab-ce前言 宝塔是一款基于Linux的Web面板，可以实现Web服务器的管理、网站的部署、数据库的管理、FTP的管理、SSL证书的管理、系统监控等功能。本文将介绍如何在宝塔上安装并配置gitlab-ce。本想直接在宝塔的软件商店中搜索并安装gitlab-ce，但发现软件商店中安装失败，因此打算手动安装。于是通过命令行手动安装，但是命令行执行安装命令也失败，懒得折腾环境，所以">
 <meta property="og:type" content="article">
-<meta property="og:title" content="前端开发利器—图片生成代码">
-<meta property="og:url" content="https://blog.fxcxy.com/2024/06/05/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91%E5%88%A9%E5%99%A8%E2%80%94%E2%80%94%E5%9B%BE%E7%89%87%E7%94%9F%E6%88%90%E4%BB%A3%E7%A0%81/index.html">
+<meta property="og:title" content="宝塔安装配置gitlab-ce">
+<meta property="og:url" content="https://blog.fxcxy.com/2024/08/20/%E5%AE%9D%E5%A1%94%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AEgitlab-ce/index.html">
 <meta property="og:site_name" content="自由码农">
-<meta property="og:description" content="一、背景最近在开发前端应用的时候，发现了一个很有趣的工具——screenshot-to-code，可以将图片转化为代码，支持多种大型AI模型，可以生成HTML、CSS，可以用来快速搭建页面。 二、安装环境及条件系统环境:可以选择安装在Windows、Mac、Linux等系统上。网络条件:1.必须是除了中国大陆和香港以外地区的网络。对于中国大陆和香港的用户来说，只能使用这两个地区以外的服务器2.有公">
+<meta property="og:description" content="宝塔安装配置gitlab-ce前言 宝塔是一款基于Linux的Web面板，可以实现Web服务器的管理、网站的部署、数据库的管理、FTP的管理、SSL证书的管理、系统监控等功能。本文将介绍如何在宝塔上安装并配置gitlab-ce。本想直接在宝塔的软件商店中搜索并安装gitlab-ce，但发现软件商店中安装失败，因此打算手动安装。于是通过命令行手动安装，但是命令行执行安装命令也失败，懒得折腾环境，所以">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://blog.fxcxy.com/img/stc.png">
-<meta property="article:published_time" content="2024-06-05T05:12:12.000Z">
-<meta property="article:modified_time" content="2024-08-12T03:19:22.044Z">
+<meta property="og:image" content="https://blog.fxcxy.com/img/bt-gitlab.png">
+<meta property="article:published_time" content="2024-08-19T23:48:55.000Z">
+<meta property="article:modified_time" content="2024-08-25T01:17:03.563Z">
 <meta property="article:author" content="spatacus">
-<meta property="article:tag" content="GPT">
-<meta property="article:tag" content="AI">
-<meta property="article:tag" content="前端开发">
-<meta property="article:tag" content="Claude3">
-<meta property="article:tag" content="GPT-4">
-<meta property="article:tag" content="图片转代码">
-<meta property="article:tag" content="代码生成器">
-<meta property="article:tag" content="代码生成">
+<meta property="article:tag" content="centos7">
+<meta property="article:tag" content="docker">
+<meta property="article:tag" content="gitlab-ce">
+<meta property="article:tag" content="工具分享">
+<meta property="article:tag" content="技术分享">
+<meta property="article:tag" content="宝塔">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://blog.fxcxy.com/img/stc.png">
+<meta name="twitter:image" content="https://blog.fxcxy.com/img/bt-gitlab.png">
   
   
   
-  <title>前端开发利器—图片生成代码 - 自由码农</title>
+  <title>宝塔安装配置gitlab-ce - 自由码农</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -247,7 +245,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="前端开发利器—图片生成代码"></span>
+            <span id="subtitle" data-typed-text="宝塔安装配置gitlab-ce"></span>
           
         </div>
 
@@ -258,8 +256,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-06-05 13:12" pubdate>
-          2024年6月5日 下午
+        <time datetime="2024-08-20 07:48" pubdate>
+          2024年8月20日 早上
         </time>
       </span>
     
@@ -270,7 +268,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.1k 字
+          1.4k 字
         
       </span>
     
@@ -281,7 +279,7 @@
         
         
         
-          10 分钟
+          12 分钟
         
       </span>
     
@@ -326,48 +324,81 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">前端开发利器—图片生成代码</h1>
+            <h1 id="seo-header">宝塔安装配置gitlab-ce</h1>
             
             
               <div class="markdown-body">
                 
-                <h3 id="一、背景"><a href="#一、背景" class="headerlink" title="一、背景"></a>一、背景</h3><p>最近在开发前端应用的时候，发现了一个很有趣的工具——<a target="_blank" rel="noopener" href="https://github.com/abi/screenshot-to-code">screenshot-to-code</a>，可以将图片转化为代码，支持多种大型AI模型，可以生成HTML、CSS，可以用来快速搭建页面。</p>
-<h3 id="二、安装环境及条件"><a href="#二、安装环境及条件" class="headerlink" title="二、安装环境及条件"></a>二、安装环境及条件</h3><p><b>系统环境</b>:可以选择安装在Windows、Mac、Linux等系统上。<br><b>网络条件</b>:<br>1.必须是除了中国大陆和香港以外地区的网络。对于中国大陆和香港的用户来说，只能使用这两个地区以外的服务器<br>2.有公网ip，能通过公网ip和服务端口可以访问都你部署的服务。针对国外的用户，如果想要在本机上运行，需要做端口映射才能正常使用。对于服务器不用考虑这个问题。<br>3.API KEY:支持GPT-4或Claude3,所以需要GPT-4 API KEY或者Claude3 API KEY。</p>
-<h3 id="三、部署运行步骤"><a href="#三、部署运行步骤" class="headerlink" title="三、部署运行步骤"></a>三、部署运行步骤</h3><h4 id="1-下载screenshot-to-code-下载地址-screenshot-to-code"><a href="#1-下载screenshot-to-code-下载地址-screenshot-to-code" class="headerlink" title="1.下载screenshot-to-code 下载地址:screenshot-to-code"></a>1.下载screenshot-to-code 下载地址:<a target="_blank" rel="noopener" href="https://github.com/abi/screenshot-to-code">screenshot-to-code</a></h4><figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs crmsh">git <span class="hljs-keyword">clone</span> <span class="hljs-title">git</span>@github.com:abi/screenshot-to-code.git<br></code></pre></td></tr></table></figure>
-
-<h4 id="2-配置环境"><a href="#2-配置环境" class="headerlink" title="2.配置环境"></a>2.配置环境</h4><p>我只说官方没有提及或者很多人都不知道的地方。<br>其他可参考<a target="_blank" rel="noopener" href="https://github.com/abi/screenshot-to-code">screenshot-to-code</a>的README.md文档。<br><b>配置环境变量:</b><br>在<b>frontend</b>目录下,新建<b>.env</b>文件,添加VITE_WS_BACKEND_URL</p>
-<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ini"><span class="hljs-attr">VITE_WS_BACKEND_URL</span>=ws://服务器ip:后端服务端口号<br></code></pre></td></tr></table></figure>
-
-<div class="note note-warning">
-            <p> 注意:<br>1.我这里写的服务器IP目的是让大家避免这个坑，我一开始在自己的电脑上运行的时候，后端服务部署在默认端口7001，能正常运行，也能打开前端网页，但是在运行程序的时候就有会出websocket连接失败，Connection closed 1000。所以这个ip一定是外网ip，因为通过AI生成代码的时候需要访问你的对外IP和端口号。<br>2.服务运行的环境必须是支持能访问GPT的网络，也就是中国大陆和香港是无法使用的，这个时候时候就会报Connection closed 1006。所以要么用国外的服务器，国内本机翻墙也是不可用的。 </p>
-          </div>
-
-<h4 id="3-部署运行screenshot-to-code-最简单的方式还是docker，可以直接拉取镜像运行。-以docker为例来运行，在你的项目根目录下，运行如下命令"><a href="#3-部署运行screenshot-to-code-最简单的方式还是docker，可以直接拉取镜像运行。-以docker为例来运行，在你的项目根目录下，运行如下命令" class="headerlink" title="3. 部署运行screenshot-to-code 最简单的方式还是docker，可以直接拉取镜像运行。 以docker为例来运行，在你的项目根目录下，运行如下命令:"></a>3. 部署运行screenshot-to-code 最简单的方式还是docker，可以直接拉取镜像运行。 以docker为例来运行，在你的项目根目录下，运行如下命令:</h4><figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ada">docker-compose up -d <span class="hljs-comment">--build</span><br></code></pre></td></tr></table></figure>
-
-<p>然后打开浏览器，输入http:&#x2F;&#x2F;服务器ip:5173，就可以看到screenshot-to-code的页面了。 <img src="/2024/06/05/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91%E5%88%A9%E5%99%A8%E2%80%94%E2%80%94%E5%9B%BE%E7%89%87%E7%94%9F%E6%88%90%E4%BB%A3%E7%A0%81/1.png" srcset="/img/loading.gif" lazyload class="" width="488"> &nbsp;</p>
-<h4 id="4-输入API-KEY-设置你的API-KEY，需要GPT-4-API-KEY或者Claude3-API-KEY。"><a href="#4-输入API-KEY-设置你的API-KEY，需要GPT-4-API-KEY或者Claude3-API-KEY。" class="headerlink" title="4. 输入API KEY 设置你的API KEY，需要GPT-4 API KEY或者Claude3 API KEY。"></a>4. 输入API KEY 设置你的API KEY，需要GPT-4 API KEY或者Claude3 API KEY。</h4> <img src="/2024/06/05/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91%E5%88%A9%E5%99%A8%E2%80%94%E2%80%94%E5%9B%BE%E7%89%87%E7%94%9F%E6%88%90%E4%BB%A3%E7%A0%81/2.png" srcset="/img/loading.gif" lazyload class="" width="488"> 
-<p>  &nbsp;<br> <img src="/2024/06/05/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91%E5%88%A9%E5%99%A8%E2%80%94%E2%80%94%E5%9B%BE%E7%89%87%E7%94%9F%E6%88%90%E4%BB%A3%E7%A0%81/3.png" srcset="/img/loading.gif" lazyload class="" width="488"><br>   &nbsp;</p>
-<h4 id="5-选择输出语言"><a href="#5-选择输出语言" class="headerlink" title="5.选择输出语言"></a>5.选择输出语言</h4><p>他支持多种前端框架，可以根据自己的喜好选择。<br>   <img src="/2024/06/05/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91%E5%88%A9%E5%99%A8%E2%80%94%E2%80%94%E5%9B%BE%E7%89%87%E7%94%9F%E6%88%90%E4%BB%A3%E7%A0%81/6.png" srcset="/img/loading.gif" lazyload class="" width="488"> &nbsp;</p>
-<h4 id="6-选择AI模型-支持最新的GTP-4o或Claude3模型，我目前用的GPT-4o模型-网上介绍说Claude3模型效果可能更好。"><a href="#6-选择AI模型-支持最新的GTP-4o或Claude3模型，我目前用的GPT-4o模型-网上介绍说Claude3模型效果可能更好。" class="headerlink" title="6. 选择AI模型 支持最新的GTP-4o或Claude3模型，我目前用的GPT-4o模型,网上介绍说Claude3模型效果可能更好。"></a>6. 选择AI模型 支持最新的GTP-4o或Claude3模型，我目前用的GPT-4o模型,网上介绍说Claude3模型效果可能更好。</h4> <img src="/2024/06/05/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91%E5%88%A9%E5%99%A8%E2%80%94%E2%80%94%E5%9B%BE%E7%89%87%E7%94%9F%E6%88%90%E4%BB%A3%E7%A0%81/4.png" srcset="/img/loading.gif" lazyload class="" width="488"> &nbsp;
-<h4 id="7-选择图片-生成代码"><a href="#7-选择图片-生成代码" class="headerlink" title="7.选择图片,生成代码"></a>7.选择图片,生成代码</h4> <img src="/2024/06/05/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91%E5%88%A9%E5%99%A8%E2%80%94%E2%80%94%E5%9B%BE%E7%89%87%E7%94%9F%E6%88%90%E4%BB%A3%E7%A0%81/5.png" srcset="/img/loading.gif" lazyload class="" width="488"> &nbsp;
-
-<h3 id="四、效果展示"><a href="#四、效果展示" class="headerlink" title="四、效果展示"></a>四、效果展示</h3><p>我的站点<a target="_blank" rel="noopener" href="https://stc.zymn.cc/">https://stc.zymn.cc/</a>，可以看到效果。需要设置自己的GPT-4 API KEY或者Claude3 API KEY。<br>&nbsp;<br><video src="/2024/06/05/前端开发利器——图片生成代码/demo.mp4" position= "absolute" width="100%" height="100%" controls="controls"></video><br>&nbsp;</p>
-<h3 id="五、高级用法"><a href="#五、高级用法" class="headerlink" title="五、高级用法"></a>五、高级用法</h3><p>国内用户一般只能部署在海外服务器上，如果想要绑定域名，需要做如下更改。<br>到frontend目录下,修改.env文件的VITE_WS_BACKEND_URL的内容，没有就添加一条。<br>默认后端运行的端口是7001,前端服务运行在5173端口。如果你有域名绑定到7001端口,那么将下面的地址直接更改成你的域名</p>
-<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ini"><span class="hljs-attr">VITE_WS_BACKEND_URL</span>=ws://后端服务的域名<br></code></pre></td></tr></table></figure>
-<p>如果你的前端使用了https,那么你还需要为后端服务也配置https。<br>注意：ws要更改成wss,否则会出现连接失败的情况。</p>
-<img src="/2024/06/05/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91%E5%88%A9%E5%99%A8%E2%80%94%E2%80%94%E5%9B%BE%E7%89%87%E7%94%9F%E6%88%90%E4%BB%A3%E7%A0%81/7.png" srcset="/img/loading.gif" lazyload class="" width="488"> &nbsp;
-<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ini"><span class="hljs-attr">VITE_WS_BACKEND_URL</span>=wss://后端服务的域名<br></code></pre></td></tr></table></figure>
-<div class="note note-warning">
-            <p> 注意:<br>这个地方也是我踩过的坑，我前端用的https。忘记了上面填写的地址是后端服务的，只解析了前端一个域名，所以把前端域名填写进去，一直访问不了或者更换成服务器ip+端口号也是不行，会提示https不能访问ws。后来才想起这是个后端服务，需要绑定一个域名才行。而且要加https。</p>
-          </div>
-
-
-
-<h3 id="六、遇到的问题"><a href="#六、遇到的问题" class="headerlink" title="六、遇到的问题"></a>六、遇到的问题</h3><p>今天在更改配置之后，运行docker-compose up -d –build后，后端服务器起不来，查看了docker容器的日志，发现是python运行报错，网上也没有找到解决办法，尝试了从github下载最新的，但是还是不行，最后凭着自己的经验应该是python的版本问题，我尝试将python版本升高，发现还是同样的错误，后面再尝试把版本降低，才能正常启动后端服务。</p>
-<img src="/2024/06/05/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91%E5%88%A9%E5%99%A8%E2%80%94%E2%80%94%E5%9B%BE%E7%89%87%E7%94%9F%E6%88%90%E4%BB%A3%E7%A0%81/8.png" srcset="/img/loading.gif" lazyload class="" width="488"> 
+                <h1 id="宝塔安装配置gitlab-ce"><a href="#宝塔安装配置gitlab-ce" class="headerlink" title="宝塔安装配置gitlab-ce"></a>宝塔安装配置gitlab-ce</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><blockquote>
+<p>宝塔是一款基于Linux的Web面板，可以实现Web服务器的管理、网站的部署、数据库的管理、FTP的管理、SSL证书的管理、系统监控等功能。本文将介绍如何在宝塔上安装并配置gitlab-ce。<br>本想直接在宝塔的软件商店中搜索并安装gitlab-ce，但发现软件商店中安装失败，因此打算手动安装。<br>于是通过命令行手动安装，但是命令行执行安装命令也失败，懒得折腾环境，所以使用docker安装。</p>
+</blockquote>
+<h2 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h2><ul>
+<li>宝塔面板：购买或租用一台云服务器，安装宝塔面板，并配置好SSH登录。</li>
+<li>域名：购买一个域名，并将域名解析到服务器IP。</li>
+<li>服务器：CentOS 7.x 64位。</li>
+</ul>
+<h2 id="安装gitlab-ce"><a href="#安装gitlab-ce" class="headerlink" title="安装gitlab-ce"></a>安装gitlab-ce</h2><h3 id="1-登录宝塔面板"><a href="#1-登录宝塔面板" class="headerlink" title="1. 登录宝塔面板"></a>1. 登录宝塔面板</h3><p>打开浏览器，输入服务器IP，进入宝塔面板登录页面。</p>
+<h3 id="2-点击左侧菜单栏的“软件商店”，搜索并安装“docker”。"><a href="#2-点击左侧菜单栏的“软件商店”，搜索并安装“docker”。" class="headerlink" title="2. 点击左侧菜单栏的“软件商店”，搜索并安装“docker”。"></a>2. 点击左侧菜单栏的“软件商店”，搜索并安装“docker”。</h3><img src="/2024/08/20/%E5%AE%9D%E5%A1%94%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AEgitlab-ce/1.png" srcset="/img/loading.gif" lazyload class="" width="488">
 <p>&nbsp;</p>
-<h3 id="七、相关视频"><a href="#七、相关视频" class="headerlink" title="七、相关视频"></a>七、相关视频</h3><iframe width="100%"  minHeight="480" src="https://www.youtube.com/embed/zrILBq-Q9Ek" title="前端开发的福利：再也不用写那么多繁琐的页面布局代码，有了这个图片转代码的工具，能提升90%的开发效率！" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
- 
+<h3 id="3-点击左侧菜单栏的docker，根据提示安装docker-compose。"><a href="#3-点击左侧菜单栏的docker，根据提示安装docker-compose。" class="headerlink" title="3. 点击左侧菜单栏的docker，根据提示安装docker-compose。"></a>3. 点击左侧菜单栏的docker，根据提示安装docker-compose。</h3><img src="/2024/08/20/%E5%AE%9D%E5%A1%94%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AEgitlab-ce/2.png" srcset="/img/loading.gif" lazyload class="" width="488">
+<p>&nbsp;</p>
+<h3 id="4-点击本地镜像-从仓库拉去-常规拉取-镜像名输入：gitlab-gitlab-ce-latest"><a href="#4-点击本地镜像-从仓库拉去-常规拉取-镜像名输入：gitlab-gitlab-ce-latest" class="headerlink" title="4. 点击本地镜像-从仓库拉去-常规拉取-镜像名输入：gitlab&#x2F;gitlab-ce:latest"></a>4. 点击本地镜像-从仓库拉去-常规拉取-镜像名输入：gitlab&#x2F;gitlab-ce:latest</h3><img src="/2024/08/20/%E5%AE%9D%E5%A1%94%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AEgitlab-ce/3.png" srcset="/img/loading.gif" lazyload class="" width="488">
+<p>&nbsp;</p>
+<img src="/2024/08/20/%E5%AE%9D%E5%A1%94%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AEgitlab-ce/4.png" srcset="/img/loading.gif" lazyload class="" width="488">
+<p>&nbsp;</p>
+<div class="note note-warning @title">
+            <p>注意：不同的宝塔版本看到的界面可能不同，请根据实际情况选择。最终的目的是先获取gitlab-ce镜像，然后在宝塔中启动容器。</p>
+          </div>
+<img src="/2024/08/20/%E5%AE%9D%E5%A1%94%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AEgitlab-ce/5.png" srcset="/img/loading.gif" lazyload class="" width="488">
+<p>&nbsp;</p>
+<h3 id="5-运行Gitlab镜像"><a href="#5-运行Gitlab镜像" class="headerlink" title="5. 运行Gitlab镜像"></a>5. 运行Gitlab镜像</h3><p>在服务器上打开终端，输入以下命令创建docker容器：</p>
+<div class="note note-warning @title">
+            <p>注意：gitlab.xxx.com一定要改成你为gitlab配置的域名或者IP地址。不然后面需要去更改gitlab的配置。我后面通过修改配置一直无法成功，最后是删除容器重新通过下面的命令配置好域名才行。</p>
+          </div>
+
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs groovy">docker run -d \<br>--hostname gitlab.xxx.com \<br>--name gitlab \<br>--restart always \<br>-p <span class="hljs-number">8002</span>:<span class="hljs-number">443</span> -p <span class="hljs-number">8003</span>:<span class="hljs-number">80</span> -p <span class="hljs-number">8004</span>:<span class="hljs-number">22</span> \<br>-v <span class="hljs-regexp">/etc/</span><span class="hljs-attr">localtime:</span><span class="hljs-regexp">/etc/</span><span class="hljs-attr">localtime:</span>ro \<br>-v <span class="hljs-regexp">/usr/</span>local<span class="hljs-regexp">/gitlab_data/</span>gitlab<span class="hljs-regexp">/config:/</span>etc/gitlab \<br>-v <span class="hljs-regexp">/usr/</span>local<span class="hljs-regexp">/gitlab_data/</span>gitlab<span class="hljs-regexp">/logs:/</span><span class="hljs-keyword">var</span><span class="hljs-regexp">/log/</span>gitlab \<br>-v <span class="hljs-regexp">/usr/</span>local<span class="hljs-regexp">/gitlab_data/</span>gitlab<span class="hljs-regexp">/data:/</span><span class="hljs-keyword">var</span><span class="hljs-regexp">/opt/</span>gitlab \<br>gitlab/gitlab-ce<br></code></pre></td></tr></table></figure>
+<p>&nbsp;<br>参数说明</p>
+<p>-d 指定后台运行<br>–hostname 指定主机名(域名或IP地址)<br>–name 指定容器名<br>-p 端口映射 443 https端口 80 http端口 22 ssh端口<br>–restart always  容器停止后的重启策略: 容器退出时总是重启<br>-v 指定挂载存储卷首先在宿主主机创建对应的目录<br>&nbsp;</p>
+<img src="/2024/08/20/%E5%AE%9D%E5%A1%94%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AEgitlab-ce/6.png" srcset="/img/loading.gif" lazyload class="" width="488">
+<p>&nbsp;</p>
+<img src="/2024/08/20/%E5%AE%9D%E5%A1%94%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AEgitlab-ce/7.png" srcset="/img/loading.gif" lazyload class="" width="488">
+<p>&nbsp;</p>
+<h3 id="6-宝塔放开gitlab所需端口"><a href="#6-宝塔放开gitlab所需端口" class="headerlink" title="6. 宝塔放开gitlab所需端口"></a>6. 宝塔放开gitlab所需端口</h3><p>在宝塔面板的“防火墙”中，放开gitlab所需的端口，包括8002、8003、8004。如果采用的大厂云服务器，则需要在云服务器的安全组中放开相应的端口。</p>
+<img src="/2024/08/20/%E5%AE%9D%E5%A1%94%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AEgitlab-ce/8.png" srcset="/img/loading.gif" lazyload class="" width="488">
+<p>&nbsp;</p>
+<h3 id="7-查找gitlab的初始密码"><a href="#7-查找gitlab的初始密码" class="headerlink" title="7. 查找gitlab的初始密码"></a>7. 查找gitlab的初始密码</h3><p>默认用户名：root<br>容器启动后，在服务器上打开终端或docker容器的终端，输入以下命令查看初始密码：</p>
+<p>如果是在宝塔面板的终端中查看，需要进入容器内部，然后查看密码。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">docker <span class="hljs-built_in">exec</span> -it gitlab的容器名 bash<br><span class="hljs-built_in">cat</span> /etc/gitlab/initial_root_password<br></code></pre></td></tr></table></figure>
+<p>如果是在docker容器的终端中查看，直接查看密码即可。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">cat</span> /etc/gitlab/initial_root_password<br></code></pre></td></tr></table></figure>
+<p>&nbsp;</p>
+<img src="/2024/08/20/%E5%AE%9D%E5%A1%94%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AEgitlab-ce/902.png" srcset="/img/loading.gif" lazyload class="" width="488">
+<p>&nbsp;</p>
+<img src="/2024/08/20/%E5%AE%9D%E5%A1%94%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AEgitlab-ce/901.png" srcset="/img/loading.gif" lazyload class="" width="488">
+<p>&nbsp;</p>
+<img src="/2024/08/20/%E5%AE%9D%E5%A1%94%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AEgitlab-ce/9.png" srcset="/img/loading.gif" lazyload class="" width="488">
+<p>&nbsp;</p>
+<div class="note note-warning @title">
+            <p>如果在执行cat &#x2F;etc&#x2F;gitlab&#x2F;initial_root_password命令时，提示找不到文件，则可以通过下面的命令重置密码：</p><figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs applescript">docker exec -<span class="hljs-keyword">it</span> gitlab容器名 gitlab-rake <span class="hljs-string">&quot;gitlab:password:reset[root]&quot;</span><br></code></pre></td></tr></table></figure>
+          </div>
+
+
+<h3 id="4-配置域名"><a href="#4-配置域名" class="headerlink" title="4. 配置域名"></a>4. 配置域名</h3><p>由于是通过宝塔来给docker的gitlab配置域名，需要通过反向代理来实现</p>
+<h4 id="4-1-将域名解析到服务器IP，然后在宝塔-网站-反向代理，然后点击“添加反代”。"><a href="#4-1-将域名解析到服务器IP，然后在宝塔-网站-反向代理，然后点击“添加反代”。" class="headerlink" title="4.1 将域名解析到服务器IP，然后在宝塔-网站-反向代理，然后点击“添加反代”。"></a>4.1 将域名解析到服务器IP，然后在宝塔-网站-反向代理，然后点击“添加反代”。</h4><p>&nbsp;</p>
+<img src="/2024/08/20/%E5%AE%9D%E5%A1%94%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AEgitlab-ce/10.png" srcset="/img/loading.gif" lazyload class="" width="488">
+<p>&nbsp;</p>
+<h4 id="4-2-添加反向代理"><a href="#4-2-添加反向代理" class="headerlink" title="4.2 添加反向代理"></a>4.2 添加反向代理</h4><p>配置反向代理时，先查看docker容器的IP，然后在反向代理的配置中，输入http:&#x2F;&#x2F;容器IP，注意这里不需要填写端口号。在前面创建docker容器时已将8003端口指向了容器的80端口，所以这里不需要填写端口号</p>
+<img src="/2024/08/20/%E5%AE%9D%E5%A1%94%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AEgitlab-ce/14.png" srcset="/img/loading.gif" lazyload class="" width="488">
+<p>&nbsp;<br>&nbsp;</p>
+<img src="/2024/08/20/%E5%AE%9D%E5%A1%94%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AEgitlab-ce/11.png" srcset="/img/loading.gif" lazyload class="" width="488">
+<p>&nbsp; </p>
+<h4 id="4-3-获取SSL免费证书"><a href="#4-3-获取SSL免费证书" class="headerlink" title="4.3 获取SSL免费证书"></a>4.3 获取SSL免费证书</h4><p>&nbsp;</p>
+<img src="/2024/08/20/%E5%AE%9D%E5%A1%94%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AEgitlab-ce/12.png" srcset="/img/loading.gif" lazyload class="" width="488">
+<p>&nbsp;</p>
+<h3 id="5-访问GitLab"><a href="#5-访问GitLab" class="headerlink" title="5. 访问GitLab"></a>5. 访问GitLab</h3><p>打开浏览器，输入域名，访问GitLab。 </p>
+<h2 id="踩过的坑"><a href="#踩过的坑" class="headerlink" title="踩过的坑"></a>踩过的坑</h2><h3 id="1-宝塔的应用商店直接安装gitlab-ce失败或服务器直接安装docker环境安装失败"><a href="#1-宝塔的应用商店直接安装gitlab-ce失败或服务器直接安装docker环境安装失败" class="headerlink" title="1. 宝塔的应用商店直接安装gitlab-ce失败或服务器直接安装docker环境安装失败"></a>1. 宝塔的应用商店直接安装gitlab-ce失败或服务器直接安装docker环境安装失败</h3><p>不想折腾的，建议使用宝塔的docker环境安装gitlab-ce。</p>
+<h3 id="2-按照上面的步骤安装gitlab-ce，但是访问GitLab时，提示502-Bad-Gateway或服务器拒绝响应"><a href="#2-按照上面的步骤安装gitlab-ce，但是访问GitLab时，提示502-Bad-Gateway或服务器拒绝响应" class="headerlink" title="2. 按照上面的步骤安装gitlab-ce，但是访问GitLab时，提示502 Bad Gateway或服务器拒绝响应"></a>2. 按照上面的步骤安装gitlab-ce，但是访问GitLab时，提示502 Bad Gateway或服务器拒绝响应</h3><p>1.检查防火墙问题：检查宝塔防火墙是否放开了8002、8003、8004端口。<br>2.服务安全组问题：如果是云服务器，需要在云服务器的安全组中放开相应的端口8002、8003、8004。<br>3.确保你的gitlab-ce容器已经启动，然后在浏览器中输入服务器IP+端口，比如：<a href="http://192.168.127.12:8003。如果通过这种方式无法访问，那就是你的gitlab-ce没有部署成功。也有可能是你的端口号写错，注意检查。">http://192.168.127.12:8003。如果通过这种方式无法访问，那就是你的gitlab-ce没有部署成功。也有可能是你的端口号写错，注意检查。</a><br>4.如果通过服务器IP+端口能访问gitlab，确保你的域名已经解析到服务器IP。</p>
+<h2 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h2><p>本文介绍了如何在宝塔上安装并配置gitlab-ce。<br>gitlab-ce是一个开源的Git版本管理软件，可以实现代码的版本控制、代码的分支管理、代码的合并、代码的回滚等功能。<br>宝塔是一款基于Linux的Web面板，可以实现Web服务器的管理、网站的部署、数据库的管理、FTP的管理、SSL证书的管理、系统监控等功能。<br>通过宝塔可以方便地管理服务器、部署网站、管理数据库、管理FTP、管理SSL证书、系统监控等。<br>希望本文对你有所帮助。</p>
 
                 
               </div>
@@ -450,16 +481,6 @@
       </span>
     
   
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E8%A7%86%E9%A2%91%E6%95%99%E7%A8%8B/" class="category-chain-item">视频教程</a>
-  
-  
-
-      </span>
-    
-  
 </span>
 
     </div>
@@ -468,21 +489,17 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/GPT/" class="print-no-link">#GPT</a>
+        <a href="/tags/centos7/" class="print-no-link">#centos7</a>
       
-        <a href="/tags/AI/" class="print-no-link">#AI</a>
+        <a href="/tags/docker/" class="print-no-link">#docker</a>
       
-        <a href="/tags/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/" class="print-no-link">#前端开发</a>
+        <a href="/tags/gitlab-ce/" class="print-no-link">#gitlab-ce</a>
       
-        <a href="/tags/Claude3/" class="print-no-link">#Claude3</a>
+        <a href="/tags/%E5%B7%A5%E5%85%B7%E5%88%86%E4%BA%AB/" class="print-no-link">#工具分享</a>
       
-        <a href="/tags/GPT-4/" class="print-no-link">#GPT-4</a>
+        <a href="/tags/%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/" class="print-no-link">#技术分享</a>
       
-        <a href="/tags/%E5%9B%BE%E7%89%87%E8%BD%AC%E4%BB%A3%E7%A0%81/" class="print-no-link">#图片转代码</a>
-      
-        <a href="/tags/%E4%BB%A3%E7%A0%81%E7%94%9F%E6%88%90%E5%99%A8/" class="print-no-link">#代码生成器</a>
-      
-        <a href="/tags/%E4%BB%A3%E7%A0%81%E7%94%9F%E6%88%90/" class="print-no-link">#代码生成</a>
+        <a href="/tags/%E5%AE%9D%E5%A1%94/" class="print-no-link">#宝塔</a>
       
     </div>
   
@@ -494,8 +511,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>前端开发利器—图片生成代码</div>
-      <div>https://blog.fxcxy.com/2024/06/05/前端开发利器——图片生成代码/</div>
+      <div>宝塔安装配置gitlab-ce</div>
+      <div>https://blog.fxcxy.com/2024/08/20/宝塔安装配置gitlab-ce/</div>
     </div>
     <div class="license-meta">
       
@@ -507,7 +524,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2024年6月5日</div>
+          <div>2024年8月20日</div>
         </div>
       
       
@@ -539,18 +556,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2024/08/20/%E5%AE%9D%E5%A1%94%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AEgitlab-ce/" title="宝塔安装配置gitlab-ce">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">宝塔安装配置gitlab-ce</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2024/05/20/%E8%BD%AF%E8%B7%AF%E7%94%B1%E6%8B%A6%E6%88%AA%E6%B5%81%E9%87%8F%E5%AE%9E%E7%8E%B0%E5%B9%BF%E5%91%8A%E5%B1%8F%E8%94%BD/" title="软路由拦截流量实现广告屏蔽">
-                        <span class="hidden-mobile">软路由拦截流量实现广告屏蔽</span>
+                      <a href="/2024/06/05/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91%E5%88%A9%E5%99%A8%E2%80%94%E2%80%94%E5%9B%BE%E7%89%87%E7%94%9F%E6%88%90%E4%BB%A3%E7%A0%81/" title="前端开发利器—图片生成代码">
+                        <span class="hidden-mobile">前端开发利器—图片生成代码</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
