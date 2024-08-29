@@ -31,7 +31,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://blog.fxcxy.com/img/0828.png">
 <meta property="article:published_time" content="2024-08-28T10:24:12.000Z">
-<meta property="article:modified_time" content="2024-08-28T14:36:23.024Z">
+<meta property="article:modified_time" content="2024-08-29T01:02:53.631Z">
 <meta property="article:author" content="spatacus">
 <meta property="article:tag" content="docker">
 <meta property="article:tag" content="gitlab-ce">
@@ -270,7 +270,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.4k 字
+          1.5k 字
         
       </span>
     
@@ -281,7 +281,7 @@
         
         
         
-          12 分钟
+          13 分钟
         
       </span>
     
@@ -362,6 +362,12 @@
 <li>SSH_PRIVATE_KEY:你的 SSH 私钥，需要用 base64 编码，可用 <code>cat ~/.ssh/id_rsa | base64</code> 命令获取</li>
 <li>main:你想部署的分支（这里是 main 分支）</li>
 </ul>
+<p>遇到的问题：</p>
+<ul>
+<li>aws默认的用户不是root,这个时候用root登录上传会提示权限不足，需要修改一下用户权限。<br>  比如当前登录的用户是ubuntu，而我们的发布目录所有者是root，那么我们需要修改一下发布目录的权限。</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo <span class="hljs-built_in">chown</span> -R ubuntu:ubuntu path/to/your/project<br></code></pre></td></tr></table></figure>
+
 <h3 id="生成SSH公钥"><a href="#生成SSH公钥" class="headerlink" title="生成SSH公钥"></a>生成SSH公钥</h3><h4 id="1-生成-SSH-密钥对：您可以在以下任意位置生成-SSH-密钥对："><a href="#1-生成-SSH-密钥对：您可以在以下任意位置生成-SSH-密钥对：" class="headerlink" title="1.生成 SSH 密钥对：您可以在以下任意位置生成 SSH 密钥对："></a>1.生成 SSH 密钥对：您可以在以下任意位置生成 SSH 密钥对：</h4><ul>
 <li>您的本地机器（个人计算机）</li>
 <li>目标服务器</li>
