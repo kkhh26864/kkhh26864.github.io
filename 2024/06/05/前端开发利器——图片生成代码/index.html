@@ -1,0 +1,879 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/logo.png">
+  <link rel="icon" href="/img/logo.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="twitter:card" content="/img/stc.png" />
+    <meta name="twitter:site" content="自由码农" />
+    <meta name="twitter:creator" content="@spatacus1986">
+    <meta name="twitter:title" content="前端开发利器—图片生成代码 - 自由码农" />
+    <meta name="twitter:description" content="一、背景最近在开发前端应用的时候，发现了一个很有趣的工具——screenshot-to-code，可以将图片转化为代码，支持多种大型AI模型，可以生成HTML、CSS，可以用来快速搭建页面。 二、安装环境及条件系统环境:可以选择安装在Windows、Mac、Linux等系统上。网络条件:1.必须是除了中国大陆和香港以外地区的网络。对于中国大陆和香港的用户来说，只能使用这两个地区以外的服务器2.有公" />
+    <meta name="twitter:image" content="/img/stc.png" />
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="spatacus">
+  <meta name="keywords" content="自由码农,技术博客,工具分享，网站开发，App开发，小程序开发，H5开发">
+  
+    <meta name="description" content="一、背景最近在开发前端应用的时候，发现了一个很有趣的工具——screenshot-to-code，可以将图片转化为代码，支持多种大型AI模型，可以生成HTML、CSS，可以用来快速搭建页面。 二、安装环境及条件系统环境:可以选择安装在Windows、Mac、Linux等系统上。网络条件:1.必须是除了中国大陆和香港以外地区的网络。对于中国大陆和香港的用户来说，只能使用这两个地区以外的服务器2.有公">
+<meta property="og:type" content="article">
+<meta property="og:title" content="前端开发利器—图片生成代码">
+<meta property="og:url" content="https://blog.fxcxy.com/2024/06/05/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91%E5%88%A9%E5%99%A8%E2%80%94%E2%80%94%E5%9B%BE%E7%89%87%E7%94%9F%E6%88%90%E4%BB%A3%E7%A0%81/index.html">
+<meta property="og:site_name" content="自由码农">
+<meta property="og:description" content="一、背景最近在开发前端应用的时候，发现了一个很有趣的工具——screenshot-to-code，可以将图片转化为代码，支持多种大型AI模型，可以生成HTML、CSS，可以用来快速搭建页面。 二、安装环境及条件系统环境:可以选择安装在Windows、Mac、Linux等系统上。网络条件:1.必须是除了中国大陆和香港以外地区的网络。对于中国大陆和香港的用户来说，只能使用这两个地区以外的服务器2.有公">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://blog.fxcxy.com/img/stc.png">
+<meta property="article:published_time" content="2024-06-05T06:12:12.000Z">
+<meta property="article:modified_time" content="2024-09-13T10:13:27.401Z">
+<meta property="article:author" content="spatacus">
+<meta property="article:tag" content="GPT">
+<meta property="article:tag" content="AI">
+<meta property="article:tag" content="前端开发">
+<meta property="article:tag" content="Claude3">
+<meta property="article:tag" content="GPT-4">
+<meta property="article:tag" content="图片转代码">
+<meta property="article:tag" content="代码生成器">
+<meta property="article:tag" content="代码生成">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://blog.fxcxy.com/img/stc.png">
+  
+  
+  
+  <title>前端开发利器—图片生成代码 - 自由码农</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+  
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_4443546_u6jwvi2qcka.css">
+<link rel="stylesheet" href="/css/social-share.min.css">
+<link rel="stylesheet" href="/css/myreward.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"blog.fxcxy.com","root":"/","version":"1.9.7","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"复制"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"J7kyQXV9R3CXOiA1eubrlflY-gzGzoHsz","app_key":"qHZzPzRcvsutXvHvBewqGmhw","server_url":"https://leancloud.fxcxy.com","path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+
+  
+    <!-- Google tag (gtag.js) -->
+    <script async>
+      if (!Fluid.ctx.dnt) {
+        Fluid.utils.createScript("https://www.googletagmanager.com/gtag/js?id=", function() {
+          window.dataLayer = window.dataLayer || [];
+          function gtag() {
+            dataLayer.push(arguments);
+          }
+          gtag('js', new Date());
+          gtag('config', '');
+        });
+      }
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+    
+  
+
+
+
+  
+<meta name="generator" content="Hexo 7.1.1"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>自由码农</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="前端开发利器—图片生成代码"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2024-06-05 13:12" pubdate>
+          2024年6月5日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          1.1k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          10 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="leancloud-page-views"></span>次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">前端开发利器—图片生成代码</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h3 id="一、背景"><a href="#一、背景" class="headerlink" title="一、背景"></a>一、背景</h3><p>最近在开发前端应用的时候，发现了一个很有趣的工具——<a target="_blank" rel="noopener" href="https://github.com/abi/screenshot-to-code">screenshot-to-code</a>，可以将图片转化为代码，支持多种大型AI模型，可以生成HTML、CSS，可以用来快速搭建页面。</p>
+<h3 id="二、安装环境及条件"><a href="#二、安装环境及条件" class="headerlink" title="二、安装环境及条件"></a>二、安装环境及条件</h3><p><b>系统环境</b>:可以选择安装在Windows、Mac、Linux等系统上。<br><b>网络条件</b>:<br>1.必须是除了中国大陆和香港以外地区的网络。对于中国大陆和香港的用户来说，只能使用这两个地区以外的服务器<br>2.有公网ip，能通过公网ip和服务端口可以访问都你部署的服务。针对国外的用户，如果想要在本机上运行，需要做端口映射才能正常使用。对于服务器不用考虑这个问题。<br>3.API KEY:支持GPT-4或Claude3,所以需要GPT-4 API KEY或者Claude3 API KEY。</p>
+<h3 id="三、部署运行步骤"><a href="#三、部署运行步骤" class="headerlink" title="三、部署运行步骤"></a>三、部署运行步骤</h3><h4 id="1-下载screenshot-to-code-下载地址-screenshot-to-code"><a href="#1-下载screenshot-to-code-下载地址-screenshot-to-code" class="headerlink" title="1.下载screenshot-to-code 下载地址:screenshot-to-code"></a>1.下载screenshot-to-code 下载地址:<a target="_blank" rel="noopener" href="https://github.com/abi/screenshot-to-code">screenshot-to-code</a></h4><figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs crmsh">git <span class="hljs-keyword">clone</span> <span class="hljs-title">git</span>@github.com:abi/screenshot-to-code.git<br></code></pre></td></tr></table></figure>
+
+<h4 id="2-配置环境"><a href="#2-配置环境" class="headerlink" title="2.配置环境"></a>2.配置环境</h4><p>我只说官方没有提及或者很多人都不知道的地方。<br>其他可参考<a target="_blank" rel="noopener" href="https://github.com/abi/screenshot-to-code">screenshot-to-code</a>的README.md文档。<br><b>配置环境变量:</b><br>在<b>frontend</b>目录下,新建<b>.env</b>文件,添加VITE_WS_BACKEND_URL</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ini"><span class="hljs-attr">VITE_WS_BACKEND_URL</span>=ws://服务器ip:后端服务端口号<br></code></pre></td></tr></table></figure>
+
+<div class="note note-warning">
+            <p> 注意:<br>1.我这里写的服务器IP目的是让大家避免这个坑，我一开始在自己的电脑上运行的时候，后端服务部署在默认端口7001，能正常运行，也能打开前端网页，但是在运行程序的时候就有会出websocket连接失败，Connection closed 1000。所以这个ip一定是外网ip，因为通过AI生成代码的时候需要访问你的对外IP和端口号。<br>2.服务运行的环境必须是支持能访问GPT的网络，也就是中国大陆和香港是无法使用的，这个时候时候就会报Connection closed 1006。所以要么用国外的服务器，国内本机翻墙也是不可用的。 </p>
+          </div>
+
+<h4 id="3-部署运行screenshot-to-code-最简单的方式还是docker，可以直接拉取镜像运行。-以docker为例来运行，在你的项目根目录下，运行如下命令"><a href="#3-部署运行screenshot-to-code-最简单的方式还是docker，可以直接拉取镜像运行。-以docker为例来运行，在你的项目根目录下，运行如下命令" class="headerlink" title="3. 部署运行screenshot-to-code 最简单的方式还是docker，可以直接拉取镜像运行。 以docker为例来运行，在你的项目根目录下，运行如下命令:"></a>3. 部署运行screenshot-to-code 最简单的方式还是docker，可以直接拉取镜像运行。 以docker为例来运行，在你的项目根目录下，运行如下命令:</h4><figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ada">docker-compose up -d <span class="hljs-comment">--build</span><br></code></pre></td></tr></table></figure>
+
+<p>然后打开浏览器，输入http:&#x2F;&#x2F;服务器ip:5173，就可以看到screenshot-to-code的页面了。 <img src="/2024/06/05/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91%E5%88%A9%E5%99%A8%E2%80%94%E2%80%94%E5%9B%BE%E7%89%87%E7%94%9F%E6%88%90%E4%BB%A3%E7%A0%81/1.png" srcset="/img/loading.gif" lazyload class="" width="488"> &nbsp;</p>
+<h4 id="4-输入API-KEY-设置你的API-KEY，需要GPT-4-API-KEY或者Claude3-API-KEY。"><a href="#4-输入API-KEY-设置你的API-KEY，需要GPT-4-API-KEY或者Claude3-API-KEY。" class="headerlink" title="4. 输入API KEY 设置你的API KEY，需要GPT-4 API KEY或者Claude3 API KEY。"></a>4. 输入API KEY 设置你的API KEY，需要GPT-4 API KEY或者Claude3 API KEY。</h4> <img src="/2024/06/05/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91%E5%88%A9%E5%99%A8%E2%80%94%E2%80%94%E5%9B%BE%E7%89%87%E7%94%9F%E6%88%90%E4%BB%A3%E7%A0%81/2.png" srcset="/img/loading.gif" lazyload class="" width="488"> 
+<p>  &nbsp;<br> <img src="/2024/06/05/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91%E5%88%A9%E5%99%A8%E2%80%94%E2%80%94%E5%9B%BE%E7%89%87%E7%94%9F%E6%88%90%E4%BB%A3%E7%A0%81/3.png" srcset="/img/loading.gif" lazyload class="" width="488"><br>   &nbsp;</p>
+<h4 id="5-选择输出语言"><a href="#5-选择输出语言" class="headerlink" title="5.选择输出语言"></a>5.选择输出语言</h4><p>他支持多种前端框架，可以根据自己的喜好选择。<br>   <img src="/2024/06/05/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91%E5%88%A9%E5%99%A8%E2%80%94%E2%80%94%E5%9B%BE%E7%89%87%E7%94%9F%E6%88%90%E4%BB%A3%E7%A0%81/6.png" srcset="/img/loading.gif" lazyload class="" width="488"> &nbsp;</p>
+<h4 id="6-选择AI模型-支持最新的GTP-4o或Claude3模型，我目前用的GPT-4o模型-网上介绍说Claude3模型效果可能更好。"><a href="#6-选择AI模型-支持最新的GTP-4o或Claude3模型，我目前用的GPT-4o模型-网上介绍说Claude3模型效果可能更好。" class="headerlink" title="6. 选择AI模型 支持最新的GTP-4o或Claude3模型，我目前用的GPT-4o模型,网上介绍说Claude3模型效果可能更好。"></a>6. 选择AI模型 支持最新的GTP-4o或Claude3模型，我目前用的GPT-4o模型,网上介绍说Claude3模型效果可能更好。</h4> <img src="/2024/06/05/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91%E5%88%A9%E5%99%A8%E2%80%94%E2%80%94%E5%9B%BE%E7%89%87%E7%94%9F%E6%88%90%E4%BB%A3%E7%A0%81/4.png" srcset="/img/loading.gif" lazyload class="" width="488"> &nbsp;
+<h4 id="7-选择图片-生成代码"><a href="#7-选择图片-生成代码" class="headerlink" title="7.选择图片,生成代码"></a>7.选择图片,生成代码</h4> <img src="/2024/06/05/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91%E5%88%A9%E5%99%A8%E2%80%94%E2%80%94%E5%9B%BE%E7%89%87%E7%94%9F%E6%88%90%E4%BB%A3%E7%A0%81/5.png" srcset="/img/loading.gif" lazyload class="" width="488"> &nbsp;
+
+<h3 id="四、效果展示"><a href="#四、效果展示" class="headerlink" title="四、效果展示"></a>四、效果展示</h3><p>我的站点<a target="_blank" rel="noopener" href="https://stc.zymn.cc/">https://stc.zymn.cc/</a>，可以看到效果。需要设置自己的GPT-4 API KEY或者Claude3 API KEY。<br>&nbsp;<br><video src="/2024/06/05/前端开发利器——图片生成代码/demo.mp4" position= "absolute" width="100%" height="100%" controls="controls"></video><br>&nbsp;</p>
+<h3 id="五、高级用法"><a href="#五、高级用法" class="headerlink" title="五、高级用法"></a>五、高级用法</h3><p>国内用户一般只能部署在海外服务器上，如果想要绑定域名，需要做如下更改。<br>到frontend目录下,修改.env文件的VITE_WS_BACKEND_URL的内容，没有就添加一条。<br>默认后端运行的端口是7001,前端服务运行在5173端口。如果你有域名绑定到7001端口,那么将下面的地址直接更改成你的域名</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ini"><span class="hljs-attr">VITE_WS_BACKEND_URL</span>=ws://后端服务的域名<br></code></pre></td></tr></table></figure>
+<p>如果你的前端使用了https,那么你还需要为后端服务也配置https。<br>注意：ws要更改成wss,否则会出现连接失败的情况。</p>
+<img src="/2024/06/05/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91%E5%88%A9%E5%99%A8%E2%80%94%E2%80%94%E5%9B%BE%E7%89%87%E7%94%9F%E6%88%90%E4%BB%A3%E7%A0%81/7.png" srcset="/img/loading.gif" lazyload class="" width="488"> &nbsp;
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ini"><span class="hljs-attr">VITE_WS_BACKEND_URL</span>=wss://后端服务的域名<br></code></pre></td></tr></table></figure>
+<div class="note note-warning">
+            <p> 注意:<br>这个地方也是我踩过的坑，我前端用的https。忘记了上面填写的地址是后端服务的，只解析了前端一个域名，所以把前端域名填写进去，一直访问不了或者更换成服务器ip+端口号也是不行，会提示https不能访问ws。后来才想起这是个后端服务，需要绑定一个域名才行。而且要加https。</p>
+          </div>
+
+
+
+<h3 id="六、遇到的问题"><a href="#六、遇到的问题" class="headerlink" title="六、遇到的问题"></a>六、遇到的问题</h3><p>今天在更改配置之后，运行docker-compose up -d –build后，后端服务器起不来，查看了docker容器的日志，发现是python运行报错，网上也没有找到解决办法，尝试了从github下载最新的，但是还是不行，最后凭着自己的经验应该是python的版本问题，我尝试将python版本升高，发现还是同样的错误，后面再尝试把版本降低，才能正常启动后端服务。</p>
+<img src="/2024/06/05/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91%E5%88%A9%E5%99%A8%E2%80%94%E2%80%94%E5%9B%BE%E7%89%87%E7%94%9F%E6%88%90%E4%BB%A3%E7%A0%81/8.png" srcset="/img/loading.gif" lazyload class="" width="488"> 
+<p>&nbsp;</p>
+<h3 id="七、相关视频"><a href="#七、相关视频" class="headerlink" title="七、相关视频"></a>七、相关视频</h3><iframe width="100%"  minHeight="480" src="https://www.youtube.com/embed/zrILBq-Q9Ek" title="前端开发的福利：再也不用写那么多繁琐的页面布局代码，有了这个图片转代码的工具，能提升90%的开发效率！" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+ 
+
+                
+              </div>
+            
+
+              <!--打赏-->
+              <div class="reward">
+                  <div class="reward-button">赏 <span class="reward-code">
+		<span class="alipay-code"> <img class="alipay-img wdp-appear" src="/img/alipay.png" srcset="/img/loading.gif" lazyload><b>支付宝打赏</b> </span>
+		<span class="wechat-code"> <img class="wechat-img wdp-appear" src="/img/wechat.png" srcset="/img/loading.gif" lazyload><b>微信打赏</b> </span> </span>
+                  </div>
+                  <p class="reward-notice">如果文章对你有帮助，欢迎点击上方按钮打赏作者，更多功能请访问<a href="https://blog.fxcxy.com">博客站</a></p>
+              </div>
+              <!--打赏-->
+              <hr/>
+              <div style="text-align:right;"> <!-- 自己添加的“分享到”模块：开始。用的是 social-share.js。让所有的分享按钮右对齐-->
+
+                  <div class="social-share-container" style="margin-top: 15px;"> <!-- 生成一组分享按钮 -->
+                       <!--如果博客语言是中文，就显示“点击分享到：”，非中文一律显示“Share it:”-->
+                      点击分享到：&nbsp;&nbsp;
+                      
+                  </div>
+                  <!-- 加载 jQuery 库 -->
+                  
+<script src="/js/jquery.min.js"></script>
+
+                  <!-- 导入 qrcode.min.js -->
+                  
+<script src="/js/qrcode.min.js"></script>
+
+                  <!-- 加载 social-share.js 的 js 库，另外还要加载 social-share.js 的 CSS，可以修改 `_config.fluid.yml` 的 `custom_css` 加载，也可以修改 `themes/fluid/layout/_partial/css.ejs` 加载。-->
+                  
+<script src="/js/social-share.min.js"></script>
+
+                  <script>
+                    /* 执行 js 代码，new 一个新对象，详见 social-share.js 在 GitHub 的文档 */
+                    new SocialShare('.social-share-container', {
+                      theme: 'circle',  // 使用圆形主题
+                      // 单独定义wechat分享参数
+                      wechat: {
+                        sort: 1, // 排序参数，数字较小的展示在前面,默认999
+                      },
+                      twitter: {
+                        sort: 2, // 排序参数，数字较小的展示在前面,默认999
+                      },
+                      facebook: {
+                        sort: 3, // 排序参数，数字较小的展示在前面,默认999
+                      }
+                    });
+                  </script>
+              </div> <!-- 自己添加的“分享到”模块：结束。-->
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%B7%A5%E5%85%B7%E5%88%86%E4%BA%AB/" class="category-chain-item">工具分享</a>
+  
+  
+
+      </span>
+    
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/" class="category-chain-item">技术分享</a>
+  
+  
+
+      </span>
+    
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E8%A7%86%E9%A2%91%E6%95%99%E7%A8%8B/" class="category-chain-item">视频教程</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/GPT/" class="print-no-link">#GPT</a>
+      
+        <a href="/tags/AI/" class="print-no-link">#AI</a>
+      
+        <a href="/tags/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/" class="print-no-link">#前端开发</a>
+      
+        <a href="/tags/Claude3/" class="print-no-link">#Claude3</a>
+      
+        <a href="/tags/GPT-4/" class="print-no-link">#GPT-4</a>
+      
+        <a href="/tags/%E5%9B%BE%E7%89%87%E8%BD%AC%E4%BB%A3%E7%A0%81/" class="print-no-link">#图片转代码</a>
+      
+        <a href="/tags/%E4%BB%A3%E7%A0%81%E7%94%9F%E6%88%90%E5%99%A8/" class="print-no-link">#代码生成器</a>
+      
+        <a href="/tags/%E4%BB%A3%E7%A0%81%E7%94%9F%E6%88%90/" class="print-no-link">#代码生成</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>前端开发利器—图片生成代码</div>
+      <div>https://blog.fxcxy.com/2024/06/05/前端开发利器——图片生成代码/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>spatacus</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2024年6月5日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2024/08/20/%E5%AE%9D%E5%A1%94%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AEgitlab-ce/" title="宝塔安装配置gitlab-ce">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">宝塔安装配置gitlab-ce</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2024/05/20/%E8%BD%AF%E8%B7%AF%E7%94%B1%E6%8B%A6%E6%88%AA%E6%B5%81%E9%87%8F%E5%AE%9E%E7%8E%B0%E5%B9%BF%E5%91%8A%E5%B1%8F%E8%94%BD/" title="软路由拦截流量实现广告屏蔽">
+                        <span class="hidden-mobile">软路由拦截流量实现广告屏蔽</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://lib.baomitu.com/valine/1.5.1/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"J7kyQXV9R3CXOiA1eubrlflY-gzGzoHsz","appKey":"qHZzPzRcvsutXvHvBewqGmhw","path":"window.location.pathname","placeholder":"输入您的评论","avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":false},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          var imgSelector = '#valine .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://www.youtube.com/channel/UCn0Yarp_h6oqn1-QLvlgbDg?sub_confirmation=1" target="_blank" rel="nofollow noopener"><span>Youtube</span></a>- <a href="https://twitter.com/spatacus1986" target="_blank" rel="nofollow noopener"><span>Twitter</span></a>- <a href="https://t.me/+8W45Y29o5T1mMGI1" target="_blank" rel="nofollow noopener"><span>电报群</span></a>- <a href="https://v.douyin.com/iNpPYY4E/" target="_blank" rel="nofollow noopener"><span>抖音</span></a>- <a href="https://www.ixigua.com/home/103680436540" target="_blank" rel="nofollow noopener"><span>西瓜视频</span></a> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="leancloud-site-pv-container" style="display: none">
+        总访问量 
+        <span id="leancloud-site-pv"></span>
+         次
+      </span>
+    
+    
+      <span id="leancloud-site-uv-container" style="display: none">
+        总访客数 
+        <span id="leancloud-site-uv"></span>
+         人
+      </span>
+    
+    
+
+  
+</div>
+
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script defer src="/js/leancloud.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

@@ -1,0 +1,960 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/logo.png">
+  <link rel="icon" href="/img/logo.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="twitter:card" content="/img/nginx.png" />
+    <meta name="twitter:site" content="自由码农" />
+    <meta name="twitter:creator" content="@spatacus1986">
+    <meta name="twitter:title" content="Nginx Proxy Manager的配置和使用 - 自由码农" />
+    <meta name="twitter:description" content="前言使用nginx配置有点麻烦，每次在更改完配置之后，需要重启服务，如果配置的服务比较多的时候，管理还很混乱，容易出错。所以找到了目前比较流行的nginx的管理工具Nginx Proxy Manager。可视化的操作界面，操作简单，采用docker部署安装，方便快捷。Nginx Proxy Manager官网 Nginx Proxy Manager优点无需命令Docker安装非常好的可视化界面快速" />
+    <meta name="twitter:image" content="/img/nginx.png" />
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="spatacus">
+  <meta name="keywords" content="自由码农,技术博客,工具分享，网站开发，App开发，小程序开发，H5开发">
+  
+    <meta name="description" content="前言使用nginx配置有点麻烦，每次在更改完配置之后，需要重启服务，如果配置的服务比较多的时候，管理还很混乱，容易出错。所以找到了目前比较流行的nginx的管理工具Nginx Proxy Manager。可视化的操作界面，操作简单，采用docker部署安装，方便快捷。Nginx Proxy Manager官网 Nginx Proxy Manager优点无需命令Docker安装非常好的可视化界面快速">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Nginx Proxy Manager的配置和使用">
+<meta property="og:url" content="https://blog.fxcxy.com/2024/04/11/Manager%E7%9A%84%E9%85%8D%E7%BD%AE%E5%92%8C%E4%BD%BF%E7%94%A8/index.html">
+<meta property="og:site_name" content="自由码农">
+<meta property="og:description" content="前言使用nginx配置有点麻烦，每次在更改完配置之后，需要重启服务，如果配置的服务比较多的时候，管理还很混乱，容易出错。所以找到了目前比较流行的nginx的管理工具Nginx Proxy Manager。可视化的操作界面，操作简单，采用docker部署安装，方便快捷。Nginx Proxy Manager官网 Nginx Proxy Manager优点无需命令Docker安装非常好的可视化界面快速">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://blog.fxcxy.com/img/nginx.png">
+<meta property="article:published_time" content="2024-04-11T10:00:48.000Z">
+<meta property="article:modified_time" content="2024-09-13T10:13:27.255Z">
+<meta property="article:author" content="spatacus">
+<meta property="article:tag" content="Nginx">
+<meta property="article:tag" content="反向代理">
+<meta property="article:tag" content="域名">
+<meta property="article:tag" content="https证书">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://blog.fxcxy.com/img/nginx.png">
+  
+  
+  
+  <title>Nginx Proxy Manager的配置和使用 - 自由码农</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+  
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_4443546_u6jwvi2qcka.css">
+<link rel="stylesheet" href="/css/social-share.min.css">
+<link rel="stylesheet" href="/css/myreward.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"blog.fxcxy.com","root":"/","version":"1.9.7","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"复制"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"J7kyQXV9R3CXOiA1eubrlflY-gzGzoHsz","app_key":"qHZzPzRcvsutXvHvBewqGmhw","server_url":"https://leancloud.fxcxy.com","path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+
+  
+    <!-- Google tag (gtag.js) -->
+    <script async>
+      if (!Fluid.ctx.dnt) {
+        Fluid.utils.createScript("https://www.googletagmanager.com/gtag/js?id=", function() {
+          window.dataLayer = window.dataLayer || [];
+          function gtag() {
+            dataLayer.push(arguments);
+          }
+          gtag('js', new Date());
+          gtag('config', '');
+        });
+      }
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+    
+  
+
+
+
+  
+<meta name="generator" content="Hexo 7.1.1"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>自由码农</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Nginx Proxy Manager的配置和使用"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2024-04-11 17:00" pubdate>
+          2024年4月11日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          2.1k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          18 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="leancloud-page-views"></span>次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">Nginx Proxy Manager的配置和使用</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>使用nginx配置有点麻烦，每次在更改完配置之后，需要重启服务，如果配置的服务比较多的时候，管理还很混乱，容易出错。所以找到了目前比较流行的nginx的管理工具Nginx Proxy Manager。可视化的操作界面，操作简单，采用docker部署安装，方便快捷。<br><a target="_blank" rel="noopener" href="https://nginxproxymanager.com/">Nginx Proxy Manager官网</a></p>
+<h4 id="Nginx-Proxy-Manager优点"><a href="#Nginx-Proxy-Manager优点" class="headerlink" title="Nginx Proxy Manager优点"></a>Nginx Proxy Manager优点</h4><p>无需命令<br>Docker安装<br>非常好的可视化界面<br>快速配置反向代理<br>快速配置重定向<br>一键SSL<br>页面权限控制(Nginx认证)<br>多用户管理<br>操作日志查看<br>分布式部署</p>
+<h3 id="一-安装Nginx-Proxy-Manager"><a href="#一-安装Nginx-Proxy-Manager" class="headerlink" title="一.安装Nginx Proxy Manager"></a>一.安装Nginx Proxy Manager</h3><h4 id="系统环境"><a href="#系统环境" class="headerlink" title="系统环境"></a>系统环境</h4><p>操作系统：linux&#x2F;macOS&#x2F;windows<br>docker<br>docker-compose </p>
+<img src="/2024/04/11/Manager%E7%9A%84%E9%85%8D%E7%BD%AE%E5%92%8C%E4%BD%BF%E7%94%A8/1.png" srcset="/img/loading.gif" lazyload class="" width="488">
+<p>&nbsp;<br><a target="_blank" rel="noopener" href="https://docs.docker.com/engine/install/">Docker安装教程</a><br><a target="_blank" rel="noopener" href="https://docs.docker.com/compose/install/">Docker compose安装教程</a><br><a target="_blank" rel="noopener" href="https://learnku.com/server/wikis/39229">Docker for mac安装教程</a><br><a target="_blank" rel="noopener" href="https://help.aliyun.com/zh/ecs/use-cases/deploy-and-use-docker-on-alibaba-cloud-linux-2-instances#2afc861105osq">Docker for 阿里云服务器安装教程</a></p>
+<h4 id="Docker镜像"><a href="#Docker镜像" class="headerlink" title="Docker镜像"></a>Docker镜像</h4><p>英文镜像 - jc21&#x2F;nginx-proxy-manager<br>中文镜像 - chishin&#x2F;nginx-proxy-manager-zh</p>
+<h4 id="1-创建nginx-proxy-manager数据存放目录"><a href="#1-创建nginx-proxy-manager数据存放目录" class="headerlink" title="1.创建nginx-proxy-manager数据存放目录"></a>1.创建nginx-proxy-manager数据存放目录</h4><p>方便以后的的迁移和备份，具体路径和文件名字可以自定义。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">mkdir</span> -p docker/data/nginx_proxy_manager<br></code></pre></td></tr></table></figure>
+<h4 id="2-在nginx-proxy-manager目录下创建docker-compose-yml配置文件"><a href="#2-在nginx-proxy-manager目录下创建docker-compose-yml配置文件" class="headerlink" title="2.在nginx-proxy-manager目录下创建docker-compose.yml配置文件"></a>2.在nginx-proxy-manager目录下创建docker-compose.yml配置文件</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">cd</span> docker/data/nginx_proxy_manager<br>vim docker-compose.yml<br></code></pre></td></tr></table></figure>
+<p>输入下面的内容，我更改了版本和镜像，用的中文镜像</p>
+<div class="note note-warning">
+            <p>注意：因为官网上给的是on,我的docker-compose不是最新的版，运行会报错，这里需要将on改成version</p>
+          </div>
+<img src="/2024/04/11/Manager%E7%9A%84%E9%85%8D%E7%BD%AE%E5%92%8C%E4%BD%BF%E7%94%A8/2.png" srcset="/img/loading.gif" lazyload class="" width="488">
+<p>&nbsp;</p>
+<figure class="highlight nestedtext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs nestedtext"><span class="hljs-attribute">version</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&#x27;3.3&#x27;</span><br><span class="hljs-attribute">services</span><span class="hljs-punctuation">:</span><br>  <span class="hljs-attribute">app</span><span class="hljs-punctuation">:</span><br>    <span class="hljs-attribute">image</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&#x27;chishin/nginx-proxy-manager-zh&#x27;</span><br>    <span class="hljs-attribute">restart</span><span class="hljs-punctuation">:</span> <span class="hljs-string">unless-stopped</span><br>    <span class="hljs-attribute">ports</span><span class="hljs-punctuation">:</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">&#x27;80:80&#x27;</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">&#x27;81:81&#x27;</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">&#x27;443:443&#x27;</span><br>    <span class="hljs-attribute">volumes</span><span class="hljs-punctuation">:</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">./data:/data</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">./letsencrypt:/etc/letsencrypt</span><br></code></pre></td></tr></table></figure>
+
+
+<p>最后按ESC,输入下面的命令保存，退出<br>文件保存并退出</p>
+<figure class="highlight clojure"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs clojure"><span class="hljs-symbol">:wq</span><br></code></pre></td></tr></table></figure>
+<h4 id="3-启动docker"><a href="#3-启动docker" class="headerlink" title="3.启动docker"></a>3.启动docker</h4><figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ebnf"><span class="hljs-attribute">docker-compose up -d</span><br></code></pre></td></tr></table></figure>
+<p>docker-compose up -d 报端口被使用的错误，这是因为我的服务器之前用的nginx，已经将端口占用了，需要先停止原来的服务</p>
+<figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs arduino">./nginx -s stop<br></code></pre></td></tr></table></figure>
+<img src="/2024/04/11/Manager%E7%9A%84%E9%85%8D%E7%BD%AE%E5%92%8C%E4%BD%BF%E7%94%A8/3.png" srcset="/img/loading.gif" lazyload class="" width="488">
+<p>&nbsp;</p>
+<p>运行成功后，访问Nginx Proxy Manager管理面板：http:&#x2F;&#x2F;服务器ip:81</p>
+<div class="note note-warning">
+            <p>注意：服务器的网络与安全的安全组中把上面配置的访问端口打开，80,81,443</p>
+          </div>
+<img src="/2024/04/11/Manager%E7%9A%84%E9%85%8D%E7%BD%AE%E5%92%8C%E4%BD%BF%E7%94%A8/4.png" srcset="/img/loading.gif" lazyload class="" width="488">
+<p>&nbsp;</p>
+<h3 id="二-配置Nginx-Proxy-Manager"><a href="#二-配置Nginx-Proxy-Manager" class="headerlink" title="二.配置Nginx Proxy Manager"></a>二.配置Nginx Proxy Manager</h3><p>1.输入http:&#x2F;&#x2F;服务器ip:81打开Nginx Proxy Manager管理面板<br>默认管理账号和密码：</p>
+<figure class="highlight avrasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs avrasm"><span class="hljs-symbol">Email:</span>    admin@example.com<br><span class="hljs-symbol">Password:</span> changeme<br></code></pre></td></tr></table></figure>
+<p>2.登录后修改名称,邮箱，密码</p>
+<img src="/2024/04/11/Manager%E7%9A%84%E9%85%8D%E7%BD%AE%E5%92%8C%E4%BD%BF%E7%94%A8/5.png" srcset="/img/loading.gif" lazyload class="" width="488">
+<p>&nbsp;</p>
+<img src="/2024/04/11/Manager%E7%9A%84%E9%85%8D%E7%BD%AE%E5%92%8C%E4%BD%BF%E7%94%A8/6.png" srcset="/img/loading.gif" lazyload class="" width="488">
+<p>&nbsp;</p>
+<h3 id="三-创建CloudFlare-API-令牌"><a href="#三-创建CloudFlare-API-令牌" class="headerlink" title="三.创建CloudFlare API 令牌"></a>三.创建CloudFlare API 令牌</h3><p>进入到托管的域名中-概述-获取您的API令牌-创建令牌</p>
+<img src="/2024/04/11/Manager%E7%9A%84%E9%85%8D%E7%BD%AE%E5%92%8C%E4%BD%BF%E7%94%A8/8.png" srcset="/img/loading.gif" lazyload class="" width="488">
+<p>&nbsp;</p>
+<img src="/2024/04/11/Manager%E7%9A%84%E9%85%8D%E7%BD%AE%E5%92%8C%E4%BD%BF%E7%94%A8/9.png" srcset="/img/loading.gif" lazyload class="" width="488">
+<p>&nbsp;</p>
+<img src="/2024/04/11/Manager%E7%9A%84%E9%85%8D%E7%BD%AE%E5%92%8C%E4%BD%BF%E7%94%A8/10.png" srcset="/img/loading.gif" lazyload class="" width="488">
+<p>&nbsp;<br>更改令牌名称，将区域选择所有区域-点击继续-创建令牌<br>该令牌只展示一次，注意保存。</p>
+<img src="/2024/04/11/Manager%E7%9A%84%E9%85%8D%E7%BD%AE%E5%92%8C%E4%BD%BF%E7%94%A8/11.png" srcset="/img/loading.gif" lazyload class="" width="488">
+<p>&nbsp;</p>
+<img src="/2024/04/11/Manager%E7%9A%84%E9%85%8D%E7%BD%AE%E5%92%8C%E4%BD%BF%E7%94%A8/12.png" srcset="/img/loading.gif" lazyload class="" width="488">
+<p>&nbsp;</p>
+<h3 id="四-Nginx-proxy-manager配置SSL证书"><a href="#四-Nginx-proxy-manager配置SSL证书" class="headerlink" title="四.Nginx proxy manager配置SSL证书"></a>四.Nginx proxy manager配置SSL证书</h3><h4 id="1-到SSL证书下添加证书-添加-Let’s-Encrypt-证书"><a href="#1-到SSL证书下添加证书-添加-Let’s-Encrypt-证书" class="headerlink" title="1.到SSL证书下添加证书-添加 Let’s Encrypt 证书"></a>1.到SSL证书下添加证书-添加 Let’s Encrypt 证书</h4><img src="/2024/04/11/Manager%E7%9A%84%E9%85%8D%E7%BD%AE%E5%92%8C%E4%BD%BF%E7%94%A8/17.png" srcset="/img/loading.gif" lazyload class="" width="488">
+<p>&nbsp;</p>
+<h4 id="2-将cloudflare中创建的令牌替换"><a href="#2-将cloudflare中创建的令牌替换" class="headerlink" title="2.将cloudflare中创建的令牌替换"></a>2.将cloudflare中创建的令牌替换</h4><div class="note note-warning">
+            <p>注意：这一步在保存的时候会提示超时，多尝试几次就可以了。</p>
+          </div>
+<img src="/2024/04/11/Manager%E7%9A%84%E9%85%8D%E7%BD%AE%E5%92%8C%E4%BD%BF%E7%94%A8/13.png" srcset="/img/loading.gif" lazyload class="" width="488">
+<p>&nbsp; </p>
+<h3 id="五-配置代理服务"><a href="#五-配置代理服务" class="headerlink" title="五.配置代理服务"></a>五.配置代理服务</h3><h4 id="I-部署vue项目，将原来的nginx服务迁移到nginx-proxy-manager。"><a href="#I-部署vue项目，将原来的nginx服务迁移到nginx-proxy-manager。" class="headerlink" title="I.部署vue项目，将原来的nginx服务迁移到nginx proxy manager。"></a>I.部署vue项目，将原来的nginx服务迁移到nginx proxy manager。</h4><h5 id="1-从仪表盘或者主机菜单中，点击添加代理服务器"><a href="#1-从仪表盘或者主机菜单中，点击添加代理服务器" class="headerlink" title="1.从仪表盘或者主机菜单中，点击添加代理服务器"></a>1.从仪表盘或者主机菜单中，点击添加代理服务器</h5><img src="/2024/04/11/Manager%E7%9A%84%E9%85%8D%E7%BD%AE%E5%92%8C%E4%BD%BF%E7%94%A8/18.png" srcset="/img/loading.gif" lazyload class="" width="488">
+<p>&nbsp;</p>
+<div class="note note-warning">
+            <p>注意：<br>1.协议一定要选http，而不是https，否则访问不了。虽然你用的是https，但是这里的https需要自签证书才能使用，我使用的cloudflare证书，所以使用https访问不了。<br>2.转发主机&#x2F;ip这里分两种情况，第一种是填写docker的ip，用下面的查看本机的内网ip命令可以查看，这种方式不用暴露服务的端口，就不需要去服务器的安全策略中添加后面的访问端口。<br>第二种是填写服务器的真实ip，后面填写的端口需要去服务器的安全策略中添加才能访问。这种情况会把服务器端口对外暴露<br>3.缓存资源一定要关闭，不然访问css,js，图片都是返回404。这个坑花了好几个小时才找到。</p>
+          </div>
+<img src="/2024/04/11/Manager%E7%9A%84%E9%85%8D%E7%BD%AE%E5%92%8C%E4%BD%BF%E7%94%A8/19.png" srcset="/img/loading.gif" lazyload class="" width="488">
+<p>&nbsp;</p>
+<div class="note note-warning">
+            <p>注意这个目录的问题，要将项目资源拷贝到nginx-proxy-manager的数据存放目录中。因为&#x2F;指向的是docker的数据目录，而不是服务器的&#x2F;目录。</p>
+          </div>
+<img src="/2024/04/11/Manager%E7%9A%84%E9%85%8D%E7%BD%AE%E5%92%8C%E4%BD%BF%E7%94%A8/20.png" srcset="/img/loading.gif" lazyload class="" width="488">
+<p>&nbsp;</p>
+<h5 id="2-添加DNS域名解析"><a href="#2-添加DNS域名解析" class="headerlink" title="2.添加DNS域名解析"></a>2.添加DNS域名解析</h5><p>到CloudFlare的域名中，找到DNS-记录，点击添加记录</p>
+<img src="/2024/04/11/Manager%E7%9A%84%E9%85%8D%E7%BD%AE%E5%92%8C%E4%BD%BF%E7%94%A8/21.png" srcset="/img/loading.gif" lazyload class="" width="488">
+<p>&nbsp;<br>添加A类型,名称写子域名，ipv4填写服务器ip,代理状态关闭(不然通过CF的CDN国内用户访问慢)</p>
+<img src="/2024/04/11/Manager%E7%9A%84%E9%85%8D%E7%BD%AE%E5%92%8C%E4%BD%BF%E7%94%A8/22.png" srcset="/img/loading.gif" lazyload class="" width="488">
+<p>&nbsp;</p>
+<h5 id="3-配置SSL"><a href="#3-配置SSL" class="headerlink" title="3.配置SSL"></a>3.配置SSL</h5><p>对于不需要ssl的这一步可以省略，完成上面两步就可以通过<a target="_blank" rel="noopener" href="http://admin.xxx.com访问./">http://admin.xxx.com访问。</a><br>编辑之前添加的代理服务配置，找到SSL,选择前面创建的SSL证书</p>
+<img src="/2024/04/11/Manager%E7%9A%84%E9%85%8D%E7%BD%AE%E5%92%8C%E4%BD%BF%E7%94%A8/23.png" srcset="/img/loading.gif" lazyload class="" width="488">
+<p>&nbsp;</p>
+<h4 id="II-部署服务器上的其他服务-主要是运行需要在特定的端口，比如frp服务运行在8090端口"><a href="#II-部署服务器上的其他服务-主要是运行需要在特定的端口，比如frp服务运行在8090端口" class="headerlink" title="II.部署服务器上的其他服务,主要是运行需要在特定的端口，比如frp服务运行在8090端口"></a>II.部署服务器上的其他服务,主要是运行需要在特定的端口，比如frp服务运行在8090端口</h4><div class="note note-warning">
+            <p>操作步骤与上面相同，唯一需要注意的是端口要设置为服务运行的端口。<br>如果没有特殊要求，自定义nginx配置不需要添加任何内容，之前nginx的方式是添加proxy_pass <a href="http://127.0.0.1:8090;现在不需要再加这个！">http://127.0.0.1:8090;现在不需要再加这个！</a><br>我的做法是把所有的静态项目都拷贝到nginx-proxy-manager数据存放目录下，让nginx proxy manager的端口来做转发。其他带特定端口的服务不需要移动！</p>
+          </div> 
+
+<img src="/2024/04/11/Manager%E7%9A%84%E9%85%8D%E7%BD%AE%E5%92%8C%E4%BD%BF%E7%94%A8/24.png" srcset="/img/loading.gif" lazyload class="" width="488">
+<p>&nbsp;</p>
+<h3 id="六-用到的命令"><a href="#六-用到的命令" class="headerlink" title="六.用到的命令"></a>六.用到的命令</h3><p>查看安装后的docker及docker-compose的版本号</p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs ebnf"><br><span class="hljs-attribute">docker -v</span><br><span class="hljs-attribute">docker-compose -v</span><br><br></code></pre></td></tr></table></figure>
+<p>文件保存并退出</p>
+<figure class="highlight clojure"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs clojure"><span class="hljs-symbol">:wq</span><br></code></pre></td></tr></table></figure>
+<p>启动docker</p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ebnf"><span class="hljs-attribute">docker-compose up -d</span><br></code></pre></td></tr></table></figure>
+<p>查看docker运行的容器</p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ebnf"><span class="hljs-attribute">docker ps</span><br></code></pre></td></tr></table></figure>
+<p>停止容器</p>
+<figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs arduino">docker stop b0c6a7d0459e<br></code></pre></td></tr></table></figure>
+
+<p>创建新的容器</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">docker</span> run -d -p <span class="hljs-number">6443</span>:<span class="hljs-number">80</span> --name frp nginx<br></code></pre></td></tr></table></figure>
+<div class="note note-warning">
+            <p>6443是对nginx服务的端口，如果使用内网访问，不用去打开6443。这样可以避免端口暴露的风险</p>
+          </div>
+
+<p>删除容器</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">docker <span class="hljs-built_in">rm</span> b0c6a7d0459e<br></code></pre></td></tr></table></figure>
+<p>删除镜像</p>
+<figure class="highlight dns"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs dns">docker rmi c6<span class="hljs-number">13f16b6642</span><br></code></pre></td></tr></table></figure>
+<p>查看端口使用情况</p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ebnf"><span class="hljs-attribute">netstat -tunlp</span><br></code></pre></td></tr></table></figure>
+
+<p>查询本机公网ip</p>
+<figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs applescript">curl ifconfig.<span class="hljs-keyword">me</span><br></code></pre></td></tr></table></figure>
+<p>查看本机的内网ip</p>
+<figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs mipsasm">ip <span class="hljs-keyword">addr </span><span class="hljs-keyword">show </span>docker0<br></code></pre></td></tr></table></figure>
+<p>停止nginx服务</p>
+<figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs arduino">./nginx -s stop<br></code></pre></td></tr></table></figure>
+
+<h3 id="七-遇到的问题"><a href="#七-遇到的问题" class="headerlink" title="七.遇到的问题"></a>七.遇到的问题</h3><h4 id="1-我照着原来的nginx配置把location配置直接拷贝到nginx自定义中，结果访问一直显示找不到资源。"><a href="#1-我照着原来的nginx配置把location配置直接拷贝到nginx自定义中，结果访问一直显示找不到资源。" class="headerlink" title="1.我照着原来的nginx配置把location配置直接拷贝到nginx自定义中，结果访问一直显示找不到资源。"></a>1.我照着原来的nginx配置把location配置直接拷贝到nginx自定义中，结果访问一直显示找不到资源。</h4><p>查看nginx的配置文件才发现问题，原来是我忘了docker本来就相当于一台主机，他里面的目录是docker内部目录，需要将要部署的内容拷贝到我们开始创建的docker&#x2F;data&#x2F;nginx_proxy_manager&#x2F;data目录中。</p>
+<img src="/2024/04/11/Manager%E7%9A%84%E9%85%8D%E7%BD%AE%E5%92%8C%E4%BD%BF%E7%94%A8/16.png" srcset="/img/loading.gif" lazyload class="" width="488">
+<p>&nbsp;<br>这是原nginx配置</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs nginx"><span class="hljs-section">server</span> &#123;<br>     <span class="hljs-attribute">listen</span> <span class="hljs-number">443</span> ssl;<br>     <span class="hljs-attribute">server_name</span> www.xxx.com;<br>     <span class="hljs-attribute">ssl_certificate</span> /usr/local/nginx/2024CA/www.xxx.com.pem;<br>     <span class="hljs-attribute">ssl_certificate_key</span> /usr/local/nginx/2024CA/www.xxx.com.key;<br>     <span class="hljs-attribute">ssl_session_timeout</span> <span class="hljs-number">5m</span>;<br>     <span class="hljs-attribute">ssl_protocols</span> TLSv1 TLSv1.<span class="hljs-number">1</span> TLSv1.<span class="hljs-number">2</span>; <span class="hljs-comment">#按照这个协议配置</span><br>     <span class="hljs-attribute">ssl_ciphers</span> ECDHE-RSA-AES128-GCM-SHA256:HIGH:!aNULL:!MD5:!RC4:!DHE;<span class="hljs-comment">#按照这个套件配置</span><br>     <span class="hljs-attribute">ssl_prefer_server_ciphers</span> <span class="hljs-literal">on</span>;<br>     <span class="hljs-section">location</span> / &#123;<br>       <span class="hljs-attribute">root</span>   /usr/local/project/xxx/website/dist;<br>             <span class="hljs-attribute">index</span>  index.html index.htm;<br>             <span class="hljs-attribute">try_files</span> <span class="hljs-variable">$uri</span> /index.html<span class="hljs-variable">$is_args</span><span class="hljs-variable">$args</span> =<span class="hljs-number">404</span>;<br>      &#125;<br>     <span class="hljs-section">location</span> /api/ &#123;<br>        <span class="hljs-attribute">proxy_pass</span> http://127.0.0.1:8001;<br>     &#125;<br> &#125;<br><br></code></pre></td></tr></table></figure>
+<p>这是通过配置nginx proxy manager的 自定义 Nginx 配置的内容</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs swift">   <br><br>location <span class="hljs-operator">/</span> &#123;<br>  #root   <span class="hljs-regexp">/usr/</span>local<span class="hljs-regexp">/project/</span>xxx<span class="hljs-regexp">/website/</span>dist;<span class="hljs-comment">//这是错误的</span><br>  root   <span class="hljs-regexp">/data/</span>xxx<span class="hljs-regexp">/website/</span>dist;<span class="hljs-comment">//将项目资源包括到这目录下才正确</span><br>        index  index.html index.htm;<br>        try_files <span class="hljs-variable">$uri</span> <span class="hljs-operator">/</span>index.html<span class="hljs-variable">$is_args</span><span class="hljs-variable">$args</span> <span class="hljs-operator">=</span><span class="hljs-number">404</span>;<br> &#125;<br>location <span class="hljs-regexp">/api/</span> &#123;<br>   proxy_pass http:<span class="hljs-comment">//127.0.0.1:8001;</span><br>&#125;<br>     <br><br></code></pre></td></tr></table></figure>
+<h4 id="2-部署vue项目后，所有的css-js-图片资源都返回404"><a href="#2-部署vue项目后，所有的css-js-图片资源都返回404" class="headerlink" title="2.部署vue项目后，所有的css,js,图片资源都返回404"></a>2.部署vue项目后，所有的css,js,图片资源都返回404</h4><p>这个问题花了我几个小时，一直以为是配置的问题，尝试了很多种更改nginx自定义配置的方式，都不成功，后来想到我开启了缓存和阻止常见漏洞的开关，试着关闭，没想到就能访问了。<br>为了解决这个问题，我一直弄到凌晨2点，看了时间赶紧去睡觉，没必要在这个问题上死磕，还不如好好休息，第二天有空再看，没想到最后竟然是这个原因。</p>
+<img src="/2024/04/11/Manager%E7%9A%84%E9%85%8D%E7%BD%AE%E5%92%8C%E4%BD%BF%E7%94%A8/14.png" srcset="/img/loading.gif" lazyload class="" width="488">
+<p>&nbsp;</p>
+<img src="/2024/04/11/Manager%E7%9A%84%E9%85%8D%E7%BD%AE%E5%92%8C%E4%BD%BF%E7%94%A8/15.png" srcset="/img/loading.gif" lazyload class="" width="488">
+<p>&nbsp;</p>
+<h4 id="3-部署java项目，访问不了"><a href="#3-部署java项目，访问不了" class="headerlink" title="3.部署java项目，访问不了"></a>3.部署java项目，访问不了</h4><p>java项目部署在8080端口，但是之前nginx配置的反向代理，没有开启8080端口。我是直接配置转发端口8080，但是无法访问。通过ip+端口也同样访问不了。但是通过命令查看java项目确实是运行在8080端口。<br>解决办法：到安全策略中开启8080端口。在能访问之后，再关闭8080端口即可。<br>这个问题也想了很久，但是总的思路是先想办法查看服务是否运行，然后再去打开端口，先保证不用域名的情况下能正常访问。下一步再去设置域名访问，能访问之后，再关闭端口对外访问。</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs nginx"><span class="hljs-section">server</span> &#123;<br>        <span class="hljs-attribute">listen</span> <span class="hljs-number">443</span> ssl;<br>        <span class="hljs-attribute">server_name</span> enn.fxcxy.com;<br>        <span class="hljs-attribute">ssl_certificate</span> /usr/local/nginx/2023CA/10023018_enn.xxx.com.pem;<br>        <span class="hljs-attribute">ssl_certificate_key</span> /usr/local/nginx/2023CA/10023018_enn.xxx.com.key;<br>        <span class="hljs-attribute">ssl_session_timeout</span> <span class="hljs-number">5m</span>;<br>        <span class="hljs-attribute">ssl_protocols</span> TLSv1 TLSv1.<span class="hljs-number">1</span> TLSv1.<span class="hljs-number">2</span>; <span class="hljs-comment">#按照这个协议配置</span><br>        <span class="hljs-attribute">ssl_ciphers</span> ECDHE-RSA-AES128-GCM-SHA256:HIGH:!aNULL:!MD5:!RC4:!DHE;<span class="hljs-comment">#按照这个套件配置</span><br>        <span class="hljs-attribute">ssl_prefer_server_ciphers</span> <span class="hljs-literal">on</span>;<br><br>	<span class="hljs-section">location</span> /e8GqKhfyEw.txt &#123;<br>		<span class="hljs-attribute">charset</span> UTF-<span class="hljs-number">8</span>;<br>                <span class="hljs-attribute">default_type</span> text/html;<br>                <span class="hljs-attribute">return</span> <span class="hljs-number">200</span> <span class="hljs-string">&#x27;71e2e1a495b3387802f76cbe7aefce21&#x27;</span>;<br>	&#125;<br>        <span class="hljs-section">location</span> / &#123;<br><br>                <span class="hljs-attribute">proxy_pass</span> http://xxxx/;<br>                <span class="hljs-attribute">add_header</span> From enn.xxx.com;<br>                <span class="hljs-attribute">proxy_cookie_path</span> / /;<br>                <span class="hljs-attribute">proxy_set_header</span> Cookie <span class="hljs-variable">$http_cookie</span>;<br>                <span class="hljs-attribute">proxy_set_header</span> Host  <span class="hljs-variable">$host</span>;<br>                <span class="hljs-attribute">proxy_set_header</span> Remote_Addr <span class="hljs-variable">$remote_addr</span>;<br>                <span class="hljs-attribute">proxy_set_header</span> X-Real-IP <span class="hljs-variable">$remote_addr</span>;<br>                <span class="hljs-attribute">proxy_set_header</span> X-Forwarded-For <span class="hljs-variable">$proxy_add_x_forwarded_for</span>;<br>         &#125;<br>    &#125;<br><br></code></pre></td></tr></table></figure>
+
+
+
+<h3 id="八-相关视频"><a href="#八-相关视频" class="headerlink" title="八.相关视频"></a>八.相关视频</h3><iframe width="auto" height="auto" src="https://www.youtube.com/embed/kFJsFKuHRX4" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+                
+              </div>
+            
+
+              <!--打赏-->
+              <div class="reward">
+                  <div class="reward-button">赏 <span class="reward-code">
+		<span class="alipay-code"> <img class="alipay-img wdp-appear" src="/img/alipay.png" srcset="/img/loading.gif" lazyload><b>支付宝打赏</b> </span>
+		<span class="wechat-code"> <img class="wechat-img wdp-appear" src="/img/wechat.png" srcset="/img/loading.gif" lazyload><b>微信打赏</b> </span> </span>
+                  </div>
+                  <p class="reward-notice">如果文章对你有帮助，欢迎点击上方按钮打赏作者，更多功能请访问<a href="https://blog.fxcxy.com">博客站</a></p>
+              </div>
+              <!--打赏-->
+              <hr/>
+              <div style="text-align:right;"> <!-- 自己添加的“分享到”模块：开始。用的是 social-share.js。让所有的分享按钮右对齐-->
+
+                  <div class="social-share-container" style="margin-top: 15px;"> <!-- 生成一组分享按钮 -->
+                       <!--如果博客语言是中文，就显示“点击分享到：”，非中文一律显示“Share it:”-->
+                      点击分享到：&nbsp;&nbsp;
+                      
+                  </div>
+                  <!-- 加载 jQuery 库 -->
+                  
+<script src="/js/jquery.min.js"></script>
+
+                  <!-- 导入 qrcode.min.js -->
+                  
+<script src="/js/qrcode.min.js"></script>
+
+                  <!-- 加载 social-share.js 的 js 库，另外还要加载 social-share.js 的 CSS，可以修改 `_config.fluid.yml` 的 `custom_css` 加载，也可以修改 `themes/fluid/layout/_partial/css.ejs` 加载。-->
+                  
+<script src="/js/social-share.min.js"></script>
+
+                  <script>
+                    /* 执行 js 代码，new 一个新对象，详见 social-share.js 在 GitHub 的文档 */
+                    new SocialShare('.social-share-container', {
+                      theme: 'circle',  // 使用圆形主题
+                      // 单独定义wechat分享参数
+                      wechat: {
+                        sort: 1, // 排序参数，数字较小的展示在前面,默认999
+                      },
+                      twitter: {
+                        sort: 2, // 排序参数，数字较小的展示在前面,默认999
+                      },
+                      facebook: {
+                        sort: 3, // 排序参数，数字较小的展示在前面,默认999
+                      }
+                    });
+                  </script>
+              </div> <!-- 自己添加的“分享到”模块：结束。-->
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/" class="category-chain-item">技术分享</a>
+  
+  
+
+      </span>
+    
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%AE%A1%E7%90%86/" class="category-chain-item">服务器管理</a>
+  
+  
+
+      </span>
+    
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E8%A7%86%E9%A2%91%E6%95%99%E7%A8%8B/" class="category-chain-item">视频教程</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/Nginx/" class="print-no-link">#Nginx</a>
+      
+        <a href="/tags/%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86/" class="print-no-link">#反向代理</a>
+      
+        <a href="/tags/%E5%9F%9F%E5%90%8D/" class="print-no-link">#域名</a>
+      
+        <a href="/tags/https%E8%AF%81%E4%B9%A6/" class="print-no-link">#https证书</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>Nginx Proxy Manager的配置和使用</div>
+      <div>https://blog.fxcxy.com/2024/04/11/Manager的配置和使用/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>spatacus</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2024年4月11日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2024/04/23/%E5%88%A9%E7%94%A8CloudFlare%E5%92%8CTelegraph%E5%AE%9E%E7%8E%B0%E5%85%8D%E8%B4%B9%E6%89%98%E7%AE%A1%E5%9B%BE%E7%89%87/" title="利用CloudFlare和Telegraph实现免费托管图片">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">利用CloudFlare和Telegraph实现免费托管图片</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2024/04/09/%E5%B0%86%E5%9F%9F%E5%90%8D%E6%89%98%E7%AE%A1%E5%88%B0Cloudflare%EF%BC%8C%E5%AE%9E%E7%8E%B0%E5%85%A8%E7%AB%99https%E8%AE%BF%E9%97%AE/" title="将域名托管到Cloudflare，实现全站https访问">
+                        <span class="hidden-mobile">将域名托管到Cloudflare，实现全站https访问</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://lib.baomitu.com/valine/1.5.1/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"J7kyQXV9R3CXOiA1eubrlflY-gzGzoHsz","appKey":"qHZzPzRcvsutXvHvBewqGmhw","path":"window.location.pathname","placeholder":"输入您的评论","avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":false},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          var imgSelector = '#valine .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://www.youtube.com/channel/UCn0Yarp_h6oqn1-QLvlgbDg?sub_confirmation=1" target="_blank" rel="nofollow noopener"><span>Youtube</span></a>- <a href="https://twitter.com/spatacus1986" target="_blank" rel="nofollow noopener"><span>Twitter</span></a>- <a href="https://t.me/+8W45Y29o5T1mMGI1" target="_blank" rel="nofollow noopener"><span>电报群</span></a>- <a href="https://v.douyin.com/iNpPYY4E/" target="_blank" rel="nofollow noopener"><span>抖音</span></a>- <a href="https://www.ixigua.com/home/103680436540" target="_blank" rel="nofollow noopener"><span>西瓜视频</span></a> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="leancloud-site-pv-container" style="display: none">
+        总访问量 
+        <span id="leancloud-site-pv"></span>
+         次
+      </span>
+    
+    
+      <span id="leancloud-site-uv-container" style="display: none">
+        总访客数 
+        <span id="leancloud-site-uv"></span>
+         人
+      </span>
+    
+    
+
+  
+</div>
+
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script defer src="/js/leancloud.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

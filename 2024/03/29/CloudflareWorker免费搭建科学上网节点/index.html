@@ -1,0 +1,968 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/logo.png">
+  <link rel="icon" href="/img/logo.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="twitter:card" content="/img/cf_works.png" />
+    <meta name="twitter:site" content="自由码农" />
+    <meta name="twitter:creator" content="@spatacus1986">
+    <meta name="twitter:title" content="利用Cloudflare Worker免费搭建科学上网节点，上网速度是真的快！ - 自由码农" />
+    <meta name="twitter:description" content="介绍利用Cloudflare Worker搭建免费科学上网的节点，我测试了一下，这速度是真的快，轻松突破20w+。有了这个，谁还自己搭建VPS!一般的机场也可能达不到这样的速度。  &amp;nbsp; 所需工具Cloudflare账号去Cloudflare注册一个账号，注册网址：https://dash.cloudflare.com/sign-up 。后面所有的部署操作都需要用到它。 科学上网工具Cla" />
+    <meta name="twitter:image" content="/img/cf_works.png" />
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="spatacus">
+  <meta name="keywords" content="自由码农,技术博客,工具分享，网站开发，App开发，小程序开发，H5开发">
+  
+    <meta name="description" content="介绍利用Cloudflare Worker搭建免费科学上网的节点，我测试了一下，这速度是真的快，轻松突破20w+。有了这个，谁还自己搭建VPS!一般的机场也可能达不到这样的速度。  &nbsp; 所需工具Cloudflare账号去Cloudflare注册一个账号，注册网址：https:&#x2F;&#x2F;dash.cloudflare.com&#x2F;sign-up 。后面所有的部署操作都需要用到它。 科学上网工具Cla">
+<meta property="og:type" content="article">
+<meta property="og:title" content="利用Cloudflare Worker免费搭建科学上网节点，上网速度是真的快！">
+<meta property="og:url" content="https://blog.fxcxy.com/2024/03/29/CloudflareWorker%E5%85%8D%E8%B4%B9%E6%90%AD%E5%BB%BA%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%E8%8A%82%E7%82%B9/index.html">
+<meta property="og:site_name" content="自由码农">
+<meta property="og:description" content="介绍利用Cloudflare Worker搭建免费科学上网的节点，我测试了一下，这速度是真的快，轻松突破20w+。有了这个，谁还自己搭建VPS!一般的机场也可能达不到这样的速度。  &nbsp; 所需工具Cloudflare账号去Cloudflare注册一个账号，注册网址：https:&#x2F;&#x2F;dash.cloudflare.com&#x2F;sign-up 。后面所有的部署操作都需要用到它。 科学上网工具Cla">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://blog.fxcxy.com/img/cf_works.png">
+<meta property="article:published_time" content="2024-03-29T03:45:58.000Z">
+<meta property="article:modified_time" content="2024-09-13T10:13:27.223Z">
+<meta property="article:author" content="spatacus">
+<meta property="article:tag" content="Cloudflare Worker">
+<meta property="article:tag" content="翻墙工具">
+<meta property="article:tag" content="科学上网">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://blog.fxcxy.com/img/cf_works.png">
+  
+  
+  
+  <title>利用Cloudflare Worker免费搭建科学上网节点，上网速度是真的快！ - 自由码农</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+  
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_4443546_u6jwvi2qcka.css">
+<link rel="stylesheet" href="/css/social-share.min.css">
+<link rel="stylesheet" href="/css/myreward.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"blog.fxcxy.com","root":"/","version":"1.9.7","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"复制"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"J7kyQXV9R3CXOiA1eubrlflY-gzGzoHsz","app_key":"qHZzPzRcvsutXvHvBewqGmhw","server_url":"https://leancloud.fxcxy.com","path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+
+  
+    <!-- Google tag (gtag.js) -->
+    <script async>
+      if (!Fluid.ctx.dnt) {
+        Fluid.utils.createScript("https://www.googletagmanager.com/gtag/js?id=", function() {
+          window.dataLayer = window.dataLayer || [];
+          function gtag() {
+            dataLayer.push(arguments);
+          }
+          gtag('js', new Date());
+          gtag('config', '');
+        });
+      }
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+    
+  
+
+
+
+  
+<meta name="generator" content="Hexo 7.1.1"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>自由码农</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="利用Cloudflare Worker免费搭建科学上网节点，上网速度是真的快！"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2024-03-29 10:45" pubdate>
+          2024年3月29日 上午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          3.8k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          32 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="leancloud-page-views"></span>次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">利用Cloudflare Worker免费搭建科学上网节点，上网速度是真的快！</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h3 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h3><p>利用Cloudflare Worker搭建免费科学上网的节点，我测试了一下，这速度是真的快，轻松突破20w+。有了这个，谁还自己搭建VPS!一般的机场也可能达不到这样的速度。</p>
+<img src="/2024/03/29/CloudflareWorker%E5%85%8D%E8%B4%B9%E6%90%AD%E5%BB%BA%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%E8%8A%82%E7%82%B9/1.png" srcset="/img/loading.gif" lazyload class="" width="488">
+<p>&nbsp;</p>
+<h3 id="所需工具"><a href="#所需工具" class="headerlink" title="所需工具"></a>所需工具</h3><h4 id="Cloudflare账号"><a href="#Cloudflare账号" class="headerlink" title="Cloudflare账号"></a>Cloudflare账号</h4><p>去Cloudflare注册一个账号，注册网址：<a target="_blank" rel="noopener" href="https://dash.cloudflare.com/sign-up">https://dash.cloudflare.com/sign-up</a> 。后面所有的部署操作都需要用到它。</p>
+<h4 id="科学上网工具"><a href="#科学上网工具" class="headerlink" title="科学上网工具"></a>科学上网工具</h4><p><a target="_blank" rel="noopener" href="https://url49.ctfile.com/d/26918949-60520951-c0225f?p=4499">Clash for windows&#x2F;mac&#x2F;android</a> 访问密码: 4499</p>
+<h3 id="搭建步骤"><a href="#搭建步骤" class="headerlink" title="搭建步骤"></a>搭建步骤</h3><h4 id="1-登录Cloudflare，找到Workers-Pages并点击创建Create-application"><a href="#1-登录Cloudflare，找到Workers-Pages并点击创建Create-application" class="headerlink" title="1.登录Cloudflare，找到Workers &amp; Pages并点击创建Create application."></a>1.登录Cloudflare，找到Workers &amp; Pages并点击创建Create application.</h4><img src="/2024/03/29/CloudflareWorker%E5%85%8D%E8%B4%B9%E6%90%AD%E5%BB%BA%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%E8%8A%82%E7%82%B9/2.png" srcset="/img/loading.gif" lazyload class="" width="488">
+<p>&nbsp;</p>
+<h4 id="2-点击Create-Worker-更改名字，点击Deploy"><a href="#2-点击Create-Worker-更改名字，点击Deploy" class="headerlink" title="2.点击Create Worker,更改名字，点击Deploy"></a>2.点击Create Worker,更改名字，点击Deploy</h4><img src="/2024/03/29/CloudflareWorker%E5%85%8D%E8%B4%B9%E6%90%AD%E5%BB%BA%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%E8%8A%82%E7%82%B9/3.png" srcset="/img/loading.gif" lazyload class="" width="488">
+<p>&nbsp;</p>
+<div class="note note-info @title">
+            <p>修改名字不是必须的，只是方便自己识别</p>
+          </div>
+<img src="/2024/03/29/CloudflareWorker%E5%85%8D%E8%B4%B9%E6%90%AD%E5%BB%BA%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%E8%8A%82%E7%82%B9/4.png" srcset="/img/loading.gif" lazyload class="" width="488">
+<p>&nbsp;</p>
+<h4 id="3-编辑脚本"><a href="#3-编辑脚本" class="headerlink" title="3.编辑脚本"></a>3.编辑脚本</h4><img src="/2024/03/29/CloudflareWorker%E5%85%8D%E8%B4%B9%E6%90%AD%E5%BB%BA%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%E8%8A%82%E7%82%B9/5.png" srcset="/img/loading.gif" lazyload class="" width="488">
+<p>&nbsp;</p>
+<p>删除原来的内容，并复制下面的新脚本到这个文件中。</p>
+<img src="/2024/03/29/CloudflareWorker%E5%85%8D%E8%B4%B9%E6%90%AD%E5%BB%BA%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%E8%8A%82%E7%82%B9/6.png" srcset="/img/loading.gif" lazyload class="" width="488">
+<p>&nbsp;</p>
+<img src="/2024/03/29/CloudflareWorker%E5%85%8D%E8%B4%B9%E6%90%AD%E5%BB%BA%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%E8%8A%82%E7%82%B9/7.png" srcset="/img/loading.gif" lazyload class="" width="488">
+<p>&nbsp;</p>
+<p>下面是新的脚本，点击右边的复制按钮复制内容。并将内容粘贴到worker.js中</p>
+<figure class="highlight plaintext"><figcaption><span>@ts-ignore</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br><span class="line">252</span><br><span class="line">253</span><br><span class="line">254</span><br><span class="line">255</span><br><span class="line">256</span><br><span class="line">257</span><br><span class="line">258</span><br><span class="line">259</span><br><span class="line">260</span><br><span class="line">261</span><br><span class="line">262</span><br><span class="line">263</span><br><span class="line">264</span><br><span class="line">265</span><br><span class="line">266</span><br><span class="line">267</span><br><span class="line">268</span><br><span class="line">269</span><br><span class="line">270</span><br><span class="line">271</span><br><span class="line">272</span><br><span class="line">273</span><br><span class="line">274</span><br><span class="line">275</span><br><span class="line">276</span><br><span class="line">277</span><br><span class="line">278</span><br><span class="line">279</span><br><span class="line">280</span><br><span class="line">281</span><br><span class="line">282</span><br><span class="line">283</span><br><span class="line">284</span><br><span class="line">285</span><br><span class="line">286</span><br><span class="line">287</span><br><span class="line">288</span><br><span class="line">289</span><br><span class="line">290</span><br><span class="line">291</span><br><span class="line">292</span><br><span class="line">293</span><br><span class="line">294</span><br><span class="line">295</span><br><span class="line">296</span><br><span class="line">297</span><br><span class="line">298</span><br><span class="line">299</span><br><span class="line">300</span><br><span class="line">301</span><br><span class="line">302</span><br><span class="line">303</span><br><span class="line">304</span><br><span class="line">305</span><br><span class="line">306</span><br><span class="line">307</span><br><span class="line">308</span><br><span class="line">309</span><br><span class="line">310</span><br><span class="line">311</span><br><span class="line">312</span><br><span class="line">313</span><br><span class="line">314</span><br><span class="line">315</span><br><span class="line">316</span><br><span class="line">317</span><br><span class="line">318</span><br><span class="line">319</span><br><span class="line">320</span><br><span class="line">321</span><br><span class="line">322</span><br><span class="line">323</span><br><span class="line">324</span><br><span class="line">325</span><br><span class="line">326</span><br><span class="line">327</span><br><span class="line">328</span><br><span class="line">329</span><br><span class="line">330</span><br><span class="line">331</span><br><span class="line">332</span><br><span class="line">333</span><br><span class="line">334</span><br><span class="line">335</span><br><span class="line">336</span><br><span class="line">337</span><br><span class="line">338</span><br><span class="line">339</span><br><span class="line">340</span><br><span class="line">341</span><br><span class="line">342</span><br><span class="line">343</span><br><span class="line">344</span><br><span class="line">345</span><br><span class="line">346</span><br><span class="line">347</span><br><span class="line">348</span><br><span class="line">349</span><br><span class="line">350</span><br><span class="line">351</span><br><span class="line">352</span><br><span class="line">353</span><br><span class="line">354</span><br><span class="line">355</span><br><span class="line">356</span><br><span class="line">357</span><br><span class="line">358</span><br><span class="line">359</span><br><span class="line">360</span><br><span class="line">361</span><br><span class="line">362</span><br><span class="line">363</span><br><span class="line">364</span><br><span class="line">365</span><br><span class="line">366</span><br><span class="line">367</span><br><span class="line">368</span><br><span class="line">369</span><br><span class="line">370</span><br><span class="line">371</span><br><span class="line">372</span><br><span class="line">373</span><br><span class="line">374</span><br><span class="line">375</span><br><span class="line">376</span><br><span class="line">377</span><br><span class="line">378</span><br><span class="line">379</span><br><span class="line">380</span><br><span class="line">381</span><br><span class="line">382</span><br><span class="line">383</span><br><span class="line">384</span><br><span class="line">385</span><br><span class="line">386</span><br><span class="line">387</span><br><span class="line">388</span><br><span class="line">389</span><br><span class="line">390</span><br><span class="line">391</span><br><span class="line">392</span><br><span class="line">393</span><br><span class="line">394</span><br><span class="line">395</span><br><span class="line">396</span><br><span class="line">397</span><br><span class="line">398</span><br><span class="line">399</span><br><span class="line">400</span><br><span class="line">401</span><br><span class="line">402</span><br><span class="line">403</span><br><span class="line">404</span><br><span class="line">405</span><br><span class="line">406</span><br><span class="line">407</span><br><span class="line">408</span><br><span class="line">409</span><br><span class="line">410</span><br><span class="line">411</span><br><span class="line">412</span><br><span class="line">413</span><br><span class="line">414</span><br><span class="line">415</span><br><span class="line">416</span><br><span class="line">417</span><br><span class="line">418</span><br><span class="line">419</span><br><span class="line">420</span><br><span class="line">421</span><br><span class="line">422</span><br><span class="line">423</span><br><span class="line">424</span><br><span class="line">425</span><br><span class="line">426</span><br><span class="line">427</span><br><span class="line">428</span><br><span class="line">429</span><br><span class="line">430</span><br><span class="line">431</span><br><span class="line">432</span><br><span class="line">433</span><br><span class="line">434</span><br><span class="line">435</span><br><span class="line">436</span><br><span class="line">437</span><br><span class="line">438</span><br><span class="line">439</span><br><span class="line">440</span><br><span class="line">441</span><br><span class="line">442</span><br><span class="line">443</span><br><span class="line">444</span><br><span class="line">445</span><br><span class="line">446</span><br><span class="line">447</span><br><span class="line">448</span><br><span class="line">449</span><br><span class="line">450</span><br><span class="line">451</span><br><span class="line">452</span><br><span class="line">453</span><br><span class="line">454</span><br><span class="line">455</span><br><span class="line">456</span><br><span class="line">457</span><br><span class="line">458</span><br><span class="line">459</span><br><span class="line">460</span><br><span class="line">461</span><br><span class="line">462</span><br><span class="line">463</span><br><span class="line">464</span><br><span class="line">465</span><br><span class="line">466</span><br><span class="line">467</span><br><span class="line">468</span><br><span class="line">469</span><br><span class="line">470</span><br><span class="line">471</span><br><span class="line">472</span><br><span class="line">473</span><br><span class="line">474</span><br><span class="line">475</span><br><span class="line">476</span><br><span class="line">477</span><br><span class="line">478</span><br><span class="line">479</span><br><span class="line">480</span><br><span class="line">481</span><br><span class="line">482</span><br><span class="line">483</span><br><span class="line">484</span><br><span class="line">485</span><br><span class="line">486</span><br><span class="line">487</span><br><span class="line">488</span><br><span class="line">489</span><br><span class="line">490</span><br><span class="line">491</span><br><span class="line">492</span><br><span class="line">493</span><br><span class="line">494</span><br><span class="line">495</span><br><span class="line">496</span><br><span class="line">497</span><br><span class="line">498</span><br><span class="line">499</span><br><span class="line">500</span><br><span class="line">501</span><br><span class="line">502</span><br><span class="line">503</span><br><span class="line">504</span><br><span class="line">505</span><br><span class="line">506</span><br><span class="line">507</span><br><span class="line">508</span><br><span class="line">509</span><br><span class="line">510</span><br><span class="line">511</span><br><span class="line">512</span><br><span class="line">513</span><br><span class="line">514</span><br><span class="line">515</span><br><span class="line">516</span><br><span class="line">517</span><br><span class="line">518</span><br><span class="line">519</span><br><span class="line">520</span><br><span class="line">521</span><br><span class="line">522</span><br><span class="line">523</span><br><span class="line">524</span><br><span class="line">525</span><br><span class="line">526</span><br><span class="line">527</span><br><span class="line">528</span><br><span class="line">529</span><br><span class="line">530</span><br><span class="line">531</span><br><span class="line">532</span><br><span class="line">533</span><br><span class="line">534</span><br><span class="line">535</span><br><span class="line">536</span><br><span class="line">537</span><br><span class="line">538</span><br><span class="line">539</span><br><span class="line">540</span><br><span class="line">541</span><br><span class="line">542</span><br><span class="line">543</span><br><span class="line">544</span><br><span class="line">545</span><br><span class="line">546</span><br><span class="line">547</span><br><span class="line">548</span><br><span class="line">549</span><br><span class="line">550</span><br><span class="line">551</span><br><span class="line">552</span><br><span class="line">553</span><br><span class="line">554</span><br><span class="line">555</span><br><span class="line">556</span><br><span class="line">557</span><br><span class="line">558</span><br><span class="line">559</span><br><span class="line">560</span><br><span class="line">561</span><br><span class="line">562</span><br><span class="line">563</span><br><span class="line">564</span><br><span class="line">565</span><br><span class="line">566</span><br><span class="line">567</span><br><span class="line">568</span><br><span class="line">569</span><br><span class="line">570</span><br><span class="line">571</span><br><span class="line">572</span><br><span class="line">573</span><br><span class="line">574</span><br><span class="line">575</span><br><span class="line">576</span><br><span class="line">577</span><br><span class="line">578</span><br><span class="line">579</span><br><span class="line">580</span><br><span class="line">581</span><br><span class="line">582</span><br><span class="line">583</span><br><span class="line">584</span><br><span class="line">585</span><br><span class="line">586</span><br><span class="line">587</span><br><span class="line">588</span><br><span class="line">589</span><br><span class="line">590</span><br><span class="line">591</span><br><span class="line">592</span><br><span class="line">593</span><br><span class="line">594</span><br><span class="line">595</span><br><span class="line">596</span><br><span class="line">597</span><br><span class="line">598</span><br><span class="line">599</span><br><span class="line">600</span><br><span class="line">601</span><br><span class="line">602</span><br><span class="line">603</span><br><span class="line">604</span><br><span class="line">605</span><br><span class="line">606</span><br><span class="line">607</span><br><span class="line">608</span><br><span class="line">609</span><br><span class="line">610</span><br><span class="line">611</span><br><span class="line">612</span><br><span class="line">613</span><br><span class="line">614</span><br><span class="line">615</span><br><span class="line">616</span><br><span class="line">617</span><br><span class="line">618</span><br><span class="line">619</span><br><span class="line">620</span><br><span class="line">621</span><br><span class="line">622</span><br><span class="line">623</span><br><span class="line">624</span><br><span class="line">625</span><br><span class="line">626</span><br><span class="line">627</span><br><span class="line">628</span><br><span class="line">629</span><br><span class="line">630</span><br><span class="line">631</span><br><span class="line">632</span><br><span class="line">633</span><br><span class="line">634</span><br><span class="line">635</span><br><span class="line">636</span><br><span class="line">637</span><br><span class="line">638</span><br><span class="line">639</span><br><span class="line">640</span><br><span class="line">641</span><br><span class="line">642</span><br><span class="line">643</span><br><span class="line">644</span><br><span class="line">645</span><br><span class="line">646</span><br><span class="line">647</span><br><span class="line">648</span><br><span class="line">649</span><br><span class="line">650</span><br><span class="line">651</span><br><span class="line">652</span><br><span class="line">653</span><br><span class="line">654</span><br><span class="line">655</span><br><span class="line">656</span><br><span class="line">657</span><br><span class="line">658</span><br><span class="line">659</span><br><span class="line">660</span><br><span class="line">661</span><br><span class="line">662</span><br><span class="line">663</span><br><span class="line">664</span><br><span class="line">665</span><br><span class="line">666</span><br><span class="line">667</span><br><span class="line">668</span><br><span class="line">669</span><br><span class="line">670</span><br><span class="line">671</span><br><span class="line">672</span><br><span class="line">673</span><br><span class="line">674</span><br><span class="line">675</span><br><span class="line">676</span><br><span class="line">677</span><br><span class="line">678</span><br><span class="line">679</span><br><span class="line">680</span><br><span class="line">681</span><br><span class="line">682</span><br><span class="line">683</span><br><span class="line">684</span><br><span class="line">685</span><br><span class="line">686</span><br><span class="line">687</span><br><span class="line">688</span><br><span class="line">689</span><br><span class="line">690</span><br><span class="line">691</span><br><span class="line">692</span><br><span class="line">693</span><br><span class="line">694</span><br><span class="line">695</span><br><span class="line">696</span><br><span class="line">697</span><br><span class="line">698</span><br><span class="line">699</span><br><span class="line">700</span><br><span class="line">701</span><br><span class="line">702</span><br><span class="line">703</span><br><span class="line">704</span><br><span class="line">705</span><br><span class="line">706</span><br><span class="line">707</span><br><span class="line">708</span><br><span class="line">709</span><br><span class="line">710</span><br><span class="line">711</span><br><span class="line">712</span><br><span class="line">713</span><br><span class="line">714</span><br><span class="line">715</span><br><span class="line">716</span><br><span class="line">717</span><br><span class="line">718</span><br><span class="line">719</span><br><span class="line">720</span><br><span class="line">721</span><br><span class="line">722</span><br><span class="line">723</span><br><span class="line">724</span><br><span class="line">725</span><br><span class="line">726</span><br><span class="line">727</span><br><span class="line">728</span><br><span class="line">729</span><br><span class="line">730</span><br><span class="line">731</span><br><span class="line">732</span><br><span class="line">733</span><br><span class="line">734</span><br><span class="line">735</span><br><span class="line">736</span><br><span class="line">737</span><br><span class="line">738</span><br><span class="line">739</span><br><span class="line">740</span><br><span class="line">741</span><br><span class="line">742</span><br><span class="line">743</span><br><span class="line">744</span><br><span class="line">745</span><br><span class="line">746</span><br><span class="line">747</span><br><span class="line">748</span><br><span class="line">749</span><br><span class="line">750</span><br><span class="line">751</span><br><span class="line">752</span><br><span class="line">753</span><br><span class="line">754</span><br><span class="line">755</span><br><span class="line">756</span><br><span class="line">757</span><br><span class="line">758</span><br><span class="line">759</span><br><span class="line">760</span><br><span class="line">761</span><br><span class="line">762</span><br><span class="line">763</span><br><span class="line">764</span><br><span class="line">765</span><br><span class="line">766</span><br><span class="line">767</span><br><span class="line">768</span><br><span class="line">769</span><br><span class="line">770</span><br><span class="line">771</span><br><span class="line">772</span><br><span class="line">773</span><br><span class="line">774</span><br><span class="line">775</span><br><span class="line">776</span><br><span class="line">777</span><br><span class="line">778</span><br><span class="line">779</span><br><span class="line">780</span><br><span class="line">781</span><br><span class="line">782</span><br><span class="line">783</span><br><span class="line">784</span><br><span class="line">785</span><br><span class="line">786</span><br><span class="line">787</span><br><span class="line">788</span><br><span class="line">789</span><br><span class="line">790</span><br><span class="line">791</span><br><span class="line">792</span><br><span class="line">793</span><br><span class="line">794</span><br><span class="line">795</span><br><span class="line">796</span><br><span class="line">797</span><br><span class="line">798</span><br><span class="line">799</span><br><span class="line">800</span><br><span class="line">801</span><br><span class="line">802</span><br><span class="line">803</span><br><span class="line">804</span><br><span class="line">805</span><br><span class="line">806</span><br><span class="line">807</span><br><span class="line">808</span><br><span class="line">809</span><br><span class="line">810</span><br><span class="line">811</span><br><span class="line">812</span><br><span class="line">813</span><br><span class="line">814</span><br><span class="line">815</span><br><span class="line">816</span><br><span class="line">817</span><br><span class="line">818</span><br><span class="line">819</span><br><span class="line">820</span><br><span class="line">821</span><br><span class="line">822</span><br><span class="line">823</span><br><span class="line">824</span><br><span class="line">825</span><br><span class="line">826</span><br><span class="line">827</span><br><span class="line">828</span><br><span class="line">829</span><br><span class="line">830</span><br><span class="line">831</span><br><span class="line">832</span><br><span class="line">833</span><br><span class="line">834</span><br><span class="line">835</span><br><span class="line">836</span><br><span class="line">837</span><br><span class="line">838</span><br><span class="line">839</span><br><span class="line">840</span><br><span class="line">841</span><br><span class="line">842</span><br><span class="line">843</span><br><span class="line">844</span><br><span class="line">845</span><br><span class="line">846</span><br><span class="line">847</span><br><span class="line">848</span><br><span class="line">849</span><br><span class="line">850</span><br><span class="line">851</span><br><span class="line">852</span><br><span class="line">853</span><br></pre></td><td class="code"><pre><code class="hljs //">import &#123; connect &#125; from &#x27;cloudflare:sockets&#x27;;<br><br><br>let userID = &#x27;f974a9f4-7bcb-4961-9913-f87e75984635&#x27;;<br><br>let proxyIP = &#x27;&#x27;;// 小白勿动，该地址并不影响你的网速，这是给CF代理使用的。&#x27;cdn.xn--b6gac.eu.org&#x27;, &#x27;cdn-all.xn--b6gac.eu.org&#x27;, &#x27;edgetunnel.anycast.eu.org&#x27;<br><br>//let sub = &#x27;&#x27;;// 留空则显示原版内容<br>let sub = &#x27;vless-4ca.pages.dev&#x27;;// 内置优选订阅生成器，可自行搭建 https://github.com/cmliu/WorkerVless2sub<br>let subconverter = &#x27;api.v1.mk&#x27;;// clash订阅转换后端，目前使用肥羊的订阅转换功能。自带虚假uuid和host订阅。<br>let subconfig = &quot;https://raw.githubusercontent.com/cmliu/ACL4SSR/main/Clash/config/ACL4SSR_Online_Full_MultiMode.ini&quot;; //订阅配置文件<br>// The user name and password do not contain special characters<br>// Setting the address will ignore proxyIP<br>// Example:  user:pass@host:port  or  host:port<br>let socks5Address = &#x27;&#x27;;<br>let RproxyIP = &#x27;false&#x27;;<br>if (!isValidUUID(userID)) &#123;<br>    throw new Error(&#x27;uuid is not valid&#x27;);<br>&#125;<br><br>let parsedSocks5Address = &#123;&#125;;<br>let enableSocks = false;<br><br>// 虚假uuid和hostname，用于发送给配置生成服务<br>let fakeUserID = generateUUID();<br>let fakeHostName = generateRandomString();<br>let tls = true;<br>export default &#123;<br>    async fetch(request, env, ctx) &#123;<br>        try &#123;<br>            const userAgent = request.headers.get(&#x27;User-Agent&#x27;).toLowerCase();<br>            userID = (env.UUID || userID).toLowerCase();<br>            proxyIP = env.PROXYIP || proxyIP;<br>            socks5Address = env.SOCKS5 || socks5Address;<br>            sub = env.SUB || sub;<br>            subconverter = env.SUBAPI || subconverter;<br>            subconfig = env.SUBCONFIG || subconfig;<br>            if (socks5Address) &#123;<br>                RproxyIP = env.RPROXYIP || &#x27;false&#x27;;<br>                try &#123;<br>                    parsedSocks5Address = socks5AddressParser(socks5Address);<br>                    enableSocks = true;<br>                &#125; catch (err) &#123;<br>                    let e = err;<br>                    console.log(e.toString());<br>                    enableSocks = false;<br>                &#125;<br>            &#125; else &#123;<br>                RproxyIP = env.RPROXYIP || !proxyIP ? &#x27;true&#x27; : &#x27;false&#x27;;<br>            &#125;<br>            const upgradeHeader = request.headers.get(&#x27;Upgrade&#x27;);<br>            const url = new URL(request.url);<br>            if (url.searchParams.has(&#x27;notls&#x27;)) tls = false;<br>            if (!upgradeHeader || upgradeHeader !== &#x27;websocket&#x27;) &#123;<br>                // const url = new URL(request.url);<br>                switch (url.pathname.toLowerCase()) &#123;<br>                    case &#x27;/&#x27;:<br>                        return new Response(JSON.stringify(request.cf), &#123; status: 200 &#125;);<br>                    case `/$&#123;userID&#125;`: &#123;<br>                        const vlessConfig = await getVLESSConfig(userID, request.headers.get(&#x27;Host&#x27;), sub, userAgent, RproxyIP);<br>                        const now = Date.now();<br>                        const timestamp = Math.floor(now / 1000);<br>                        const expire = 4102329600;//2099-12-31<br>                        const today = new Date(now);<br>                        today.setHours(0, 0, 0, 0);<br>                        const UD = Math.floor(((now - today.getTime())/86400000) * 24 * 1099511627776 / 2);<br>                        if (userAgent &amp;&amp; userAgent.includes(&#x27;mozilla&#x27;))&#123;<br>                            return new Response(`$&#123;vlessConfig&#125;`, &#123;<br>                                status: 200,<br>                                headers: &#123;<br>                                    &quot;Content-Type&quot;: &quot;text/plain;charset=utf-8&quot;,<br>                                &#125;<br>                            &#125;);<br>                        &#125; else &#123;<br>                            return new Response(`$&#123;vlessConfig&#125;`, &#123;<br>                                status: 200,<br>                                headers: &#123;<br>                                    &quot;Content-Disposition&quot;: &quot;attachment; filename=edgetunnel; filename*=utf-8&#x27;&#x27;edgetunnel&quot;,<br>                                    &quot;Content-Type&quot;: &quot;text/plain;charset=utf-8&quot;,<br>                                    &quot;Profile-Update-Interval&quot;: &quot;6&quot;,<br>                                    &quot;Subscription-Userinfo&quot;: `upload=$&#123;UD&#125;; download=$&#123;UD&#125;; total=$&#123;24 * 1099511627776&#125;; expire=$&#123;expire&#125;`,<br>                                &#125;<br>                            &#125;);<br>                        &#125;<br>                    &#125;<br>                    default:<br>                        return new Response(&#x27;Not found&#x27;, &#123; status: 404 &#125;);<br>                &#125;<br>            &#125; else &#123;<br>                if (new RegExp(&#x27;/proxyip=&#x27;, &#x27;i&#x27;).test(url.pathname)) proxyIP = url.pathname.split(&quot;=&quot;)[1];<br>                else if (new RegExp(&#x27;/proxyip.&#x27;, &#x27;i&#x27;).test(url.pathname)) proxyIP = url.pathname.split(&quot;/proxyip.&quot;)[1];<br>                else if (!proxyIP || proxyIP == &#x27;&#x27;) proxyIP = &#x27;proxyip.fxxk.dedyn.io&#x27;;<br>                return await vlessOverWSHandler(request);<br>            &#125;<br>        &#125; catch (err) &#123;<br>             let e = err;<br>            return new Response(e.toString());<br>        &#125;<br>    &#125;,<br>&#125;;<br>async function vlessOverWSHandler(request) &#123;<br><br>        // @ts-ignore<br>    const webSocketPair = new WebSocketPair();<br>    const [client, webSocket] = Object.values(webSocketPair);<br><br>    webSocket.accept();<br><br>    let address = &#x27;&#x27;;<br>    let portWithRandomLog = &#x27;&#x27;;<br>    const log = ( info,  event) =&gt; &#123;<br>        console.log(`[$&#123;address&#125;:$&#123;portWithRandomLog&#125;] $&#123;info&#125;`, event || &#x27;&#x27;);<br>    &#125;;<br>    const earlyDataHeader = request.headers.get(&#x27;sec-websocket-protocol&#x27;) || &#x27;&#x27;;<br><br>    const readableWebSocketStream = makeReadableWebSocketStream(webSocket, earlyDataHeader, log);<br><br>    let remoteSocketWapper = &#123;<br>        value: null,<br>    &#125;;<br>    let isDns = false;<br><br>    // ws --&gt; remote<br>    readableWebSocketStream.pipeTo(new WritableStream(&#123;<br>        async write(chunk, controller) &#123;<br>            if (isDns) &#123;<br>                return await handleDNSQuery(chunk, webSocket, null, log);<br>            &#125;<br>            if (remoteSocketWapper.value) &#123;<br>                const writer = remoteSocketWapper.value.writable.getWriter()<br>                await writer.write(chunk);<br>                writer.releaseLock();<br>                return;<br>            &#125;<br><br>            const &#123;<br>                hasError,<br>                message,<br>                addressType,<br>                portRemote = 443,<br>                addressRemote = &#x27;&#x27;,<br>                rawDataIndex,<br>                vlessVersion = new Uint8Array([0, 0]),<br>                isUDP,<br>            &#125; = processVlessHeader(chunk, userID);<br>            address = addressRemote;<br>            portWithRandomLog = `$&#123;portRemote&#125;--$&#123;Math.random()&#125; $&#123;isUDP ? &#x27;udp &#x27; : &#x27;tcp &#x27;<br>            &#125; `;<br>            if (hasError) &#123;<br>                // controller.error(message);<br>                throw new Error(message); // cf seems has bug, controller.error will not end stream<br>                // webSocket.close(1000, message);<br>                return;<br>            &#125;<br>            // if UDP but port not DNS port, close it<br>            if (isUDP) &#123;<br>                if (portRemote === 53) &#123;<br>                    isDns = true;<br>                &#125; else &#123;<br>                    // controller.error(&#x27;UDP proxy only enable for DNS which is port 53&#x27;);<br>                    throw new Error(&#x27;UDP proxy only enable for DNS which is port 53&#x27;); // cf seems has bug, controller.error will not end stream<br>                    return;<br>                &#125;<br>            &#125;<br>            // [&quot;version&quot;, &quot;附加信息长度 N&quot;]<br>            const vlessResponseHeader = new Uint8Array([vlessVersion[0], 0]);<br>            const rawClientData = chunk.slice(rawDataIndex);<br><br>            if (isDns) &#123;<br>                return handleDNSQuery(rawClientData, webSocket, vlessResponseHeader, log);<br>            &#125;<br>            handleTCPOutBound(remoteSocketWapper, addressType, addressRemote, portRemote, rawClientData, webSocket, vlessResponseHeader, log);<br>        &#125;,<br>        close() &#123;<br>            log(`readableWebSocketStream is close`);<br>        &#125;,<br>        abort(reason) &#123;<br>            log(`readableWebSocketStream is abort`, JSON.stringify(reason));<br>        &#125;,<br>    &#125;)).catch((err) =&gt; &#123;<br>        log(&#x27;readableWebSocketStream pipeTo error&#x27;, err);<br>    &#125;);<br><br>    return new Response(null, &#123;<br>        status: 101,<br>        // @ts-ignore<br>        webSocket: client,<br>    &#125;);<br>&#125;<br><br>async function handleTCPOutBound(remoteSocket, addressType, addressRemote, portRemote, rawClientData, webSocket, vlessResponseHeader, log,) &#123;<br>    async function connectAndWrite(address, port, socks = false) &#123;<br>        const tcpSocket = socks ? await socks5Connect(addressType, address, port, log)<br>            : connect(&#123;<br>                hostname: address,<br>                port: port,<br>            &#125;);<br>        remoteSocket.value = tcpSocket;<br>        log(`connected to $&#123;address&#125;:$&#123;port&#125;`);<br>        const writer = tcpSocket.writable.getWriter();<br>        await writer.write(rawClientData); // first write, normal is tls client hello<br>        writer.releaseLock();<br>        return tcpSocket;<br>    &#125;<br><br>    // if the cf connect tcp socket have no incoming data, we retry to redirect ip<br>    async function retry() &#123;<br>        if (enableSocks) &#123;<br>            tcpSocket = await connectAndWrite(addressRemote, portRemote, true);<br>        &#125; else &#123;<br>            tcpSocket = await connectAndWrite(proxyIP || addressRemote, portRemote);<br>        &#125;<br>        // no matter retry success or not, close websocket<br>        tcpSocket.closed.catch(error =&gt; &#123;<br>            console.log(&#x27;retry tcpSocket closed error&#x27;, error);<br>        &#125;).finally(() =&gt; &#123;<br>            safeCloseWebSocket(webSocket);<br>        &#125;)<br>        remoteSocketToWS(tcpSocket, webSocket, vlessResponseHeader, null, log);<br>    &#125;<br><br>    let tcpSocket = await connectAndWrite(addressRemote, portRemote);<br><br>    // when remoteSocket is ready, pass to websocket<br>    // remote--&gt; ws<br>    remoteSocketToWS(tcpSocket, webSocket, vlessResponseHeader, retry, log);<br>&#125;<br><br>function makeReadableWebSocketStream(webSocketServer, earlyDataHeader, log) &#123;<br>    let readableStreamCancel = false;<br>    const stream = new ReadableStream(&#123;<br>        start(controller) &#123;<br>            webSocketServer.addEventListener(&#x27;message&#x27;, (event) =&gt; &#123;<br>                if (readableStreamCancel) &#123;<br>                    return;<br>                &#125;<br>                const message = event.data;<br>                controller.enqueue(message);<br>            &#125;);<br><br>            // The event means that the client closed the client -&gt; server stream.<br>            // However, the server -&gt; client stream is still open until you call close() on the server side.<br>            // The WebSocket protocol says that a separate close message must be sent in each direction to fully close the socket.<br>            webSocketServer.addEventListener(&#x27;close&#x27;, () =&gt; &#123;<br>                    // client send close, need close server<br>                    // if stream is cancel, skip controller.close<br>                    safeCloseWebSocket(webSocketServer);<br>                    if (readableStreamCancel) &#123;<br>                        return;<br>                    &#125;<br>                    controller.close();<br>                &#125;<br>            );<br>            webSocketServer.addEventListener(&#x27;error&#x27;, (err) =&gt; &#123;<br>                    log(&#x27;webSocketServer has error&#x27;);<br>                    controller.error(err);<br>                &#125;<br>            );<br>            // for ws 0rtt<br>            const &#123; earlyData, error &#125; = base64ToArrayBuffer(earlyDataHeader);<br>            if (error) &#123;<br>                controller.error(error);<br>            &#125; else if (earlyData) &#123;<br>                controller.enqueue(earlyData);<br>            &#125;<br>        &#125;,<br><br>        pull(controller) &#123;<br>            // if ws can stop read if stream is full, we can implement backpressure<br>            // https://streams.spec.whatwg.org/#example-rs-push-backpressure<br>        &#125;,<br>        cancel(reason) &#123;<br>            // 1. pipe WritableStream has error, this cancel will called, so ws handle server close into here<br>            // 2. if readableStream is cancel, all controller.close/enqueue need skip,<br>            // 3. but from testing controller.error still work even if readableStream is cancel<br>            if (readableStreamCancel) &#123;<br>                return;<br>            &#125;<br>            log(`ReadableStream was canceled, due to $&#123;reason&#125;`)<br>            readableStreamCancel = true;<br>            safeCloseWebSocket(webSocketServer);<br>        &#125;<br>    &#125;);<br><br>    return stream;<br><br>&#125;<br><br><br>function processVlessHeader(<br>    vlessBuffer,<br>    userID<br>) &#123;<br>    if (vlessBuffer.byteLength &lt; 24) &#123;<br>        return &#123;<br>            hasError: true,<br>            message: &#x27;invalid data&#x27;,<br>        &#125;;<br>    &#125;<br>    const version = new Uint8Array(vlessBuffer.slice(0, 1));<br>    let isValidUser = false;<br>    let isUDP = false;<br>    if (stringify(new Uint8Array(vlessBuffer.slice(1, 17))) === userID) &#123;<br>        isValidUser = true;<br>    &#125;<br>    if (!isValidUser) &#123;<br>        return &#123;<br>            hasError: true,<br>            message: &#x27;invalid user&#x27;,<br>        &#125;;<br>    &#125;<br><br>    const optLength = new Uint8Array(vlessBuffer.slice(17, 18))[0];<br>    //skip opt for now<br><br>    const command = new Uint8Array(<br>        vlessBuffer.slice(18 + optLength, 18 + optLength + 1)<br>    )[0];<br><br>    // 0x01 TCP<br>    // 0x02 UDP<br>    // 0x03 MUX<br>    if (command === 1) &#123;<br>    &#125; else if (command === 2) &#123;<br>        isUDP = true;<br>    &#125; else &#123;<br>        return &#123;<br>            hasError: true,<br>            message: `command $&#123;command&#125; is not support, command 01-tcp,02-udp,03-mux`,<br>        &#125;;<br>    &#125;<br>    const portIndex = 18 + optLength + 1;<br>    const portBuffer = vlessBuffer.slice(portIndex, portIndex + 2);<br>    // port is big-Endian in raw data etc 80 == 0x005d<br>    const portRemote = new DataView(portBuffer).getUint16(0);<br><br>    let addressIndex = portIndex + 2;<br>    const addressBuffer = new Uint8Array(<br>        vlessBuffer.slice(addressIndex, addressIndex + 1)<br>    );<br><br>    // 1--&gt; ipv4  addressLength =4<br>    // 2--&gt; domain name addressLength=addressBuffer[1]<br>    // 3--&gt; ipv6  addressLength =16<br>    const addressType = addressBuffer[0];<br>    let addressLength = 0;<br>    let addressValueIndex = addressIndex + 1;<br>    let addressValue = &#x27;&#x27;;<br>    switch (addressType) &#123;<br>        case 1:<br>            addressLength = 4;<br>            addressValue = new Uint8Array(<br>                vlessBuffer.slice(addressValueIndex, addressValueIndex + addressLength)<br>            ).join(&#x27;.&#x27;);<br>            break;<br>        case 2:<br>            addressLength = new Uint8Array(<br>                vlessBuffer.slice(addressValueIndex, addressValueIndex + 1)<br>            )[0];<br>            addressValueIndex += 1;<br>            addressValue = new TextDecoder().decode(<br>                vlessBuffer.slice(addressValueIndex, addressValueIndex + addressLength)<br>            );<br>            break;<br>        case 3:<br>            addressLength = 16;<br>            const dataView = new DataView(<br>                vlessBuffer.slice(addressValueIndex, addressValueIndex + addressLength)<br>            );<br>            // 2001:0db8:85a3:0000:0000:8a2e:0370:7334<br>            const ipv6 = [];<br>            for (let i = 0; i &lt; 8; i++) &#123;<br>                ipv6.push(dataView.getUint16(i * 2).toString(16));<br>            &#125;<br>            addressValue = ipv6.join(&#x27;:&#x27;);<br>            // seems no need add [] for ipv6<br>            break;<br>        default:<br>            return &#123;<br>                hasError: true,<br>                message: `invild  addressType is $&#123;addressType&#125;`,<br>            &#125;;<br>    &#125;<br>    if (!addressValue) &#123;<br>        return &#123;<br>            hasError: true,<br>            message: `addressValue is empty, addressType is $&#123;addressType&#125;`,<br>        &#125;;<br>    &#125;<br><br>    return &#123;<br>        hasError: false,<br>        addressRemote: addressValue,<br>        addressType,<br>        portRemote,<br>        rawDataIndex: addressValueIndex + addressLength,<br>        vlessVersion: version,<br>        isUDP,<br>    &#125;;<br>&#125;<br><br><br>async function remoteSocketToWS(remoteSocket, webSocket, vlessResponseHeader, retry, log) &#123;<br>    // remote--&gt; ws<br>    let remoteChunkCount = 0;<br>    let chunks = [];<br>    let vlessHeader = vlessResponseHeader;<br>    let hasIncomingData = false; // check if remoteSocket has incoming data<br>    await remoteSocket.readable<br>        .pipeTo(<br>            new WritableStream(&#123;<br>                start() &#123;<br>                &#125;,<br>                async write(chunk, controller) &#123;<br>                    hasIncomingData = true;<br>                    // remoteChunkCount++;<br>                    if (webSocket.readyState !== WS_READY_STATE_OPEN) &#123;<br>                        controller.error(<br>                            &#x27;webSocket.readyState is not open, maybe close&#x27;<br>                        );<br>                    &#125;<br>                    if (vlessHeader) &#123;<br>                        webSocket.send(await new Blob([vlessHeader, chunk]).arrayBuffer());<br>                        vlessHeader = null;<br>                    &#125; else &#123;<br>                        // seems no need rate limit this, CF seems fix this??..<br>                        // if (remoteChunkCount &gt; 20000) &#123;<br>                        // 	// cf one package is 4096 byte(4kb),  4096 * 20000 = 80M<br>                        // 	await delay(1);<br>                        // &#125;<br>                        webSocket.send(chunk);<br>                    &#125;<br>                &#125;,<br>                close() &#123;<br>                    log(`remoteConnection!.readable is close with hasIncomingData is $&#123;hasIncomingData&#125;`);<br>                    // safeCloseWebSocket(webSocket); // no need server close websocket frist for some case will casue HTTP ERR_CONTENT_LENGTH_MISMATCH issue, client will send close event anyway.<br>                &#125;,<br>                abort(reason) &#123;<br>                    console.error(`remoteConnection!.readable abort`, reason);<br>                &#125;,<br>            &#125;)<br>        )<br>        .catch((error) =&gt; &#123;<br>            console.error(<br>                `remoteSocketToWS has exception `,<br>                error.stack || error<br>            );<br>            safeCloseWebSocket(webSocket);<br>        &#125;);<br><br>    // seems is cf connect socket have error,<br>    // 1. Socket.closed will have error<br>    // 2. Socket.readable will be close without any data coming<br>    if (hasIncomingData === false &amp;&amp; retry) &#123;<br>        log(`retry`)<br>        retry();<br>    &#125;<br>&#125;<br><br>function base64ToArrayBuffer(base64Str) &#123;<br>    if (!base64Str) &#123;<br>        return &#123; error: null &#125;;<br>    &#125;<br>    try &#123;<br>        // go use modified Base64 for URL rfc4648 which js atob not support<br>        base64Str = base64Str.replace(/-/g, &#x27;+&#x27;).replace(/_/g, &#x27;/&#x27;);<br>        const decode = atob(base64Str);<br>        const arryBuffer = Uint8Array.from(decode, (c) =&gt; c.charCodeAt(0));<br>        return &#123; earlyData: arryBuffer.buffer, error: null &#125;;<br>    &#125; catch (error) &#123;<br>        return &#123; error &#125;;<br>    &#125;<br>&#125;<br><br>function isValidUUID(uuid) &#123;<br>    const uuidRegex = /^[0-9a-f]&#123;8&#125;-[0-9a-f]&#123;4&#125;-[4][0-9a-f]&#123;3&#125;-[89ab][0-9a-f]&#123;3&#125;-[0-9a-f]&#123;12&#125;$/i;<br>    return uuidRegex.test(uuid);<br>&#125;<br><br>const WS_READY_STATE_OPEN = 1;<br>const WS_READY_STATE_CLOSING = 2;<br>function safeCloseWebSocket(socket) &#123;<br>    try &#123;<br>        if (socket.readyState === WS_READY_STATE_OPEN || socket.readyState === WS_READY_STATE_CLOSING) &#123;<br>            socket.close();<br>        &#125;<br>    &#125; catch (error) &#123;<br>        console.error(&#x27;safeCloseWebSocket error&#x27;, error);<br>    &#125;<br>&#125;<br><br>const byteToHex = [];<br>for (let i = 0; i &lt; 256; ++i) &#123;<br>    byteToHex.push((i + 256).toString(16).slice(1));<br>&#125;<br>function unsafeStringify(arr, offset = 0) &#123;<br>    return (byteToHex[arr[offset + 0]] + byteToHex[arr[offset + 1]] + byteToHex[arr[offset + 2]] + byteToHex[arr[offset + 3]] + &quot;-&quot; + byteToHex[arr[offset + 4]] + byteToHex[arr[offset + 5]] + &quot;-&quot; + byteToHex[arr[offset + 6]] + byteToHex[arr[offset + 7]] + &quot;-&quot; + byteToHex[arr[offset + 8]] + byteToHex[arr[offset + 9]] + &quot;-&quot; + byteToHex[arr[offset + 10]] + byteToHex[arr[offset + 11]] + byteToHex[arr[offset + 12]] + byteToHex[arr[offset + 13]] + byteToHex[arr[offset + 14]] + byteToHex[arr[offset + 15]]).toLowerCase();<br>&#125;<br>function stringify(arr, offset = 0) &#123;<br>    const uuid = unsafeStringify(arr, offset);<br>    if (!isValidUUID(uuid)) &#123;<br>        throw TypeError(&quot;Stringified UUID is invalid&quot;);<br>    &#125;<br>    return uuid;<br>&#125;<br><br>async function handleDNSQuery(udpChunk, webSocket, vlessResponseHeader, log) &#123;<br>    // no matter which DNS server client send, we alwasy use hard code one.<br>    // beacsue someof DNS server is not support DNS over TCP<br>    try &#123;<br>        const dnsServer = &#x27;8.8.4.4&#x27;; // change to 1.1.1.1 after cf fix connect own ip bug<br>        const dnsPort = 53;<br>        let vlessHeader = vlessResponseHeader;<br>        const tcpSocket = connect(&#123;<br>            hostname: dnsServer,<br>            port: dnsPort,<br>        &#125;);<br><br>        log(`connected to $&#123;dnsServer&#125;:$&#123;dnsPort&#125;`);<br>        const writer = tcpSocket.writable.getWriter();<br>        await writer.write(udpChunk);<br>        writer.releaseLock();<br>        await tcpSocket.readable.pipeTo(new WritableStream(&#123;<br>            async write(chunk) &#123;<br>                if (webSocket.readyState === WS_READY_STATE_OPEN) &#123;<br>                    if (vlessHeader) &#123;<br>                        webSocket.send(await new Blob([vlessHeader, chunk]).arrayBuffer());<br>                        vlessHeader = null;<br>                    &#125; else &#123;<br>                        webSocket.send(chunk);<br>                    &#125;<br>                &#125;<br>            &#125;,<br>            close() &#123;<br>                log(`dns server($&#123;dnsServer&#125;) tcp is close`);<br>            &#125;,<br>            abort(reason) &#123;<br>                console.error(`dns server($&#123;dnsServer&#125;) tcp is abort`, reason);<br>            &#125;,<br>        &#125;));<br>    &#125; catch (error) &#123;<br>        console.error(<br>            `handleDNSQuery have exception, error: $&#123;error.message&#125;`<br>        );<br>    &#125;<br>&#125;<br><br>async function socks5Connect(addressType, addressRemote, portRemote, log) &#123;<br>    const &#123; username, password, hostname, port &#125; = parsedSocks5Address;<br>    // Connect to the SOCKS server<br>    const socket = connect(&#123;<br>        hostname,<br>        port,<br>    &#125;);<br><br>    // Request head format (Worker -&gt; Socks Server):<br>    // +----+----------+----------+<br>    // |VER | NMETHODS | METHODS  |<br>    // +----+----------+----------+<br>    // | 1  |    1     | 1 to 255 |<br>    // +----+----------+----------+<br><br>    // https://en.wikipedia.org/wiki/SOCKS#SOCKS5<br>    // For METHODS:<br>    // 0x00 NO AUTHENTICATION REQUIRED<br>    // 0x02 USERNAME/PASSWORD https://datatracker.ietf.org/doc/html/rfc1929<br>    const socksGreeting = new Uint8Array([5, 2, 0, 2]);<br><br>    const writer = socket.writable.getWriter();<br><br>    await writer.write(socksGreeting);<br>    log(&#x27;sent socks greeting&#x27;);<br><br>    const reader = socket.readable.getReader();<br>    const encoder = new TextEncoder();<br>    let res = (await reader.read()).value;<br>    // Response format (Socks Server -&gt; Worker):<br>    // +----+--------+<br>    // |VER | METHOD |<br>    // +----+--------+<br>    // | 1  |   1    |<br>    // +----+--------+<br>    if (res[0] !== 0x05) &#123;<br>        log(`socks server version error: $&#123;res[0]&#125; expected: 5`);<br>        return;<br>    &#125;<br>    if (res[1] === 0xff) &#123;<br>        log(&quot;no acceptable methods&quot;);<br>        return;<br>    &#125;<br><br>    // if return 0x0502<br>    if (res[1] === 0x02) &#123;<br>        log(&quot;socks server needs auth&quot;);<br>        if (!username || !password) &#123;<br>            log(&quot;please provide username/password&quot;);<br>            return;<br>        &#125;<br>        // +----+------+----------+------+----------+<br>        // |VER | ULEN |  UNAME   | PLEN |  PASSWD  |<br>        // +----+------+----------+------+----------+<br>        // | 1  |  1   | 1 to 255 |  1   | 1 to 255 |<br>        // +----+------+----------+------+----------+<br>        const authRequest = new Uint8Array([<br>            1,<br>            username.length,<br>            ...encoder.encode(username),<br>            password.length,<br>            ...encoder.encode(password)<br>        ]);<br>        await writer.write(authRequest);<br>        res = (await reader.read()).value;<br>        // expected 0x0100<br>        if (res[0] !== 0x01 || res[1] !== 0x00) &#123;<br>            log(&quot;fail to auth socks server&quot;);<br>            return;<br>        &#125;<br>    &#125;<br><br>    // Request data format (Worker -&gt; Socks Server):<br>    // +----+-----+-------+------+----------+----------+<br>    // |VER | CMD |  RSV  | ATYP | DST.ADDR | DST.PORT |<br>    // +----+-----+-------+------+----------+----------+<br>    // | 1  |  1  | X&#x27;00&#x27; |  1   | Variable |    2     |<br>    // +----+-----+-------+------+----------+----------+<br>    // ATYP: address type of following address<br>    // 0x01: IPv4 address<br>    // 0x03: Domain name<br>    // 0x04: IPv6 address<br>    // DST.ADDR: desired destination address<br>    // DST.PORT: desired destination port in network octet order<br><br>    // addressType<br>    // 1--&gt; ipv4  addressLength =4<br>    // 2--&gt; domain name<br>    // 3--&gt; ipv6  addressLength =16<br>    let DSTADDR;	// DSTADDR = ATYP + DST.ADDR<br>    switch (addressType) &#123;<br>        case 1:<br>            DSTADDR = new Uint8Array(<br>                [1, ...addressRemote.split(&#x27;.&#x27;).map(Number)]<br>            );<br>            break;<br>        case 2:<br>            DSTADDR = new Uint8Array(<br>                [3, addressRemote.length, ...encoder.encode(addressRemote)]<br>            );<br>            break;<br>        case 3:<br>            DSTADDR = new Uint8Array(<br>                [4, ...addressRemote.split(&#x27;:&#x27;).flatMap(x =&gt; [parseInt(x.slice(0, 2), 16), parseInt(x.slice(2), 16)])]<br>            );<br>            break;<br>        default:<br>            log(`invild  addressType is $&#123;addressType&#125;`);<br>            return;<br>    &#125;<br>    const socksRequest = new Uint8Array([5, 1, 0, ...DSTADDR, portRemote &gt;&gt; 8, portRemote &amp; 0xff]);<br>    await writer.write(socksRequest);<br>    log(&#x27;sent socks request&#x27;);<br><br>    res = (await reader.read()).value;<br>    // Response format (Socks Server -&gt; Worker):<br>    //  +----+-----+-------+------+----------+----------+<br>    // |VER | REP |  RSV  | ATYP | BND.ADDR | BND.PORT |<br>    // +----+-----+-------+------+----------+----------+<br>    // | 1  |  1  | X&#x27;00&#x27; |  1   | Variable |    2     |<br>    // +----+-----+-------+------+----------+----------+<br>    if (res[1] === 0x00) &#123;<br>        log(&quot;socks connection opened&quot;);<br>    &#125; else &#123;<br>        log(&quot;fail to open socks connection&quot;);<br>        return;<br>    &#125;<br>    writer.releaseLock();<br>    reader.releaseLock();<br>    return socket;<br>&#125;<br><br><br>function socks5AddressParser(address) &#123;<br>    let [latter, former] = address.split(&quot;@&quot;).reverse();<br>    let username, password, hostname, port;<br>    if (former) &#123;<br>        const formers = former.split(&quot;:&quot;);<br>        if (formers.length !== 2) &#123;<br>            throw new Error(&#x27;Invalid SOCKS address format&#x27;);<br>        &#125;<br>        [username, password] = formers;<br>    &#125;<br>    const latters = latter.split(&quot;:&quot;);<br>    port = Number(latters.pop());<br>    if (isNaN(port)) &#123;<br>        throw new Error(&#x27;Invalid SOCKS address format&#x27;);<br>    &#125;<br>    hostname = latters.join(&quot;:&quot;);<br>    const regex = /^\[.*\]$/;<br>    if (hostname.includes(&quot;:&quot;) &amp;&amp; !regex.test(hostname)) &#123;<br>        throw new Error(&#x27;Invalid SOCKS address format&#x27;);<br>    &#125;<br>    return &#123;<br>        username,<br>        password,<br>        hostname,<br>        port,<br>    &#125;<br>&#125;<br><br>function revertFakeInfo(content, userID, hostName, isBase64) &#123;<br>    if (isBase64) content = atob(content);//Base64解码<br>    content = content.replace(new RegExp(fakeUserID, &#x27;g&#x27;), userID).replace(new RegExp(fakeHostName, &#x27;g&#x27;), hostName);<br>    if (isBase64) content = btoa(content);//Base64编码<br><br>    return content;<br>&#125;<br><br>function generateRandomNumber() &#123;<br>    let minNum = 100000;<br>    let maxNum = 999999;<br>    return Math.floor(Math.random() * (maxNum - minNum + 1)) + minNum;<br>&#125;<br><br>function generateRandomString() &#123;<br>    let minLength = 2;<br>    let maxLength = 3;<br>    let length = Math.floor(Math.random() * (maxLength - minLength + 1)) + minLength;<br>    let characters = &#x27;abcdefghijklmnopqrstuvwxyz&#x27;;<br>    let result = &#x27;&#x27;;<br>    for (let i = 0; i &lt; length; i++) &#123;<br>        result += characters[Math.floor(Math.random() * characters.length)];<br>    &#125;<br>    return result;<br>&#125;<br><br>function generateUUID() &#123;<br>    let uuid = &#x27;&#x27;;<br>    for (let i = 0; i &lt; 32; i++) &#123;<br>        let num = Math.floor(Math.random() * 16);<br>        if (num &lt; 10) &#123;<br>            uuid += num;<br>        &#125; else &#123;<br>            uuid += String.fromCharCode(num + 55);<br>        &#125;<br>    &#125;<br>    return uuid.replace(/(.&#123;8&#125;)(.&#123;4&#125;)(.&#123;4&#125;)(.&#123;4&#125;)(.&#123;12&#125;)/, &#x27;$1-$2-$3-$4-$5&#x27;).toLowerCase();<br>&#125;<br><br>async function getVLESSConfig(userID, hostName, sub, userAgent, RproxyIP) &#123;<br>    // 如果sub为空，则显示原始内容<br>    if (!sub || sub === &#x27;&#x27;) &#123;<br>        const vlessMain = `vless://$&#123;userID&#125;@$&#123;hostName&#125;:443?encryption=none&amp;security=tls&amp;sni=$&#123;hostName&#125;&amp;fp=randomized&amp;type=ws&amp;host=$&#123;hostName&#125;&amp;path=%2F%3Fed%3D2048#$&#123;hostName&#125;`;<br><br>        return `<br>	################################################################<br>	v2ray<br>	---------------------------------------------------------------<br>	$&#123;vlessMain&#125;<br>	---------------------------------------------------------------<br>	################################################################<br>	clash-meta<br>	---------------------------------------------------------------<br>	- type: vless<br>	  name: $&#123;hostName&#125;<br>	  server: $&#123;hostName&#125;<br>	  port: 443<br>	  uuid: $&#123;userID&#125;<br>	  network: ws<br>	  tls: true<br>	  udp: false<br>	  sni: $&#123;hostName&#125;<br>	  client-fingerprint: chrome<br>	  ws-opts:<br>	    path: &quot;/?ed=2048&quot;<br>	    headers:<br>		  host: $&#123;hostName&#125;<br>	---------------------------------------------------------------<br>	################################################################<br>	`;<br>    &#125; else if (sub &amp;&amp; userAgent.includes(&#x27;mozilla&#x27;) &amp;&amp; !userAgent.includes(&#x27;linux x86&#x27;)) &#123;<br>        const vlessMain = `vless://$&#123;userID&#125;@$&#123;hostName&#125;:443?encryption=none&amp;security=tls&amp;sni=$&#123;hostName&#125;&amp;fp=randomized&amp;type=ws&amp;host=$&#123;hostName&#125;&amp;path=%2F%3Fed%3D2048#$&#123;hostName&#125;`;<br><br>        return `<br>	################################################################<br>	Subscribe / sub 订阅地址, 支持 Base64、clash-meta、sing-box 订阅格式, 您的订阅内容由 $&#123;sub&#125; 提供维护支持, 自动获取ProxyIP: $&#123;RproxyIP&#125;.<br>	---------------------------------------------------------------<br>	https://$&#123;hostName&#125;/$&#123;userID&#125;<br>	---------------------------------------------------------------<br>	################################################################<br>	v2ray<br>	---------------------------------------------------------------<br>	$&#123;vlessMain&#125;<br>	---------------------------------------------------------------<br>	################################################################<br>	clash-meta<br>	---------------------------------------------------------------<br>	- type: vless<br>	  name: $&#123;hostName&#125;<br>	  server: $&#123;hostName&#125;<br>	  port: 443<br>	  uuid: $&#123;userID&#125;<br>	  network: ws<br>	  tls: true<br>	  udp: false<br>	  sni: $&#123;hostName&#125;<br>	  client-fingerprint: chrome<br>	  ws-opts:<br>		path: &quot;/?ed=2048&quot;<br>		headers:<br>		  host: $&#123;hostName&#125;<br>	---------------------------------------------------------------<br>	################################################################<br>	---------------------------------------------------------------<br>	---------------------------------------------------------------<br>	################################################################<br>	`;<br>    &#125; else &#123;<br>        if (typeof fetch != &#x27;function&#x27;) &#123;<br>            return &#x27;Error: fetch is not available in this environment.&#x27;;<br>        &#125;<br>        // 如果是使用默认域名，则改成一个workers的域名，订阅器会加上代理<br>        if (hostName.includes(&quot;.workers.dev&quot;))&#123;<br>            fakeHostName = `$&#123;fakeHostName&#125;.$&#123;generateRandomString()&#125;$&#123;generateRandomNumber()&#125;.workers.dev`;<br>        &#125; else if (hostName.includes(&quot;.pages.dev&quot;))&#123;<br>            fakeHostName = `$&#123;fakeHostName&#125;.$&#123;generateRandomString()&#125;$&#123;generateRandomNumber()&#125;.pages.dev`;<br>        &#125; else if (hostName.includes(&quot;worker&quot;) || hostName.includes(&quot;notls&quot;) || tls == false)&#123;<br>            fakeHostName = `notls.$&#123;fakeHostName&#125;$&#123;generateRandomNumber()&#125;.net`;<br>        &#125; else &#123;<br>            fakeHostName = `$&#123;fakeHostName&#125;.$&#123;generateRandomNumber()&#125;.xyz`<br>        &#125;<br>        let content = &quot;&quot;;<br>        let url = &quot;&quot;;<br>        let isBase64 = false;<br>        if (userAgent.includes(&#x27;clash&#x27;) &amp;&amp; !userAgent.includes(&#x27;nekobox&#x27;)) &#123;<br>            url = `https://$&#123;subconverter&#125;/sub?target=clash&amp;url=https%3A%2F%2F$&#123;sub&#125;%2Fsub%3Fhost%3D$&#123;fakeHostName&#125;%26uuid%3D$&#123;fakeUserID&#125;%26edgetunnel%3Dcmliu%26proxyip%3D$&#123;RproxyIP&#125;&amp;insert=false&amp;config=$&#123;encodeURIComponent(subconfig)&#125;&amp;emoji=true&amp;list=false&amp;tfo=false&amp;scv=true&amp;fdn=false&amp;sort=false&amp;new_name=true`;<br>        &#125; else if (userAgent.includes(&#x27;sing-box&#x27;) || userAgent.includes(&#x27;singbox&#x27;)) &#123;<br>            url = `https://$&#123;subconverter&#125;/sub?target=singbox&amp;url=https%3A%2F%2F$&#123;sub&#125;%2Fsub%3Fhost%3D$&#123;fakeHostName&#125;%26uuid%3D$&#123;fakeUserID&#125;%26edgetunnel%3Dcmliu%26proxyip%3D$&#123;RproxyIP&#125;&amp;insert=false&amp;config=$&#123;encodeURIComponent(subconfig)&#125;&amp;emoji=true&amp;list=false&amp;tfo=false&amp;scv=true&amp;fdn=false&amp;sort=false&amp;new_name=true`;<br>        &#125; else &#123;<br>            url = `https://$&#123;sub&#125;/sub?host=$&#123;fakeHostName&#125;&amp;uuid=$&#123;fakeUserID&#125;&amp;edgetunnel=cmliu&amp;proxyip=$&#123;RproxyIP&#125;`;<br>            isBase64 = true;<br>        &#125;<br>        try &#123;<br>            const response = await fetch(url ,&#123;<br>                headers: &#123;<br>                    &#x27;User-Agent&#x27;: &#x27;CF-Workers-edgetunnel/cmliu&#x27;<br>                &#125;&#125;);<br>            content = await response.text();<br>            return revertFakeInfo(content, userID, hostName, isBase64);<br>        &#125; catch (error) &#123;<br>            console.error(&#x27;Error fetching content:&#x27;, error);<br>            return `Error fetching content: $&#123;error.message&#125;`;<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h4 id="4-生成并更换UUID"><a href="#4-生成并更换UUID" class="headerlink" title="4.生成并更换UUID"></a>4.生成并更换UUID</h4><div class="note note-info @title">
+            <p>只需要更改脚本文件中的userID。可以到网上找一个在线生成UUID的网站直接生成，拿到新的替换即可。<br>这个UUID后面访问的时候需要使用，可以保存一下。<br>在线生成UUID：<a target="_blank" rel="noopener" href="https://1024tools.com/uuid">点击跳转</a></p>
+          </div>
+<img src="/2024/03/29/CloudflareWorker%E5%85%8D%E8%B4%B9%E6%90%AD%E5%BB%BA%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%E8%8A%82%E7%82%B9/8.png" srcset="/img/loading.gif" lazyload class="" width="488">
+<p>&nbsp;</p>
+<img src="/2024/03/29/CloudflareWorker%E5%85%8D%E8%B4%B9%E6%90%AD%E5%BB%BA%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%E8%8A%82%E7%82%B9/9.png" srcset="/img/loading.gif" lazyload class="" width="488">
+<p>&nbsp;</p>
+<img src="/2024/03/29/CloudflareWorker%E5%85%8D%E8%B4%B9%E6%90%AD%E5%BB%BA%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%E8%8A%82%E7%82%B9/10.png" srcset="/img/loading.gif" lazyload class="" width="488">
+<p>&nbsp;</p>
+<h4 id="5-保存并部署"><a href="#5-保存并部署" class="headerlink" title="5.保存并部署"></a>5.保存并部署</h4><img src="/2024/03/29/CloudflareWorker%E5%85%8D%E8%B4%B9%E6%90%AD%E5%BB%BA%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%E8%8A%82%E7%82%B9/14.png" srcset="/img/loading.gif" lazyload class="" width="488">
+<p>&nbsp;</p>
+<h4 id="6-访问及使用"><a href="#6-访问及使用" class="headerlink" title="6.访问及使用"></a>6.访问及使用</h4><p>复制刚才更改的UUID，点击右上角的workers.dev</p>
+<div class="note note-warning @title">
+            <p>如果点击workers.dev打开的网页一直没有响应。请开启科学上网工具访问</p>
+          </div> 
+<img src="/2024/03/29/CloudflareWorker%E5%85%8D%E8%B4%B9%E6%90%AD%E5%BB%BA%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%E8%8A%82%E7%82%B9/13.png" srcset="/img/loading.gif" lazyload class="" width="488">
+<p>&nbsp;</p>
+<p>在打开的网页地址后面输入”&#x2F;您的UUID”</p>
+<img src="/2024/03/29/CloudflareWorker%E5%85%8D%E8%B4%B9%E6%90%AD%E5%BB%BA%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%E8%8A%82%E7%82%B9/15.png" srcset="/img/loading.gif" lazyload class="" width="488">
+<p>&nbsp;</p>
+<img src="/2024/03/29/CloudflareWorker%E5%85%8D%E8%B4%B9%E6%90%AD%E5%BB%BA%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%E8%8A%82%E7%82%B9/16.png" srcset="/img/loading.gif" lazyload class="" width="488">
+<p>&nbsp;</p>
+<p>clash添加订阅<br>配置-&gt;托管配置-&gt;管理</p>
+<img src="/2024/03/29/CloudflareWorker%E5%85%8D%E8%B4%B9%E6%90%AD%E5%BB%BA%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%E8%8A%82%E7%82%B9/17.png" srcset="/img/loading.gif" lazyload class="" width="488">
+<p>&nbsp;<br>添加订阅</p>
+<img src="/2024/03/29/CloudflareWorker%E5%85%8D%E8%B4%B9%E6%90%AD%E5%BB%BA%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%E8%8A%82%E7%82%B9/18.png" srcset="/img/loading.gif" lazyload class="" width="488">
+<p>&nbsp;</p>
+<img src="/2024/03/29/CloudflareWorker%E5%85%8D%E8%B4%B9%E6%90%AD%E5%BB%BA%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%E8%8A%82%E7%82%B9/19.png" srcset="/img/loading.gif" lazyload class="" width="488">
+<p>&nbsp;</p>
+<img src="/2024/03/29/CloudflareWorker%E5%85%8D%E8%B4%B9%E6%90%AD%E5%BB%BA%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%E8%8A%82%E7%82%B9/20.png" srcset="/img/loading.gif" lazyload class="" width="488">
+<p>&nbsp;</p>
+<img src="/2024/03/29/CloudflareWorker%E5%85%8D%E8%B4%B9%E6%90%AD%E5%BB%BA%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%E8%8A%82%E7%82%B9/21.png" srcset="/img/loading.gif" lazyload class="" width="488">
+<p>&nbsp;</p>
+<h3 id="进阶教程"><a href="#进阶教程" class="headerlink" title="进阶教程"></a>进阶教程</h3><h4 id="pages方式部署项目"><a href="#pages方式部署项目" class="headerlink" title="pages方式部署项目"></a>pages方式部署项目</h4><p>1.从开源项目下载项目源文件：<a target="_blank" rel="noopener" href="https://codeload.github.com/cmliu/edgetunnel/zip/refs/heads/main">下载地址</a></p>
+<img src="/2024/03/29/CloudflareWorker%E5%85%8D%E8%B4%B9%E6%90%AD%E5%BB%BA%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%E8%8A%82%E7%82%B9/29.png" srcset="/img/loading.gif" lazyload class="" width="488">
+<p>&nbsp;<br>2.登录Cloudflare，找到Workers &amp; Pages并点击创建Create application.选择Pages,点击上传资产，把上一步下载的压缩包上传</p>
+<img src="/2024/03/29/CloudflareWorker%E5%85%8D%E8%B4%B9%E6%90%AD%E5%BB%BA%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%E8%8A%82%E7%82%B9/27.png" srcset="/img/loading.gif" lazyload class="" width="488">
+<p>&nbsp;</p>
+<img src="/2024/03/29/CloudflareWorker%E5%85%8D%E8%B4%B9%E6%90%AD%E5%BB%BA%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%E8%8A%82%E7%82%B9/28.png" srcset="/img/loading.gif" lazyload class="" width="488">
+<p>&nbsp;</p>
+<img src="/2024/03/29/CloudflareWorker%E5%85%8D%E8%B4%B9%E6%90%AD%E5%BB%BA%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%E8%8A%82%E7%82%B9/30.png" srcset="/img/loading.gif" lazyload class="" width="488">
+<p>&nbsp;</p>
+<img src="/2024/03/29/CloudflareWorker%E5%85%8D%E8%B4%B9%E6%90%AD%E5%BB%BA%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%E8%8A%82%E7%82%B9/31.png" srcset="/img/loading.gif" lazyload class="" width="488">
+<p>&nbsp;</p>
+<img src="/2024/03/29/CloudflareWorker%E5%85%8D%E8%B4%B9%E6%90%AD%E5%BB%BA%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%E8%8A%82%E7%82%B9/32.png" srcset="/img/loading.gif" lazyload class="" width="488">
+<p>&nbsp;</p>
+<img src="/2024/03/29/CloudflareWorker%E5%85%8D%E8%B4%B9%E6%90%AD%E5%BB%BA%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%E8%8A%82%E7%82%B9/33.png" srcset="/img/loading.gif" lazyload class="" width="488">
+<p>&nbsp;</p>
+<img src="/2024/03/29/CloudflareWorker%E5%85%8D%E8%B4%B9%E6%90%AD%E5%BB%BA%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%E8%8A%82%E7%82%B9/34.png" srcset="/img/loading.gif" lazyload class="" width="488">
+<p>&nbsp;</p>
+<img src="/2024/03/29/CloudflareWorker%E5%85%8D%E8%B4%B9%E6%90%AD%E5%BB%BA%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%E8%8A%82%E7%82%B9/35.png" srcset="/img/loading.gif" lazyload class="" width="488">
+<p>&nbsp;<br>UUID可以参考前面的步骤去获取</p>
+<img src="/2024/03/29/CloudflareWorker%E5%85%8D%E8%B4%B9%E6%90%AD%E5%BB%BA%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%E8%8A%82%E7%82%B9/36.png" srcset="/img/loading.gif" lazyload class="" width="488">
+<p>&nbsp;</p>
+<img src="/2024/03/29/CloudflareWorker%E5%85%8D%E8%B4%B9%E6%90%AD%E5%BB%BA%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%E8%8A%82%E7%82%B9/37.png" srcset="/img/loading.gif" lazyload class="" width="488">
+<p>&nbsp;</p>
+<img src="/2024/03/29/CloudflareWorker%E5%85%8D%E8%B4%B9%E6%90%AD%E5%BB%BA%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%E8%8A%82%E7%82%B9/38.png" srcset="/img/loading.gif" lazyload class="" width="488">
+<p>&nbsp;</p>
+<img src="/2024/03/29/CloudflareWorker%E5%85%8D%E8%B4%B9%E6%90%AD%E5%BB%BA%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%E8%8A%82%E7%82%B9/40.png" srcset="/img/loading.gif" lazyload class="" width="488">
+<p>&nbsp;</p>
+<img src="/2024/03/29/CloudflareWorker%E5%85%8D%E8%B4%B9%E6%90%AD%E5%BB%BA%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%E8%8A%82%E7%82%B9/39.png" srcset="/img/loading.gif" lazyload class="" width="488">
+<p>&nbsp;</p>
+<h4 id="申请免费域名"><a href="#申请免费域名" class="headerlink" title="申请免费域名"></a>申请免费域名</h4><p>免费域名申请地址：<a href="">点击跳转</a></p>
+<img src="/2024/03/29/CloudflareWorker%E5%85%8D%E8%B4%B9%E6%90%AD%E5%BB%BA%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%E8%8A%82%E7%82%B9/42.png" srcset="/img/loading.gif" lazyload class="" width="488">
+<p>&nbsp;<br>到你的邮箱中，找到刚收到的邮件，点击确认</p>
+<img src="/2024/03/29/CloudflareWorker%E5%85%8D%E8%B4%B9%E6%90%AD%E5%BB%BA%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%E8%8A%82%E7%82%B9/22.png" srcset="/img/loading.gif" lazyload class="" width="488">
+<p>&nbsp;<br>设置你的登录密码</p>
+<img src="/2024/03/29/CloudflareWorker%E5%85%8D%E8%B4%B9%E6%90%AD%E5%BB%BA%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%E8%8A%82%E7%82%B9/23.png" srcset="/img/loading.gif" lazyload class="" width="488">
+<p>&nbsp;<br>再次输入你的邮箱，但是会提示你已经确认过了，这个时候，点击下面的登录，输入你的邮箱和设置的密码登录即可。</p>
+<img src="/2024/03/29/CloudflareWorker%E5%85%8D%E8%B4%B9%E6%90%AD%E5%BB%BA%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%E8%8A%82%E7%82%B9/24.png" srcset="/img/loading.gif" lazyload class="" width="488">
+<p>&nbsp;</p>
+<img src="/2024/03/29/CloudflareWorker%E5%85%8D%E8%B4%B9%E6%90%AD%E5%BB%BA%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%E8%8A%82%E7%82%B9/25.png" srcset="/img/loading.gif" lazyload class="" width="488">
+<p>&nbsp;<br>复制你的域名，回到cf中，点击自自定义域</p>
+<img src="/2024/03/29/CloudflareWorker%E5%85%8D%E8%B4%B9%E6%90%AD%E5%BB%BA%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%E8%8A%82%E7%82%B9/41.png" srcset="/img/loading.gif" lazyload class="" width="488">
+<p>&nbsp; </p>
+<img src="/2024/03/29/CloudflareWorker%E5%85%8D%E8%B4%B9%E6%90%AD%E5%BB%BA%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%E8%8A%82%E7%82%B9/43.png" srcset="/img/loading.gif" lazyload class="" width="488">
+<p>&nbsp;</p>
+<div class="note note-warning @title">
+            <p> 这里填写的域名格式是：自定义名字+”.”+免费域名<br>比如：你申请的域名是xxx.dynv6.net,你自定义的名字是：free。那么填写：free.xxx.dynv6.net</p>
+          </div>
+<img src="/2024/03/29/CloudflareWorker%E5%85%8D%E8%B4%B9%E6%90%AD%E5%BB%BA%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%E8%8A%82%E7%82%B9/44.png" srcset="/img/loading.gif" lazyload class="" width="488">
+<p>&nbsp;</p>
+<img src="/2024/03/29/CloudflareWorker%E5%85%8D%E8%B4%B9%E6%90%AD%E5%BB%BA%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%E8%8A%82%E7%82%B9/45.png" srcset="/img/loading.gif" lazyload class="" width="488">
+<p>&nbsp;</p>
+<img src="/2024/03/29/CloudflareWorker%E5%85%8D%E8%B4%B9%E6%90%AD%E5%BB%BA%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%E8%8A%82%E7%82%B9/46.png" srcset="/img/loading.gif" lazyload class="" width="488">
+<p>&nbsp;</p>
+<img src="/2024/03/29/CloudflareWorker%E5%85%8D%E8%B4%B9%E6%90%AD%E5%BB%BA%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%E8%8A%82%E7%82%B9/26.png" srcset="/img/loading.gif" lazyload class="" width="488">
+<p>&nbsp;</p>
+<div class="note note-warning @title">
+            <p>cf复制的目标内容，一定要在最后加一个点<br>比如复制的内容是：free-d93.pages.dev，到域名的解析的data中填写：free-d93.pages.dev.</p>
+          </div>
+<img src="/2024/03/29/CloudflareWorker%E5%85%8D%E8%B4%B9%E6%90%AD%E5%BB%BA%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%E8%8A%82%E7%82%B9/47.png" srcset="/img/loading.gif" lazyload class="" width="488">
+<p>&nbsp;</p>
+<img src="/2024/03/29/CloudflareWorker%E5%85%8D%E8%B4%B9%E6%90%AD%E5%BB%BA%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%E8%8A%82%E7%82%B9/48.png" srcset="/img/loading.gif" lazyload class="" width="488">
+<p>&nbsp;</p>
+<img src="/2024/03/29/CloudflareWorker%E5%85%8D%E8%B4%B9%E6%90%AD%E5%BB%BA%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%E8%8A%82%E7%82%B9/49.png" srcset="/img/loading.gif" lazyload class="" width="488">
+<p>&nbsp;</p>
+<img src="/2024/03/29/CloudflareWorker%E5%85%8D%E8%B4%B9%E6%90%AD%E5%BB%BA%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%E8%8A%82%E7%82%B9/50.png" srcset="/img/loading.gif" lazyload class="" width="488">
+<p>&nbsp;</p>
+<img src="/2024/03/29/CloudflareWorker%E5%85%8D%E8%B4%B9%E6%90%AD%E5%BB%BA%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%E8%8A%82%E7%82%B9/51.png" srcset="/img/loading.gif" lazyload class="" width="488">
+<p>&nbsp;</p>
+<h3 id="博主点评"><a href="#博主点评" class="headerlink" title="博主点评"></a>博主点评</h3><p>优点：免费，速度快<br>缺点：他的IP显示的是国内IP，对于一些特殊的网站，比如ChatGPT可能无法使用</p>
+<h3 id="相关视频"><a href="#相关视频" class="headerlink" title="相关视频"></a>相关视频</h3><iframe width="auto" height="auto" src="https://www.youtube.com/embed/OuThm45VrBs" title="2024最省心最简单而且速度很快的免费科学上网方式！自动优选ip,支持生成订阅链接！小白用户都能操作！" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+
+
+<p><a target="_blank" rel="noopener" href="https://稳连云.me/#/register?code=TCJc126r">推荐：低至6元&#x2F;100G&#x2F;月机场</a></p>
+
+                
+              </div>
+            
+
+              <!--打赏-->
+              <div class="reward">
+                  <div class="reward-button">赏 <span class="reward-code">
+		<span class="alipay-code"> <img class="alipay-img wdp-appear" src="/img/alipay.png" srcset="/img/loading.gif" lazyload><b>支付宝打赏</b> </span>
+		<span class="wechat-code"> <img class="wechat-img wdp-appear" src="/img/wechat.png" srcset="/img/loading.gif" lazyload><b>微信打赏</b> </span> </span>
+                  </div>
+                  <p class="reward-notice">如果文章对你有帮助，欢迎点击上方按钮打赏作者，更多功能请访问<a href="https://blog.fxcxy.com">博客站</a></p>
+              </div>
+              <!--打赏-->
+              <hr/>
+              <div style="text-align:right;"> <!-- 自己添加的“分享到”模块：开始。用的是 social-share.js。让所有的分享按钮右对齐-->
+
+                  <div class="social-share-container" style="margin-top: 15px;"> <!-- 生成一组分享按钮 -->
+                       <!--如果博客语言是中文，就显示“点击分享到：”，非中文一律显示“Share it:”-->
+                      点击分享到：&nbsp;&nbsp;
+                      
+                  </div>
+                  <!-- 加载 jQuery 库 -->
+                  
+<script src="/js/jquery.min.js"></script>
+
+                  <!-- 导入 qrcode.min.js -->
+                  
+<script src="/js/qrcode.min.js"></script>
+
+                  <!-- 加载 social-share.js 的 js 库，另外还要加载 social-share.js 的 CSS，可以修改 `_config.fluid.yml` 的 `custom_css` 加载，也可以修改 `themes/fluid/layout/_partial/css.ejs` 加载。-->
+                  
+<script src="/js/social-share.min.js"></script>
+
+                  <script>
+                    /* 执行 js 代码，new 一个新对象，详见 social-share.js 在 GitHub 的文档 */
+                    new SocialShare('.social-share-container', {
+                      theme: 'circle',  // 使用圆形主题
+                      // 单独定义wechat分享参数
+                      wechat: {
+                        sort: 1, // 排序参数，数字较小的展示在前面,默认999
+                      },
+                      twitter: {
+                        sort: 2, // 排序参数，数字较小的展示在前面,默认999
+                      },
+                      facebook: {
+                        sort: 3, // 排序参数，数字较小的展示在前面,默认999
+                      }
+                    });
+                  </script>
+              </div> <!-- 自己添加的“分享到”模块：结束。-->
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%B7%A5%E5%85%B7%E5%88%86%E4%BA%AB/" class="category-chain-item">工具分享</a>
+  
+  
+
+      </span>
+    
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/" class="category-chain-item">技术分享</a>
+  
+  
+
+      </span>
+    
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E8%A7%86%E9%A2%91%E6%95%99%E7%A8%8B/" class="category-chain-item">视频教程</a>
+  
+  
+
+      </span>
+    
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/" class="category-chain-item">科学上网</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/Cloudflare-Worker/" class="print-no-link">#Cloudflare Worker</a>
+      
+        <a href="/tags/%E7%BF%BB%E5%A2%99%E5%B7%A5%E5%85%B7/" class="print-no-link">#翻墙工具</a>
+      
+        <a href="/tags/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/" class="print-no-link">#科学上网</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>利用Cloudflare Worker免费搭建科学上网节点，上网速度是真的快！</div>
+      <div>https://blog.fxcxy.com/2024/03/29/CloudflareWorker免费搭建科学上网节点/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>spatacus</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2024年3月29日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2024/04/05/VmwareFunsion%E5%AE%89%E8%A3%85macOS14/" title="VMware Funsion安装macOS Sonoma 14">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">VMware Funsion安装macOS Sonoma 14</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2024/03/27/%E5%9B%BD%E5%86%85APP%E5%BA%94%E7%94%A8%E5%B8%82%E5%9C%BA%E5%AE%A1%E6%A0%B8%E9%97%AE%E9%A2%98/" title="国内APP应用市场(华为小米)审核问题集合">
+                        <span class="hidden-mobile">国内APP应用市场(华为小米)审核问题集合</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://lib.baomitu.com/valine/1.5.1/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"J7kyQXV9R3CXOiA1eubrlflY-gzGzoHsz","appKey":"qHZzPzRcvsutXvHvBewqGmhw","path":"window.location.pathname","placeholder":"输入您的评论","avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":false},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          var imgSelector = '#valine .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://www.youtube.com/channel/UCn0Yarp_h6oqn1-QLvlgbDg?sub_confirmation=1" target="_blank" rel="nofollow noopener"><span>Youtube</span></a>- <a href="https://twitter.com/spatacus1986" target="_blank" rel="nofollow noopener"><span>Twitter</span></a>- <a href="https://t.me/+8W45Y29o5T1mMGI1" target="_blank" rel="nofollow noopener"><span>电报群</span></a>- <a href="https://v.douyin.com/iNpPYY4E/" target="_blank" rel="nofollow noopener"><span>抖音</span></a>- <a href="https://www.ixigua.com/home/103680436540" target="_blank" rel="nofollow noopener"><span>西瓜视频</span></a> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="leancloud-site-pv-container" style="display: none">
+        总访问量 
+        <span id="leancloud-site-pv"></span>
+         次
+      </span>
+    
+    
+      <span id="leancloud-site-uv-container" style="display: none">
+        总访客数 
+        <span id="leancloud-site-uv"></span>
+         人
+      </span>
+    
+    
+
+  
+</div>
+
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script defer src="/js/leancloud.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

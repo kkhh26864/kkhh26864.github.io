@@ -1,0 +1,896 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/logo.png">
+  <link rel="icon" href="/img/logo.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="twitter:card" content="/img/bt-gitlab.png" />
+    <meta name="twitter:site" content="自由码农" />
+    <meta name="twitter:creator" content="@spatacus1986">
+    <meta name="twitter:title" content="宝塔安装配置gitlab-ce - 自由码农" />
+    <meta name="twitter:description" content="宝塔安装配置gitlab-ce前言 宝塔是一款基于Linux的Web面板，可以实现Web服务器的管理、网站的部署、数据库的管理、FTP的管理、SSL证书的管理、系统监控等功能。本文将介绍如何在宝塔上安装并配置gitlab-ce。本想直接在宝塔的软件商店中搜索并安装gitlab-ce，但发现软件商店中安装失败，因此打算手动安装。于是通过命令行手动安装，但是命令行执行安装命令也失败，懒得折腾环境，所以" />
+    <meta name="twitter:image" content="/img/bt-gitlab.png" />
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="spatacus">
+  <meta name="keywords" content="自由码农,技术博客,工具分享，网站开发，App开发，小程序开发，H5开发">
+  
+    <meta name="description" content="宝塔安装配置gitlab-ce前言 宝塔是一款基于Linux的Web面板，可以实现Web服务器的管理、网站的部署、数据库的管理、FTP的管理、SSL证书的管理、系统监控等功能。本文将介绍如何在宝塔上安装并配置gitlab-ce。本想直接在宝塔的软件商店中搜索并安装gitlab-ce，但发现软件商店中安装失败，因此打算手动安装。于是通过命令行手动安装，但是命令行执行安装命令也失败，懒得折腾环境，所以">
+<meta property="og:type" content="article">
+<meta property="og:title" content="宝塔安装配置gitlab-ce">
+<meta property="og:url" content="https://blog.fxcxy.com/2024/08/20/%E5%AE%9D%E5%A1%94%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AEgitlab-ce/index.html">
+<meta property="og:site_name" content="自由码农">
+<meta property="og:description" content="宝塔安装配置gitlab-ce前言 宝塔是一款基于Linux的Web面板，可以实现Web服务器的管理、网站的部署、数据库的管理、FTP的管理、SSL证书的管理、系统监控等功能。本文将介绍如何在宝塔上安装并配置gitlab-ce。本想直接在宝塔的软件商店中搜索并安装gitlab-ce，但发现软件商店中安装失败，因此打算手动安装。于是通过命令行手动安装，但是命令行执行安装命令也失败，懒得折腾环境，所以">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://blog.fxcxy.com/img/bt-gitlab.png">
+<meta property="article:published_time" content="2024-08-20T00:48:55.000Z">
+<meta property="article:modified_time" content="2024-09-13T10:13:27.460Z">
+<meta property="article:author" content="spatacus">
+<meta property="article:tag" content="centos7">
+<meta property="article:tag" content="docker">
+<meta property="article:tag" content="gitlab-ce">
+<meta property="article:tag" content="工具分享">
+<meta property="article:tag" content="技术分享">
+<meta property="article:tag" content="宝塔">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://blog.fxcxy.com/img/bt-gitlab.png">
+  
+  
+  
+  <title>宝塔安装配置gitlab-ce - 自由码农</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+  
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_4443546_u6jwvi2qcka.css">
+<link rel="stylesheet" href="/css/social-share.min.css">
+<link rel="stylesheet" href="/css/myreward.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"blog.fxcxy.com","root":"/","version":"1.9.7","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"复制"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"J7kyQXV9R3CXOiA1eubrlflY-gzGzoHsz","app_key":"qHZzPzRcvsutXvHvBewqGmhw","server_url":"https://leancloud.fxcxy.com","path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+
+  
+    <!-- Google tag (gtag.js) -->
+    <script async>
+      if (!Fluid.ctx.dnt) {
+        Fluid.utils.createScript("https://www.googletagmanager.com/gtag/js?id=", function() {
+          window.dataLayer = window.dataLayer || [];
+          function gtag() {
+            dataLayer.push(arguments);
+          }
+          gtag('js', new Date());
+          gtag('config', '');
+        });
+      }
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+    
+  
+
+
+
+  
+<meta name="generator" content="Hexo 7.1.1"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>自由码农</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="宝塔安装配置gitlab-ce"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2024-08-20 07:48" pubdate>
+          2024年8月20日 早上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          1.4k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          12 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="leancloud-page-views"></span>次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">宝塔安装配置gitlab-ce</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="宝塔安装配置gitlab-ce"><a href="#宝塔安装配置gitlab-ce" class="headerlink" title="宝塔安装配置gitlab-ce"></a>宝塔安装配置gitlab-ce</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><blockquote>
+<p>宝塔是一款基于Linux的Web面板，可以实现Web服务器的管理、网站的部署、数据库的管理、FTP的管理、SSL证书的管理、系统监控等功能。本文将介绍如何在宝塔上安装并配置gitlab-ce。<br>本想直接在宝塔的软件商店中搜索并安装gitlab-ce，但发现软件商店中安装失败，因此打算手动安装。<br>于是通过命令行手动安装，但是命令行执行安装命令也失败，懒得折腾环境，所以使用docker安装。</p>
+</blockquote>
+<h2 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h2><ul>
+<li>宝塔面板：购买或租用一台云服务器，安装宝塔面板，并配置好SSH登录。</li>
+<li>域名：购买一个域名，并将域名解析到服务器IP。</li>
+<li>服务器：CentOS 7.x 64位。</li>
+</ul>
+<h2 id="安装gitlab-ce"><a href="#安装gitlab-ce" class="headerlink" title="安装gitlab-ce"></a>安装gitlab-ce</h2><h3 id="1-登录宝塔面板"><a href="#1-登录宝塔面板" class="headerlink" title="1. 登录宝塔面板"></a>1. 登录宝塔面板</h3><p>打开浏览器，输入服务器IP，进入宝塔面板登录页面。</p>
+<h3 id="2-点击左侧菜单栏的“软件商店”，搜索并安装“docker”。"><a href="#2-点击左侧菜单栏的“软件商店”，搜索并安装“docker”。" class="headerlink" title="2. 点击左侧菜单栏的“软件商店”，搜索并安装“docker”。"></a>2. 点击左侧菜单栏的“软件商店”，搜索并安装“docker”。</h3><img src="/2024/08/20/%E5%AE%9D%E5%A1%94%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AEgitlab-ce/1.png" srcset="/img/loading.gif" lazyload class="" width="488">
+<p>&nbsp;</p>
+<h3 id="3-点击左侧菜单栏的docker，根据提示安装docker-compose。"><a href="#3-点击左侧菜单栏的docker，根据提示安装docker-compose。" class="headerlink" title="3. 点击左侧菜单栏的docker，根据提示安装docker-compose。"></a>3. 点击左侧菜单栏的docker，根据提示安装docker-compose。</h3><img src="/2024/08/20/%E5%AE%9D%E5%A1%94%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AEgitlab-ce/2.png" srcset="/img/loading.gif" lazyload class="" width="488">
+<p>&nbsp;</p>
+<h3 id="4-点击本地镜像-从仓库拉去-常规拉取-镜像名输入：gitlab-gitlab-ce-latest"><a href="#4-点击本地镜像-从仓库拉去-常规拉取-镜像名输入：gitlab-gitlab-ce-latest" class="headerlink" title="4. 点击本地镜像-从仓库拉去-常规拉取-镜像名输入：gitlab&#x2F;gitlab-ce:latest"></a>4. 点击本地镜像-从仓库拉去-常规拉取-镜像名输入：gitlab&#x2F;gitlab-ce:latest</h3><img src="/2024/08/20/%E5%AE%9D%E5%A1%94%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AEgitlab-ce/3.png" srcset="/img/loading.gif" lazyload class="" width="488">
+<p>&nbsp;</p>
+<img src="/2024/08/20/%E5%AE%9D%E5%A1%94%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AEgitlab-ce/4.png" srcset="/img/loading.gif" lazyload class="" width="488">
+<p>&nbsp;</p>
+<div class="note note-warning @title">
+            <p>注意：不同的宝塔版本看到的界面可能不同，请根据实际情况选择。最终的目的是先获取gitlab-ce镜像，然后在宝塔中启动容器。</p>
+          </div>
+<img src="/2024/08/20/%E5%AE%9D%E5%A1%94%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AEgitlab-ce/5.png" srcset="/img/loading.gif" lazyload class="" width="488">
+<p>&nbsp;</p>
+<h3 id="5-运行Gitlab镜像"><a href="#5-运行Gitlab镜像" class="headerlink" title="5. 运行Gitlab镜像"></a>5. 运行Gitlab镜像</h3><p>在服务器上打开终端，输入以下命令创建docker容器：</p>
+<div class="note note-warning @title">
+            <p>注意：gitlab.xxx.com一定要改成你为gitlab配置的域名或者IP地址。不然后面需要去更改gitlab的配置。我后面通过修改配置一直无法成功，最后是删除容器重新通过下面的命令配置好域名才行。</p>
+          </div>
+
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs groovy">docker run -d \<br>--hostname gitlab.xxx.com \<br>--name gitlab \<br>--restart always \<br>-p <span class="hljs-number">8002</span>:<span class="hljs-number">443</span> -p <span class="hljs-number">8003</span>:<span class="hljs-number">80</span> -p <span class="hljs-number">8004</span>:<span class="hljs-number">22</span> \<br>-v <span class="hljs-regexp">/etc/</span><span class="hljs-attr">localtime:</span><span class="hljs-regexp">/etc/</span><span class="hljs-attr">localtime:</span>ro \<br>-v <span class="hljs-regexp">/usr/</span>local<span class="hljs-regexp">/gitlab_data/</span>gitlab<span class="hljs-regexp">/config:/</span>etc/gitlab \<br>-v <span class="hljs-regexp">/usr/</span>local<span class="hljs-regexp">/gitlab_data/</span>gitlab<span class="hljs-regexp">/logs:/</span><span class="hljs-keyword">var</span><span class="hljs-regexp">/log/</span>gitlab \<br>-v <span class="hljs-regexp">/usr/</span>local<span class="hljs-regexp">/gitlab_data/</span>gitlab<span class="hljs-regexp">/data:/</span><span class="hljs-keyword">var</span><span class="hljs-regexp">/opt/</span>gitlab \<br>gitlab/gitlab-ce<br></code></pre></td></tr></table></figure>
+<p>&nbsp;<br>参数说明</p>
+<p>-d 指定后台运行<br>–hostname 指定主机名(域名或IP地址)<br>–name 指定容器名<br>-p 端口映射 443 https端口 80 http端口 22 ssh端口<br>–restart always  容器停止后的重启策略: 容器退出时总是重启<br>-v 指定挂载存储卷首先在宿主主机创建对应的目录<br>&nbsp;</p>
+<img src="/2024/08/20/%E5%AE%9D%E5%A1%94%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AEgitlab-ce/6.png" srcset="/img/loading.gif" lazyload class="" width="488">
+<p>&nbsp;</p>
+<img src="/2024/08/20/%E5%AE%9D%E5%A1%94%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AEgitlab-ce/7.png" srcset="/img/loading.gif" lazyload class="" width="488">
+<p>&nbsp;</p>
+<h3 id="6-宝塔放开gitlab所需端口"><a href="#6-宝塔放开gitlab所需端口" class="headerlink" title="6. 宝塔放开gitlab所需端口"></a>6. 宝塔放开gitlab所需端口</h3><p>在宝塔面板的“防火墙”中，放开gitlab所需的端口，包括8002、8003、8004。如果采用的大厂云服务器，则需要在云服务器的安全组中放开相应的端口。</p>
+<img src="/2024/08/20/%E5%AE%9D%E5%A1%94%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AEgitlab-ce/8.png" srcset="/img/loading.gif" lazyload class="" width="488">
+<p>&nbsp;</p>
+<h3 id="7-查找gitlab的初始密码"><a href="#7-查找gitlab的初始密码" class="headerlink" title="7. 查找gitlab的初始密码"></a>7. 查找gitlab的初始密码</h3><p>默认用户名：root<br>容器启动后，在服务器上打开终端或docker容器的终端，输入以下命令查看初始密码：</p>
+<p>如果是在宝塔面板的终端中查看，需要进入容器内部，然后查看密码。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">docker <span class="hljs-built_in">exec</span> -it gitlab的容器名 bash<br><span class="hljs-built_in">cat</span> /etc/gitlab/initial_root_password<br></code></pre></td></tr></table></figure>
+<p>如果是在docker容器的终端中查看，直接查看密码即可。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">cat</span> /etc/gitlab/initial_root_password<br></code></pre></td></tr></table></figure>
+<p>&nbsp;</p>
+<img src="/2024/08/20/%E5%AE%9D%E5%A1%94%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AEgitlab-ce/902.png" srcset="/img/loading.gif" lazyload class="" width="488">
+<p>&nbsp;</p>
+<img src="/2024/08/20/%E5%AE%9D%E5%A1%94%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AEgitlab-ce/901.png" srcset="/img/loading.gif" lazyload class="" width="488">
+<p>&nbsp;</p>
+<img src="/2024/08/20/%E5%AE%9D%E5%A1%94%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AEgitlab-ce/9.png" srcset="/img/loading.gif" lazyload class="" width="488">
+<p>&nbsp;</p>
+<div class="note note-warning @title">
+            <p>如果在执行cat &#x2F;etc&#x2F;gitlab&#x2F;initial_root_password命令时，提示找不到文件，则可以通过下面的命令重置密码：</p><figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs applescript">docker exec -<span class="hljs-keyword">it</span> gitlab容器名 gitlab-rake <span class="hljs-string">&quot;gitlab:password:reset[root]&quot;</span><br></code></pre></td></tr></table></figure>
+          </div>
+
+
+<h3 id="4-配置域名"><a href="#4-配置域名" class="headerlink" title="4. 配置域名"></a>4. 配置域名</h3><p>由于是通过宝塔来给docker的gitlab配置域名，需要通过反向代理来实现</p>
+<h4 id="4-1-将域名解析到服务器IP，然后在宝塔-网站-反向代理，然后点击“添加反代”。"><a href="#4-1-将域名解析到服务器IP，然后在宝塔-网站-反向代理，然后点击“添加反代”。" class="headerlink" title="4.1 将域名解析到服务器IP，然后在宝塔-网站-反向代理，然后点击“添加反代”。"></a>4.1 将域名解析到服务器IP，然后在宝塔-网站-反向代理，然后点击“添加反代”。</h4><p>&nbsp;</p>
+<img src="/2024/08/20/%E5%AE%9D%E5%A1%94%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AEgitlab-ce/10.png" srcset="/img/loading.gif" lazyload class="" width="488">
+<p>&nbsp;</p>
+<h4 id="4-2-添加反向代理"><a href="#4-2-添加反向代理" class="headerlink" title="4.2 添加反向代理"></a>4.2 添加反向代理</h4><p>配置反向代理时，先查看docker容器的IP，然后在反向代理的配置中，输入http:&#x2F;&#x2F;容器IP，注意这里不需要填写端口号。在前面创建docker容器时已将8003端口指向了容器的80端口，所以这里不需要填写端口号</p>
+<img src="/2024/08/20/%E5%AE%9D%E5%A1%94%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AEgitlab-ce/14.png" srcset="/img/loading.gif" lazyload class="" width="488">
+<p>&nbsp;<br>&nbsp;</p>
+<img src="/2024/08/20/%E5%AE%9D%E5%A1%94%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AEgitlab-ce/11.png" srcset="/img/loading.gif" lazyload class="" width="488">
+<p>&nbsp; </p>
+<h4 id="4-3-获取SSL免费证书"><a href="#4-3-获取SSL免费证书" class="headerlink" title="4.3 获取SSL免费证书"></a>4.3 获取SSL免费证书</h4><p>&nbsp;</p>
+<img src="/2024/08/20/%E5%AE%9D%E5%A1%94%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AEgitlab-ce/12.png" srcset="/img/loading.gif" lazyload class="" width="488">
+<p>&nbsp;</p>
+<h3 id="5-访问GitLab"><a href="#5-访问GitLab" class="headerlink" title="5. 访问GitLab"></a>5. 访问GitLab</h3><p>打开浏览器，输入域名，访问GitLab。 </p>
+<h2 id="踩过的坑"><a href="#踩过的坑" class="headerlink" title="踩过的坑"></a>踩过的坑</h2><h3 id="1-宝塔的应用商店直接安装gitlab-ce失败或服务器直接安装docker环境安装失败"><a href="#1-宝塔的应用商店直接安装gitlab-ce失败或服务器直接安装docker环境安装失败" class="headerlink" title="1. 宝塔的应用商店直接安装gitlab-ce失败或服务器直接安装docker环境安装失败"></a>1. 宝塔的应用商店直接安装gitlab-ce失败或服务器直接安装docker环境安装失败</h3><p>不想折腾的，建议使用宝塔的docker环境安装gitlab-ce。</p>
+<h3 id="2-按照上面的步骤安装gitlab-ce，但是访问GitLab时，提示502-Bad-Gateway或服务器拒绝响应"><a href="#2-按照上面的步骤安装gitlab-ce，但是访问GitLab时，提示502-Bad-Gateway或服务器拒绝响应" class="headerlink" title="2. 按照上面的步骤安装gitlab-ce，但是访问GitLab时，提示502 Bad Gateway或服务器拒绝响应"></a>2. 按照上面的步骤安装gitlab-ce，但是访问GitLab时，提示502 Bad Gateway或服务器拒绝响应</h3><p>1.检查防火墙问题：检查宝塔防火墙是否放开了8002、8003、8004端口。<br>2.服务安全组问题：如果是云服务器，需要在云服务器的安全组中放开相应的端口8002、8003、8004。<br>3.确保你的gitlab-ce容器已经启动，然后在浏览器中输入服务器IP+端口，比如：<a href="http://192.168.127.12:8003。如果通过这种方式无法访问，那就是你的gitlab-ce没有部署成功。也有可能是你的端口号写错，注意检查。">http://192.168.127.12:8003。如果通过这种方式无法访问，那就是你的gitlab-ce没有部署成功。也有可能是你的端口号写错，注意检查。</a><br>4.如果通过服务器IP+端口能访问gitlab，确保你的域名已经解析到服务器IP。</p>
+<h2 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h2><p>本文介绍了如何在宝塔上安装并配置gitlab-ce。<br>gitlab-ce是一个开源的Git版本管理软件，可以实现代码的版本控制、代码的分支管理、代码的合并、代码的回滚等功能。<br>宝塔是一款基于Linux的Web面板，可以实现Web服务器的管理、网站的部署、数据库的管理、FTP的管理、SSL证书的管理、系统监控等功能。<br>通过宝塔可以方便地管理服务器、部署网站、管理数据库、管理FTP、管理SSL证书、系统监控等。<br>希望本文对你有所帮助。</p>
+
+                
+              </div>
+            
+
+              <!--打赏-->
+              <div class="reward">
+                  <div class="reward-button">赏 <span class="reward-code">
+		<span class="alipay-code"> <img class="alipay-img wdp-appear" src="/img/alipay.png" srcset="/img/loading.gif" lazyload><b>支付宝打赏</b> </span>
+		<span class="wechat-code"> <img class="wechat-img wdp-appear" src="/img/wechat.png" srcset="/img/loading.gif" lazyload><b>微信打赏</b> </span> </span>
+                  </div>
+                  <p class="reward-notice">如果文章对你有帮助，欢迎点击上方按钮打赏作者，更多功能请访问<a href="https://blog.fxcxy.com">博客站</a></p>
+              </div>
+              <!--打赏-->
+              <hr/>
+              <div style="text-align:right;"> <!-- 自己添加的“分享到”模块：开始。用的是 social-share.js。让所有的分享按钮右对齐-->
+
+                  <div class="social-share-container" style="margin-top: 15px;"> <!-- 生成一组分享按钮 -->
+                       <!--如果博客语言是中文，就显示“点击分享到：”，非中文一律显示“Share it:”-->
+                      点击分享到：&nbsp;&nbsp;
+                      
+                  </div>
+                  <!-- 加载 jQuery 库 -->
+                  
+<script src="/js/jquery.min.js"></script>
+
+                  <!-- 导入 qrcode.min.js -->
+                  
+<script src="/js/qrcode.min.js"></script>
+
+                  <!-- 加载 social-share.js 的 js 库，另外还要加载 social-share.js 的 CSS，可以修改 `_config.fluid.yml` 的 `custom_css` 加载，也可以修改 `themes/fluid/layout/_partial/css.ejs` 加载。-->
+                  
+<script src="/js/social-share.min.js"></script>
+
+                  <script>
+                    /* 执行 js 代码，new 一个新对象，详见 social-share.js 在 GitHub 的文档 */
+                    new SocialShare('.social-share-container', {
+                      theme: 'circle',  // 使用圆形主题
+                      // 单独定义wechat分享参数
+                      wechat: {
+                        sort: 1, // 排序参数，数字较小的展示在前面,默认999
+                      },
+                      twitter: {
+                        sort: 2, // 排序参数，数字较小的展示在前面,默认999
+                      },
+                      facebook: {
+                        sort: 3, // 排序参数，数字较小的展示在前面,默认999
+                      }
+                    });
+                  </script>
+              </div> <!-- 自己添加的“分享到”模块：结束。-->
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%B7%A5%E5%85%B7%E5%88%86%E4%BA%AB/" class="category-chain-item">工具分享</a>
+  
+  
+
+      </span>
+    
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/" class="category-chain-item">技术分享</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/centos7/" class="print-no-link">#centos7</a>
+      
+        <a href="/tags/docker/" class="print-no-link">#docker</a>
+      
+        <a href="/tags/gitlab-ce/" class="print-no-link">#gitlab-ce</a>
+      
+        <a href="/tags/%E5%B7%A5%E5%85%B7%E5%88%86%E4%BA%AB/" class="print-no-link">#工具分享</a>
+      
+        <a href="/tags/%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/" class="print-no-link">#技术分享</a>
+      
+        <a href="/tags/%E5%AE%9D%E5%A1%94/" class="print-no-link">#宝塔</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>宝塔安装配置gitlab-ce</div>
+      <div>https://blog.fxcxy.com/2024/08/20/宝塔安装配置gitlab-ce/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>spatacus</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2024年8月20日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2024/08/27/%E9%80%9A%E8%BF%87gitlab-ci%E5%AE%9E%E7%8E%B0%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2%E5%89%8D%E7%AB%AF%E9%A1%B9%E7%9B%AE%E5%88%B0AWSS3/" title="通过gitlab实现自动部署前端项目到AWS S3">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">通过gitlab实现自动部署前端项目到AWS S3</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2024/06/05/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91%E5%88%A9%E5%99%A8%E2%80%94%E2%80%94%E5%9B%BE%E7%89%87%E7%94%9F%E6%88%90%E4%BB%A3%E7%A0%81/" title="前端开发利器—图片生成代码">
+                        <span class="hidden-mobile">前端开发利器—图片生成代码</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://lib.baomitu.com/valine/1.5.1/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"J7kyQXV9R3CXOiA1eubrlflY-gzGzoHsz","appKey":"qHZzPzRcvsutXvHvBewqGmhw","path":"window.location.pathname","placeholder":"输入您的评论","avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":false},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          var imgSelector = '#valine .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://www.youtube.com/channel/UCn0Yarp_h6oqn1-QLvlgbDg?sub_confirmation=1" target="_blank" rel="nofollow noopener"><span>Youtube</span></a>- <a href="https://twitter.com/spatacus1986" target="_blank" rel="nofollow noopener"><span>Twitter</span></a>- <a href="https://t.me/+8W45Y29o5T1mMGI1" target="_blank" rel="nofollow noopener"><span>电报群</span></a>- <a href="https://v.douyin.com/iNpPYY4E/" target="_blank" rel="nofollow noopener"><span>抖音</span></a>- <a href="https://www.ixigua.com/home/103680436540" target="_blank" rel="nofollow noopener"><span>西瓜视频</span></a> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="leancloud-site-pv-container" style="display: none">
+        总访问量 
+        <span id="leancloud-site-pv"></span>
+         次
+      </span>
+    
+    
+      <span id="leancloud-site-uv-container" style="display: none">
+        总访客数 
+        <span id="leancloud-site-uv"></span>
+         人
+      </span>
+    
+    
+
+  
+</div>
+
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script defer src="/js/leancloud.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
