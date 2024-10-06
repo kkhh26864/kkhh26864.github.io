@@ -4,6 +4,37 @@
   
   
   <entry>
+    <title>将Vue和Node.js系统迁移到Cloudflare：全面指南</title>
+    <link href="/2024/10/06/%E5%B0%86Vue%E5%92%8CNode-js%E7%B3%BB%E7%BB%9F%E8%BF%81%E7%A7%BB%E5%88%B0Cloudflare%EF%BC%9A%E5%85%A8%E9%9D%A2%E6%8C%87%E5%8D%97/"/>
+    <url>/2024/10/06/%E5%B0%86Vue%E5%92%8CNode-js%E7%B3%BB%E7%BB%9F%E8%BF%81%E7%A7%BB%E5%88%B0Cloudflare%EF%BC%9A%E5%85%A8%E9%9D%A2%E6%8C%87%E5%8D%97/</url>
+    
+    <content type="html"><![CDATA[<p>在当今的云计算时代，将现有系统迁移到强大的云平台已成为许多企业的首选策略。Cloudflare作为一个全球性的云网络平台，提供了卓越的性能、安全性和可扩展性。本文将指导您如何将一个由Vue.js前端、Node.js后端和Vue.js管理后台组成的系统迁移到Cloudflare。</p><h2 id="1-为什么选择Cloudflare"><a href="#1-为什么选择Cloudflare" class="headerlink" title="1. 为什么选择Cloudflare?"></a>1. 为什么选择Cloudflare?</h2><p>在开始迁移过程之前，让我们先了解为什么Cloudflare是一个理想的选择：</p><ul><li>全球CDN网络，显著提升网站加载速度</li><li>强大的DDoS保护和Web应用防火墙(WAF)</li><li>边缘计算能力，通过Cloudflare Workers</li><li>灵活的存储解决方案，如Cloudflare R2</li><li>简单易用的DNS管理</li><li>免费SSL证书</li></ul><h2 id="2-迁移Vue-js前端"><a href="#2-迁移Vue-js前端" class="headerlink" title="2. 迁移Vue.js前端"></a>2. 迁移Vue.js前端</h2><h3 id="2-1-准备工作"><a href="#2-1-准备工作" class="headerlink" title="2.1 准备工作"></a>2.1 准备工作</h3><ol><li>确保您的Vue.js项目使用最新版本，并且所有依赖都已更新。</li><li>运行全面的测试，确保应用在本地环境中正常运行。</li></ol><h3 id="2-2-部署到Cloudflare-Pages"><a href="#2-2-部署到Cloudflare-Pages" class="headerlink" title="2.2 部署到Cloudflare Pages"></a>2.2 部署到Cloudflare Pages</h3><p>Cloudflare Pages是一个极佳的静态网站托管服务，非常适合Vue.js应用。</p><ol><li>在Cloudflare Dashboard中创建一个新的Pages项目。</li><li>连接您的GitHub或GitLab仓库。</li><li>配置构建设置：<ul><li>框架预设: <code>Vue</code></li><li>构建命令: <code>npm run build</code></li><li>输出目录: <code>dist</code></li><li>Node.js 版本: 选择与您本地开发环境相匹配的版本</li><li>环境变量: 如果您的应用需要环境变量，可以在 Cloudflare Pages 的项目设置中添加</li><li>构建缓存: 默认启用，可以显著提高构建速度</li><li>自动部署: 每次推送到主分支时自动触发部署</li></ul></li><li>部署您的应用。</li></ol><p>为确保Cloudflare使用与您本地项目相同的Node.js版本，请按照以下步骤操作：</p><ol><li><p>确定您本地项目使用的Node.js版本：</p><figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs crmsh"><span class="hljs-keyword">node</span> <span class="hljs-title">--version</span><br></code></pre></td></tr></table></figure></li><li><p>在项目根目录创建或修改<code>package.json</code>文件，添加或更新<code>engines</code>字段：</p><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs json"><span class="hljs-punctuation">&#123;</span><br>  <span class="hljs-attr">&quot;engines&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>    <span class="hljs-attr">&quot;node&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;16.x&quot;</span>  <span class="hljs-comment">// 替换为您实际使用的版本</span><br>  <span class="hljs-punctuation">&#125;</span><br><span class="hljs-punctuation">&#125;</span><br></code></pre></td></tr></table></figure></li><li><p>在项目根目录创建<code>.nvmrc</code>文件，指定Node.js版本：</p><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs stylus"><span class="hljs-number">16</span><span class="hljs-selector-class">.x</span>  <span class="hljs-comment">// 替换为您实际使用的版本</span><br></code></pre></td></tr></table></figure></li><li><p>如果使用Cloudflare Workers，在<code>wrangler.toml</code>文件中指定Node.js兼容性日期：</p><figure class="highlight toml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs toml"><span class="hljs-attr">compatibility_date</span> = <span class="hljs-string">&quot;2023-10-30&quot;</span>  // 使用适当的日期<br></code></pre></td></tr></table></figure></li><li><p>更新依赖：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">rm</span> -rf node_modules<br>npm install  <span class="hljs-comment"># 或者 yarn install，如果您使用yarn</span><br></code></pre></td></tr></table></figure></li></ol><p>完成这些步骤后，Cloudflare应该会使用您指定的Node.js版本来部署您的项目。</p><h3 id="2-3-配置自定义域名"><a href="#2-3-配置自定义域名" class="headerlink" title="2.3 配置自定义域名"></a>2.3 配置自定义域名</h3><ol><li>在Cloudflare Pages项目设置中添加您的自定义域名。</li><li>更新DNS记录，将域名指向Cloudflare Pages。</li></ol><h2 id="3-迁移Node-js后端"><a href="#3-迁移Node-js后端" class="headerlink" title="3. 迁移Node.js后端"></a>3. 迁移Node.js后端</h2><h3 id="3-1-准备工作"><a href="#3-1-准备工作" class="headerlink" title="3.1 准备工作"></a>3.1 准备工作</h3><ol><li>审查您的Node.js应用，确保它是无状态的，适合在无服务器环境中运行。</li><li>将任何本地文件存储迁移到云存储解决方案，如Cloudflare R2。</li></ol><h3 id="3-2-使用Cloudflare-Workers部署后端"><a href="#3-2-使用Cloudflare-Workers部署后端" class="headerlink" title="3.2 使用Cloudflare Workers部署后端"></a>3.2 使用Cloudflare Workers部署后端</h3><ol><li>安装Wrangler CLI工具: <code>npm install -g wrangler</code></li><li>初始化一个新的Workers项目: <code>wrangler init my-api</code></li><li>将您的Node.js代码调整为Workers兼容的格式。</li></ol>]]></content>
+    
+    
+    <categories>
+      
+      <category>技术</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Cloudflare</tag>
+      
+      <tag>Vue.js</tag>
+      
+      <tag>Node.js</tag>
+      
+      <tag>云迁移</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>在Ubuntu上安装KasmVNC实现轻松远程桌面访问</title>
     <link href="/2024/10/04/%E5%9C%A8Ubuntu%E4%B8%8A%E5%AE%89%E8%A3%85KasmVNC%E5%AE%9E%E7%8E%B0%E8%BD%BB%E9%87%8F%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2%E8%AE%BF%E9%97%AE/"/>
     <url>/2024/10/04/%E5%9C%A8Ubuntu%E4%B8%8A%E5%AE%89%E8%A3%85KasmVNC%E5%AE%9E%E7%8E%B0%E8%BD%BB%E9%87%8F%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2%E8%AE%BF%E9%97%AE/</url>
