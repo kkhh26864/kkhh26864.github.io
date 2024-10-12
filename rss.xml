@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0">
+    <channel>
+        <title>我的博客</title>
+        <link>https://www.zymn.cc</link>
+        <description>欢迎来到我的个人博客！在这里，我将分享关于技术、编程、以及个人成长的经验和见解，帮助你在学习和工作中更进一步。</description>
+        <item>
+            <title>TikTok快速起号技巧</title>
+            <link>https://www.zymn.cc/2024/10/11/TikTok快速起号技巧</link>
+            <description>分享一些在TikTok上快速起号的技巧和策略。</description>
+            <pubDate>Fri, 11 Oct 2024 15:03:23 GMT</pubDate>
+        </item>
+        <item>
+            <title>币圈出金教程：从交易所安全转账到银行卡</title>
+            <link>https://www.zymn.cc/2024/10/06/币圈出金教程：从交易所安全转账到银行卡</link>
+            <description>介绍如何安全地将币圈资金从交易所转账到银行卡。</description>
+            <pubDate>Fri, 06 Oct 2024 19:36:41 GMT</pubDate>
+        </item>
+        <item>
+            <title>将Vue和Node-js系统迁移到Cloudflare：全面指南</title>
+            <link>https://www.zymn.cc/2024/10/06/将Vue和Node-js系统迁移到Cloudflare：全面指南</link>
+            <description>介绍如何将Vue和Node.js系统迁移到Cloudflare的步骤和注意事项。</description>
+            <pubDate>Sun, 06 Oct 2024 10:27:13 GMT</pubDate>
+        </item>
+        <item>
+            <title>在Ubuntu上安装KasmVNC实现轻量远程桌面访问</title>
+            <link>https://www.zymn.cc/2024/10/04/在Ubuntu上安装KasmVNC实现轻量远程桌面访问</link>
+            <description>详细介绍如何在Ubuntu上安装KasmVNC，实现轻量级的远程桌面访问。</description>
+            <pubDate>Thu, 04 Oct 2024 12:00:00 GMT</pubDate>
+        </item>
+
+        <item>
+            <title>如何在AWS的s3存储桶上部署前端项目</title>
+            <link>https://www.zymn.cc/2024/09/05/如何在AWS的s3存储桶上部署前端项目</link>
+            <description>介绍如何在AWS的S3存储桶上部署前端项目及通过CloudFront加速访问。</description>
+            <pubDate>Thu, 05 Sep 2024 15:57:38 GMT</pubDate>
+        </item>
+        <item>
+            <title>通过gitlab实现自动部署前端项目到服务器</title>
+            <link>https://www.zymn.cc/2024/08/28/通过gitlab实现自动部署前端项目到服务器</link>
+            <description>介绍如何通过GitLab实现前端项目的自动化部署。</description>
+            <pubDate>Tue, 28 Aug 2024 18:24:12 GMT</pubDate>
+        </item>
+        <item>
+            <title>通过gitlab-ci实现自动部署前端项目到AWSS3</title>
+            <link>https://www.zymn.cc/2024/08/27/通过gitlab-ci实现自动部署前端项目到AWSS3</link>
+            <description>介绍如何使用GitLab CI/CD实现自动部署前端项目到AWS S3。</description>
+            <pubDate>Mon, 27 Aug 2024 17:48:40 GMT</pubDate>
+        </item>
+        <item>
+            <title>宝塔安装配置gitlab-ce</title>
+            <link>https://www.zymn.cc/2024/08/20/宝塔安装配置gitlab-ce</link>
+            <description>详细介绍如何在宝塔面板上安装和配置GitLab CE。</description>
+            <pubDate>Sat, 20 Aug 2024 07:48:55 GMT</pubDate>
+        </item>
+        <item>
+            <title>前端开发利器——图片生成代码</title>
+            <link>https://www.zymn.cc/2024/06/05/前端开发利器——图片生成代码</link>
+            <description>介绍如何使用工具生成图片代码，提高前端开发效率。</description>
+            <pubDate>Wed, 05 Jun 2024 13:12:12 GMT</pubDate>
+        </item>
+        <item>
+            <title>软路由拦截流量实现广告屏蔽</title>
+            <link>https://www.zymn.cc/2024/05/20/软路由拦截流量实现广告屏蔽</link>
+            <description>介绍如何在软路由上安装AdGuardHome实现广告屏蔽。</description>
+            <pubDate>Mon, 20 May 2024 11:52:38 GMT</pubDate>
+        </item>
+         <item>
+            <title>利用CloudFlare和Telegraph实现免费托管图片</title>
+            <link>https://www.zymn.cc/2024/04/23/利用CloudFlare和Telegraph实现免费托管图片</link>
+            <description>介绍如何通过CloudFlare和Telegraph实现免费的图片托管服务。</description>
+            <pubDate>Tue, 23 Apr 2024 17:06:00 GMT</pubDate>
+        </item>
+         <item>
+            <title>Nginx Proxy Manager的配置和使用</title>
+            <link>https://www.zymn.cc/2024/04/11/Manager的配置和使用</link>
+            <description>介绍如何配置和使用Nginx Proxy Manager。</description>
+            <pubDate>Thu, 11 Apr 2024 09:00:48 GMT</pubDate>
+        </item>
+         <item>
+            <title>将域名托管到Cloudflare，实现全站https访问</title>
+            <link>https://www.zymn.cc/2024/04/09/将域名托管到Cloudflare，实现全站https访问</link>
+            <description>介绍如何将域名托管到Cloudflare并实现全站HTTPS访问。</description>
+            <pubDate>Tue, 09 Apr 2024 21:03:26 GMT</pubDate>
+        </item>
+        <item>
+            <title>搭建前端框架: Vue2+Webpack5+tailwindcss2</title>
+            <link>https://www.zymn.cc/2024/04/07/搭建前端框架-Vue2-Webpack5-tailwindcss2</link>
+            <description>介绍如何搭建一个基于 Vue2、Webpack5 和 Tailwind CSS 的前端开发框架。</description>
+            <pubDate>Sun, 07 Apr 2024 16:28:03 GMT</pubDate>
+        </item>
+        <item>
+            <title>VMware Fusion安装macOS Sonoma 14</title>
+            <link>https://www.zymn.cc/2024/04/05/VmwareFunsion安装macOS14</link>
+            <description>详细介绍如何使用VMware Fusion安装macOS Sonoma 14虚拟机。</description>
+            <pubDate>Fri, 05 Apr 2024 02:10:51 GMT</pubDate>
+        </item>
+        <item>
+            <title>Cloudflare Worker免费搭建科学上网节点</title>
+            <link>https://www.zymn.cc/2024/03/29/CloudflareWorker免费搭建科学上网节点/</link>
+            <description>介绍如何利用Cloudflare Worker免费搭建科学上网节点，实现安全、高效的网络访问。</description>
+            <pubDate>Fri, 29 Mar 2024 08:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title>国内APP应用市场审核问题</title>
+            <link>https://www.zymn.cc/2024/03/27/国内APP应用市场审核问题/</link>
+            <description>详细介绍国内主要应用市场的APP审核要求和常见问题，帮助开发者顺利通过审核。</description>
+            <pubDate>Wed, 27 Mar 2024 14:30:00 GMT</pubDate>
+        </item>
+        <item>
+            <title>iStoreOS OpenWrt安装及配置OpenClash</title>
+            <link>https://www.zymn.cc/2024/03/17/iStoreOS-OpenWpt安装及配置OpenClash/</link>
+            <description>详细介绍如何在iStoreOS OpenWrt系统上安装和配置OpenClash，实现智能代理和流量分流。</description>
+            <pubDate>Sun, 17 Mar 2024 09:30:00 GMT</pubDate>
+        </item>
+        <item>
+            <title>Android手机电视盒子及TV各种VIP破解版软件合集</title>
+            <link>https://www.zymn.cc/2024/03/15/Android手机电视盒子及TV各种VIP破解版软件合集/</link>
+            <description>分享Android手机、电视盒子和TV上各种VIP破解版软件的合集，包括视频、音乐等应用。</description>
+            <pubDate>Fri, 15 Mar 2024 08:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title>香港顺利办理中银/汇丰/众安银行卡+手机卡！我的香港出行，购物，住宿全攻略！</title>
+            <link>https://www.zymn.cc/2024/03/14/香港顺利办理中银-汇丰-众安银行卡-手机卡！我的香港出行，购物，住宿全攻略！/</link>
+            <description>详细介绍在香港办理银行卡和手机卡的流程，以及香港出行、购物和住宿的实用攻略。</description>
+            <pubDate>Thu, 14 Mar 2024 08:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title>LocalSend一款免费的本地文件互传工具</title>
+            <link>https://www.zymn.cc/2024/03/13/LocalSend一款免费的本地文件互传工具/</link>
+            <description>介绍LocalSend这款免费的本地文件互传工具，包括其功能特点和使用方法。</description>
+            <pubDate>Wed, 13 Mar 2024 08:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title>如何获取苹果开发者账号的APNs-Auth-Key</title>
+            <link>https://www.zymn.cc/2024/03/12/如何获取苹果开发者账号的APNs-Auth-Key</link>
+            <description>介绍如何获取苹果开发者账号的APNs Auth Key。</description>
+            <pubDate>Tue, 12 Mar 2024 19:25:23 GMT</pubDate>
+        </item>
+        <item>
+            <title>WARP 免费密钥的流量</title>
+            <link>https://www.zymn.cc/2024/03/07/WARP-免费密钥的流量/</link>
+            <description>介绍如何获取和使用WARP的免费密钥流量。</description>
+            <pubDate>Thu, 07 Mar 2024 00:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title>2024破解版支持windows和mac</title>
+            <link>https://www.zymn.cc/2024/03/07/2024破解版支持windows和mac/</link>
+            <description>分享2024年支持Windows和Mac的各种破解版软件。</description>
+            <pubDate>Thu, 07 Mar 2024 17:33:55 GMT</pubDate>
+        </item>
+        <item>
+            <title>苹果生成开发者证书及获取公钥与签名SHA1值</title>
+            <link>https://www.zymn.cc/2024/03/04/苹果生成开发者证书及获取公钥与签名SHA1值/</link>
+            <description>详细介绍如何生成苹果开发者证书，以及获取公钥和签名SHA1值的方法。</description>
+            <pubDate>Mon, 04 Mar 2024 11:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title>2024年国内App、小程序及网站备案教程</title>
+            <link>https://www.zymn.cc/2024/03/04/2024年国内App-小程序及网站备案教程/</link>
+            <description>详细介绍2024年在中国大陆地区进行App、小程序和网站备案的流程和要求。</description>
+            <pubDate>Mon, 04 Mar 2024 10:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title>不用验证手机号创建谷歌账号</title>
+            <link>https://www.zymn.cc/2024/03/02/不用验证手机号创建谷歌账号/</link>
+            <description>介绍如何在不需要验证手机号的情况下创建谷歌账号的方法。</description>
+            <pubDate>Sat, 02 Mar 2024 00:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title>快速搭建ReactNative项目</title>
+            <link>https://www.zymn.cc/2024/02/28/快速搭建ReactNative项目/</link>
+            <description>介绍如何快速搭建一个ReactNative项目，包括环境配置和基本步骤。</description>
+            <pubDate>Wed, 28 Feb 2024 00:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title>ADB常用命令</title>
+            <link>https://www.zymn.cc/2024/02/28/adb%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</link>
+            <description>介绍ADB（Android Debug Bridge）常用命令及其使用方法。</description>
+            <pubDate>Wed, 28 Feb 2024 00:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title>使用Charles实现移动App接口数据抓包教程</title>
+            <link>https://www.zymn.cc/2023/12/23/%E4%BD%BF%E7%94%A8Charles%E5%AE%9E%E7%8E%B0%E7%A7%BB%E5%8A%A8App%E6%8E%A5%E5%8F%A3%E6%95%B0%E6%8D%AE%E6%8A%93%E5%8C%85%E6%95%99%E7%A8%8B/</link>
+            <description>详细介绍如何使用Charles工具抓取移动App的接口数据，包括配置和使用步骤。</description>
+            <pubDate>Sat, 23 Dec 2023 10:00:00 GMT</pubDate>
+        </item>
+    </channel>
+</rss>
