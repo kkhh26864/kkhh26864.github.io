@@ -5,6 +5,12 @@
         <link>https://www.zymn.cc</link>
         <description>欢迎来到我的个人博客！在这里，我将分享关于技术、编程、以及个人成长的经验和见解，帮助你在学习和工作中更进一步。</description>
         <item>
+            <title>ImageMagick批量更改图片大小</title>
+            <link>https://www.zymn.cc/2024/11/25/ImageMagick批量更改图片大小</link>
+            <description>详细介绍如何使用ImageMagick批量更改图片大小，适用于Windows和macOS系统。</description>
+            <pubDate>Sun, 25 Nov 2024 23:16:25 GMT</pubDate>
+        </item>
+        <item>
             <title>使用Xray自建科学上网服务器</title>
             <link>https://www.zymn.cc/2024/11/10/使用Xray自建科学上网服务器</link>
             <description>详细介绍如何使用Xray搭建科学上网服务器，提供稳定的网络访问。</description>
