@@ -5,6 +5,12 @@
         <link>https://www.zymn.cc</link>
         <description>欢迎来到我的个人博客！在这里，我将分享关于技术、编程、以及个人成长的经验和见解，帮助你在学习和工作中更进一步。</description>
         <item>
+            <title>如何将应用发布到LINE？</title>
+            <link>https://www.zymn.cc/2024/12/06/将应用发布到LINE的方法/</link>
+            <description>详细介绍如何将前端项目发布到LINE，包括LIFF应用的创建和集成步骤。</description>
+            <pubDate>Wed, 07 Dec 2024 10:00:00 GMT</pubDate>
+        </item>
+        <item>
             <title>GitHub Actions如何通过跳板机自动部署应用</title>
             <link>https://www.zymn.cc/2024/11/30/GitHub-Actions如何通过跳板机自动部署应用</link>
             <description>详细介绍如何使用GitHub Actions通过跳板机自动部署应用，确保安全和高效的部署流程。</description>
@@ -12,7 +18,7 @@
         </item>
         <item>
             <title>ImageMagick批量更改图片大小</title>
-            <link>https://www.zymn.cc/2024/11/25/ImageMagick批量更改图片大小</link>
+            <link>https://www.zymn.cc/2024/12/06/将应用发布到LINE的方法/</link>
             <description>详细介绍如何使用ImageMagick批量更改图片大小，适用于Windows和macOS系统。</description>
             <pubDate>Sun, 25 Nov 2024 23:16:25 GMT</pubDate>
         </item>
