@@ -1,0 +1,956 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/logo.png">
+  <link rel="icon" href="/img/logo.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3232532601275150"
+     crossorigin="anonymous"></script>
+    <meta name="twitter:card" content="/img/deepseek.png" />
+    <meta name="twitter:site" content="自由码农" />
+    <meta name="twitter:creator" content="@spatacus1986">
+    <meta name="twitter:title" content="DeepSeek安装使用教程 - 自由码农" />
+    <meta name="twitter:description" content="DeepSeek R1 越狱版安装教程DeepSeek R1 越狱版现已在 Hugging Face 上线,支持 8B、14B、32B 等多个版本。本文将详细介绍如何在本地部署和使用 DeepSeek R1 越狱版。 模型说明虽然官方版 DeepSeek 是 671B 参数量的大模型,但普通用户难以本地运行。目前可供本地部署的是经过蒸馏压缩的 7B-70B 等小型版本,已足够日常使用。 DeepS" />
+    <meta name="twitter:image" content="/img/deepseek.png" />
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="spatacus">
+  <meta name="keywords" content="自由码农,技术博客,工具分享，网站开发，App开发，小程序开发，H5开发">
+  
+    <meta name="description" content="DeepSeek R1 越狱版安装教程DeepSeek R1 越狱版现已在 Hugging Face 上线,支持 8B、14B、32B 等多个版本。本文将详细介绍如何在本地部署和使用 DeepSeek R1 越狱版。 模型说明虽然官方版 DeepSeek 是 671B 参数量的大模型,但普通用户难以本地运行。目前可供本地部署的是经过蒸馏压缩的 7B-70B 等小型版本,已足够日常使用。 DeepS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="DeepSeek安装使用教程">
+<meta property="og:url" content="https://blog.fxcxy.com/2025/02/08/Deepseek%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/index.html">
+<meta property="og:site_name" content="自由码农">
+<meta property="og:description" content="DeepSeek R1 越狱版安装教程DeepSeek R1 越狱版现已在 Hugging Face 上线,支持 8B、14B、32B 等多个版本。本文将详细介绍如何在本地部署和使用 DeepSeek R1 越狱版。 模型说明虽然官方版 DeepSeek 是 671B 参数量的大模型,但普通用户难以本地运行。目前可供本地部署的是经过蒸馏压缩的 7B-70B 等小型版本,已足够日常使用。 DeepS">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://blog.fxcxy.com/img/deepseek.png">
+<meta property="article:published_time" content="2025-02-08T13:54:58.000Z">
+<meta property="article:modified_time" content="2025-05-26T08:59:33.502Z">
+<meta property="article:author" content="spatacus">
+<meta property="article:tag" content="DeepSeek">
+<meta property="article:tag" content="AI模型">
+<meta property="article:tag" content="人工智能">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://blog.fxcxy.com/img/deepseek.png">
+  
+  
+  
+  <title>DeepSeek安装使用教程 - 自由码农</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+  
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_4443546_u6jwvi2qcka.css">
+<link rel="stylesheet" href="/css/social-share.min.css">
+<link rel="stylesheet" href="/css/myreward.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"blog.fxcxy.com","root":"/","version":"1.9.7","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"复制"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"J7kyQXV9R3CXOiA1eubrlflY-gzGzoHsz","app_key":"qHZzPzRcvsutXvHvBewqGmhw","server_url":"https://leancloud.fxcxy.com","path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+
+  
+    <!-- Google tag (gtag.js) -->
+    <script async>
+      if (!Fluid.ctx.dnt) {
+        Fluid.utils.createScript("https://www.googletagmanager.com/gtag/js?id=", function() {
+          window.dataLayer = window.dataLayer || [];
+          function gtag() {
+            dataLayer.push(arguments);
+          }
+          gtag('js', new Date());
+          gtag('config', '');
+        });
+      }
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+    
+  
+
+
+
+  
+<meta name="generator" content="Hexo 7.1.1"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>自由码农</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="DeepSeek安装使用教程"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2025-02-08 21:54" pubdate>
+          2025年2月8日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          1.1k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          10 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="leancloud-page-views"></span>次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">DeepSeek安装使用教程</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="DeepSeek-R1-越狱版安装教程"><a href="#DeepSeek-R1-越狱版安装教程" class="headerlink" title="DeepSeek R1 越狱版安装教程"></a>DeepSeek R1 越狱版安装教程</h1><p>DeepSeek R1 越狱版现已在 Hugging Face 上线,支持 8B、14B、32B 等多个版本。本文将详细介绍如何在本地部署和使用 DeepSeek R1 越狱版。</p>
+<h2 id="模型说明"><a href="#模型说明" class="headerlink" title="模型说明"></a>模型说明</h2><p>虽然官方版 DeepSeek 是 671B 参数量的大模型,但普通用户难以本地运行。目前可供本地部署的是经过蒸馏压缩的 7B-70B 等小型版本,已足够日常使用。</p>
+<p>DeepSeek 是一个强大的代码助手，它具有以下特点：</p>
+<ul>
+<li>支持多种编程语言</li>
+<li>代码补全和生成能力强</li>
+<li>可以解释代码、回答编程问题</li>
+<li>支持中英双语交互</li>
+</ul>
+<h2 id="安装环境"><a href="#安装环境" class="headerlink" title="安装环境"></a>安装环境</h2><ul>
+<li>系统: windows 10&#x2F;macOS 11 及以上</li>
+<li>处理器（CPU）：Intel Core i5 或更高；</li>
+<li>内存（RAM）：16GB 或更高；</li>
+<li>显卡（GPU）：NVIDIA GeForce RTX 3060 或 AMD Radeon RX 6700 XT，8GB 显存；</li>
+<li>硬盘空间：建议使用 SSD，预留 30GB 以上</li>
+</ul>
+<h2 id="安装步骤"><a href="#安装步骤" class="headerlink" title="安装步骤"></a>安装步骤</h2><h3 id="1-安装-Ollama"><a href="#1-安装-Ollama" class="headerlink" title="1. 安装 Ollama"></a>1. 安装 Ollama</h3><p>首先需要下载并安装 Ollama,这是运行模型的基础环境。访问 <a target="_blank" rel="noopener" href="https://ollama.ai/">Ollama 官网</a> 下载对应系统版本。</p>
+<img src="/2025/02/08/Deepseek%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/1.png" srcset="/img/loading.gif" lazyload class="" width="488">
+<p>&nbsp;</p>
+<h3 id="2-下载模型"><a href="#2-下载模型" class="headerlink" title="2. 下载模型"></a>2. 下载模型</h3><p>打开命令行终端,根据需要运行以下命令之一来下载对应版本的模型(需科学上网才能下载):</p>
+<img src="/2025/02/08/Deepseek%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/2.png" srcset="/img/loading.gif" lazyload class="" width="488">
+<p>&nbsp;<br>7B 版本（推荐显存 8G）:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">ollama pull deepseek-coder:7b<br></code></pre></td></tr></table></figure>
+
+<p>8B 版本（推荐显存 8G）:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">ollama run huihui_ai/deepseek-r1-abliterated:8b<br></code></pre></td></tr></table></figure>
+
+<p>14B 版本（推荐显存 12G）:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">ollama run huihui_ai/deepseek-r1-abliterated:14b<br></code></pre></td></tr></table></figure>
+
+<p>32B 版本（推荐显存 32G）:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">ollama run huihui_ai/deepseek-r1-abliterated:32b<br></code></pre></td></tr></table></figure>
+
+<p>70B 版本（需要高端显卡支持）:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">ollama run huihui_ai/deepseek-r1-abliterated:70b<br></code></pre></td></tr></table></figure>
+
+<h3 id="3-安装-Web-UI"><a href="#3-安装-Web-UI" class="headerlink" title="3. 安装 Web UI"></a>3. 安装 Web UI</h3><p>方式一：Chrome 插件<br>下载地址：<a target="_blank" rel="noopener" href="https://chromewebstore.google.com/detail/page-assist-%E6%9C%AC%E5%9C%B0-ai-%E6%A8%A1%E5%9E%8B%E7%9A%84-web/jfgfiigpkhlkbnfnbobbkinehhfdhndo">Chrome 插件</a><br>特点：需要 chrome 浏览器并科学上网才能安装，但是安装后可以随时随地使用，不需要安装其他软件或复杂的配置。</p>
+<img src="/2025/02/08/Deepseek%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/3.png" srcset="/img/loading.gif" lazyload class="" width="488">
+<p>&nbsp;</p>
+<p>方式二：OpenWebUI<br>需要安装 docker 并科学上网，安装后可以随时随地使用，不需要安装其他软件或复杂的配置。但需要一定的编程基础。</p>
+<img src="/2025/02/08/Deepseek%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/4.png" srcset="/img/loading.gif" lazyload class="" width="488">
+<p>&nbsp;</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash">docker run -d --name openwebui --restart always \<br>  -p 3002:8080 \<br>  -v open-webui:/app/backend/data \<br>  --add-host=host.docker.internal:host-gateway \<br>  ghcr.io/open-webui/open-webui:main<br></code></pre></td></tr></table></figure>
+
+<p>安装完成后访问 <code>http://localhost:3002</code> 即可使用。</p>
+<h2 id="Ollama-常用命令"><a href="#Ollama-常用命令" class="headerlink" title="Ollama 常用命令"></a>Ollama 常用命令</h2><p>在使用 Ollama 时，以下是一些常用的命令操作：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 启动 Ollama 服务</span><br>ollama serve<br><br><span class="hljs-comment"># 从 Modelfile 创建模型</span><br>ollama create &lt;模型名称&gt;<br><br><span class="hljs-comment"># 显示模型信息</span><br>ollama show &lt;模型名称&gt;<br><br><span class="hljs-comment"># 运行模型</span><br>ollama run &lt;模型名称&gt;<br><br><span class="hljs-comment"># 停止运行中的模型</span><br>ollama stop &lt;模型名称&gt;<br><br><span class="hljs-comment"># 从仓库拉取模型</span><br>ollama pull &lt;模型名称&gt;<br><br><span class="hljs-comment"># 推送模型到仓库</span><br>ollama push &lt;模型名称&gt;<br><br><span class="hljs-comment"># 列出所有已安装的模型</span><br>ollama list<br><br><span class="hljs-comment"># 列出正在运行的模型</span><br>ollama ps<br><br><span class="hljs-comment"># 复制模型</span><br>ollama <span class="hljs-built_in">cp</span> &lt;源模型&gt; &lt;目标模型&gt;<br><br><span class="hljs-comment"># 删除模型</span><br>ollama <span class="hljs-built_in">rm</span> &lt;模型名称&gt;<br></code></pre></td></tr></table></figure>
+
+<p>这些命令可以帮助你更好地管理和使用 Ollama 平台上的模型。</p>
+<h2 id="使用技巧"><a href="#使用技巧" class="headerlink" title="使用技巧"></a>使用技巧</h2><ol>
+<li><p>代码生成</p>
+<ul>
+<li>描述需求要清晰具体</li>
+<li>指定编程语言和框架版本</li>
+<li>说明性能和兼容性要求</li>
+</ul>
+</li>
+<li><p>代码解释</p>
+<ul>
+<li>可以询问特定代码段的功能</li>
+<li>请教最佳实践和优化建议</li>
+<li>寻求 debug 帮助</li>
+</ul>
+</li>
+<li><p>项目开发</p>
+<ul>
+<li>协助设计系统架构</li>
+<li>生成项目脚手架</li>
+<li>编写单元测试</li>
+</ul>
+</li>
+</ol>
+<h2 id="使用-Cherry-Studio-免费体验"><a href="#使用-Cherry-Studio-免费体验" class="headerlink" title="使用 Cherry Studio 免费体验"></a>使用 Cherry Studio 免费体验</h2><p>除了本地部署外，你还可以通过 Cherry Studio 免费体验腾讯部署的 DeepSeek 模型。</p>
+<h3 id="访问方式"><a href="#访问方式" class="headerlink" title="访问方式"></a>访问方式</h3><ol>
+<li><p><a target="_blank" rel="noopener" href="https://github.com/CherryHQ/cherry-studio/releases">Cherry Studio 下载地址</a></p>
+<img src="/2025/02/08/Deepseek%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/5.png" srcset="/img/loading.gif" lazyload class="" width="488">
+<p>&nbsp;</p>
+</li>
+<li><p>登录腾讯云账号，创建 API 密钥</p>
+<ul>
+<li>访问 <a target="_blank" rel="noopener" href="https://console.cloud.tencent.com/lkeap/api">腾讯云 API 密钥申请地址</a> 申请 API 密钥</li>
+<li>API 地址：<a target="_blank" rel="noopener" href="https://api.lkeap.cloud.tencent.com/">https://api.lkeap.cloud.tencent.com</a></li>
+</ul>
+<p>&nbsp;</p>
+<img src="/2025/02/08/Deepseek%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/6.png" srcset="/img/loading.gif" lazyload class="" width="488">
+<p>&nbsp;</p>
+<img src="/2025/02/08/Deepseek%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/7.png" srcset="/img/loading.gif" lazyload class="" width="488">
+<p>&nbsp;</p>
+</li>
+<li><p>在模型列表中选择 DeepSeek-R1 或 DeepSeek-V3</p>
+<img src="/2025/02/08/Deepseek%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/8.png" srcset="/img/loading.gif" lazyload class="" width="488">
+<p>&nbsp;</p>
+<img src="/2025/02/08/Deepseek%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/9.png" srcset="/img/loading.gif" lazyload class="" width="488">
+<p>&nbsp;</p>
+<img src="/2025/02/08/Deepseek%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/10.png" srcset="/img/loading.gif" lazyload class="" width="488">
+<p>&nbsp;</p>
+<img src="/2025/02/08/Deepseek%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/11.png" srcset="/img/loading.gif" lazyload class="" width="488">
+<p>&nbsp;</p>
+<img src="/2025/02/08/Deepseek%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/12.png" srcset="/img/loading.gif" lazyload class="" width="488">
+<p>&nbsp;</p>
+<img src="/2025/02/08/Deepseek%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/13.png" srcset="/img/loading.gif" lazyload class="" width="488">
+<p>&nbsp;</p>
+</li>
+</ol>
+<h3 id="优势"><a href="#优势" class="headerlink" title="优势"></a>优势</h3><ul>
+<li>无需本地部署，直接使用</li>
+<li>免费额度充足</li>
+<li>腾讯云服务器支持，响应速度快</li>
+<li>支持多种模型版本切换</li>
+<li>内置代码编辑器</li>
+</ul>
+<h3 id="使用限制"><a href="#使用限制" class="headerlink" title="使用限制"></a>使用限制</h3><ul>
+<li>每日免费额度有限</li>
+<li>需要网络连接</li>
+<li>部分高级功能需要付费</li>
+<li>API 调用次数有限制</li>
+</ul>
+<h3 id="使用建议"><a href="#使用建议" class="headerlink" title="使用建议"></a>使用建议</h3><ul>
+<li>可以先用 Cherry Studio 测试效果</li>
+<li>确认适合再考虑本地部署</li>
+<li>个人开发推荐使用免费版</li>
+<li>企业用户建议付费解锁完整功能</li>
+</ul>
+<h2 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h2><ul>
+<li>选择合适的模型版本要根据自己的硬件配置</li>
+<li>首次下载模型可能需要较长时间</li>
+<li>建议使用稳定的网络连接</li>
+<li>使用代理网络可能会加快下载速度</li>
+<li>定期更新模型以获得更好的性能</li>
+</ul>
+<h2 id="上网工具推荐"><a href="#上网工具推荐" class="headerlink" title="上网工具推荐"></a>上网工具推荐</h2><p><a target="_blank" rel="noopener" href="https://wl.awcmam.com/#/register?code=TCJc126r">推荐：低至 7 元&#x2F;100G&#x2F;月机场</a><br><a target="_blank" rel="noopener" href="https://curl.qcloud.com/zK5ZIHzM">推 200 元一年腾讯海外服务器</a></p>
+<h3 id="相关视频"><a href="#相关视频" class="headerlink" title="相关视频"></a>相关视频</h3><iframe width="100%" height="480" src="https://www.youtube.com/embed/x8Ku5pBDZcw" title="提升工作效率：DeepSeek安装与实用技巧分享" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+                
+              </div>
+            
+
+              <!--打赏-->
+              <div class="reward">
+                  <div class="reward-button">赏 <span class="reward-code">
+		<span class="alipay-code"> <img class="alipay-img wdp-appear" src="/img/alipay.png" srcset="/img/loading.gif" lazyload><b>支付宝打赏</b> </span>
+		<span class="wechat-code"> <img class="wechat-img wdp-appear" src="/img/wechat.png" srcset="/img/loading.gif" lazyload><b>微信打赏</b> </span> </span>
+                  </div>
+                  <p class="reward-notice">如果文章对你有帮助，欢迎点击上方按钮打赏作者，更多功能请访问<a href="https://blog.fxcxy.com">博客站</a></p>
+              </div>
+              <!--打赏-->
+              <hr/>
+              <div style="text-align:right;"> <!-- 自己添加的“分享到”模块：开始。用的是 social-share.js。让所有的分享按钮右对齐-->
+
+                  <div class="social-share-container" style="margin-top: 15px;"> <!-- 生成一组分享按钮 -->
+                       <!--如果博客语言是中文，就显示“点击分享到：”，非中文一律显示“Share it:”-->
+                      点击分享到：&nbsp;&nbsp;
+                      
+                  </div>
+                  <!-- 加载 jQuery 库 -->
+                  
+<script src="/js/jquery.min.js"></script>
+
+                  <!-- 导入 qrcode.min.js -->
+                  
+<script src="/js/qrcode.min.js"></script>
+
+                  <!-- 加载 social-share.js 的 js 库，另外还要加载 social-share.js 的 CSS，可以修改 `_config.fluid.yml` 的 `custom_css` 加载，也可以修改 `themes/fluid/layout/_partial/css.ejs` 加载。-->
+                  
+<script src="/js/social-share.min.js"></script>
+
+                  <script>
+                    /* 执行 js 代码，new 一个新对象，详见 social-share.js 在 GitHub 的文档 */
+                    new SocialShare('.social-share-container', {
+                      theme: 'circle',  // 使用圆形主题
+                      // 单独定义wechat分享参数
+                      wechat: {
+                        sort: 1, // 排序参数，数字较小的展示在前面,默认999
+                      },
+                      twitter: {
+                        sort: 2, // 排序参数，数字较小的展示在前面,默认999
+                      },
+                      facebook: {
+                        sort: 3, // 排序参数，数字较小的展示在前面,默认999
+                      }
+                    });
+                  </script>
+              </div> <!-- 自己添加的“分享到”模块：结束。-->
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/AI%E5%B7%A5%E5%85%B7/" class="category-chain-item">AI工具</a>
+  
+  
+
+      </span>
+    
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E6%95%99%E7%A8%8B/" class="category-chain-item">教程</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/DeepSeek/" class="print-no-link">#DeepSeek</a>
+      
+        <a href="/tags/AI%E6%A8%A1%E5%9E%8B/" class="print-no-link">#AI模型</a>
+      
+        <a href="/tags/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/" class="print-no-link">#人工智能</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>DeepSeek安装使用教程</div>
+      <div>https://blog.fxcxy.com/2025/02/08/Deepseek安装使用教程/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>spatacus</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2025年2月8日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2025/02/10/%E7%BA%A2%E7%B1%B3AX6000%E5%88%B7%E6%9C%BA%E6%95%99%E7%A8%8B/" title="红米AX6000刷机教程">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">红米AX6000刷机教程</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2025/01/20/cursor%E6%97%A0%E9%99%90%E8%87%AA%E5%8A%A8%E6%B3%A8%E5%86%8C%E8%AF%95%E7%94%A8%E8%B4%A6%E5%8F%B7%E6%95%99%E7%A8%8B/" title="cursor无限自动注册试用账号教程">
+                        <span class="hidden-mobile">cursor无限自动注册试用账号教程</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://lib.baomitu.com/valine/1.5.1/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"J7kyQXV9R3CXOiA1eubrlflY-gzGzoHsz","appKey":"qHZzPzRcvsutXvHvBewqGmhw","path":"window.location.pathname","placeholder":"输入您的评论","avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":false},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          var imgSelector = '#valine .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  <div class="footer-links" style="margin: 20px 0 10px 0; text-align: center;">
+    <a href="https://tv.zymn.cc" target="_blank" style="margin: 0 12px; color: #bdbdbd; text-decoration: none; font-weight: 500;">免费电影</a>
+    <a href="https://sl.zymn.cc" target="_blank" style="margin: 0 12px; color: #bdbdbd; text-decoration: none; font-weight: 500;">短链生成器</a>
+    <a href="https://yhjf.zymn.cc" target="_blank" style="margin: 0 12px; color: #bdbdbd; text-decoration: none; font-weight: 500;">隐秘信使</a>
+  </div>
+  
+    <div class="footer-content">
+       <a href="https://www.youtube.com/channel/UCn0Yarp_h6oqn1-QLvlgbDg?sub_confirmation=1" target="_blank" rel="nofollow noopener"><span>Youtube</span></a>- <a href="https://twitter.com/spatacus1986" target="_blank" rel="nofollow noopener"><span>Twitter</span></a>- <a href="https://t.me/+8W45Y29o5T1mMGI1" target="_blank" rel="nofollow noopener"><span>电报群</span></a>- <a href="https://v.douyin.com/iNpPYY4E/" target="_blank" rel="nofollow noopener"><span>抖音</span></a>- <a href="https://www.ixigua.com/home/103680436540" target="_blank" rel="nofollow noopener"><span>西瓜视频</span></a> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="leancloud-site-pv-container" style="display: none">
+        总访问量 
+        <span id="leancloud-site-pv"></span>
+         次
+      </span>
+    
+    
+      <span id="leancloud-site-uv-container" style="display: none">
+        总访客数 
+        <span id="leancloud-site-uv"></span>
+         人
+      </span>
+    
+    
+
+  
+</div>
+
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script defer src="/js/leancloud.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

@@ -5,6 +5,90 @@
         <link>https://www.zymn.cc</link>
         <description>欢迎来到我的个人博客！在这里，我将分享关于技术、编程、以及个人成长的经验和见解，帮助你在学习和工作中更进一步。</description>
         <item>
+            <title>2025最新摩托车驾驶照申请指南</title>
+            <link>https://www.zymn.cc/2025/06/07/2025最新摩托车驾驶照申请指南/</link>
+            <description>详细介绍2025年最新摩托车驾驶照申请指南，包括申请条件、流程、所需材料等。</description>
+            <pubDate>Mon, 05 Aug 2025 10:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title>YouTube Premium太贵？教你免费获得同样体验</title>
+            <link>https://www.zymn.cc/2025/06/07/Premium太贵？教你免费获得同样体验/</link>
+            <description>详细介绍YouTube Premium的免费替代方案，包括使用Vanced、uYou+等应用，以及如何获得同样体验。</description>
+            <pubDate>Sat, 07 Jun 2025 10:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title>Android Hook使用教程:逆向必备</title>
+            <link>https://www.zymn.cc/2025/06/03/Android—Hook使用教程-逆向必备/</link>
+            <description>详细介绍Android Hook的使用方法，包括环境配置、功能介绍、使用技巧等。</description>
+            <pubDate>Thu, 03 Jun 2025 10:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title>Android Monitor使用教程:逆向必备</title>
+            <link>https://www.zymn.cc/2025/05/29/Android—Monitor使用教程-逆向必备/</link>
+            <description>详细介绍Android Monitor的使用方法，包括环境配置、功能介绍、使用技巧等。</description>
+            <pubDate>Thu, 29 May 2025 10:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title>逆向工程中的常见情况与处理方式</title>
+            <link>https://www.zymn.cc/2025/05/28/逆向工程中的常见情况与处理方式/</link>
+            <description>详细介绍逆向工程中的常见情况与处理方式，包括常见反调试手段、处理方式、静态分析优化、动态分析技巧、实用工具与脚本等。</description>
+            <pubDate>Wed, 28 May 2025 10:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title>Android应用逆向与抓包实用教程</title>
+            <link>https://www.zymn.cc/2025/05/27/AndroidAPP逆向教程/</link>
+            <description>详细介绍Android应用逆向工程和抓包技术，包括真机/模拟器选择、HTTP/HTTPS抓包方法、APK反编译工具使用、JDK环境配置以及实用的逆向技巧和工具推荐。</description>
+            <pubDate>Mon, 27 May 2025 10:00:00 GMT</pubDate>
+        </item>
+         <item>
+            <title>AES加密的几种常用方式-Python实现</title>
+            <link>https://www.zymn.cc/2025/05/26/AES加密的几种常用方式/</link>
+            <description>详细介绍如何使用Python实现AES加密的几种常用方式，包括使用pycryptodome库。</description>
+            <pubDate>Mon, 26 May 2025 10:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title>Python虚拟环境搭建</title>
+            <link>https://www.zymn.cc/2025/05/23/Python虚拟环境搭建/</link>
+            <description>详细介绍如何搭建Python虚拟环境，包括使用virtualenv和venv。</description>
+            <pubDate>Mon, 23 May 2025 10:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title>红米AX6000刷机教程</title>
+            <link>https://www.zymn.cc/2025/02/10/红米AX6000刷机教程/</link>
+            <description>详细介绍如何刷机红米AX6000，包括准备工作、刷机步骤、注意事项和常见问题。</description>
+            <pubDate>Thu, 10 Feb 2025 12:48:24 GMT</pubDate>
+        </item>
+        <item>
+            <title>DeepSeek安装使用教程</title>
+            <link>https://www.zymn.cc/2025/02/08/Deepseek安装使用教程/</link>
+            <description>详细介绍如何安装和使用DeepSeek，包括环境配置、模型下载、Web UI安装等步骤。</description>
+            <pubDate>Wed, 08 Feb 2025 21:54:58 GMT</pubDate>
+        </item>
+        <item>
+            <title>cursor无限自动注册试用账号教程</title>
+            <link>https://www.zymn.cc/2025/01/20/cursor无限自动注册试用账号教程/</link>
+            <description>详细介绍如何使用cursor自动注册试用账号，包括环境变量配置、设备指纹重置等步骤。</description>
+            <pubDate>Mod, 20 Jan 2025 13:33:56 GMT</pubDate>
+        </item>
+        <item>
+            <title>怎么在cloudflare建立自己的邮箱服务</title>
+            <link>https://www.zymn.cc/2025/01/11/怎么在cloudflare建立自己的邮箱服务/</link>
+            <description>详细介绍如何在Cloudflare上建立自己的邮箱服务，并将邮件转发到Telegram机器人，方便快捷。</description>
+            <pubDate>Sun, 11 Jan 2025 18:21:32 GMT</pubDate>
+        </item>
+        <item>
+            <title>如何在macOS上设置定时推送代码到Git仓库</title>
+            <link>https://www.zymn.cc/2025/01/10/如何在macOS上设置定时推送代码到Git仓库/</link>
+            <description>详细介绍如何在macOS上使用cron定时任务自动推送代码到Git仓库，确保代码的及时更新和备份。</description>
+            <pubDate>Thu, 10 Jan 2025 21:07:54 GMT</pubDate>
+        </item>
+        <item>
+            <title>短信通使用指南</title>
+            <link>https://www.zymn.cc/2024/12/13/短信通使用指南/</link>
+            <description>介绍短信通APP的主要功能和使用方法,包括短信转发、来电转发等功能的设置说明。</description>
+            <pubDate>Fri, 13 Dec 2024 10:00:00 GMT</pubDate>
+        </item>
+        <item>
             <title>如何将应用发布到LINE？</title>
             <link>https://www.zymn.cc/2024/12/06/将应用发布到LINE的方法/</link>
             <description>详细介绍如何将前端项目发布到LINE，包括LIFF应用的创建和集成步骤。</description>

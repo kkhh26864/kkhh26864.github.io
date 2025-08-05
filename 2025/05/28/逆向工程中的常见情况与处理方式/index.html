@@ -1,0 +1,1146 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/logo.png">
+  <link rel="icon" href="/img/logo.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3232532601275150"
+     crossorigin="anonymous"></script>
+    <meta name="twitter:card" content="/img/nxgc.png" />
+    <meta name="twitter:site" content="自由码农" />
+    <meta name="twitter:creator" content="@spatacus1986">
+    <meta name="twitter:title" content="逆向工程中的常见情况与处理方式 - 自由码农" />
+    <meta name="twitter:description" content="在逆向工程的实践中，我们经常会遇到各种各样的保护机制和技术难点。本文总结了一些常见的情况及其处理方式，希望对逆向分析工作有所帮助。 1. 隐藏字节 (Hidden Bytes)1.1问题描述程序在运行时动态生成或解密关键代码，静态分析时无法直接看到真实的执行逻辑。 1.2常见场景 加密的字符串在运行时解密 关键函数地址通过计算得出 重要代码段被加密存储  1.3隐藏字节实例在实际逆向中，经常遇到这" />
+    <meta name="twitter:image" content="/img/nxgc.png" />
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="spatacus">
+  <meta name="keywords" content="自由码农,技术博客,工具分享，网站开发，App开发，小程序开发，H5开发">
+  
+    <meta name="description" content="在逆向工程的实践中，我们经常会遇到各种各样的保护机制和技术难点。本文总结了一些常见的情况及其处理方式，希望对逆向分析工作有所帮助。 1. 隐藏字节 (Hidden Bytes)1.1问题描述程序在运行时动态生成或解密关键代码，静态分析时无法直接看到真实的执行逻辑。 1.2常见场景 加密的字符串在运行时解密 关键函数地址通过计算得出 重要代码段被加密存储  1.3隐藏字节实例在实际逆向中，经常遇到这">
+<meta property="og:type" content="article">
+<meta property="og:title" content="逆向工程中的常见情况与处理方式">
+<meta property="og:url" content="https://blog.fxcxy.com/2025/05/28/%E9%80%86%E5%90%91%E5%B7%A5%E7%A8%8B%E4%B8%AD%E7%9A%84%E5%B8%B8%E8%A7%81%E6%83%85%E5%86%B5%E4%B8%8E%E5%A4%84%E7%90%86%E6%96%B9%E5%BC%8F/index.html">
+<meta property="og:site_name" content="自由码农">
+<meta property="og:description" content="在逆向工程的实践中，我们经常会遇到各种各样的保护机制和技术难点。本文总结了一些常见的情况及其处理方式，希望对逆向分析工作有所帮助。 1. 隐藏字节 (Hidden Bytes)1.1问题描述程序在运行时动态生成或解密关键代码，静态分析时无法直接看到真实的执行逻辑。 1.2常见场景 加密的字符串在运行时解密 关键函数地址通过计算得出 重要代码段被加密存储  1.3隐藏字节实例在实际逆向中，经常遇到这">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://blog.fxcxy.com/img/nxgc.png">
+<meta property="article:published_time" content="2025-05-28T02:59:56.000Z">
+<meta property="article:modified_time" content="2025-05-28T05:10:57.187Z">
+<meta property="article:author" content="spatacus">
+<meta property="article:tag" content="逆向工程">
+<meta property="article:tag" content="安全研究">
+<meta property="article:tag" content="二进制分析">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://blog.fxcxy.com/img/nxgc.png">
+  
+  
+  
+  <title>逆向工程中的常见情况与处理方式 - 自由码农</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+  
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_4443546_u6jwvi2qcka.css">
+<link rel="stylesheet" href="/css/social-share.min.css">
+<link rel="stylesheet" href="/css/myreward.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"blog.fxcxy.com","root":"/","version":"1.9.7","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"复制"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"J7kyQXV9R3CXOiA1eubrlflY-gzGzoHsz","app_key":"qHZzPzRcvsutXvHvBewqGmhw","server_url":"https://leancloud.fxcxy.com","path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+
+  
+    <!-- Google tag (gtag.js) -->
+    <script async>
+      if (!Fluid.ctx.dnt) {
+        Fluid.utils.createScript("https://www.googletagmanager.com/gtag/js?id=", function() {
+          window.dataLayer = window.dataLayer || [];
+          function gtag() {
+            dataLayer.push(arguments);
+          }
+          gtag('js', new Date());
+          gtag('config', '');
+        });
+      }
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+    
+  
+
+
+
+  
+<meta name="generator" content="Hexo 7.1.1"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>自由码农</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="逆向工程中的常见情况与处理方式"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2025-05-28 10:59" pubdate>
+          2025年5月28日 上午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          6k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          50 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="leancloud-page-views"></span>次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">逆向工程中的常见情况与处理方式</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <p>在逆向工程的实践中，我们经常会遇到各种各样的保护机制和技术难点。本文总结了一些常见的情况及其处理方式，希望对逆向分析工作有所帮助。</p>
+<h2 id="1-隐藏字节-Hidden-Bytes"><a href="#1-隐藏字节-Hidden-Bytes" class="headerlink" title="1. 隐藏字节 (Hidden Bytes)"></a>1. 隐藏字节 (Hidden Bytes)</h2><h3 id="1-1问题描述"><a href="#1-1问题描述" class="headerlink" title="1.1问题描述"></a>1.1问题描述</h3><p>程序在运行时动态生成或解密关键代码，静态分析时无法直接看到真实的执行逻辑。</p>
+<h3 id="1-2常见场景"><a href="#1-2常见场景" class="headerlink" title="1.2常见场景"></a>1.2常见场景</h3><ul>
+<li>加密的字符串在运行时解密</li>
+<li>关键函数地址通过计算得出</li>
+<li>重要代码段被加密存储</li>
+</ul>
+<h3 id="1-3隐藏字节实例"><a href="#1-3隐藏字节实例" class="headerlink" title="1.3隐藏字节实例"></a>1.3隐藏字节实例</h3><p>在实际逆向中，经常遇到这样的情况：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// Java代码中的隐藏字符串</span><br><span class="hljs-type">String</span> <span class="hljs-variable">salt</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;xxssasdfasdfadsf&quot;</span>;<br><span class="hljs-type">String</span> <span class="hljs-variable">v4</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">String</span>(<span class="hljs-keyword">new</span> <span class="hljs-title class_">byte</span>[]&#123;-<span class="hljs-number">26</span>, -<span class="hljs-number">83</span>, -<span class="hljs-number">90</span>, -<span class="hljs-number">26</span>, -<span class="hljs-number">78</span>, -<span class="hljs-number">101</span>, -<span class="hljs-number">23</span>, -<span class="hljs-number">67</span>, -<span class="hljs-number">112</span>&#125;);<br></code></pre></td></tr></table></figure>
+
+<p>这些负数实际上是有符号字节，需要转换才能得到真实内容：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># Python脚本，方便你们以后使用。</span><br>byte_list = [-<span class="hljs-number">26</span>, -<span class="hljs-number">83</span>, -<span class="hljs-number">90</span>, -<span class="hljs-number">26</span>, -<span class="hljs-number">78</span>, -<span class="hljs-number">101</span>, -<span class="hljs-number">23</span>, -<span class="hljs-number">67</span>, -<span class="hljs-number">112</span>]<br><br>bs = <span class="hljs-built_in">bytearray</span>()  <span class="hljs-comment"># python字节数组</span><br><span class="hljs-keyword">for</span> item <span class="hljs-keyword">in</span> byte_list:<br>    <span class="hljs-keyword">if</span> item &lt; <span class="hljs-number">0</span>:<br>        item = item + <span class="hljs-number">256</span>  <span class="hljs-comment"># 负数转换为无符号字节</span><br>    bs.append(item)<br><br>str_data = bs.decode(<span class="hljs-string">&#x27;utf-8&#x27;</span>)  <span class="hljs-comment"># data = bytes(bs)</span><br><span class="hljs-built_in">print</span>(str_data)  <span class="hljs-comment"># 输出: 海</span><br></code></pre></td></tr></table></figure>
+
+<p><strong>解释：</strong></p>
+<ul>
+<li>Java中的<code>byte</code>是有符号的（-128到127）</li>
+<li>当字节值大于127时，会显示为负数</li>
+<li>通过加256转换为无符号字节（0-255）</li>
+<li>最后按UTF-8解码得到真实字符串</li>
+</ul>
+<p>这种技术常用于隐藏敏感字符串，避免被静态分析工具直接发现。</p>
+<p><strong>重要提醒：</strong> 在逆向分析中，特别注意寻找这些常见的隐藏字符串：</p>
+<ul>
+<li>MD5加密盐</li>
+<li>AES加密key  </li>
+<li>iv向量</li>
+</ul>
+<p>这些关键信息往往以字节数组形式隐藏，是破解加密算法的重要线索。</p>
+<h3 id="1-4反向操作：生成隐藏字节"><a href="#1-4反向操作：生成隐藏字节" class="headerlink" title="1.4反向操作：生成隐藏字节"></a>1.4反向操作：生成隐藏字节</h3><p>如果你需要生成隐藏字节数组，可以用反向操作：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># 将中文字符串转换为字节数组</span><br>data = <span class="hljs-string">&quot;张三&quot;</span><br>data_bytes = data.encode(<span class="hljs-string">&#x27;utf-8&#x27;</span>)<br><br>data_list = <span class="hljs-built_in">bytearray</span>()<br><span class="hljs-keyword">for</span> item <span class="hljs-keyword">in</span> data_bytes:<br>    data_list.append(item)<br><br><span class="hljs-built_in">print</span>(data_list)<br><br><span class="hljs-comment"># 解码验证</span><br>res = data_list.decode(<span class="hljs-string">&#x27;utf-8&#x27;</span>)<br><span class="hljs-built_in">print</span>(res)  <span class="hljs-comment"># 输出: 张三</span><br></code></pre></td></tr></table></figure>
+
+<p><strong>更简洁的写法：</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># 使用普通列表收集字节</span><br>data = <span class="hljs-string">&quot;张三&quot;</span><br>data_bytes = data.encode(<span class="hljs-string">&#x27;utf-8&#x27;</span>)<br><br>data_list = []<br><span class="hljs-keyword">for</span> item <span class="hljs-keyword">in</span> data_bytes:<br>    data_list.append(item)<br><br><span class="hljs-built_in">print</span>(data_list)  <span class="hljs-comment"># 输出字节值列表，可直接用于Java</span><br></code></pre></td></tr></table></figure>
+
+<p>这样就能得到对应的字节数组，在Java中可以直接使用这些字节值来隐藏字符串。</p>
+<h3 id="1-5处理方式"><a href="#1-5处理方式" class="headerlink" title="1.5处理方式"></a>1.5处理方式</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># 使用动态调试获取运行时数据</span><br><span class="hljs-comment"># 在关键位置设置断点</span><br>bp <span class="hljs-number">0x401000</span><br><span class="hljs-comment"># 查看内存内容</span><br>x/100x $rsp<br><span class="hljs-comment"># 导出解密后的数据</span><br>dump memory decrypted.<span class="hljs-built_in">bin</span> <span class="hljs-number">0x401000</span> <span class="hljs-number">0x401100</span><br></code></pre></td></tr></table></figure>
+
+<p><strong>工具推荐：</strong></p>
+<ul>
+<li>IDA Pro + 动态调试</li>
+<li>x64dbg&#x2F;OllyDbg</li>
+<li>Frida 动态插桩</li>
+</ul>
+<h2 id="2-UUID"><a href="#2-UUID" class="headerlink" title="2. UUID"></a>2. UUID</h2><p>UUID（Universally Unique Identifier）是理论上永远不会重复的值，常用于生成唯一标识符（网卡、mac、当前时间等）。</p>
+<p><strong>常见场景：</strong></p>
+<ul>
+<li>设备唯一标识</li>
+<li>会话ID生成</li>
+<li>防重放攻击的随机数</li>
+</ul>
+<p><strong>在逆向中的处理：</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// Android中常见的UUID使用</span><br><span class="hljs-keyword">import</span> java.util.UUID;<br><br><span class="hljs-comment">// 生成随机UUID</span><br><span class="hljs-type">String</span> <span class="hljs-variable">uuid</span> <span class="hljs-operator">=</span> UUID.randomUUID().toString();<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># Python中生成和处理UUID</span><br><span class="hljs-keyword">import</span> uuid<br><br><span class="hljs-comment"># 生成UUID4（随机）</span><br>uid = <span class="hljs-built_in">str</span>(uuid.uuid4())<br><span class="hljs-built_in">print</span>(uid)  <span class="hljs-comment"># 输出类似: 550e8400-e29b-41d4-a716-446655440000</span><br></code></pre></td></tr></table></figure>
+
+<p><strong>分析要点：</strong></p>
+<ul>
+<li>UUID通常用于生成设备指纹或会话标识</li>
+<li>在逆向分析中，关注UUID的生成逻辑和使用场景</li>
+<li>某些应用会基于设备信息生成固定的UUID作为设备ID</li>
+</ul>
+<h2 id="3-随机值"><a href="#3-随机值" class="headerlink" title="3. 随机值"></a>3. 随机值</h2><p>随机值在逆向工程中经常遇到，特别是在加密、签名验证和防重放攻击中。</p>
+<p><strong>常见场景：</strong></p>
+<ul>
+<li>加密算法的随机种子</li>
+<li>签名验证的随机数</li>
+<li>防重放攻击的nonce值</li>
+<li>设备指纹生成</li>
+</ul>
+<p><strong>Java中的随机值生成：</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">import</span> java.math.BigInteger;<br><span class="hljs-keyword">import</span> java.security.SecureRandom;<br><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Test</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br>        <span class="hljs-comment">// 随机生成80位，10个字节</span><br>        <span class="hljs-type">BigInteger</span> <span class="hljs-variable">v4</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">BigInteger</span>(<span class="hljs-number">80</span>, <span class="hljs-keyword">new</span> <span class="hljs-title class_">SecureRandom</span>());<br>        <span class="hljs-comment">// 让字节以16进制展示</span><br>        <span class="hljs-type">String</span> <span class="hljs-variable">res</span> <span class="hljs-operator">=</span> v4.toString(<span class="hljs-number">16</span>);<br>        System.out.println(res);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p><strong>Python中的随机值处理：</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> random<br><br><span class="hljs-comment"># 方法1：生成随机字节并转换为16进制字符串</span><br>open_udid = <span class="hljs-string">&quot;&quot;</span>.join([<span class="hljs-built_in">hex</span>(i)[<span class="hljs-number">2</span>:] <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> random.randbytes(<span class="hljs-number">10</span>)])<br><span class="hljs-built_in">print</span>(open_udid)<br><br><span class="hljs-comment"># 方法2：使用格式化字符串</span><br>open_udid = <span class="hljs-string">&quot;&quot;</span>.join([<span class="hljs-string">&quot;%x&quot;</span> % i <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> random.randbytes(<span class="hljs-number">10</span>)])<br><span class="hljs-built_in">print</span>(open_udid)<br><br><span class="hljs-comment"># 方法3：分步处理</span><br>data = random.randbytes(<span class="hljs-number">10</span>)<br>ele_list = []<br><span class="hljs-keyword">for</span> item <span class="hljs-keyword">in</span> data:<br>    ele = <span class="hljs-built_in">hex</span>(item)[<span class="hljs-number">2</span>:]  <span class="hljs-comment"># 去掉0x前缀</span><br>    ele_list.append(ele)<br><br>res = <span class="hljs-string">&quot;&quot;</span>.join(ele_list)<br><span class="hljs-built_in">print</span>(res)<br><br><span class="hljs-comment"># 方法4：补零格式化（推荐）</span><br><span class="hljs-comment"># 十六进制，不满2位数，前面加0</span><br>open_udid = <span class="hljs-string">&quot;&quot;</span>.join([<span class="hljs-string">&quot;%02x&quot;</span> % i <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> random.randbytes(<span class="hljs-number">10</span>)])<br><span class="hljs-built_in">print</span>(open_udid)<br></code></pre></td></tr></table></figure>
+
+<p><strong>分析要点：</strong></p>
+<ul>
+<li>关注随机数生成器的类型（伪随机vs真随机）</li>
+<li>分析随机种子的来源和可预测性</li>
+<li>在Android逆向中，注意<code>SecureRandom</code>的使用</li>
+<li>某些应用可能使用固定种子生成”随机”值</li>
+</ul>
+<h2 id="4-时间戳"><a href="#4-时间戳" class="headerlink" title="4. 时间戳"></a>4. 时间戳</h2><p>时间戳在逆向工程中经常作为唯一标识符、随机种子或防重放攻击的关键参数。</p>
+<p><strong>常见场景：</strong></p>
+<ul>
+<li>API请求的时间戳验证</li>
+<li>加密算法的时间种子</li>
+<li>日志记录和调试信息</li>
+<li>防重放攻击机制</li>
+</ul>
+<p><strong>Java中的时间戳处理：</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Test</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br>        <span class="hljs-comment">// 获取当前时间戳（秒级）</span><br>        <span class="hljs-type">String</span> <span class="hljs-variable">t1</span> <span class="hljs-operator">=</span> String.valueOf(System.currentTimeMillis() / <span class="hljs-number">1000</span>);<br>        <span class="hljs-comment">// 获取当前时间戳（毫秒级）</span><br>        <span class="hljs-type">String</span> <span class="hljs-variable">t2</span> <span class="hljs-operator">=</span> String.valueOf(System.currentTimeMillis());<br>        <br>        System.out.println(t1);  <span class="hljs-comment">// 秒级时间戳</span><br>        System.out.println(t2);  <span class="hljs-comment">// 毫秒级时间戳</span><br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p><strong>Python中的时间戳处理：</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> time<br><span class="hljs-keyword">from</span> datetime <span class="hljs-keyword">import</span> datetime<br><br><span class="hljs-comment"># 方法1：获取当前时间戳</span><br>timestamp_sec = <span class="hljs-built_in">int</span>(time.time())  <span class="hljs-comment"># 秒级时间戳</span><br>timestamp_ms = <span class="hljs-built_in">int</span>(time.time() * <span class="hljs-number">1000</span>)  <span class="hljs-comment"># 毫秒级时间戳</span><br><br><span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;秒级时间戳: <span class="hljs-subst">&#123;timestamp_sec&#125;</span>&quot;</span>)<br><span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;毫秒级时间戳: <span class="hljs-subst">&#123;timestamp_ms&#125;</span>&quot;</span>)<br><br><span class="hljs-comment"># 方法2：使用datetime</span><br>dt = datetime.now()<br>timestamp_sec2 = <span class="hljs-built_in">int</span>(dt.timestamp())<br>timestamp_ms2 = <span class="hljs-built_in">int</span>(dt.timestamp() * <span class="hljs-number">1000</span>)<br><br><span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;datetime秒级: <span class="hljs-subst">&#123;timestamp_sec2&#125;</span>&quot;</span>)<br><span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;datetime毫秒级: <span class="hljs-subst">&#123;timestamp_ms2&#125;</span>&quot;</span>)<br><br><span class="hljs-comment"># 时间戳转换为可读格式</span><br>readable_time = datetime.fromtimestamp(timestamp_sec)<br><span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;可读时间: <span class="hljs-subst">&#123;readable_time&#125;</span>&quot;</span>)<br><br><span class="hljs-comment"># 字符串格式化</span><br>time_str = datetime.fromtimestamp(timestamp_sec).strftime(<span class="hljs-string">&quot;%Y-%m-%d %H:%M:%S&quot;</span>)<br><span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;格式化时间: <span class="hljs-subst">&#123;time_str&#125;</span>&quot;</span>)<br></code></pre></td></tr></table></figure>
+
+<p><strong>分析要点：</strong></p>
+<ul>
+<li>时间戳常用于生成请求签名和验证</li>
+<li>注意时间戳的精度（秒级vs毫秒级）</li>
+<li>某些应用会对时间戳进行偏移或加密处理</li>
+<li>在逆向分析中，时间戳可能是突破口之一</li>
+</ul>
+<h2 id="5-16进制字符串"><a href="#5-16进制字符串" class="headerlink" title="5. 16进制字符串"></a>5. 16进制字符串</h2><p>16进制字符串在逆向工程中广泛使用，特别是在处理二进制数据、加密密钥和哈希值时。</p>
+<p><strong>常见场景：</strong></p>
+<ul>
+<li>加密密钥的表示</li>
+<li>哈希值的显示</li>
+<li>二进制数据的可读化</li>
+<li>网络协议中的数据传输</li>
+</ul>
+<p><strong>Java中的16进制处理：</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> String <span class="hljs-title function_">H</span><span class="hljs-params">(<span class="hljs-type">byte</span>[] arg5)</span> &#123;<br>    <span class="hljs-type">StringBuilder</span> <span class="hljs-variable">v0</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">StringBuilder</span>();<br>    <span class="hljs-type">int</span> <span class="hljs-variable">v1</span> <span class="hljs-operator">=</span> arg5.length;<br>    <span class="hljs-type">int</span> v2;<br>    <span class="hljs-keyword">for</span>(v2 = <span class="hljs-number">0</span>; v2 &lt; v1; ++v2) &#123;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">v3</span> <span class="hljs-operator">=</span> arg5[v2] &amp; <span class="hljs-number">0xFF</span>;  <span class="hljs-comment">// 转换为无符号字节</span><br>        <span class="hljs-keyword">if</span>(v3 &lt; <span class="hljs-number">16</span>) &#123;<br>            v0.append(<span class="hljs-string">&#x27;0&#x27;</span>);  <span class="hljs-comment">// 补零</span><br>        &#125;<br>        v0.append(Integer.toHexString(v3));<br>    &#125;<br>    <span class="hljs-keyword">return</span> v0.toString();<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p><strong>Python中的16进制处理：</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># 在Java中字节是有符号：-128 ~ 127</span><br><br><span class="hljs-comment"># name_bytes = &quot;张三&quot;.encode(&#x27;utf-8&#x27;)</span><br>name_bytes = [<span class="hljs-number">10</span>, -<span class="hljs-number">26</span>, -<span class="hljs-number">83</span>, -<span class="hljs-number">90</span>, -<span class="hljs-number">26</span>, -<span class="hljs-number">78</span>, -<span class="hljs-number">101</span>, -<span class="hljs-number">23</span>, -<span class="hljs-number">67</span>, -<span class="hljs-number">112</span>]<br><br>data_list = []<br><br><span class="hljs-keyword">for</span> item <span class="hljs-keyword">in</span> name_bytes:<br>    item = item &amp; <span class="hljs-number">0xff</span>  <span class="hljs-comment"># item&lt;0时，让item+256</span><br>    ele = <span class="hljs-string">&quot;%02x&quot;</span> % item  <span class="hljs-comment"># 格式化为2位16进制，不足补0</span><br>    data_list.append(ele)<br><br><span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;&quot;</span>.join(data_list))<br></code></pre></td></tr></table></figure>
+
+<p><strong>更简洁的Python实现：</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># 方法1：直接处理字节数组</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">bytes_to_hex</span>(<span class="hljs-params">byte_array</span>):<br>    <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;&quot;</span>.join([<span class="hljs-string">&quot;%02x&quot;</span> % (item &amp; <span class="hljs-number">0xff</span>) <span class="hljs-keyword">for</span> item <span class="hljs-keyword">in</span> byte_array])<br><br><span class="hljs-comment"># 方法2：使用内置方法</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">bytes_to_hex_builtin</span>(<span class="hljs-params">data</span>):<br>    <span class="hljs-keyword">if</span> <span class="hljs-built_in">isinstance</span>(data, <span class="hljs-built_in">str</span>):<br>        data = data.encode(<span class="hljs-string">&#x27;utf-8&#x27;</span>)<br>    <span class="hljs-keyword">return</span> data.<span class="hljs-built_in">hex</span>()<br><br><span class="hljs-comment"># 方法3：处理有符号字节</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">signed_bytes_to_hex</span>(<span class="hljs-params">signed_bytes</span>):<br>    <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;&quot;</span>.join([<span class="hljs-string">&quot;%02x&quot;</span> % (b &amp; <span class="hljs-number">0xff</span>) <span class="hljs-keyword">for</span> b <span class="hljs-keyword">in</span> signed_bytes])<br><br><span class="hljs-comment"># 示例使用</span><br>name_bytes = [<span class="hljs-number">10</span>, -<span class="hljs-number">26</span>, -<span class="hljs-number">83</span>, -<span class="hljs-number">90</span>, -<span class="hljs-number">26</span>, -<span class="hljs-number">78</span>, -<span class="hljs-number">101</span>, -<span class="hljs-number">23</span>, -<span class="hljs-number">67</span>, -<span class="hljs-number">112</span>]<br>hex_string = signed_bytes_to_hex(name_bytes)<br><span class="hljs-built_in">print</span>(hex_string)  <span class="hljs-comment"># 输出16进制字符串</span><br></code></pre></td></tr></table></figure>
+
+<p><strong>分析要点：</strong></p>
+<ul>
+<li>注意Java中字节的有符号特性（-128到127）</li>
+<li>使用<code>&amp; 0xFF</code>操作将有符号字节转换为无符号</li>
+<li><code>%02x</code>格式化确保每个字节都是2位16进制</li>
+<li>在逆向分析中，16进制字符串常用于表示密钥、哈希等关键数据</li>
+</ul>
+<h2 id="6-MD5加密"><a href="#6-MD5加密" class="headerlink" title="6. MD5加密"></a>6. MD5加密</h2><p>MD5在逆向工程中是最常见的哈希算法之一，广泛用于数据完整性验证、密码存储和签名生成。</p>
+<p><strong>常见场景：</strong></p>
+<ul>
+<li>API请求签名验证</li>
+<li>密码哈希存储</li>
+<li>文件完整性校验</li>
+<li>防篡改机制</li>
+</ul>
+<p><strong>Python中的MD5实现：</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> hashlib<br><br><span class="hljs-comment"># 基础MD5加密</span><br>obj = hashlib.md5()<br>obj.update(<span class="hljs-string">&#x27;xxxxx&#x27;</span>.encode(<span class="hljs-string">&#x27;utf-8&#x27;</span>))<br><br><span class="hljs-comment"># 获取16进制字符串（Java中没有这个功能）</span><br>v1 = obj.hexdigest()<br><span class="hljs-built_in">print</span>(v1)  <span class="hljs-comment"># fb0e22c79ac75679e9881e6ba183b354</span><br><br><span class="hljs-comment"># 获取字节数组</span><br>v2 = obj.digest()<br><span class="hljs-built_in">print</span>(v2)  <span class="hljs-comment"># b&#x27;\xfb\x0e&quot;\xc7\x9a\xc7Vy\xe9\x88\x1ek\xa1\x83\xb3T&#x27;</span><br></code></pre></td></tr></table></figure>
+
+<p><strong>更完整的Python实现：</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> hashlib<br><br><span class="hljs-comment"># 对中文字符串进行MD5加密</span><br>m = hashlib.md5()<br>m.update(<span class="hljs-string">&quot;张三&quot;</span>.encode(<span class="hljs-string">&quot;utf-8&quot;</span>))<br><br>v1 = m.digest()<br><span class="hljs-built_in">print</span>(v1)  <span class="hljs-comment"># b&#x27;\x175\x10\x12GrB\x9d5-\x0c\r#\xd4h\x17=&#x27;</span><br><br>v2 = m.hexdigest()<br><span class="hljs-built_in">print</span>(v2)  <span class="hljs-comment"># 1735101247242d52d0c0d23d468173d</span><br></code></pre></td></tr></table></figure>
+
+<p><strong>Java中的MD5实现：</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">import</span> java.security.MessageDigest;<br><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> NoSuchAlgorithmException &#123;<br>    <span class="hljs-type">String</span> <span class="hljs-variable">name</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;张三&quot;</span>;<br>    <br>    <span class="hljs-type">MessageDigest</span> <span class="hljs-variable">instance</span> <span class="hljs-operator">=</span> MessageDigest.getInstance(<span class="hljs-string">&quot;MD5&quot;</span>);<br>    <span class="hljs-type">byte</span>[] nameBytes = instance.digest(name.getBytes());<br>    <br>    <span class="hljs-comment">// 十六进制展示</span><br>    <span class="hljs-type">StringBuilder</span> <span class="hljs-variable">sb</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">StringBuilder</span>();<br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>; i&lt;nameBytes.length; i++) &#123;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">val</span> <span class="hljs-operator">=</span> nameBytes[i] &amp; <span class="hljs-number">255</span>;  <span class="hljs-comment">// 负数转换为正数</span><br>        <span class="hljs-keyword">if</span> (val&lt;<span class="hljs-number">16</span>) &#123;<br>            sb.append(<span class="hljs-string">&quot;0&quot;</span>);  <span class="hljs-comment">// 补零</span><br>        &#125;<br>        sb.append(Integer.toHexString(val));<br>    &#125;<br>    <span class="hljs-type">String</span> <span class="hljs-variable">hexData</span> <span class="hljs-operator">=</span> sb.toString();<br>    System.out.println(hexData); <span class="hljs-comment">// e6ada6e6b29be9bd90</span><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p><strong>MD5加盐处理：</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> hashlib<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">md5_with_salt</span>(<span class="hljs-params">data, salt</span>):<br>    <span class="hljs-string">&quot;&quot;&quot;MD5加盐加密&quot;&quot;&quot;</span><br>    <span class="hljs-comment"># 方法1：数据+盐</span><br>    combined = data + salt<br>    <span class="hljs-keyword">return</span> hashlib.md5(combined.encode(<span class="hljs-string">&#x27;utf-8&#x27;</span>)).hexdigest()<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">md5_double_salt</span>(<span class="hljs-params">data, salt1, salt2</span>):<br>    <span class="hljs-string">&quot;&quot;&quot;双重加盐&quot;&quot;&quot;</span><br>    combined = salt1 + data + salt2<br>    <span class="hljs-keyword">return</span> hashlib.md5(combined.encode(<span class="hljs-string">&#x27;utf-8&#x27;</span>)).hexdigest()<br><br><span class="hljs-comment"># 示例使用</span><br>password = <span class="hljs-string">&quot;123456&quot;</span><br>salt = <span class="hljs-string">&quot;mysalt&quot;</span><br>hashed = md5_with_salt(password, salt)<br><span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;加盐MD5: <span class="hljs-subst">&#123;hashed&#125;</span>&quot;</span>)<br></code></pre></td></tr></table></figure>
+
+<p><strong>实际应用场景 - 抖音X-SS-STUB：</strong></p>
+<p>在抖音等应用的逆向分析中，经常遇到这样的场景：</p>
+<figure class="highlight abnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs abnf">每次发送POST请求时，抖音都会携带一些请求头：<br><span class="hljs-attribute">X-SS-STUB</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;fjaku9asdf&quot;</span><br><br>读取请求体中的数据，对请求体中的数据进行md5加密。<br></code></pre></td></tr></table></figure>
+
+<p>这种机制用于防止请求被篡改，是典型的API签名验证方式。</p>
+<p><strong>分析要点：</strong></p>
+<ul>
+<li>MD5虽然已被认为不够安全，但在逆向分析中仍然常见</li>
+<li>注意加盐的方式和位置（前缀、后缀、中间插入）</li>
+<li>Java中需要手动转换字节为16进制字符串</li>
+<li>Python的<code>hexdigest()</code>方法直接返回16进制字符串</li>
+<li>在API逆向中，MD5常用于生成请求签名</li>
+</ul>
+<h2 id="7-SHA-256加密"><a href="#7-SHA-256加密" class="headerlink" title="7. SHA-256加密"></a>7. SHA-256加密</h2><p>SHA-256是SHA-2系列中最常用的哈希算法，比MD5更安全，在现代应用中广泛使用。</p>
+<p><strong>常见场景：</strong></p>
+<ul>
+<li>区块链和加密货币</li>
+<li>数字签名验证</li>
+<li>密码安全存储</li>
+<li>API签名生成</li>
+</ul>
+<p><strong>Java中的SHA-256实现：</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">import</span> java.security.MessageDigest;<br><span class="hljs-keyword">import</span> java.security.NoSuchAlgorithmException;<br><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Hello</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> NoSuchAlgorithmException &#123;<br>        <span class="hljs-type">String</span> <span class="hljs-variable">name</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;张三&quot;</span>;<br>        <span class="hljs-type">MessageDigest</span> <span class="hljs-variable">instance</span> <span class="hljs-operator">=</span> MessageDigest.getInstance(<span class="hljs-string">&quot;SHA-256&quot;</span>);<br>        <span class="hljs-type">byte</span>[] nameBytes = instance.digest(name.getBytes());<br>        <br>        <span class="hljs-comment">// 十六进制展示</span><br>        <span class="hljs-type">StringBuilder</span> <span class="hljs-variable">sb</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">StringBuilder</span>();<br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>; i&lt;nameBytes.length; i++) &#123;<br>            <span class="hljs-type">int</span> <span class="hljs-variable">val</span> <span class="hljs-operator">=</span> nameBytes[i] &amp; <span class="hljs-number">255</span>;  <span class="hljs-comment">// 负数转换为正数</span><br>            <span class="hljs-keyword">if</span> (val&lt;<span class="hljs-number">16</span>) &#123;<br>                sb.append(<span class="hljs-string">&quot;0&quot;</span>);  <span class="hljs-comment">// 补零</span><br>            &#125;<br>            sb.append(Integer.toHexString(val));<br>        &#125;<br>        <span class="hljs-type">String</span> <span class="hljs-variable">hexData</span> <span class="hljs-operator">=</span> sb.toString();<br>        System.out.println(hexData);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p><strong>Python中的SHA-256实现：</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> hashlib<br><br><span class="hljs-comment"># 基础SHA-256加密</span><br>m = hashlib.sha256()<br>m.update(<span class="hljs-string">&quot;张三&quot;</span>.encode(<span class="hljs-string">&quot;utf-8&quot;</span>))<br><br><span class="hljs-comment"># 获取字节数组</span><br>v1 = m.digest()<br><span class="hljs-built_in">print</span>(v1)<br><br><span class="hljs-comment"># 获取16进制字符串</span><br>v2 = m.hexdigest()<br><span class="hljs-built_in">print</span>(v2)<br></code></pre></td></tr></table></figure>
+
+<p><strong>分析要点：</strong></p>
+<ul>
+<li>SHA-256输出长度固定为64个16进制字符（256位）</li>
+<li>比MD5更安全，抗碰撞能力更强</li>
+<li>在区块链和现代加密应用中广泛使用</li>
+<li>Java和Python的实现方式类似，但Java需要手动处理字节转换</li>
+</ul>
+<h2 id="8-AES加密"><a href="#8-AES加密" class="headerlink" title="8. AES加密"></a>8. AES加密</h2><p>AES（Advanced Encryption Standard）是目前最广泛使用的对称加密算法，在逆向工程中经常遇到。</p>
+<p><strong>常见场景：</strong></p>
+<ul>
+<li>敏感数据加密存储</li>
+<li>网络通信加密</li>
+<li>配置文件保护</li>
+<li>API数据传输加密</li>
+</ul>
+<p><strong>Python中的AES实现：</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> Crypto.Cipher <span class="hljs-keyword">import</span> AES<br><span class="hljs-keyword">from</span> Crypto.Util.Padding <span class="hljs-keyword">import</span> pad<br><br>KEY = <span class="hljs-string">&quot;fd6b639dbcff0c2a1b03b389ec763c4b&quot;</span><br>IV = <span class="hljs-string">&quot;77b07a672d57d64c&quot;</span><br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">aes_encrypt</span>(<span class="hljs-params">data_string</span>):<br>    aes = AES.new(<br>        key=KEY.encode(<span class="hljs-string">&#x27;utf-8&#x27;</span>),<br>        mode=AES.MODE_CBC,<br>        iv=IV.encode(<span class="hljs-string">&#x27;utf-8&#x27;</span>)<br>    )<br>    raw = pad(data_string.encode(<span class="hljs-string">&#x27;utf-8&#x27;</span>), <span class="hljs-number">16</span>)<br>    <span class="hljs-keyword">return</span> aes.encrypt(raw)<br><br><span class="hljs-comment"># 使用示例</span><br>data = aes_encrypt(<span class="hljs-string">&quot;张三&quot;</span>)<br><span class="hljs-built_in">print</span>(data)<br><span class="hljs-built_in">print</span>([i <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> data])  <span class="hljs-comment"># 显示字节数组</span><br></code></pre></td></tr></table></figure>
+
+<p><strong>Java中的AES实现：</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">import</span> javax.crypto.Cipher;<br><span class="hljs-keyword">import</span> javax.crypto.spec.SecretKeySpec;<br><span class="hljs-keyword">import</span> javax.crypto.spec.IvParameterSpec;<br><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Hello</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> Exception &#123;<br>        <span class="hljs-type">String</span> <span class="hljs-variable">data</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;张三&quot;</span>;<br>        <span class="hljs-type">String</span> <span class="hljs-variable">key</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;fd6b639dbcff0c2a1b03b389ec763c4b&quot;</span>;<br>        <span class="hljs-type">String</span> <span class="hljs-variable">iv</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;77b07a672d57d64c&quot;</span>;<br>        <br>        <span class="hljs-comment">// 加密</span><br>        <span class="hljs-type">byte</span>[] raw = key.getBytes();<br>        <span class="hljs-type">SecretKeySpec</span> <span class="hljs-variable">skeySpec</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">SecretKeySpec</span>(raw, <span class="hljs-string">&quot;AES&quot;</span>);<br>        <span class="hljs-type">IvParameterSpec</span> <span class="hljs-variable">ivSpec</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">IvParameterSpec</span>(iv.getBytes());<br>        <br>        <span class="hljs-type">Cipher</span> <span class="hljs-variable">cipher</span> <span class="hljs-operator">=</span> Cipher.getInstance(<span class="hljs-string">&quot;AES/CBC/PKCS5Padding&quot;</span>);<br>        cipher.init(Cipher.ENCRYPT_MODE, skeySpec, ivSpec);<br>        <span class="hljs-type">byte</span>[] encrypted = cipher.doFinal(data.getBytes());<br>        <br>        <span class="hljs-comment">// System.out.println(Arrays.toString(encrypted));</span><br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p><strong>AES解密实现：</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> Crypto.Cipher <span class="hljs-keyword">import</span> AES<br><span class="hljs-keyword">from</span> Crypto.Util.Padding <span class="hljs-keyword">import</span> unpad<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">aes_decrypt</span>(<span class="hljs-params">encrypted_data, key, iv</span>):<br>    <span class="hljs-string">&quot;&quot;&quot;AES解密函数&quot;&quot;&quot;</span><br>    aes = AES.new(<br>        key=key.encode(<span class="hljs-string">&#x27;utf-8&#x27;</span>),<br>        mode=AES.MODE_CBC,<br>        iv=iv.encode(<span class="hljs-string">&#x27;utf-8&#x27;</span>)<br>    )<br>    decrypted = aes.decrypt(encrypted_data)<br>    <span class="hljs-keyword">return</span> unpad(decrypted, <span class="hljs-number">16</span>).decode(<span class="hljs-string">&#x27;utf-8&#x27;</span>)<br><br><span class="hljs-comment"># 解密示例</span><br>KEY = <span class="hljs-string">&quot;fd6b639dbcff0c2a1b03b389ec763c4b&quot;</span><br>IV = <span class="hljs-string">&quot;77b07a672d57d64c&quot;</span><br>encrypted = aes_encrypt(<span class="hljs-string">&quot;张三&quot;</span>)<br>decrypted = aes_decrypt(encrypted, KEY, IV)<br><span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;解密结果: <span class="hljs-subst">&#123;decrypted&#125;</span>&quot;</span>)<br></code></pre></td></tr></table></figure>
+
+<p><strong>常见AES模式：</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> Crypto.Cipher <span class="hljs-keyword">import</span> AES<br><span class="hljs-keyword">from</span> Crypto.Util.Padding <span class="hljs-keyword">import</span> pad, unpad<br><span class="hljs-keyword">import</span> os<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">aes_ecb_encrypt</span>(<span class="hljs-params">data, key</span>):<br>    <span class="hljs-string">&quot;&quot;&quot;ECB模式加密&quot;&quot;&quot;</span><br>    aes = AES.new(key.encode(<span class="hljs-string">&#x27;utf-8&#x27;</span>), AES.MODE_ECB)<br>    padded_data = pad(data.encode(<span class="hljs-string">&#x27;utf-8&#x27;</span>), <span class="hljs-number">16</span>)<br>    <span class="hljs-keyword">return</span> aes.encrypt(padded_data)<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">aes_cbc_encrypt</span>(<span class="hljs-params">data, key, iv</span>):<br>    <span class="hljs-string">&quot;&quot;&quot;CBC模式加密&quot;&quot;&quot;</span><br>    aes = AES.new(key.encode(<span class="hljs-string">&#x27;utf-8&#x27;</span>), AES.MODE_CBC, iv.encode(<span class="hljs-string">&#x27;utf-8&#x27;</span>))<br>    padded_data = pad(data.encode(<span class="hljs-string">&#x27;utf-8&#x27;</span>), <span class="hljs-number">16</span>)<br>    <span class="hljs-keyword">return</span> aes.encrypt(padded_data)<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">aes_ctr_encrypt</span>(<span class="hljs-params">data, key</span>):<br>    <span class="hljs-string">&quot;&quot;&quot;CTR模式加密&quot;&quot;&quot;</span><br>    nonce = os.urandom(<span class="hljs-number">8</span>)  <span class="hljs-comment"># 8字节随机数</span><br>    aes = AES.new(key.encode(<span class="hljs-string">&#x27;utf-8&#x27;</span>), AES.MODE_CTR, nonce=nonce)<br>    <span class="hljs-keyword">return</span> aes.encrypt(data.encode(<span class="hljs-string">&#x27;utf-8&#x27;</span>))<br></code></pre></td></tr></table></figure>
+
+<p><strong>在逆向分析中的要点：</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># 常见的密钥和IV获取方式</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">analyze_aes_usage</span>():<br>    <span class="hljs-string">&quot;&quot;&quot;分析AES使用模式&quot;&quot;&quot;</span><br>    patterns = &#123;<br>        <span class="hljs-string">&quot;硬编码密钥&quot;</span>: <span class="hljs-string">&quot;直接在代码中写死的密钥&quot;</span>,<br>        <span class="hljs-string">&quot;动态生成&quot;</span>: <span class="hljs-string">&quot;基于设备信息或时间戳生成&quot;</span>,<br>        <span class="hljs-string">&quot;网络获取&quot;</span>: <span class="hljs-string">&quot;从服务器动态获取密钥&quot;</span>,<br>        <span class="hljs-string">&quot;密钥派生&quot;</span>: <span class="hljs-string">&quot;通过PBKDF2等算法派生&quot;</span><br>    &#125;<br>    <br>    modes = &#123;<br>        <span class="hljs-string">&quot;ECB&quot;</span>: <span class="hljs-string">&quot;最简单但不安全，相同明文产生相同密文&quot;</span>,<br>        <span class="hljs-string">&quot;CBC&quot;</span>: <span class="hljs-string">&quot;需要IV，最常用的模式&quot;</span>,<br>        <span class="hljs-string">&quot;CTR&quot;</span>: <span class="hljs-string">&quot;流加密模式，需要nonce&quot;</span>,<br>        <span class="hljs-string">&quot;GCM&quot;</span>: <span class="hljs-string">&quot;认证加密，提供完整性保护&quot;</span><br>    &#125;<br>    <br>    <span class="hljs-keyword">return</span> patterns, modes<br></code></pre></td></tr></table></figure>
+
+<p><strong>分析要点：</strong></p>
+<ul>
+<li>AES是对称加密，加密和解密使用相同密钥</li>
+<li>密钥长度通常为128、192或256位</li>
+<li>CBC模式需要IV（初始化向量），ECB模式不需要</li>
+<li>注意填充方式：PKCS5Padding、PKCS7Padding等</li>
+<li>在逆向中重点关注密钥和IV的来源</li>
+<li>Java中需要指定完整的算法描述：”AES&#x2F;CBC&#x2F;PKCS5Padding”</li>
+</ul>
+<h2 id="9-GZIP压缩"><a href="#9-GZIP压缩" class="headerlink" title="9. GZIP压缩"></a>9. GZIP压缩</h2><p>GZIP是一种广泛使用的数据压缩算法，在逆向工程中经常遇到，特别是在网络传输和数据存储中。</p>
+<p><strong>常见场景：</strong></p>
+<ul>
+<li>HTTP响应数据压缩</li>
+<li>日志文件压缩存储</li>
+<li>配置文件压缩</li>
+<li>网络传输数据减少</li>
+</ul>
+<p><strong>Java中的GZIP实现：</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">import</span> java.io.*;<br><span class="hljs-keyword">import</span> java.util.zip.*;<br><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Hello</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> IOException &#123;<br>        <span class="hljs-comment">// 压缩</span><br>        <span class="hljs-type">String</span> <span class="hljs-variable">data</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;张三&quot;</span>;<br>        <br>        <span class="hljs-type">ByteArrayOutputStream</span> <span class="hljs-variable">v0_1</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">ByteArrayOutputStream</span>();<br>        <span class="hljs-type">GZIPOutputStream</span> <span class="hljs-variable">v1</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">GZIPOutputStream</span>(v0_1);<br>        v1.write(data.getBytes());<br>        v1.close();<br>        <br>        <span class="hljs-type">byte</span>[] arg6 = v0_1.toByteArray();  <span class="hljs-comment">// gzip压缩后: arg6</span><br>        <br>        <span class="hljs-comment">// 解压缩</span><br>        <span class="hljs-type">ByteArrayOutputStream</span> <span class="hljs-variable">out</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">ByteArrayOutputStream</span>();<br>        <span class="hljs-type">ByteArrayInputStream</span> <span class="hljs-variable">in</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">ByteArrayInputStream</span>(arg6);<br>        <span class="hljs-type">GZIPInputStream</span> <span class="hljs-variable">ungzip</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">GZIPInputStream</span>(in);<br>        <span class="hljs-type">byte</span>[] buffer = <span class="hljs-keyword">new</span> <span class="hljs-title class_">byte</span>[<span class="hljs-number">256</span>];<br>        <span class="hljs-type">int</span> n;<br>        <span class="hljs-keyword">while</span> ((n = ungzip.read(buffer)) &gt;= <span class="hljs-number">0</span>) &#123;<br>            out.write(buffer, <span class="hljs-number">0</span>, n);<br>        &#125;<br>        <span class="hljs-type">byte</span>[] res = out.toByteArray();<br>        <br>        System.out.println(out.toString(<span class="hljs-string">&quot;UTF-8&quot;</span>));<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p><strong>Python中的GZIP实现：</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> gzip<br><br><span class="hljs-comment"># 压缩</span><br>s_in = <span class="hljs-string">&quot;我是张三&quot;</span>.encode(<span class="hljs-string">&#x27;utf-8&#x27;</span>)<br>s_out = gzip.compress(s_in)<br><span class="hljs-built_in">print</span>([i <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> s_out])<br><br><span class="hljs-comment"># 解压缩</span><br>res = gzip.decompress(s_out)<br><span class="hljs-built_in">print</span>(res)<br><span class="hljs-built_in">print</span>(res.decode(<span class="hljs-string">&#x27;utf-8&#x27;</span>))<br></code></pre></td></tr></table></figure>
+
+<p><strong>更完整的Python实现：</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> gzip<br><span class="hljs-keyword">import</span> io<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">gzip_compress</span>(<span class="hljs-params">data</span>):<br>    <span class="hljs-string">&quot;&quot;&quot;GZIP压缩函数&quot;&quot;&quot;</span><br>    <span class="hljs-keyword">if</span> <span class="hljs-built_in">isinstance</span>(data, <span class="hljs-built_in">str</span>):<br>        data = data.encode(<span class="hljs-string">&#x27;utf-8&#x27;</span>)<br>    <span class="hljs-keyword">return</span> gzip.compress(data)<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">gzip_decompress</span>(<span class="hljs-params">compressed_data</span>):<br>    <span class="hljs-string">&quot;&quot;&quot;GZIP解压缩函数&quot;&quot;&quot;</span><br>    <span class="hljs-keyword">return</span> gzip.decompress(compressed_data)<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">gzip_compress_to_file</span>(<span class="hljs-params">data, filename</span>):<br>    <span class="hljs-string">&quot;&quot;&quot;压缩数据到文件&quot;&quot;&quot;</span><br>    <span class="hljs-keyword">with</span> gzip.<span class="hljs-built_in">open</span>(filename, <span class="hljs-string">&#x27;wb&#x27;</span>) <span class="hljs-keyword">as</span> f:<br>        <span class="hljs-keyword">if</span> <span class="hljs-built_in">isinstance</span>(data, <span class="hljs-built_in">str</span>):<br>            data = data.encode(<span class="hljs-string">&#x27;utf-8&#x27;</span>)<br>        f.write(data)<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">gzip_decompress_from_file</span>(<span class="hljs-params">filename</span>):<br>    <span class="hljs-string">&quot;&quot;&quot;从文件解压缩数据&quot;&quot;&quot;</span><br>    <span class="hljs-keyword">with</span> gzip.<span class="hljs-built_in">open</span>(filename, <span class="hljs-string">&#x27;rb&#x27;</span>) <span class="hljs-keyword">as</span> f:<br>        <span class="hljs-keyword">return</span> f.read()<br><br><span class="hljs-comment"># 示例使用</span><br>original_data = <span class="hljs-string">&quot;我是张三&quot;</span><br>compressed = gzip_compress(original_data)<br>decompressed = gzip_decompress(compressed)<br><br><span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;原始数据: <span class="hljs-subst">&#123;original_data&#125;</span>&quot;</span>)<br><span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;压缩后字节: <span class="hljs-subst">&#123;[i <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> compressed]&#125;</span>&quot;</span>)<br><span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;解压缩结果: <span class="hljs-subst">&#123;decompressed.decode(<span class="hljs-string">&#x27;utf-8&#x27;</span>)&#125;</span>&quot;</span>)<br></code></pre></td></tr></table></figure>
+
+<p><strong>在逆向分析中的应用：</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> gzip<br><span class="hljs-keyword">import</span> base64<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">analyze_compressed_data</span>(<span class="hljs-params">data</span>):<br>    <span class="hljs-string">&quot;&quot;&quot;分析可能的压缩数据&quot;&quot;&quot;</span><br>    <span class="hljs-comment"># 检查GZIP魔数</span><br>    <span class="hljs-keyword">if</span> data.startswith(<span class="hljs-string">b&#x27;\x1f\x8b&#x27;</span>):<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;检测到GZIP压缩数据&quot;</span>)<br>        <span class="hljs-keyword">try</span>:<br>            decompressed = gzip.decompress(data)<br>            <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;解压缩成功，原始大小: <span class="hljs-subst">&#123;<span class="hljs-built_in">len</span>(decompressed)&#125;</span>&quot;</span>)<br>            <span class="hljs-keyword">return</span> decompressed<br>        <span class="hljs-keyword">except</span> Exception <span class="hljs-keyword">as</span> e:<br>            <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;解压缩失败: <span class="hljs-subst">&#123;e&#125;</span>&quot;</span>)<br>    <br>    <span class="hljs-comment"># 检查Base64编码的GZIP数据</span><br>    <span class="hljs-keyword">try</span>:<br>        decoded = base64.b64decode(data)<br>        <span class="hljs-keyword">if</span> decoded.startswith(<span class="hljs-string">b&#x27;\x1f\x8b&#x27;</span>):<br>            <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;检测到Base64编码的GZIP数据&quot;</span>)<br>            decompressed = gzip.decompress(decoded)<br>            <span class="hljs-keyword">return</span> decompressed<br>    <span class="hljs-keyword">except</span>:<br>        <span class="hljs-keyword">pass</span><br>    <br>    <span class="hljs-keyword">return</span> <span class="hljs-literal">None</span><br><br><span class="hljs-comment"># HTTP响应处理示例</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">handle_http_response</span>(<span class="hljs-params">response_data, headers</span>):<br>    <span class="hljs-string">&quot;&quot;&quot;处理HTTP响应中的GZIP数据&quot;&quot;&quot;</span><br>    <span class="hljs-keyword">if</span> headers.get(<span class="hljs-string">&#x27;Content-Encoding&#x27;</span>) == <span class="hljs-string">&#x27;gzip&#x27;</span>:<br>        <span class="hljs-keyword">try</span>:<br>            decompressed = gzip.decompress(response_data)<br>            <span class="hljs-keyword">return</span> decompressed.decode(<span class="hljs-string">&#x27;utf-8&#x27;</span>)<br>        <span class="hljs-keyword">except</span> Exception <span class="hljs-keyword">as</span> e:<br>            <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;GZIP解压缩失败: <span class="hljs-subst">&#123;e&#125;</span>&quot;</span>)<br>    <span class="hljs-keyword">return</span> response_data<br></code></pre></td></tr></table></figure>
+
+<p><strong>压缩比分析：</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> gzip<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">compression_analysis</span>(<span class="hljs-params">data</span>):<br>    <span class="hljs-string">&quot;&quot;&quot;分析压缩效果&quot;&quot;&quot;</span><br>    <span class="hljs-keyword">if</span> <span class="hljs-built_in">isinstance</span>(data, <span class="hljs-built_in">str</span>):<br>        original_bytes = data.encode(<span class="hljs-string">&#x27;utf-8&#x27;</span>)<br>    <span class="hljs-keyword">else</span>:<br>        original_bytes = data<br>    <br>    compressed = gzip.compress(original_bytes)<br>    <br>    original_size = <span class="hljs-built_in">len</span>(original_bytes)<br>    compressed_size = <span class="hljs-built_in">len</span>(compressed)<br>    ratio = (<span class="hljs-number">1</span> - compressed_size / original_size) * <span class="hljs-number">100</span><br>    <br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;原始大小: <span class="hljs-subst">&#123;original_size&#125;</span> 字节&quot;</span>)<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;压缩后大小: <span class="hljs-subst">&#123;compressed_size&#125;</span> 字节&quot;</span>)<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;压缩比: <span class="hljs-subst">&#123;ratio:<span class="hljs-number">.2</span>f&#125;</span>%&quot;</span>)<br>    <br>    <span class="hljs-keyword">return</span> compressed<br><br><span class="hljs-comment"># 示例分析</span><br>test_data = <span class="hljs-string">&quot;我是张三&quot;</span> * <span class="hljs-number">100</span>  <span class="hljs-comment"># 重复数据压缩效果更好</span><br>compression_analysis(test_data)<br></code></pre></td></tr></table></figure>
+
+<p><strong>重要提醒：</strong> Java、Python语言区别。（个人字节是不同，不影响整个的结果）</p>
+<p><strong>分析要点：</strong></p>
+<ul>
+<li>GZIP文件以魔数<code>1F 8B</code>开头，这是识别GZIP数据的重要特征</li>
+<li>压缩比取决于数据的重复性和模式</li>
+<li>在网络抓包分析中，注意<code>Content-Encoding: gzip</code>头部</li>
+<li>Java实现相对复杂，需要使用流操作</li>
+<li>Python的<code>gzip</code>模块提供了简单的压缩&#x2F;解压缩接口</li>
+<li>在逆向分析中，GZIP常用于隐藏或减少数据传输量</li>
+</ul>
+<h2 id="10-Base64编码"><a href="#10-Base64编码" class="headerlink" title="10. Base64编码"></a>10. Base64编码</h2><p>Base64是一种基于64个可打印字符来表示二进制数据的编码方法，在逆向工程中极其常见。</p>
+<p><strong>常见场景：</strong></p>
+<ul>
+<li>数据传输编码</li>
+<li>配置文件中的二进制数据</li>
+<li>网络协议中的数据编码</li>
+<li>图片和文件的文本表示</li>
+</ul>
+<p><strong>Python中的Base64实现：</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> base64<br><br>name = <span class="hljs-string">&quot;张三&quot;</span><br><br><span class="hljs-comment"># 编码</span><br>res = base64.b64encode(name.encode(<span class="hljs-string">&#x27;utf-8&#x27;</span>))<br><span class="hljs-built_in">print</span>(res)  <span class="hljs-comment"># b&#x27;5q2m5rKb6b2Q&#x27;</span><br><br><span class="hljs-comment"># 解码</span><br>data = base64.b64decode(res)<br>origin = data.decode(<span class="hljs-string">&#x27;utf-8&#x27;</span>)<br><span class="hljs-built_in">print</span>(origin)  <span class="hljs-comment"># &quot;张三&quot;</span><br></code></pre></td></tr></table></figure>
+
+<p><strong>Java中的Base64实现：</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">import</span> java.util.Base64;<br><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Hello</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br>        <span class="hljs-type">String</span> <span class="hljs-variable">name</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;张三&quot;</span>;<br>        <br>        <span class="hljs-comment">// 加密</span><br>        Base64.<span class="hljs-type">Encoder</span> <span class="hljs-variable">encoder</span> <span class="hljs-operator">=</span> Base64.getEncoder();<br>        <span class="hljs-type">String</span> <span class="hljs-variable">res</span> <span class="hljs-operator">=</span> encoder.encodeToString(name.getBytes());<br>        System.out.println(res);  <span class="hljs-comment">// &quot;5q2m5rKb6b2Q&quot;</span><br>        <br>        <span class="hljs-comment">// 解密</span><br>        Base64.<span class="hljs-type">Decoder</span> <span class="hljs-variable">decoder</span> <span class="hljs-operator">=</span> Base64.getDecoder();<br>        <span class="hljs-type">byte</span>[] origin = decoder.decode(res);<br>        <span class="hljs-type">String</span> <span class="hljs-variable">data</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">String</span>(origin);<br>        System.out.println(data);  <span class="hljs-comment">// 张三</span><br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p><strong>更完整的Python实现：</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> base64<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">base64_encode</span>(<span class="hljs-params">data</span>):<br>    <span class="hljs-string">&quot;&quot;&quot;Base64编码函数&quot;&quot;&quot;</span><br>    <span class="hljs-keyword">if</span> <span class="hljs-built_in">isinstance</span>(data, <span class="hljs-built_in">str</span>):<br>        data = data.encode(<span class="hljs-string">&#x27;utf-8&#x27;</span>)<br>    <span class="hljs-keyword">return</span> base64.b64encode(data).decode(<span class="hljs-string">&#x27;ascii&#x27;</span>)<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">base64_decode</span>(<span class="hljs-params">encoded_data</span>):<br>    <span class="hljs-string">&quot;&quot;&quot;Base64解码函数&quot;&quot;&quot;</span><br>    <span class="hljs-keyword">if</span> <span class="hljs-built_in">isinstance</span>(encoded_data, <span class="hljs-built_in">str</span>):<br>        encoded_data = encoded_data.encode(<span class="hljs-string">&#x27;ascii&#x27;</span>)<br>    <span class="hljs-keyword">return</span> base64.b64decode(encoded_data)<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">base64_url_encode</span>(<span class="hljs-params">data</span>):<br>    <span class="hljs-string">&quot;&quot;&quot;URL安全的Base64编码&quot;&quot;&quot;</span><br>    <span class="hljs-keyword">if</span> <span class="hljs-built_in">isinstance</span>(data, <span class="hljs-built_in">str</span>):<br>        data = data.encode(<span class="hljs-string">&#x27;utf-8&#x27;</span>)<br>    <span class="hljs-keyword">return</span> base64.urlsafe_b64encode(data).decode(<span class="hljs-string">&#x27;ascii&#x27;</span>)<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">base64_url_decode</span>(<span class="hljs-params">encoded_data</span>):<br>    <span class="hljs-string">&quot;&quot;&quot;URL安全的Base64解码&quot;&quot;&quot;</span><br>    <span class="hljs-keyword">if</span> <span class="hljs-built_in">isinstance</span>(encoded_data, <span class="hljs-built_in">str</span>):<br>        encoded_data = encoded_data.encode(<span class="hljs-string">&#x27;ascii&#x27;</span>)<br>    <span class="hljs-keyword">return</span> base64.urlsafe_b64decode(encoded_data)<br><br><span class="hljs-comment"># 示例使用</span><br>text = <span class="hljs-string">&quot;张三&quot;</span><br>encoded = base64_encode(text)<br>decoded = base64_decode(encoded)<br><br><span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;原文: <span class="hljs-subst">&#123;text&#125;</span>&quot;</span>)<br><span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;编码: <span class="hljs-subst">&#123;encoded&#125;</span>&quot;</span>)<br><span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;解码: <span class="hljs-subst">&#123;decoded.decode(<span class="hljs-string">&#x27;utf-8&#x27;</span>)&#125;</span>&quot;</span>)<br></code></pre></td></tr></table></figure>
+
+<p><strong>在逆向分析中的应用：</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> base64<br><span class="hljs-keyword">import</span> re<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">detect_base64</span>(<span class="hljs-params">data</span>):<br>    <span class="hljs-string">&quot;&quot;&quot;检测可能的Base64编码数据&quot;&quot;&quot;</span><br>    <span class="hljs-comment"># Base64字符集检查</span><br>    base64_pattern = re.<span class="hljs-built_in">compile</span>(<span class="hljs-string">r&#x27;^[A-Za-z0-9+/]*=&#123;0,2&#125;$&#x27;</span>)<br>    <br>    <span class="hljs-keyword">if</span> <span class="hljs-built_in">isinstance</span>(data, <span class="hljs-built_in">bytes</span>):<br>        data = data.decode(<span class="hljs-string">&#x27;ascii&#x27;</span>, errors=<span class="hljs-string">&#x27;ignore&#x27;</span>)<br>    <br>    <span class="hljs-comment"># 长度检查（Base64编码后长度是4的倍数）</span><br>    <span class="hljs-keyword">if</span> <span class="hljs-built_in">len</span>(data) % <span class="hljs-number">4</span> != <span class="hljs-number">0</span>:<br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">False</span><br>    <br>    <span class="hljs-comment"># 字符集检查</span><br>    <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> base64_pattern.<span class="hljs-keyword">match</span>(data):<br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">False</span><br>    <br>    <span class="hljs-keyword">try</span>:<br>        decoded = base64.b64decode(data)<br>        <span class="hljs-comment"># 检查解码后是否为可打印字符</span><br>        <span class="hljs-keyword">if</span> <span class="hljs-built_in">all</span>(<span class="hljs-number">32</span> &lt;= b &lt;= <span class="hljs-number">126</span> <span class="hljs-keyword">or</span> b <span class="hljs-keyword">in</span> [<span class="hljs-number">9</span>, <span class="hljs-number">10</span>, <span class="hljs-number">13</span>] <span class="hljs-keyword">for</span> b <span class="hljs-keyword">in</span> decoded):<br>            <span class="hljs-keyword">return</span> <span class="hljs-literal">True</span><br>    <span class="hljs-keyword">except</span>:<br>        <span class="hljs-keyword">pass</span><br>    <br>    <span class="hljs-keyword">return</span> <span class="hljs-literal">False</span><br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">analyze_base64_data</span>(<span class="hljs-params">data</span>):<br>    <span class="hljs-string">&quot;&quot;&quot;分析Base64数据&quot;&quot;&quot;</span><br>    <span class="hljs-keyword">if</span> detect_base64(data):<br>        <span class="hljs-keyword">try</span>:<br>            decoded = base64.b64decode(data)<br>            <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;检测到Base64数据&quot;</span>)<br>            <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;原始长度: <span class="hljs-subst">&#123;<span class="hljs-built_in">len</span>(data)&#125;</span>&quot;</span>)<br>            <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;解码后长度: <span class="hljs-subst">&#123;<span class="hljs-built_in">len</span>(decoded)&#125;</span>&quot;</span>)<br>            <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;解码内容: <span class="hljs-subst">&#123;decoded&#125;</span>&quot;</span>)<br>            <br>            <span class="hljs-comment"># 尝试UTF-8解码</span><br>            <span class="hljs-keyword">try</span>:<br>                text = decoded.decode(<span class="hljs-string">&#x27;utf-8&#x27;</span>)<br>                <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;UTF-8文本: <span class="hljs-subst">&#123;text&#125;</span>&quot;</span>)<br>            <span class="hljs-keyword">except</span>:<br>                <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;非UTF-8文本数据&quot;</span>)<br>                <br>            <span class="hljs-keyword">return</span> decoded<br>        <span class="hljs-keyword">except</span> Exception <span class="hljs-keyword">as</span> e:<br>            <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;Base64解码失败: <span class="hljs-subst">&#123;e&#125;</span>&quot;</span>)<br>    <span class="hljs-keyword">else</span>:<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;不是有效的Base64数据&quot;</span>)<br>    <br>    <span class="hljs-keyword">return</span> <span class="hljs-literal">None</span><br><br><span class="hljs-comment"># 多层编码检测</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">detect_nested_encoding</span>(<span class="hljs-params">data</span>):<br>    <span class="hljs-string">&quot;&quot;&quot;检测多层Base64编码&quot;&quot;&quot;</span><br>    current = data<br>    layers = <span class="hljs-number">0</span><br>    <br>    <span class="hljs-keyword">while</span> detect_base64(current) <span class="hljs-keyword">and</span> layers &lt; <span class="hljs-number">10</span>:  <span class="hljs-comment"># 防止无限循环</span><br>        <span class="hljs-keyword">try</span>:<br>            decoded = base64.b64decode(current)<br>            current = decoded.decode(<span class="hljs-string">&#x27;ascii&#x27;</span>, errors=<span class="hljs-string">&#x27;ignore&#x27;</span>)<br>            layers += <span class="hljs-number">1</span><br>            <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;第<span class="hljs-subst">&#123;layers&#125;</span>层Base64解码: <span class="hljs-subst">&#123;current&#125;</span>&quot;</span>)<br>        <span class="hljs-keyword">except</span>:<br>            <span class="hljs-keyword">break</span><br>    <br>    <span class="hljs-keyword">return</span> layers, current<br></code></pre></td></tr></table></figure>
+
+<p><strong>Base64变种处理：</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> base64<br><span class="hljs-keyword">import</span> string<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">base64_custom_alphabet</span>(<span class="hljs-params">data, alphabet</span>):<br>    <span class="hljs-string">&quot;&quot;&quot;自定义字母表的Base64编码&quot;&quot;&quot;</span><br>    standard = <span class="hljs-string">&quot;ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/&quot;</span><br>    <br>    <span class="hljs-comment"># 创建转换表</span><br>    trans_table = <span class="hljs-built_in">str</span>.maketrans(alphabet, standard)<br>    <br>    <span class="hljs-comment"># 转换为标准Base64然后解码</span><br>    standard_b64 = data.translate(trans_table)<br>    <span class="hljs-keyword">return</span> base64.b64decode(standard_b64)<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">analyze_custom_base64</span>(<span class="hljs-params">data</span>):<br>    <span class="hljs-string">&quot;&quot;&quot;分析可能的自定义Base64编码&quot;&quot;&quot;</span><br>    <span class="hljs-comment"># 常见的自定义字母表</span><br>    custom_alphabets = [<br>        <span class="hljs-string">&quot;ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-_&quot;</span>,  <span class="hljs-comment"># URL safe</span><br>        <span class="hljs-string">&quot;0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz+/&quot;</span>,  <span class="hljs-comment"># 数字开头</span><br>        <span class="hljs-string">&quot;abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789+/&quot;</span>,  <span class="hljs-comment"># 小写开头</span><br>    ]<br>    <br>    <span class="hljs-keyword">for</span> i, alphabet <span class="hljs-keyword">in</span> <span class="hljs-built_in">enumerate</span>(custom_alphabets):<br>        <span class="hljs-keyword">try</span>:<br>            decoded = base64_custom_alphabet(data, alphabet)<br>            <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;自定义字母表<span class="hljs-subst">&#123;i+<span class="hljs-number">1</span>&#125;</span>解码成功: <span class="hljs-subst">&#123;decoded&#125;</span>&quot;</span>)<br>        <span class="hljs-keyword">except</span>:<br>            <span class="hljs-keyword">continue</span><br></code></pre></td></tr></table></figure>
+
+<p><strong>分析要点：</strong></p>
+<ul>
+<li>Base64编码后的字符串长度总是4的倍数</li>
+<li>只包含A-Z、a-z、0-9、+、&#x2F;和&#x3D;（填充）字符</li>
+<li>URL安全版本使用-和_替代+和&#x2F;</li>
+<li>在逆向分析中，Base64常用于隐藏配置信息、密钥等</li>
+<li>注意多层Base64编码的情况</li>
+<li>某些应用会使用自定义的Base64字母表</li>
+</ul>
+<h2 id="11-反调试技术"><a href="#11-反调试技术" class="headerlink" title="11. 反调试技术"></a>11. 反调试技术</h2><h3 id="常见反调试手段"><a href="#常见反调试手段" class="headerlink" title="常见反调试手段"></a>常见反调试手段</h3><ul>
+<li><code>IsDebuggerPresent()</code> 检测</li>
+<li>PEB 结构检查</li>
+<li>时间差检测</li>
+<li>异常处理反调试</li>
+</ul>
+<h3 id="处理方式"><a href="#处理方式" class="headerlink" title="处理方式"></a>处理方式</h3><h4 id="11-1-API-Hook-绕过"><a href="#11-1-API-Hook-绕过" class="headerlink" title="11.1 API Hook 绕过"></a>11.1 API Hook 绕过</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-comment">// Hook IsDebuggerPresent</span><br><span class="hljs-function">BOOL WINAPI <span class="hljs-title">FakeIsDebuggerPresent</span><span class="hljs-params">()</span> </span>&#123;<br>    <span class="hljs-keyword">return</span> FALSE;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h4 id="11-2-内存补丁"><a href="#11-2-内存补丁" class="headerlink" title="11.2 内存补丁"></a>11.2 内存补丁</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs assembly">; 将检测代码 nop 掉<br>mov eax, 0  ; 原: call IsDebuggerPresent<br>nop         ; 原: test eax, eax<br>nop         ; 原: jnz exit<br></code></pre></td></tr></table></figure>
+
+<h4 id="11-3-PEB-修改"><a href="#11-3-PEB-修改" class="headerlink" title="11.3 PEB 修改"></a>11.3 PEB 修改</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># 使用 Frida 修改 PEB</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">modify_peb</span>():<br>    peb_addr = Process.getCurrentProcess().getPointer(<span class="hljs-string">&quot;PEB&quot;</span>)<br>    peb_addr.add(<span class="hljs-number">0x02</span>).writeU8(<span class="hljs-number">0</span>)  <span class="hljs-comment"># BeingDebugged = 0</span><br></code></pre></td></tr></table></figure>
+
+<h2 id="12-代码混淆"><a href="#12-代码混淆" class="headerlink" title="12. 代码混淆"></a>12. 代码混淆</h2><h3 id="常见混淆技术"><a href="#常见混淆技术" class="headerlink" title="常见混淆技术"></a>常见混淆技术</h3><ul>
+<li>控制流平坦化</li>
+<li>虚假控制流</li>
+<li>指令替换</li>
+<li>垃圾代码插入</li>
+</ul>
+<h3 id="处理策略"><a href="#处理策略" class="headerlink" title="处理策略"></a>处理策略</h3><h4 id="12-1-控制流分析"><a href="#12-1-控制流分析" class="headerlink" title="12.1 控制流分析"></a>12.1 控制流分析</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># 使用 IDA Python 分析控制流</span><br><span class="hljs-keyword">import</span> idaapi<br><span class="hljs-keyword">import</span> idc<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">analyze_cfg</span>(<span class="hljs-params">start_addr</span>):<br>    <span class="hljs-string">&quot;&quot;&quot;分析控制流图&quot;&quot;&quot;</span><br>    visited = <span class="hljs-built_in">set</span>()<br>    queue = [start_addr]<br>    <br>    <span class="hljs-keyword">while</span> queue:<br>        addr = queue.pop(<span class="hljs-number">0</span>)<br>        <span class="hljs-keyword">if</span> addr <span class="hljs-keyword">in</span> visited:<br>            <span class="hljs-keyword">continue</span><br>        visited.add(addr)<br>        <br>        <span class="hljs-comment"># 获取指令</span><br>        insn = idaapi.insn_t()<br>        idaapi.decode_insn(insn, addr)<br>        <br>        <span class="hljs-comment"># 分析跳转目标</span><br>        <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(insn.Op1.<span class="hljs-built_in">type</span>, insn.Op6.<span class="hljs-built_in">type</span>):<br>            <span class="hljs-keyword">if</span> insn.ops[i].<span class="hljs-built_in">type</span> == idaapi.o_near:<br>                queue.append(insn.ops[i].addr)<br></code></pre></td></tr></table></figure>
+
+<h4 id="12-2-去混淆脚本"><a href="#12-2-去混淆脚本" class="headerlink" title="12.2 去混淆脚本"></a>12.2 去混淆脚本</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># 移除垃圾指令的简单示例</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">remove_junk_code</span>(<span class="hljs-params">start, end</span>):<br>    addr = start<br>    <span class="hljs-keyword">while</span> addr &lt; end:<br>        insn = idc.GetDisasm(addr)<br>        <span class="hljs-comment"># 识别垃圾指令模式</span><br>        <span class="hljs-keyword">if</span> <span class="hljs-string">&quot;push eax&quot;</span> <span class="hljs-keyword">in</span> insn <span class="hljs-keyword">and</span> <span class="hljs-string">&quot;pop eax&quot;</span> <span class="hljs-keyword">in</span> idc.GetDisasm(addr + idc.ItemSize(addr)):<br>            <span class="hljs-comment"># 将垃圾指令 nop 掉</span><br>            idc.PatchByte(addr, <span class="hljs-number">0x90</span>)<br>            idc.PatchByte(addr + <span class="hljs-number">1</span>, <span class="hljs-number">0x90</span>)<br>        addr = idc.NextHead(addr)<br></code></pre></td></tr></table></figure>
+
+<h2 id="13-字符串加密"><a href="#13-字符串加密" class="headerlink" title="13. 字符串加密"></a>13. 字符串加密</h2><h3 id="识别方法"><a href="#识别方法" class="headerlink" title="识别方法"></a>识别方法</h3><ul>
+<li>查找解密函数特征</li>
+<li>分析字符串使用模式</li>
+<li>动态跟踪字符串生成</li>
+</ul>
+<h3 id="解密策略"><a href="#解密策略" class="headerlink" title="解密策略"></a>解密策略</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># 自动化字符串解密</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">decrypt_strings</span>():<br>    <span class="hljs-comment"># 找到解密函数</span><br>    decrypt_func = <span class="hljs-number">0x401234</span><br>    <br>    <span class="hljs-comment"># 遍历所有调用</span><br>    <span class="hljs-keyword">for</span> xref <span class="hljs-keyword">in</span> idautils.XrefsTo(decrypt_func):<br>        <span class="hljs-comment"># 获取参数</span><br>        encrypted_str = idc.GetOperandValue(xref.frm - <span class="hljs-number">5</span>, <span class="hljs-number">0</span>)<br>        key = idc.GetOperandValue(xref.frm - <span class="hljs-number">10</span>, <span class="hljs-number">0</span>)<br>        <br>        <span class="hljs-comment"># 解密并添加注释</span><br>        decrypted = simple_xor_decrypt(encrypted_str, key)<br>        idc.MakeComm(xref.frm, <span class="hljs-string">f&quot;Decrypted: <span class="hljs-subst">&#123;decrypted&#125;</span>&quot;</span>)<br></code></pre></td></tr></table></figure>
+
+<h2 id="14-虚拟机保护"><a href="#14-虚拟机保护" class="headerlink" title="14. 虚拟机保护"></a>14. 虚拟机保护</h2><h3 id="特征识别"><a href="#特征识别" class="headerlink" title="特征识别"></a>特征识别</h3><ul>
+<li>大量的间接跳转</li>
+<li>复杂的解释器循环</li>
+<li>自定义指令集</li>
+</ul>
+<h3 id="分析方法"><a href="#分析方法" class="headerlink" title="分析方法"></a>分析方法</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># VM 指令跟踪</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">trace_vm_instructions</span>():<br>    vm_context = get_vm_context()<br>    instruction_log = []<br>    <br>    <span class="hljs-keyword">while</span> vm_context.running:<br>        opcode = vm_context.fetch_opcode()<br>        instruction_log.append(&#123;<br>            <span class="hljs-string">&#x27;pc&#x27;</span>: vm_context.pc,<br>            <span class="hljs-string">&#x27;opcode&#x27;</span>: opcode,<br>            <span class="hljs-string">&#x27;operands&#x27;</span>: vm_context.get_operands()<br>        &#125;)<br>        vm_context.execute()<br>    <br>    <span class="hljs-keyword">return</span> instruction_log<br></code></pre></td></tr></table></figure>
+
+<h2 id="15-动态分析技巧"><a href="#15-动态分析技巧" class="headerlink" title="15. 动态分析技巧"></a>15. 动态分析技巧</h2><h3 id="15-1-内存断点"><a href="#15-1-内存断点" class="headerlink" title="15.1 内存断点"></a>15.1 内存断点</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs gdb"># GDB 中设置内存访问断点<br>watch *0x401000<br>awatch *0x401000  # 访问断点<br>rwatch *0x401000  # 读取断点<br></code></pre></td></tr></table></figure>
+
+<h3 id="15-2-API-监控"><a href="#15-2-API-监控" class="headerlink" title="15.2 API 监控"></a>15.2 API 监控</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">// Frida 脚本监控 API 调用</span><br><span class="hljs-title class_">Java</span>.<span class="hljs-title function_">perform</span>(<span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) &#123;<br>    <span class="hljs-keyword">var</span> targetClass = <span class="hljs-title class_">Java</span>.<span class="hljs-title function_">use</span>(<span class="hljs-string">&quot;com.example.TargetClass&quot;</span>);<br>    targetClass.<span class="hljs-property">sensitiveMethod</span>.<span class="hljs-property">implementation</span> = <span class="hljs-keyword">function</span>(<span class="hljs-params">param</span>) &#123;<br>        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;[+] sensitiveMethod called with: &quot;</span> + param);<br>        <span class="hljs-keyword">var</span> result = <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">sensitiveMethod</span>(param);<br>        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;[+] Result: &quot;</span> + result);<br>        <span class="hljs-keyword">return</span> result;<br>    &#125;;<br>&#125;);<br></code></pre></td></tr></table></figure>
+
+<h2 id="16-静态分析优化"><a href="#16-静态分析优化" class="headerlink" title="16. 静态分析优化"></a>16. 静态分析优化</h2><h3 id="16-1-函数识别"><a href="#16-1-函数识别" class="headerlink" title="16.1 函数识别"></a>16.1 函数识别</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># 自动识别加密函数</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">find_crypto_functions</span>():<br>    crypto_patterns = [<br>        <span class="hljs-string">b&#x27;\x31\xc0\x99\xf7\xf1&#x27;</span>,  <span class="hljs-comment"># xor eax,eax; cdq; div ecx</span><br>        <span class="hljs-string">b&#x27;\xd1\xe8\x73\x02&#x27;</span>,      <span class="hljs-comment"># shr eax,1; jnc +2</span><br>    ]<br>    <br>    <span class="hljs-keyword">for</span> pattern <span class="hljs-keyword">in</span> crypto_patterns:<br>        addr = idc.FindBinary(<span class="hljs-number">0</span>, idc.SEARCH_DOWN, pattern)<br>        <span class="hljs-keyword">if</span> addr != idc.BADADDR:<br>            <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;Potential crypto function at: <span class="hljs-subst">&#123;<span class="hljs-built_in">hex</span>(addr)&#125;</span>&quot;</span>)<br></code></pre></td></tr></table></figure>
+
+<h3 id="16-2-交叉引用分析"><a href="#16-2-交叉引用分析" class="headerlink" title="16.2 交叉引用分析"></a>16.2 交叉引用分析</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># 分析关键数据的使用</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">analyze_key_usage</span>(<span class="hljs-params">key_addr</span>):<br>    xrefs = []<br>    <span class="hljs-keyword">for</span> xref <span class="hljs-keyword">in</span> idautils.XrefsTo(key_addr):<br>        func_name = idc.GetFunctionName(xref.frm)<br>        xrefs.append(&#123;<br>            <span class="hljs-string">&#x27;addr&#x27;</span>: xref.frm,<br>            <span class="hljs-string">&#x27;function&#x27;</span>: func_name,<br>            <span class="hljs-string">&#x27;type&#x27;</span>: xref.<span class="hljs-built_in">type</span><br>        &#125;)<br>    <span class="hljs-keyword">return</span> xrefs<br></code></pre></td></tr></table></figure>
+
+<h2 id="17-实用工具与脚本"><a href="#17-实用工具与脚本" class="headerlink" title="17. 实用工具与脚本"></a>17. 实用工具与脚本</h2><h3 id="17-1-自动化分析脚本"><a href="#17-1-自动化分析脚本" class="headerlink" title="17.1 自动化分析脚本"></a>17.1 自动化分析脚本</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment">#!/usr/bin/env python3</span><br><span class="hljs-comment"># 逆向分析自动化脚本</span><br><br><span class="hljs-keyword">import</span> subprocess<br><span class="hljs-keyword">import</span> os<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">auto_analysis</span>(<span class="hljs-params">binary_path</span>):<br>    <span class="hljs-string">&quot;&quot;&quot;自动化逆向分析流程&quot;&quot;&quot;</span><br>    <br>    <span class="hljs-comment"># 1. 基础信息收集</span><br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;[+] 收集基础信息...&quot;</span>)<br>    os.system(<span class="hljs-string">f&quot;file <span class="hljs-subst">&#123;binary_path&#125;</span>&quot;</span>)<br>    os.system(<span class="hljs-string">f&quot;strings <span class="hljs-subst">&#123;binary_path&#125;</span> | head -20&quot;</span>)<br>    <br>    <span class="hljs-comment"># 2. 反汇编</span><br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;[+] 生成反汇编...&quot;</span>)<br>    os.system(<span class="hljs-string">f&quot;objdump -d <span class="hljs-subst">&#123;binary_path&#125;</span> &gt; disasm.txt&quot;</span>)<br>    <br>    <span class="hljs-comment"># 3. 符号表分析</span><br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;[+] 分析符号表...&quot;</span>)<br>    os.system(<span class="hljs-string">f&quot;nm <span class="hljs-subst">&#123;binary_path&#125;</span> &gt; symbols.txt&quot;</span>)<br>    <br>    <span class="hljs-comment"># 4. 动态库依赖</span><br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;[+] 检查依赖...&quot;</span>)<br>    os.system(<span class="hljs-string">f&quot;ldd <span class="hljs-subst">&#123;binary_path&#125;</span>&quot;</span>)<br><br><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&quot;__main__&quot;</span>:<br>    auto_analysis(<span class="hljs-string">&quot;target_binary&quot;</span>)<br></code></pre></td></tr></table></figure>
+
+<h3 id="17-2-内存-Dump-工具"><a href="#17-2-内存-Dump-工具" class="headerlink" title="17.2 内存 Dump 工具"></a>17.2 内存 Dump 工具</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">dump_process_memory</span>(<span class="hljs-params">pid, start_addr, size</span>):<br>    <span class="hljs-string">&quot;&quot;&quot;导出进程内存&quot;&quot;&quot;</span><br>    <span class="hljs-keyword">try</span>:<br>        <span class="hljs-keyword">with</span> <span class="hljs-built_in">open</span>(<span class="hljs-string">f&quot;/proc/<span class="hljs-subst">&#123;pid&#125;</span>/mem&quot;</span>, <span class="hljs-string">&quot;rb&quot;</span>) <span class="hljs-keyword">as</span> mem_file:<br>            mem_file.seek(start_addr)<br>            data = mem_file.read(size)<br>            <br>        <span class="hljs-keyword">with</span> <span class="hljs-built_in">open</span>(<span class="hljs-string">f&quot;dump_<span class="hljs-subst">&#123;<span class="hljs-built_in">hex</span>(start_addr)&#125;</span>.bin&quot;</span>, <span class="hljs-string">&quot;wb&quot;</span>) <span class="hljs-keyword">as</span> dump_file:<br>            dump_file.write(data)<br>            <br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;[+] 内存已导出到 dump_<span class="hljs-subst">&#123;<span class="hljs-built_in">hex</span>(start_addr)&#125;</span>.bin&quot;</span>)<br>    <span class="hljs-keyword">except</span> Exception <span class="hljs-keyword">as</span> e:<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;[-] 导出失败: <span class="hljs-subst">&#123;e&#125;</span>&quot;</span>)<br></code></pre></td></tr></table></figure>
+
+                
+              </div>
+            
+
+              <!--打赏-->
+              <div class="reward">
+                  <div class="reward-button">赏 <span class="reward-code">
+		<span class="alipay-code"> <img class="alipay-img wdp-appear" src="/img/alipay.png" srcset="/img/loading.gif" lazyload><b>支付宝打赏</b> </span>
+		<span class="wechat-code"> <img class="wechat-img wdp-appear" src="/img/wechat.png" srcset="/img/loading.gif" lazyload><b>微信打赏</b> </span> </span>
+                  </div>
+                  <p class="reward-notice">如果文章对你有帮助，欢迎点击上方按钮打赏作者，更多功能请访问<a href="https://blog.fxcxy.com">博客站</a></p>
+              </div>
+              <!--打赏-->
+              <hr/>
+              <div style="text-align:right;"> <!-- 自己添加的“分享到”模块：开始。用的是 social-share.js。让所有的分享按钮右对齐-->
+
+                  <div class="social-share-container" style="margin-top: 15px;"> <!-- 生成一组分享按钮 -->
+                       <!--如果博客语言是中文，就显示“点击分享到：”，非中文一律显示“Share it:”-->
+                      点击分享到：&nbsp;&nbsp;
+                      
+                  </div>
+                  <!-- 加载 jQuery 库 -->
+                  
+<script src="/js/jquery.min.js"></script>
+
+                  <!-- 导入 qrcode.min.js -->
+                  
+<script src="/js/qrcode.min.js"></script>
+
+                  <!-- 加载 social-share.js 的 js 库，另外还要加载 social-share.js 的 CSS，可以修改 `_config.fluid.yml` 的 `custom_css` 加载，也可以修改 `themes/fluid/layout/_partial/css.ejs` 加载。-->
+                  
+<script src="/js/social-share.min.js"></script>
+
+                  <script>
+                    /* 执行 js 代码，new 一个新对象，详见 social-share.js 在 GitHub 的文档 */
+                    new SocialShare('.social-share-container', {
+                      theme: 'circle',  // 使用圆形主题
+                      // 单独定义wechat分享参数
+                      wechat: {
+                        sort: 1, // 排序参数，数字较小的展示在前面,默认999
+                      },
+                      twitter: {
+                        sort: 2, // 排序参数，数字较小的展示在前面,默认999
+                      },
+                      facebook: {
+                        sort: 3, // 排序参数，数字较小的展示在前面,默认999
+                      }
+                    });
+                  </script>
+              </div> <!-- 自己添加的“分享到”模块：结束。-->
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/" class="category-chain-item">技术分享</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/%E9%80%86%E5%90%91%E5%88%86%E6%9E%90/" class="category-chain-item">逆向分析</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E9%80%86%E5%90%91%E5%B7%A5%E7%A8%8B/" class="print-no-link">#逆向工程</a>
+      
+        <a href="/tags/%E5%AE%89%E5%85%A8%E7%A0%94%E7%A9%B6/" class="print-no-link">#安全研究</a>
+      
+        <a href="/tags/%E4%BA%8C%E8%BF%9B%E5%88%B6%E5%88%86%E6%9E%90/" class="print-no-link">#二进制分析</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>逆向工程中的常见情况与处理方式</div>
+      <div>https://blog.fxcxy.com/2025/05/28/逆向工程中的常见情况与处理方式/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>spatacus</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2025年5月28日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2025/05/29/Android%E2%80%94Monitor%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B-%E9%80%86%E5%90%91%E5%BF%85%E5%A4%87/" title="Android Monitor使用教程:逆向必备">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Android Monitor使用教程:逆向必备</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2025/05/27/AndroidAPP%E9%80%86%E5%90%91%E6%95%99%E7%A8%8B/" title="Android应用逆向与抓包实用教程">
+                        <span class="hidden-mobile">Android应用逆向与抓包实用教程</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://lib.baomitu.com/valine/1.5.1/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"J7kyQXV9R3CXOiA1eubrlflY-gzGzoHsz","appKey":"qHZzPzRcvsutXvHvBewqGmhw","path":"window.location.pathname","placeholder":"输入您的评论","avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":false},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          var imgSelector = '#valine .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  <div class="footer-links" style="margin: 20px 0 10px 0; text-align: center;">
+    <a href="https://tv.zymn.cc" target="_blank" style="margin: 0 12px; color: #bdbdbd; text-decoration: none; font-weight: 500;">免费电影</a>
+    <a href="https://sl.zymn.cc" target="_blank" style="margin: 0 12px; color: #bdbdbd; text-decoration: none; font-weight: 500;">短链生成器</a>
+    <a href="https://yhjf.zymn.cc" target="_blank" style="margin: 0 12px; color: #bdbdbd; text-decoration: none; font-weight: 500;">隐秘信使</a>
+  </div>
+  
+    <div class="footer-content">
+       <a href="https://www.youtube.com/channel/UCn0Yarp_h6oqn1-QLvlgbDg?sub_confirmation=1" target="_blank" rel="nofollow noopener"><span>Youtube</span></a>- <a href="https://twitter.com/spatacus1986" target="_blank" rel="nofollow noopener"><span>Twitter</span></a>- <a href="https://t.me/+8W45Y29o5T1mMGI1" target="_blank" rel="nofollow noopener"><span>电报群</span></a>- <a href="https://v.douyin.com/iNpPYY4E/" target="_blank" rel="nofollow noopener"><span>抖音</span></a>- <a href="https://www.ixigua.com/home/103680436540" target="_blank" rel="nofollow noopener"><span>西瓜视频</span></a> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="leancloud-site-pv-container" style="display: none">
+        总访问量 
+        <span id="leancloud-site-pv"></span>
+         次
+      </span>
+    
+    
+      <span id="leancloud-site-uv-container" style="display: none">
+        总访客数 
+        <span id="leancloud-site-uv"></span>
+         人
+      </span>
+    
+    
+
+  
+</div>
+
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script defer src="/js/leancloud.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

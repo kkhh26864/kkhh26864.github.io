@@ -1,0 +1,866 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/logo.png">
+  <link rel="icon" href="/img/logo.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3232532601275150"
+     crossorigin="anonymous"></script>
+    <meta name="twitter:card" content="/img/hook.png" />
+    <meta name="twitter:site" content="自由码农" />
+    <meta name="twitter:creator" content="@spatacus1986">
+    <meta name="twitter:title" content="Android Hook实用教程:逆向必备 - 自由码农" />
+    <meta name="twitter:description" content="Android Hook 实用教程环境准备1. 安装 Frida12345# 直接安装 frida-toolspip install frida-tools# 查看版本frida --version  如果无法直接安装，使用虚拟环境方式： 123456789101112# 创建虚拟环境python3 -m venv ~/frida-venv# 激活虚拟环境source ~/frida-venv/b" />
+    <meta name="twitter:image" content="/img/hook.png" />
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="spatacus">
+  <meta name="keywords" content="自由码农,技术博客,工具分享，网站开发，App开发，小程序开发，H5开发">
+  
+    <meta name="description" content="Android Hook 实用教程环境准备1. 安装 Frida12345# 直接安装 frida-toolspip install frida-tools# 查看版本frida --version  如果无法直接安装，使用虚拟环境方式： 123456789101112# 创建虚拟环境python3 -m venv ~&#x2F;frida-venv# 激活虚拟环境source ~&#x2F;frida-venv&#x2F;b">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android Hook实用教程:逆向必备">
+<meta property="og:url" content="https://blog.fxcxy.com/2025/06/03/Android%E2%80%94Hook%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B-%E9%80%86%E5%90%91%E5%BF%85%E5%A4%87/index.html">
+<meta property="og:site_name" content="自由码农">
+<meta property="og:description" content="Android Hook 实用教程环境准备1. 安装 Frida12345# 直接安装 frida-toolspip install frida-tools# 查看版本frida --version  如果无法直接安装，使用虚拟环境方式： 123456789101112# 创建虚拟环境python3 -m venv ~&#x2F;frida-venv# 激活虚拟环境source ~&#x2F;frida-venv&#x2F;b">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://blog.fxcxy.com/img/hook.png">
+<meta property="article:published_time" content="2025-06-03T04:53:35.000Z">
+<meta property="article:modified_time" content="2025-06-07T00:44:53.235Z">
+<meta property="article:author" content="spatacus">
+<meta property="article:tag" content="Android">
+<meta property="article:tag" content="逆向工程">
+<meta property="article:tag" content="Hook">
+<meta property="article:tag" content="Frida">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://blog.fxcxy.com/img/hook.png">
+  
+  
+  
+  <title>Android Hook实用教程:逆向必备 - 自由码农</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+  
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_4443546_u6jwvi2qcka.css">
+<link rel="stylesheet" href="/css/social-share.min.css">
+<link rel="stylesheet" href="/css/myreward.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"blog.fxcxy.com","root":"/","version":"1.9.7","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"复制"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"J7kyQXV9R3CXOiA1eubrlflY-gzGzoHsz","app_key":"qHZzPzRcvsutXvHvBewqGmhw","server_url":"https://leancloud.fxcxy.com","path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+
+  
+    <!-- Google tag (gtag.js) -->
+    <script async>
+      if (!Fluid.ctx.dnt) {
+        Fluid.utils.createScript("https://www.googletagmanager.com/gtag/js?id=", function() {
+          window.dataLayer = window.dataLayer || [];
+          function gtag() {
+            dataLayer.push(arguments);
+          }
+          gtag('js', new Date());
+          gtag('config', '');
+        });
+      }
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+    
+  
+
+
+
+  
+<meta name="generator" content="Hexo 7.1.1"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>自由码农</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Android Hook实用教程:逆向必备"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2025-06-03 12:53" pubdate>
+          2025年6月3日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          2k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          17 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="leancloud-page-views"></span>次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">Android Hook实用教程:逆向必备</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="Android-Hook-实用教程"><a href="#Android-Hook-实用教程" class="headerlink" title="Android Hook 实用教程"></a>Android Hook 实用教程</h1><h2 id="环境准备"><a href="#环境准备" class="headerlink" title="环境准备"></a>环境准备</h2><h3 id="1-安装-Frida"><a href="#1-安装-Frida" class="headerlink" title="1. 安装 Frida"></a>1. 安装 Frida</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 直接安装 frida-tools</span><br>pip install frida-tools<br><br><span class="hljs-comment"># 查看版本</span><br>frida --version<br></code></pre></td></tr></table></figure>
+
+<p><strong>如果无法直接安装，使用虚拟环境方式：</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 创建虚拟环境</span><br>python3 -m venv ~/frida-venv<br><br><span class="hljs-comment"># 激活虚拟环境</span><br><span class="hljs-built_in">source</span> ~/frida-venv/bin/activate<br><br><span class="hljs-comment"># 在虚拟环境中安装frida</span><br>pip install frida frida-tools<br><br><span class="hljs-comment"># 验证安装</span><br>frida --version<br>frida-ps<br></code></pre></td></tr></table></figure>
+
+<p><strong>每次使用前需要激活虚拟环境：</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 激活虚拟环境</span><br><span class="hljs-built_in">source</span> ~/frida-venv/bin/activate<br><br><span class="hljs-comment"># 然后可以使用frida命令</span><br>frida --version<br>frida-ps<br><span class="hljs-comment"># ... 其他frida命令</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="2-设备准备"><a href="#2-设备准备" class="headerlink" title="2. 设备准备"></a>2. 设备准备</h3><p>对于Root设备：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 下载对应架构的frida-server</span><br><span class="hljs-comment">#查看手机的架构版本</span><br>adb shell getprop ro.product.cpu.abi <br><span class="hljs-comment"># ARM64: https://github.com/frida/frida/releases</span><br>wget https://github.com/frida/frida/releases/download/17.1.0/frida-server-17.1.0-android-arm64.xz<br><br><span class="hljs-comment"># 解压并推送到设备</span><br>xz -d frida-server-17.1.0-android-arm64.xz<br>adb push frida-server-17.1.0-android-arm64 /data/local/tmp/frida-server<br>adb shell <span class="hljs-built_in">chmod</span> 755 /data/local/tmp/frida-server<br><br><span class="hljs-comment"># 启动frida-server</span><br>adb shell /data/local/tmp/frida-server &amp;<br><br><span class="hljs-comment"># 真机启动问题解决方案：</span><br><span class="hljs-comment"># 使用nohup后台启动，避免终端断开导致进程结束</span><br>adb shell <span class="hljs-string">&quot;su -c &#x27;nohup /data/local/tmp/frida-server &gt;/dev/null 2&gt;&amp;1 &amp;&#x27;&quot;</span><br><br><span class="hljs-comment"># 检查frida-server是否启动成功</span><br>adb shell <span class="hljs-string">&quot;ps | grep frida&quot;</span><br><br><span class="hljs-comment"># 如果看到frida-server进程则启动成功</span><br><span class="hljs-comment"># 输出示例：root 12345 1 0 15:30:40 ? 00:00:01 /data/local/tmp/frida-server</span><br></code></pre></td></tr></table></figure>
+
+<p>对于非Root设备：<br>使用 Frida-gadget 方式，需要重打包APK或使用免root框架。</p>
+<h2 id="基础Hook示例"><a href="#基础Hook示例" class="headerlink" title="基础Hook示例"></a>基础Hook示例</h2><h3 id="1-Hook-方法调用"><a href="#1-Hook-方法调用" class="headerlink" title="1. Hook 方法调用"></a>1. Hook 方法调用</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">// hook_method.js</span><br><span class="hljs-title class_">Java</span>.<span class="hljs-title function_">perform</span>(<span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) &#123;<br>    <span class="hljs-keyword">var</span> targetClass = <span class="hljs-title class_">Java</span>.<span class="hljs-title function_">use</span>(<span class="hljs-string">&quot;com.example.MainActivity&quot;</span>);<br>    <br>    <span class="hljs-comment">// Hook 方法</span><br>    targetClass.<span class="hljs-property">checkPassword</span>.<span class="hljs-property">implementation</span> = <span class="hljs-keyword">function</span>(<span class="hljs-params">password</span>) &#123;<br>        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;[+] checkPassword called with: &quot;</span> + password);<br>        <br>        <span class="hljs-comment">// 调用原方法</span><br>        <span class="hljs-keyword">var</span> result = <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">checkPassword</span>(password);<br>        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;[+] Original result: &quot;</span> + result);<br>        <br>        <span class="hljs-comment">// 修改返回值</span><br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>    &#125;;<br>&#125;);<br></code></pre></td></tr></table></figure>
+
+<p>使用方法：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">frida -U -f com.example.app -l hook_method.js --no-pause<br></code></pre></td></tr></table></figure>
+
+<h3 id="2-Hook-构造函数"><a href="#2-Hook-构造函数" class="headerlink" title="2. Hook 构造函数"></a>2. Hook 构造函数</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-title class_">Java</span>.<span class="hljs-title function_">perform</span>(<span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) &#123;<br>    <span class="hljs-keyword">var</span> <span class="hljs-title class_">User</span> = <span class="hljs-title class_">Java</span>.<span class="hljs-title function_">use</span>(<span class="hljs-string">&quot;com.example.User&quot;</span>);<br>    <br>    <span class="hljs-comment">// Hook 构造函数</span><br>    <span class="hljs-title class_">User</span>.<span class="hljs-property">$init</span>.<span class="hljs-title function_">overload</span>(<span class="hljs-string">&#x27;java.lang.String&#x27;</span>, <span class="hljs-string">&#x27;int&#x27;</span>).<span class="hljs-property">implementation</span> = <span class="hljs-keyword">function</span>(<span class="hljs-params">name, age</span>) &#123;<br>        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;[+] User constructor called: &quot;</span> + name + <span class="hljs-string">&quot;, &quot;</span> + age);<br>        <span class="hljs-keyword">return</span> <span class="hljs-variable language_">this</span>.$init(name, age);<br>    &#125;;<br>&#125;);<br></code></pre></td></tr></table></figure>
+
+<h3 id="3-Hook-静态方法"><a href="#3-Hook-静态方法" class="headerlink" title="3. Hook 静态方法"></a>3. Hook 静态方法</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-title class_">Java</span>.<span class="hljs-title function_">perform</span>(<span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) &#123;<br>    <span class="hljs-keyword">var</span> <span class="hljs-title class_">Utils</span> = <span class="hljs-title class_">Java</span>.<span class="hljs-title function_">use</span>(<span class="hljs-string">&quot;com.example.Utils&quot;</span>);<br>    <br>    <span class="hljs-title class_">Utils</span>.<span class="hljs-property">encrypt</span>.<span class="hljs-property">implementation</span> = <span class="hljs-keyword">function</span>(<span class="hljs-params">data</span>) &#123;<br>        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;[+] Utils.encrypt called with: &quot;</span> + data);<br>        <span class="hljs-keyword">var</span> result = <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">encrypt</span>(data);<br>        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;[+] Encrypted result: &quot;</span> + result);<br>        <span class="hljs-keyword">return</span> result;<br>    &#125;;<br>&#125;);<br></code></pre></td></tr></table></figure>
+
+<h2 id="常用Hook场景"><a href="#常用Hook场景" class="headerlink" title="常用Hook场景"></a>常用Hook场景</h2><h3 id="1-绕过SSL-Pinning"><a href="#1-绕过SSL-Pinning" class="headerlink" title="1. 绕过SSL Pinning"></a>1. 绕过SSL Pinning</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">// ssl_bypass.js</span><br><span class="hljs-title class_">Java</span>.<span class="hljs-title function_">perform</span>(<span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) &#123;<br>    <span class="hljs-comment">// Hook X509TrustManager</span><br>    <span class="hljs-keyword">var</span> X509TrustManager = <span class="hljs-title class_">Java</span>.<span class="hljs-title function_">use</span>(<span class="hljs-string">&#x27;javax.net.ssl.X509TrustManager&#x27;</span>);<br>    <span class="hljs-keyword">var</span> <span class="hljs-title class_">SSLContext</span> = <span class="hljs-title class_">Java</span>.<span class="hljs-title function_">use</span>(<span class="hljs-string">&#x27;javax.net.ssl.SSLContext&#x27;</span>);<br>    <br>    <span class="hljs-keyword">var</span> <span class="hljs-title class_">TrustManager</span> = <span class="hljs-title class_">Java</span>.<span class="hljs-title function_">registerClass</span>(&#123;<br>        <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;com.frida.TrustManager&#x27;</span>,<br>        <span class="hljs-attr">implements</span>: [X509TrustManager],<br>        <span class="hljs-attr">methods</span>: &#123;<br>            <span class="hljs-attr">checkClientTrusted</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params">chain, authType</span>) &#123;&#125;,<br>            <span class="hljs-attr">checkServerTrusted</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params">chain, authType</span>) &#123;&#125;,<br>            <span class="hljs-attr">getAcceptedIssuers</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) &#123;<br>                <span class="hljs-keyword">return</span> [];<br>            &#125;<br>        &#125;<br>    &#125;);<br>    <br>    <span class="hljs-keyword">var</span> <span class="hljs-title class_">TrustManagers</span> = [<span class="hljs-title class_">TrustManager</span>.$new()];<br>    <span class="hljs-keyword">var</span> <span class="hljs-title class_">SSLContextInit</span> = <span class="hljs-title class_">SSLContext</span>.<span class="hljs-property">init</span>.<span class="hljs-title function_">overload</span>(<span class="hljs-string">&#x27;[Ljavax.net.ssl.KeyManager;&#x27;</span>, <span class="hljs-string">&#x27;[Ljavax.net.ssl.TrustManager;&#x27;</span>, <span class="hljs-string">&#x27;java.security.SecureRandom&#x27;</span>);<br>    <br>    <span class="hljs-title class_">SSLContextInit</span>.<span class="hljs-property">implementation</span> = <span class="hljs-keyword">function</span>(<span class="hljs-params">keyManager, trustManager, secureRandom</span>) &#123;<br>        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;[+] SSL Context bypassed&#x27;</span>);<br>        <span class="hljs-title class_">SSLContextInit</span>.<span class="hljs-title function_">call</span>(<span class="hljs-variable language_">this</span>, keyManager, <span class="hljs-title class_">TrustManagers</span>, secureRandom);<br>    &#125;;<br>&#125;);<br></code></pre></td></tr></table></figure>
+
+<h3 id="2-Hook-加密算法"><a href="#2-Hook-加密算法" class="headerlink" title="2. Hook 加密算法"></a>2. Hook 加密算法</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">// crypto_hook.js</span><br><span class="hljs-title class_">Java</span>.<span class="hljs-title function_">perform</span>(<span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) &#123;<br>    <span class="hljs-comment">// Hook AES加密</span><br>    <span class="hljs-keyword">var</span> <span class="hljs-title class_">Cipher</span> = <span class="hljs-title class_">Java</span>.<span class="hljs-title function_">use</span>(<span class="hljs-string">&#x27;javax.crypto.Cipher&#x27;</span>);<br>    <br>    <span class="hljs-title class_">Cipher</span>.<span class="hljs-property">doFinal</span>.<span class="hljs-title function_">overload</span>(<span class="hljs-string">&#x27;[B&#x27;</span>).<span class="hljs-property">implementation</span> = <span class="hljs-keyword">function</span>(<span class="hljs-params">input</span>) &#123;<br>        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;[+] AES Input: &#x27;</span> + <span class="hljs-title function_">bytesToHex</span>(input));<br>        <span class="hljs-keyword">var</span> result = <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">doFinal</span>(input);<br>        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;[+] AES Output: &#x27;</span> + <span class="hljs-title function_">bytesToHex</span>(result));<br>        <span class="hljs-keyword">return</span> result;<br>    &#125;;<br>    <br>    <span class="hljs-comment">// Hook Base64</span><br>    <span class="hljs-keyword">var</span> <span class="hljs-title class_">Base64</span> = <span class="hljs-title class_">Java</span>.<span class="hljs-title function_">use</span>(<span class="hljs-string">&#x27;android.util.Base64&#x27;</span>);<br>    <span class="hljs-title class_">Base64</span>.<span class="hljs-property">encodeToString</span>.<span class="hljs-title function_">overload</span>(<span class="hljs-string">&#x27;[B&#x27;</span>, <span class="hljs-string">&#x27;int&#x27;</span>).<span class="hljs-property">implementation</span> = <span class="hljs-keyword">function</span>(<span class="hljs-params">input, flags</span>) &#123;<br>        <span class="hljs-keyword">var</span> result = <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">encodeToString</span>(input, flags);<br>        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;[+] Base64 encode: &#x27;</span> + <span class="hljs-title function_">bytesToHex</span>(input) + <span class="hljs-string">&#x27; -&gt; &#x27;</span> + result);<br>        <span class="hljs-keyword">return</span> result;<br>    &#125;;<br>&#125;);<br><br><span class="hljs-keyword">function</span> <span class="hljs-title function_">bytesToHex</span>(<span class="hljs-params">bytes</span>) &#123;<br>    <span class="hljs-keyword">var</span> hex = <span class="hljs-string">&#x27;&#x27;</span>;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>; i &lt; bytes.<span class="hljs-property">length</span>; i++) &#123;<br>        hex += (<span class="hljs-string">&#x27;0&#x27;</span> + (bytes[i] &amp; <span class="hljs-number">0xFF</span>).<span class="hljs-title function_">toString</span>(<span class="hljs-number">16</span>)).<span class="hljs-title function_">slice</span>(-<span class="hljs-number">2</span>);<br>    &#125;<br>    <span class="hljs-keyword">return</span> hex;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h3 id="3-Hook-SharedPreferences"><a href="#3-Hook-SharedPreferences" class="headerlink" title="3. Hook SharedPreferences"></a>3. Hook SharedPreferences</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">// sharedprefs_hook.js</span><br><span class="hljs-title class_">Java</span>.<span class="hljs-title function_">perform</span>(<span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) &#123;<br>    <span class="hljs-keyword">var</span> <span class="hljs-title class_">SharedPreferences</span> = <span class="hljs-title class_">Java</span>.<span class="hljs-title function_">use</span>(<span class="hljs-string">&#x27;android.content.SharedPreferences&#x27;</span>);<br>    <span class="hljs-keyword">var</span> <span class="hljs-title class_">Editor</span> = <span class="hljs-title class_">Java</span>.<span class="hljs-title function_">use</span>(<span class="hljs-string">&#x27;android.content.SharedPreferences$Editor&#x27;</span>);<br>    <br>    <span class="hljs-comment">// Hook getString</span><br>    <span class="hljs-title class_">SharedPreferences</span>.<span class="hljs-property">getString</span>.<span class="hljs-title function_">overload</span>(<span class="hljs-string">&#x27;java.lang.String&#x27;</span>, <span class="hljs-string">&#x27;java.lang.String&#x27;</span>).<span class="hljs-property">implementation</span> = <span class="hljs-keyword">function</span>(<span class="hljs-params">key, defValue</span>) &#123;<br>        <span class="hljs-keyword">var</span> result = <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">getString</span>(key, defValue);<br>        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;[+] SharedPreferences getString: &#x27;</span> + key + <span class="hljs-string">&#x27; = &#x27;</span> + result);<br>        <span class="hljs-keyword">return</span> result;<br>    &#125;;<br>    <br>    <span class="hljs-comment">// Hook putString</span><br>    <span class="hljs-title class_">Editor</span>.<span class="hljs-property">putString</span>.<span class="hljs-property">implementation</span> = <span class="hljs-keyword">function</span>(<span class="hljs-params">key, value</span>) &#123;<br>        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;[+] SharedPreferences putString: &#x27;</span> + key + <span class="hljs-string">&#x27; = &#x27;</span> + value);<br>        <span class="hljs-keyword">return</span> <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">putString</span>(key, value);<br>    &#125;;<br>&#125;);<br></code></pre></td></tr></table></figure>
+
+<h3 id="4-Hook-网络请求"><a href="#4-Hook-网络请求" class="headerlink" title="4. Hook 网络请求"></a>4. Hook 网络请求</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">// network_hook.js</span><br><span class="hljs-title class_">Java</span>.<span class="hljs-title function_">perform</span>(<span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) &#123;<br>    <span class="hljs-comment">// Hook OkHttp</span><br>    <span class="hljs-keyword">var</span> <span class="hljs-title class_">OkHttpClient</span> = <span class="hljs-title class_">Java</span>.<span class="hljs-title function_">use</span>(<span class="hljs-string">&#x27;okhttp3.OkHttpClient&#x27;</span>);<br>    <span class="hljs-keyword">var</span> <span class="hljs-title class_">Request</span> = <span class="hljs-title class_">Java</span>.<span class="hljs-title function_">use</span>(<span class="hljs-string">&#x27;okhttp3.Request&#x27;</span>);<br>    <br>    <span class="hljs-title class_">OkHttpClient</span>.<span class="hljs-property">newCall</span>.<span class="hljs-property">implementation</span> = <span class="hljs-keyword">function</span>(<span class="hljs-params">request</span>) &#123;<br>        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;[+] OkHttp Request URL: &#x27;</span> + request.<span class="hljs-title function_">url</span>().<span class="hljs-title function_">toString</span>());<br>        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;[+] OkHttp Request Method: &#x27;</span> + request.<span class="hljs-title function_">method</span>());<br>        <br>        <span class="hljs-keyword">var</span> headers = request.<span class="hljs-title function_">headers</span>();<br>        <span class="hljs-keyword">var</span> headerNames = headers.<span class="hljs-title function_">names</span>();<br>        <span class="hljs-keyword">var</span> iterator = headerNames.<span class="hljs-title function_">iterator</span>();<br>        <br>        <span class="hljs-keyword">while</span> (iterator.<span class="hljs-title function_">hasNext</span>()) &#123;<br>            <span class="hljs-keyword">var</span> name = iterator.<span class="hljs-title function_">next</span>();<br>            <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;[+] Header: &#x27;</span> + name + <span class="hljs-string">&#x27;: &#x27;</span> + headers.<span class="hljs-title function_">get</span>(name));<br>        &#125;<br>        <br>        <span class="hljs-keyword">return</span> <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">newCall</span>(request);<br>    &#125;;<br>&#125;);<br></code></pre></td></tr></table></figure>
+
+<h2 id="高级技巧"><a href="#高级技巧" class="headerlink" title="高级技巧"></a>高级技巧</h2><h3 id="1-动态调用方法"><a href="#1-动态调用方法" class="headerlink" title="1. 动态调用方法"></a>1. 动态调用方法</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-title class_">Java</span>.<span class="hljs-title function_">perform</span>(<span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) &#123;<br>    <span class="hljs-comment">// 获取类实例</span><br>    <span class="hljs-title class_">Java</span>.<span class="hljs-title function_">choose</span>(<span class="hljs-string">&quot;com.example.MainActivity&quot;</span>, &#123;<br>        <span class="hljs-attr">onMatch</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params">instance</span>) &#123;<br>            <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;[+] Found instance: &quot;</span> + instance);<br>            <br>            <span class="hljs-comment">// 调用实例方法</span><br>            <span class="hljs-keyword">var</span> result = instance.<span class="hljs-title function_">someMethod</span>(<span class="hljs-string">&quot;test&quot;</span>);<br>            <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;[+] Method result: &quot;</span> + result);<br>        &#125;,<br>        <span class="hljs-attr">onComplete</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) &#123;<br>            <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;[+] Search completed&quot;</span>);<br>        &#125;<br>    &#125;);<br>&#125;);<br></code></pre></td></tr></table></figure>
+
+<h3 id="2-修改字段值"><a href="#2-修改字段值" class="headerlink" title="2. 修改字段值"></a>2. 修改字段值</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-title class_">Java</span>.<span class="hljs-title function_">perform</span>(<span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) &#123;<br>    <span class="hljs-keyword">var</span> targetClass = <span class="hljs-title class_">Java</span>.<span class="hljs-title function_">use</span>(<span class="hljs-string">&quot;com.example.Config&quot;</span>);<br>    <br>    <span class="hljs-title class_">Java</span>.<span class="hljs-title function_">choose</span>(<span class="hljs-string">&quot;com.example.Config&quot;</span>, &#123;<br>        <span class="hljs-attr">onMatch</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params">instance</span>) &#123;<br>            <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;[+] Original debug flag: &quot;</span> + instance.<span class="hljs-property">isDebug</span>.<span class="hljs-property">value</span>);<br>            instance.<span class="hljs-property">isDebug</span>.<span class="hljs-property">value</span> = <span class="hljs-literal">true</span>;<br>            <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;[+] Modified debug flag: &quot;</span> + instance.<span class="hljs-property">isDebug</span>.<span class="hljs-property">value</span>);<br>        &#125;,<br>        <span class="hljs-attr">onComplete</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) &#123;&#125;<br>    &#125;);<br>&#125;);<br></code></pre></td></tr></table></figure>
+
+<h3 id="3-枚举所有方法"><a href="#3-枚举所有方法" class="headerlink" title="3. 枚举所有方法"></a>3. 枚举所有方法</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-title class_">Java</span>.<span class="hljs-title function_">perform</span>(<span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) &#123;<br>    <span class="hljs-keyword">var</span> targetClass = <span class="hljs-title class_">Java</span>.<span class="hljs-title function_">use</span>(<span class="hljs-string">&quot;com.example.MainActivity&quot;</span>);<br>    <span class="hljs-keyword">var</span> methods = targetClass.<span class="hljs-property">class</span>.<span class="hljs-title function_">getDeclaredMethods</span>();<br>    <br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>; i &lt; methods.<span class="hljs-property">length</span>; i++) &#123;<br>        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;[+] Method: &quot;</span> + methods[i].<span class="hljs-title function_">toString</span>());<br>    &#125;<br>&#125;);<br></code></pre></td></tr></table></figure>
+
+<h2 id="实用脚本集合"><a href="#实用脚本集合" class="headerlink" title="实用脚本集合"></a>实用脚本集合</h2><h3 id="1-通用Hook脚本"><a href="#1-通用Hook脚本" class="headerlink" title="1. 通用Hook脚本"></a>1. 通用Hook脚本</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">// universal_hook.js</span><br><span class="hljs-title class_">Java</span>.<span class="hljs-title function_">perform</span>(<span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) &#123;<br>    <span class="hljs-comment">// Hook所有类的指定方法</span><br>    <span class="hljs-keyword">function</span> <span class="hljs-title function_">hookMethod</span>(<span class="hljs-params">className, methodName</span>) &#123;<br>        <span class="hljs-keyword">try</span> &#123;<br>            <span class="hljs-keyword">var</span> targetClass = <span class="hljs-title class_">Java</span>.<span class="hljs-title function_">use</span>(className);<br>            <span class="hljs-keyword">var</span> overloadCount = targetClass[methodName].<span class="hljs-property">overloads</span>.<span class="hljs-property">length</span>;<br>            <br>            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>; i &lt; overloadCount; i++) &#123;<br>                targetClass[methodName].<span class="hljs-property">overloads</span>[i].<span class="hljs-property">implementation</span> = <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) &#123;<br>                    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;[+] &#x27;</span> + className + <span class="hljs-string">&#x27;.&#x27;</span> + methodName + <span class="hljs-string">&#x27; called&#x27;</span>);<br>                    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;[+] Arguments: &#x27;</span> + <span class="hljs-title class_">JSON</span>.<span class="hljs-title function_">stringify</span>(<span class="hljs-variable language_">arguments</span>));<br>                    <br>                    <span class="hljs-keyword">var</span> result = <span class="hljs-variable language_">this</span>[methodName].<span class="hljs-title function_">apply</span>(<span class="hljs-variable language_">this</span>, <span class="hljs-variable language_">arguments</span>);<br>                    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;[+] Return: &#x27;</span> + result);<br>                    <span class="hljs-keyword">return</span> result;<br>                &#125;;<br>            &#125;<br>        &#125; <span class="hljs-keyword">catch</span> (e) &#123;<br>            <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;[-] Error hooking &#x27;</span> + className + <span class="hljs-string">&#x27;.&#x27;</span> + methodName + <span class="hljs-string">&#x27;: &#x27;</span> + e);<br>        &#125;<br>    &#125;<br>    <br>    <span class="hljs-comment">// 使用示例</span><br>    <span class="hljs-title function_">hookMethod</span>(<span class="hljs-string">&#x27;com.example.Utils&#x27;</span>, <span class="hljs-string">&#x27;encrypt&#x27;</span>);<br>    <span class="hljs-title function_">hookMethod</span>(<span class="hljs-string">&#x27;com.example.Auth&#x27;</span>, <span class="hljs-string">&#x27;login&#x27;</span>);<br>&#125;);<br></code></pre></td></tr></table></figure>
+
+<h3 id="2-内存dump脚本"><a href="#2-内存dump脚本" class="headerlink" title="2. 内存dump脚本"></a>2. 内存dump脚本</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">// memory_dump.js</span><br><span class="hljs-title class_">Java</span>.<span class="hljs-title function_">perform</span>(<span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) &#123;<br>    <span class="hljs-keyword">var</span> <span class="hljs-title class_">File</span> = <span class="hljs-title class_">Java</span>.<span class="hljs-title function_">use</span>(<span class="hljs-string">&#x27;java.io.File&#x27;</span>);<br>    <span class="hljs-keyword">var</span> <span class="hljs-title class_">FileOutputStream</span> = <span class="hljs-title class_">Java</span>.<span class="hljs-title function_">use</span>(<span class="hljs-string">&#x27;java.io.FileOutputStream&#x27;</span>);<br>    <br>    <span class="hljs-keyword">function</span> <span class="hljs-title function_">dumpMemory</span>(<span class="hljs-params">address, size, filename</span>) &#123;<br>        <span class="hljs-keyword">var</span> buffer = <span class="hljs-title class_">Memory</span>.<span class="hljs-title function_">readByteArray</span>(address, size);<br>        <span class="hljs-keyword">var</span> file = <span class="hljs-title class_">File</span>.$new(<span class="hljs-string">&#x27;/sdcard/&#x27;</span> + filename);<br>        <span class="hljs-keyword">var</span> fos = <span class="hljs-title class_">FileOutputStream</span>.$new(file);<br>        fos.<span class="hljs-title function_">write</span>(buffer);<br>        fos.<span class="hljs-title function_">close</span>();<br>        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;[+] Memory dumped to: &#x27;</span> + filename);<br>    &#125;<br>&#125;);<br></code></pre></td></tr></table></figure>
+
+<h2 id="调试技巧"><a href="#调试技巧" class="headerlink" title="调试技巧"></a>调试技巧</h2><h3 id="1-日志输出"><a href="#1-日志输出" class="headerlink" title="1. 日志输出"></a>1. 日志输出</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">// 使用console.log</span><br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;[+] This is info&#x27;</span>);<br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">warn</span>(<span class="hljs-string">&#x27;[!] This is warning&#x27;</span>); <br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">error</span>(<span class="hljs-string">&#x27;[-] This is error&#x27;</span>);<br><br><span class="hljs-comment">// 使用send发送到Python脚本</span><br><span class="hljs-title function_">send</span>(&#123;<span class="hljs-attr">type</span>: <span class="hljs-string">&#x27;log&#x27;</span>, <span class="hljs-attr">message</span>: <span class="hljs-string">&#x27;Custom log&#x27;</span>&#125;);<br></code></pre></td></tr></table></figure>
+
+<h3 id="2-异常处理"><a href="#2-异常处理" class="headerlink" title="2. 异常处理"></a>2. 异常处理</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-title class_">Java</span>.<span class="hljs-title function_">perform</span>(<span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) &#123;<br>    <span class="hljs-keyword">try</span> &#123;<br>        <span class="hljs-keyword">var</span> targetClass = <span class="hljs-title class_">Java</span>.<span class="hljs-title function_">use</span>(<span class="hljs-string">&quot;com.example.NonExistentClass&quot;</span>);<br>    &#125; <span class="hljs-keyword">catch</span> (e) &#123;<br>        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;[-] Class not found: &#x27;</span> + e);<br>    &#125;<br>&#125;);<br></code></pre></td></tr></table></figure>
+
+<h3 id="3-延迟Hook"><a href="#3-延迟Hook" class="headerlink" title="3. 延迟Hook"></a>3. 延迟Hook</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-title class_">Java</span>.<span class="hljs-title function_">perform</span>(<span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) &#123;<br>    <span class="hljs-built_in">setTimeout</span>(<span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) &#123;<br>        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;[+] Delayed hook execution&#x27;</span>);<br>        <span class="hljs-comment">// Hook代码</span><br>    &#125;, <span class="hljs-number">2000</span>);<br>&#125;);<br></code></pre></td></tr></table></figure>
+
+<h2 id="常见问题解决"><a href="#常见问题解决" class="headerlink" title="常见问题解决"></a>常见问题解决</h2><h3 id="1-ClassNotFoundException"><a href="#1-ClassNotFoundException" class="headerlink" title="1. ClassNotFoundException"></a>1. ClassNotFoundException</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">// 等待类加载</span><br><span class="hljs-title class_">Java</span>.<span class="hljs-title function_">perform</span>(<span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) &#123;<br>    <span class="hljs-title class_">Java</span>.<span class="hljs-title function_">use</span>(<span class="hljs-string">&quot;com.example.App&quot;</span>).<span class="hljs-property">someMethod</span>.<span class="hljs-property">implementation</span> = <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) &#123;<br>        <span class="hljs-comment">// Hook代码</span><br>    &#125;;<br>&#125;);<br></code></pre></td></tr></table></figure>
+
+<h3 id="2-方法重载"><a href="#2-方法重载" class="headerlink" title="2. 方法重载"></a>2. 方法重载</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">// 指定具体重载</span><br>targetClass.<span class="hljs-property">someMethod</span>.<span class="hljs-title function_">overload</span>(<span class="hljs-string">&#x27;java.lang.String&#x27;</span>, <span class="hljs-string">&#x27;int&#x27;</span>).<span class="hljs-property">implementation</span> = <span class="hljs-keyword">function</span>(<span class="hljs-params">str, num</span>) &#123;<br>    <span class="hljs-comment">// Hook代码</span><br>&#125;;<br></code></pre></td></tr></table></figure>
+
+<h3 id="3-混淆代码处理"><a href="#3-混淆代码处理" class="headerlink" title="3. 混淆代码处理"></a>3. 混淆代码处理</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">// 使用完整类名</span><br><span class="hljs-keyword">var</span> obfuscatedClass = <span class="hljs-title class_">Java</span>.<span class="hljs-title function_">use</span>(<span class="hljs-string">&quot;a.b.c&quot;</span>);<br></code></pre></td></tr></table></figure>
+
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>Frida是Android逆向分析的强大工具，通过以上示例可以快速上手常见的Hook场景。关键点：</p>
+<ol>
+<li>熟练掌握Java.perform和Java.use</li>
+<li>理解方法重载的处理方式  </li>
+<li>掌握常用的Hook模式和技巧</li>
+<li>善用调试和异常处理</li>
+</ol>
+<p>更多高级用法需要结合具体的逆向目标进行实践。</p>
+<h2 id="常用adb操作命令"><a href="#常用adb操作命令" class="headerlink" title="常用adb操作命令"></a>常用adb操作命令</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 查看已连接设备</span><br>adb devices<br><br><span class="hljs-comment"># 连接远程设备（WiFi调试）</span><br>adb connect 192.168.1.100:5555<br><br><span class="hljs-comment"># 推送文件到设备</span><br>adb push &lt;本地文件&gt; &lt;设备路径&gt;<br><br><span class="hljs-comment"># 从设备拉取文件到本地</span><br>adb pull &lt;设备文件&gt; &lt;本地路径&gt;<br><br><span class="hljs-comment"># 进入设备shell</span><br>adb shell<br><br><span class="hljs-comment"># 查看进程列表</span><br>adb shell ps | grep &lt;包名&gt;<br><br><span class="hljs-comment"># 杀死进程</span><br>adb shell am force-stop &lt;包名&gt;<br><br><span class="hljs-comment"># 安装/卸载应用</span><br>adb install &lt;apk路径&gt;<br>adb uninstall &lt;包名&gt;<br><br><span class="hljs-comment"># 端口转发（本地端口转设备端口）</span><br>adb forward tcp:27042 tcp:27042<br>adb forward tcp:27043 tcp:27043<br><br><span class="hljs-comment"># 端口转发的作用和原理：</span><br><span class="hljs-comment"># 1. Frida默认监听27042端口，需要将PC端口转发到设备端口</span><br><span class="hljs-comment"># 2. 27042是frida-server的默认监听端口</span><br><span class="hljs-comment"># 3. 27043通常用于额外的frida服务或多实例场景</span><br><span class="hljs-comment"># 4. 转发后PC端的Frida客户端可以通过本地端口连接设备上的frida-server</span><br><br><span class="hljs-comment"># 查看当前端口转发列表</span><br>adb forward --list<br><br><span class="hljs-comment"># 移除特定端口转发</span><br>adb forward --remove tcp:27042<br><br><span class="hljs-comment"># 移除所有端口转发</span><br>adb forward --remove-all<br><br><span class="hljs-comment"># 查看logcat日志</span><br>adb logcat<br><br><span class="hljs-comment"># 仅查看指定包名日志</span><br>adb logcat | grep &lt;包名&gt;<br><br><span class="hljs-comment"># 重启设备</span><br>adb reboot<br><br><span class="hljs-comment"># 获取root权限（需设备支持）</span><br>adb root<br><br><span class="hljs-comment"># 重启adb服务</span><br>adb kill-server<br>adb start-server<br><br><span class="hljs-comment"># 查看所有设备</span><br>adb devices<br><br><span class="hljs-comment"># 指定设备执行命令（如获取CPU架构）</span><br>adb -s emulator-5554 shell getprop ro.product.cpu.abi<br><br>adb  shell getprop ro.product.cpu.abi<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>这些命令是Android逆向和调试过程中最常用的，建议熟练掌握。</p>
+</blockquote>
+<h3 id="多设备操作"><a href="#多设备操作" class="headerlink" title="多设备操作"></a>多设备操作</h3><p>当有多台设备&#x2F;模拟器同时连接时，使用 <code>-s &lt;序列号&gt;</code> 指定目标设备：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 查看所有设备序列号</span><br>adb devices<br><br><span class="hljs-comment"># 指定设备安装应用</span><br>adb -s &lt;序列号&gt; install &lt;apk路径&gt;<br><br><span class="hljs-comment"># 指定设备进入shell</span><br>adb -s &lt;序列号&gt; shell<br><br><span class="hljs-comment"># 指定设备推送文件</span><br>adb -s &lt;序列号&gt; push &lt;本地文件&gt; &lt;设备路径&gt;<br><br><span class="hljs-comment"># 指定设备拉取文件</span><br>adb -s &lt;序列号&gt; pull &lt;设备文件&gt; &lt;本地路径&gt;<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>多设备场景下，所有adb命令都可以加-s参数精确控制目标设备。</p>
+</blockquote>
+
+                
+              </div>
+            
+
+              <!--打赏-->
+              <div class="reward">
+                  <div class="reward-button">赏 <span class="reward-code">
+		<span class="alipay-code"> <img class="alipay-img wdp-appear" src="/img/alipay.png" srcset="/img/loading.gif" lazyload><b>支付宝打赏</b> </span>
+		<span class="wechat-code"> <img class="wechat-img wdp-appear" src="/img/wechat.png" srcset="/img/loading.gif" lazyload><b>微信打赏</b> </span> </span>
+                  </div>
+                  <p class="reward-notice">如果文章对你有帮助，欢迎点击上方按钮打赏作者，更多功能请访问<a href="https://blog.fxcxy.com">博客站</a></p>
+              </div>
+              <!--打赏-->
+              <hr/>
+              <div style="text-align:right;"> <!-- 自己添加的“分享到”模块：开始。用的是 social-share.js。让所有的分享按钮右对齐-->
+
+                  <div class="social-share-container" style="margin-top: 15px;"> <!-- 生成一组分享按钮 -->
+                       <!--如果博客语言是中文，就显示“点击分享到：”，非中文一律显示“Share it:”-->
+                      点击分享到：&nbsp;&nbsp;
+                      
+                  </div>
+                  <!-- 加载 jQuery 库 -->
+                  
+<script src="/js/jquery.min.js"></script>
+
+                  <!-- 导入 qrcode.min.js -->
+                  
+<script src="/js/qrcode.min.js"></script>
+
+                  <!-- 加载 social-share.js 的 js 库，另外还要加载 social-share.js 的 CSS，可以修改 `_config.fluid.yml` 的 `custom_css` 加载，也可以修改 `themes/fluid/layout/_partial/css.ejs` 加载。-->
+                  
+<script src="/js/social-share.min.js"></script>
+
+                  <script>
+                    /* 执行 js 代码，new 一个新对象，详见 social-share.js 在 GitHub 的文档 */
+                    new SocialShare('.social-share-container', {
+                      theme: 'circle',  // 使用圆形主题
+                      // 单独定义wechat分享参数
+                      wechat: {
+                        sort: 1, // 排序参数，数字较小的展示在前面,默认999
+                      },
+                      twitter: {
+                        sort: 2, // 排序参数，数字较小的展示在前面,默认999
+                      },
+                      facebook: {
+                        sort: 3, // 排序参数，数字较小的展示在前面,默认999
+                      }
+                    });
+                  </script>
+              </div> <!-- 自己添加的“分享到”模块：结束。-->
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/Android/" class="print-no-link">#Android</a>
+      
+        <a href="/tags/%E9%80%86%E5%90%91%E5%B7%A5%E7%A8%8B/" class="print-no-link">#逆向工程</a>
+      
+        <a href="/tags/Hook/" class="print-no-link">#Hook</a>
+      
+        <a href="/tags/Frida/" class="print-no-link">#Frida</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>Android Hook实用教程:逆向必备</div>
+      <div>https://blog.fxcxy.com/2025/06/03/Android—Hook使用教程-逆向必备/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>spatacus</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2025年6月3日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2025/06/07/Premium%E5%A4%AA%E8%B4%B5%EF%BC%9F%E6%95%99%E4%BD%A0%E5%85%8D%E8%B4%B9%E8%8E%B7%E5%BE%97%E5%90%8C%E6%A0%B7%E4%BD%93%E9%AA%8C/" title="YouTube Premium太贵？教你免费获得同样体验">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">YouTube Premium太贵？教你免费获得同样体验</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2025/05/29/Android%E2%80%94Monitor%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B-%E9%80%86%E5%90%91%E5%BF%85%E5%A4%87/" title="Android Monitor使用教程:逆向必备">
+                        <span class="hidden-mobile">Android Monitor使用教程:逆向必备</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://lib.baomitu.com/valine/1.5.1/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"J7kyQXV9R3CXOiA1eubrlflY-gzGzoHsz","appKey":"qHZzPzRcvsutXvHvBewqGmhw","path":"window.location.pathname","placeholder":"输入您的评论","avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":false},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          var imgSelector = '#valine .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  <div class="footer-links" style="margin: 20px 0 10px 0; text-align: center;">
+    <a href="https://tv.zymn.cc" target="_blank" style="margin: 0 12px; color: #bdbdbd; text-decoration: none; font-weight: 500;">免费电影</a>
+    <a href="https://sl.zymn.cc" target="_blank" style="margin: 0 12px; color: #bdbdbd; text-decoration: none; font-weight: 500;">短链生成器</a>
+    <a href="https://yhjf.zymn.cc" target="_blank" style="margin: 0 12px; color: #bdbdbd; text-decoration: none; font-weight: 500;">隐秘信使</a>
+  </div>
+  
+    <div class="footer-content">
+       <a href="https://www.youtube.com/channel/UCn0Yarp_h6oqn1-QLvlgbDg?sub_confirmation=1" target="_blank" rel="nofollow noopener"><span>Youtube</span></a>- <a href="https://twitter.com/spatacus1986" target="_blank" rel="nofollow noopener"><span>Twitter</span></a>- <a href="https://t.me/+8W45Y29o5T1mMGI1" target="_blank" rel="nofollow noopener"><span>电报群</span></a>- <a href="https://v.douyin.com/iNpPYY4E/" target="_blank" rel="nofollow noopener"><span>抖音</span></a>- <a href="https://www.ixigua.com/home/103680436540" target="_blank" rel="nofollow noopener"><span>西瓜视频</span></a> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="leancloud-site-pv-container" style="display: none">
+        总访问量 
+        <span id="leancloud-site-pv"></span>
+         次
+      </span>
+    
+    
+      <span id="leancloud-site-uv-container" style="display: none">
+        总访客数 
+        <span id="leancloud-site-uv"></span>
+         人
+      </span>
+    
+    
+
+  
+</div>
+
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script defer src="/js/leancloud.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

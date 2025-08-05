@@ -1,0 +1,907 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/logo.png">
+  <link rel="icon" href="/img/logo.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3232532601275150"
+     crossorigin="anonymous"></script>
+    <meta name="twitter:card" content="/img/monitory.png" />
+    <meta name="twitter:site" content="自由码农" />
+    <meta name="twitter:creator" content="@spatacus1986">
+    <meta name="twitter:title" content="Android Monitor使用教程:逆向必备 - 自由码农" />
+    <meta name="twitter:description" content="前言Android Monitor是Android逆向分析中不可或缺的调试工具，能够实时监控应用的运行状态、方法调用、内存变化等关键信息。本教程将详细介绍Monitor的安装配置和实战使用技巧。 工具介绍Android Monitor主要包含以下功能模块：  方法追踪：监控Java&amp;#x2F;Native方法调用 内存分析：查看堆内存使用情况 线程监控：跟踪线程状态和执行流程 网络分析：抓取HTT" />
+    <meta name="twitter:image" content="/img/monitory.png" />
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="spatacus">
+  <meta name="keywords" content="自由码农,技术博客,工具分享，网站开发，App开发，小程序开发，H5开发">
+  
+    <meta name="description" content="前言Android Monitor是Android逆向分析中不可或缺的调试工具，能够实时监控应用的运行状态、方法调用、内存变化等关键信息。本教程将详细介绍Monitor的安装配置和实战使用技巧。 工具介绍Android Monitor主要包含以下功能模块：  方法追踪：监控Java&#x2F;Native方法调用 内存分析：查看堆内存使用情况 线程监控：跟踪线程状态和执行流程 网络分析：抓取HTT">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android Monitor使用教程:逆向必备">
+<meta property="og:url" content="https://blog.fxcxy.com/2025/05/29/Android%E2%80%94Monitor%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B-%E9%80%86%E5%90%91%E5%BF%85%E5%A4%87/index.html">
+<meta property="og:site_name" content="自由码农">
+<meta property="og:description" content="前言Android Monitor是Android逆向分析中不可或缺的调试工具，能够实时监控应用的运行状态、方法调用、内存变化等关键信息。本教程将详细介绍Monitor的安装配置和实战使用技巧。 工具介绍Android Monitor主要包含以下功能模块：  方法追踪：监控Java&#x2F;Native方法调用 内存分析：查看堆内存使用情况 线程监控：跟踪线程状态和执行流程 网络分析：抓取HTT">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://blog.fxcxy.com/img/monitory.png">
+<meta property="article:published_time" content="2025-05-29T02:05:37.000Z">
+<meta property="article:modified_time" content="2025-05-29T05:49:11.689Z">
+<meta property="article:author" content="spatacus">
+<meta property="article:tag" content="Android">
+<meta property="article:tag" content="逆向工程">
+<meta property="article:tag" content="Monitor">
+<meta property="article:tag" content="调试工具">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://blog.fxcxy.com/img/monitory.png">
+  
+  
+  
+  <title>Android Monitor使用教程:逆向必备 - 自由码农</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+  
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_4443546_u6jwvi2qcka.css">
+<link rel="stylesheet" href="/css/social-share.min.css">
+<link rel="stylesheet" href="/css/myreward.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"blog.fxcxy.com","root":"/","version":"1.9.7","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"复制"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"J7kyQXV9R3CXOiA1eubrlflY-gzGzoHsz","app_key":"qHZzPzRcvsutXvHvBewqGmhw","server_url":"https://leancloud.fxcxy.com","path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+
+  
+    <!-- Google tag (gtag.js) -->
+    <script async>
+      if (!Fluid.ctx.dnt) {
+        Fluid.utils.createScript("https://www.googletagmanager.com/gtag/js?id=", function() {
+          window.dataLayer = window.dataLayer || [];
+          function gtag() {
+            dataLayer.push(arguments);
+          }
+          gtag('js', new Date());
+          gtag('config', '');
+        });
+      }
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+    
+  
+
+
+
+  
+<meta name="generator" content="Hexo 7.1.1"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>自由码农</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Android Monitor使用教程:逆向必备"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2025-05-29 10:05" pubdate>
+          2025年5月29日 上午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          1.4k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          12 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="leancloud-page-views"></span>次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">Android Monitor使用教程:逆向必备</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>Android Monitor是Android逆向分析中不可或缺的调试工具，能够实时监控应用的运行状态、方法调用、内存变化等关键信息。本教程将详细介绍Monitor的安装配置和实战使用技巧。</p>
+<h2 id="工具介绍"><a href="#工具介绍" class="headerlink" title="工具介绍"></a>工具介绍</h2><p>Android Monitor主要包含以下功能模块：</p>
+<ul>
+<li><strong>方法追踪</strong>：监控Java&#x2F;Native方法调用</li>
+<li><strong>内存分析</strong>：查看堆内存使用情况</li>
+<li><strong>线程监控</strong>：跟踪线程状态和执行流程</li>
+<li><strong>网络分析</strong>：抓取HTTP&#x2F;HTTPS请求</li>
+<li><strong>文件操作监控</strong>：追踪文件读写操作</li>
+</ul>
+<h2 id="环境准备"><a href="#环境准备" class="headerlink" title="环境准备"></a>环境准备</h2><h3 id="1-系统要求"><a href="#1-系统要求" class="headerlink" title="1. 系统要求"></a>1. 系统要求</h3><ul>
+<li>Android设备或模拟器 (API Level 16+)</li>
+<li>Root权限或可调试应用</li>
+<li>ADB调试工具</li>
+<li><strong>Java运行环境 (JDK 1.8) - 重要：Monitor仅支持JDK 1.8，高版本JDK无法正常启动</strong></li>
+</ul>
+<h3 id="2-安装Monitor"><a href="#2-安装Monitor" class="headerlink" title="2. 安装Monitor"></a>2. 安装Monitor</h3><h4 id="JDK-1-8环境配置"><a href="#JDK-1-8环境配置" class="headerlink" title="JDK 1.8环境配置"></a>JDK 1.8环境配置</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 检查当前Java版本</span><br>java -version<br><br><span class="hljs-comment"># 如果不是JDK 1.8，需要安装并切换</span><br><span class="hljs-comment"># Ubuntu/Debian</span><br>sudo apt-get install openjdk-8-jdk<br><br><span class="hljs-comment"># CentOS/RHEL</span><br>sudo yum install java-1.8.0-openjdk-devel<br><br><span class="hljs-comment"># macOS (使用homebrew)</span><br>brew install openjdk@8<br><br><span class="hljs-comment"># 设置JAVA_HOME为JDK 1.8</span><br><span class="hljs-built_in">export</span> JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64<br><span class="hljs-built_in">export</span> PATH=<span class="hljs-variable">$JAVA_HOME</span>/bin:<span class="hljs-variable">$PATH</span><br><br><span class="hljs-comment"># 验证版本 (必须显示1.8.x)</span><br>java -version<br><span class="hljs-comment"># 输出应该类似：openjdk version &quot;1.8.0_xxx&quot;</span><br></code></pre></td></tr></table></figure>
+
+<h4 id="多JDK版本管理"><a href="#多JDK版本管理" class="headerlink" title="多JDK版本管理"></a>多JDK版本管理</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 使用update-alternatives管理多个JDK版本 (Linux)</span><br>sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/java-8-openjdk-amd64/bin/java 1<br>sudo update-alternatives --config java<br><br><span class="hljs-comment"># macOS使用jenv管理</span><br>brew install jenv<br>jenv add /usr/local/opt/openjdk@8/<br>jenv global 1.8<br></code></pre></td></tr></table></figure>
+
+<h4 id="下载安装包"><a href="#下载安装包" class="headerlink" title="下载安装包"></a>下载安装包</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 从官方仓库下载</span><br>git <span class="hljs-built_in">clone</span> https://github.com/android/platform_tools_monitor.git<br><span class="hljs-built_in">cd</span> platform_tools_monitor<br><br><span class="hljs-comment"># 或直接下载预编译版本</span><br>wget https://dl.google.com/android/repository/monitor-linux.zip<br></code></pre></td></tr></table></figure>
+
+<h4 id="环境配置"><a href="#环境配置" class="headerlink" title="环境配置"></a>环境配置</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 添加到环境变量</span><br><span class="hljs-built_in">export</span> ANDROID_HOME=/path/to/android-sdk<br><span class="hljs-built_in">export</span> PATH=<span class="hljs-variable">$PATH</span>:<span class="hljs-variable">$ANDROID_HOME</span>/tools:<span class="hljs-variable">$ANDROID_HOME</span>/platform-tools<br><br><span class="hljs-comment"># 验证安装</span><br>adb devices<br>monitor --version<br></code></pre></td></tr></table></figure>
+
+<h2 id="基本使用"><a href="#基本使用" class="headerlink" title="基本使用"></a>基本使用</h2><h3 id="1-启动Monitor"><a href="#1-启动Monitor" class="headerlink" title="1. 启动Monitor"></a>1. 启动Monitor</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 命令行启动</span><br>monitor<br><br><span class="hljs-comment"># 或使用Android Studio内置版本</span><br>android-studio/bin/monitor.sh<br></code></pre></td></tr></table></figure>
+
+<h3 id="2-连接设备"><a href="#2-连接设备" class="headerlink" title="2. 连接设备"></a>2. 连接设备</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 连接真机</span><br>adb connect 设备IP:5555<br><br><span class="hljs-comment"># 查看可用设备</span><br>adb devices -l<br></code></pre></td></tr></table></figure>
+
+<h3 id="3-选择目标应用"><a href="#3-选择目标应用" class="headerlink" title="3. 选择目标应用"></a>3. 选择目标应用</h3><ol>
+<li>在Monitor界面选择设备</li>
+</ol>
+<img src="/2025/05/29/Android%E2%80%94Monitor%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B-%E9%80%86%E5%90%91%E5%BF%85%E5%A4%87/01.png" srcset="/img/loading.gif" lazyload class="" width="488">
+<p>&nbsp;<br>2. 从进程列表选择目标应用</p>
+<img src="/2025/05/29/Android%E2%80%94Monitor%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B-%E9%80%86%E5%90%91%E5%BF%85%E5%A4%87/02.png" srcset="/img/loading.gif" lazyload class="" width="488">
+<p>&nbsp;<br>3. 点击”Attach”开始监控</p>
+<h2 id="核心功能详解"><a href="#核心功能详解" class="headerlink" title="核心功能详解"></a>核心功能详解</h2><h3 id="方法追踪-Method-Profiling"><a href="#方法追踪-Method-Profiling" class="headerlink" title="方法追踪 (Method Profiling)"></a>方法追踪 (Method Profiling)</h3><h4 id="开启方法追踪"><a href="#开启方法追踪" class="headerlink" title="开启方法追踪"></a>开启方法追踪</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// 在代码中插入追踪点</span><br>Debug.startMethodTracing(<span class="hljs-string">&quot;trace_name&quot;</span>);<br><span class="hljs-comment">// 目标代码段</span><br>Debug.stopMethodTracing();<br></code></pre></td></tr></table></figure>
+
+<h4 id="分析追踪文件"><a href="#分析追踪文件" class="headerlink" title="分析追踪文件"></a>分析追踪文件</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 导出追踪文件</span><br>adb pull /sdcard/trace_name.trace ./<br><br><span class="hljs-comment"># 使用dmtracedump分析</span><br>dmtracedump -g trace_name.trace &gt; call_graph.html<br></code></pre></td></tr></table></figure>
+
+<h3 id="内存分析-Memory-Analysis"><a href="#内存分析-Memory-Analysis" class="headerlink" title="内存分析 (Memory Analysis)"></a>内存分析 (Memory Analysis)</h3><h4 id="堆内存快照"><a href="#堆内存快照" class="headerlink" title="堆内存快照"></a>堆内存快照</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 生成HPROF文件</span><br>adb shell am dumpheap 包名 /sdcard/heap.hprof<br><br><span class="hljs-comment"># 转换格式供MAT分析</span><br>hprof-conv /sdcard/heap.hprof heap_converted.hprof<br></code></pre></td></tr></table></figure>
+
+<h4 id="内存泄漏检测"><a href="#内存泄漏检测" class="headerlink" title="内存泄漏检测"></a>内存泄漏检测</h4><ol>
+<li>触发GC：<code>System.gc()</code></li>
+<li>对比多个时间点的内存快照</li>
+<li>查找持续增长的对象引用</li>
+</ol>
+<h3 id="网络监控-Network-Profiling"><a href="#网络监控-Network-Profiling" class="headerlink" title="网络监控 (Network Profiling)"></a>网络监控 (Network Profiling)</h3><h4 id="HTTP请求抓取"><a href="#HTTP请求抓取" class="headerlink" title="HTTP请求抓取"></a>HTTP请求抓取</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// 使用OkHttp拦截器</span><br><span class="hljs-type">OkHttpClient</span> <span class="hljs-variable">client</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">OkHttpClient</span>.Builder()<br>    .addInterceptor(<span class="hljs-keyword">new</span> <span class="hljs-title class_">LoggingInterceptor</span>())<br>    .build();<br></code></pre></td></tr></table></figure>
+
+<h4 id="Charles-Burp-Suite联动"><a href="#Charles-Burp-Suite联动" class="headerlink" title="Charles&#x2F;Burp Suite联动"></a>Charles&#x2F;Burp Suite联动</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 设置代理</span><br>adb shell settings put global http_proxy 电脑IP:8080<br></code></pre></td></tr></table></figure>
+
+<h2 id="实战案例"><a href="#实战案例" class="headerlink" title="实战案例"></a>实战案例</h2><h3 id="案例1：分析应用启动性能"><a href="#案例1：分析应用启动性能" class="headerlink" title="案例1：分析应用启动性能"></a>案例1：分析应用启动性能</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 1. 冷启动追踪</span><br>adb shell am start -W -n 包名/主Activity<br><br><span class="hljs-comment"># 2. 开启方法追踪</span><br>Debug.startMethodTracing(<span class="hljs-string">&quot;startup&quot;</span>);<br><br><span class="hljs-comment"># 3. 分析关键路径</span><br><span class="hljs-comment"># Application.onCreate() -&gt; Activity.onCreate() -&gt; 首屏渲染</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="案例2：定位内存泄漏"><a href="#案例2：定位内存泄漏" class="headerlink" title="案例2：定位内存泄漏"></a>案例2：定位内存泄漏</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// 1. 模拟内存泄漏场景</span><br><span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> List&lt;Context&gt; contexts = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayList</span>&lt;&gt;();<br><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">leakMemory</span><span class="hljs-params">(Context context)</span> &#123;<br>    contexts.add(context); <span class="hljs-comment">// 静态引用导致泄漏</span><br>&#125;<br><br><span class="hljs-comment">// 2. 使用Monitor检测</span><br><span class="hljs-comment">// HeapDump分析 -&gt; 查找Context引用链 -&gt; 定位泄漏源</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="案例3：逆向分析加密算法"><a href="#案例3：逆向分析加密算法" class="headerlink" title="案例3：逆向分析加密算法"></a>案例3：逆向分析加密算法</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// 1. Hook关键方法</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">CryptoHook</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">hookEncrypt</span><span class="hljs-params">()</span> &#123;<br>        <span class="hljs-comment">// 监控加密方法调用</span><br>        <span class="hljs-type">Method</span> <span class="hljs-variable">encrypt</span> <span class="hljs-operator">=</span> targetClass.getDeclaredMethod(<span class="hljs-string">&quot;encrypt&quot;</span>, String.class);<br>        <span class="hljs-comment">// 记录输入输出参数</span><br>    &#125;<br>&#125;<br><br><span class="hljs-comment">// 2. 分析调用栈</span><br><span class="hljs-comment">// Monitor显示：plaintext -&gt; encrypt() -&gt; ciphertext</span><br><span class="hljs-comment">// 通过参数对比推断加密算法</span><br></code></pre></td></tr></table></figure>
+
+<h2 id="高级技巧"><a href="#高级技巧" class="headerlink" title="高级技巧"></a>高级技巧</h2><h3 id="1-自定义Hook脚本"><a href="#1-自定义Hook脚本" class="headerlink" title="1. 自定义Hook脚本"></a>1. 自定义Hook脚本</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">// Frida脚本配合Monitor使用</span><br><span class="hljs-title class_">Java</span>.<span class="hljs-title function_">perform</span>(<span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) &#123;<br>    <span class="hljs-keyword">var</span> targetClass = <span class="hljs-title class_">Java</span>.<span class="hljs-title function_">use</span>(<span class="hljs-string">&quot;com.example.Target&quot;</span>);<br>    targetClass.<span class="hljs-property">sensitiveMethod</span>.<span class="hljs-property">implementation</span> = <span class="hljs-keyword">function</span>(<span class="hljs-params">param</span>) &#123;<br>        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;[Monitor] 调用参数:&quot;</span>, param);<br>        <span class="hljs-keyword">var</span> result = <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">sensitiveMethod</span>(param);<br>        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;[Monitor] 返回值:&quot;</span>, result);<br>        <span class="hljs-keyword">return</span> result;<br>    &#125;;<br>&#125;);<br></code></pre></td></tr></table></figure>
+
+<h3 id="2-批量分析脚本"><a href="#2-批量分析脚本" class="headerlink" title="2. 批量分析脚本"></a>2. 批量分析脚本</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment">#!/usr/bin/env python3</span><br><span class="hljs-keyword">import</span> subprocess<br><span class="hljs-keyword">import</span> json<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">analyze_app</span>(<span class="hljs-params">package_name</span>):<br>    <span class="hljs-string">&quot;&quot;&quot;批量分析应用性能&quot;&quot;&quot;</span><br>    <span class="hljs-comment"># 1. 启动应用</span><br>    subprocess.run([<span class="hljs-string">&#x27;adb&#x27;</span>, <span class="hljs-string">&#x27;shell&#x27;</span>, <span class="hljs-string">&#x27;am&#x27;</span>, <span class="hljs-string">&#x27;start&#x27;</span>, <span class="hljs-string">f&#x27;-n <span class="hljs-subst">&#123;package_name&#125;</span>/.MainActivity&#x27;</span>])<br>    <br>    <span class="hljs-comment"># 2. 生成性能报告</span><br>    subprocess.run([<span class="hljs-string">&#x27;monitor&#x27;</span>, <span class="hljs-string">&#x27;--package&#x27;</span>, package_name, <span class="hljs-string">&#x27;--output&#x27;</span>, <span class="hljs-string">f&#x27;<span class="hljs-subst">&#123;package_name&#125;</span>_report.json&#x27;</span>])<br>    <br>    <span class="hljs-comment"># 3. 解析关键指标</span><br>    <span class="hljs-keyword">with</span> <span class="hljs-built_in">open</span>(<span class="hljs-string">f&#x27;<span class="hljs-subst">&#123;package_name&#125;</span>_report.json&#x27;</span>) <span class="hljs-keyword">as</span> f:<br>        data = json.load(f)<br>        <span class="hljs-keyword">return</span> &#123;<br>            <span class="hljs-string">&#x27;startup_time&#x27;</span>: data[<span class="hljs-string">&#x27;startup_time&#x27;</span>],<br>            <span class="hljs-string">&#x27;memory_usage&#x27;</span>: data[<span class="hljs-string">&#x27;memory_peak&#x27;</span>],<br>            <span class="hljs-string">&#x27;cpu_usage&#x27;</span>: data[<span class="hljs-string">&#x27;cpu_average&#x27;</span>]<br>        &#125;<br><br><span class="hljs-comment"># 批量分析多个应用</span><br>apps = [<span class="hljs-string">&#x27;com.example.app1&#x27;</span>, <span class="hljs-string">&#x27;com.example.app2&#x27;</span>]<br><span class="hljs-keyword">for</span> app <span class="hljs-keyword">in</span> apps:<br>    result = analyze_app(app)<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;<span class="hljs-subst">&#123;app&#125;</span>: <span class="hljs-subst">&#123;result&#125;</span>&quot;</span>)<br></code></pre></td></tr></table></figure>
+
+<h2 id="常见问题解决"><a href="#常见问题解决" class="headerlink" title="常见问题解决"></a>常见问题解决</h2><h3 id="1-Monitor无法启动"><a href="#1-Monitor无法启动" class="headerlink" title="1. Monitor无法启动"></a>1. Monitor无法启动</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 检查JDK版本 - 最常见问题</span><br>java -version<br><span class="hljs-comment"># 必须是1.8.x版本，如果是Java 9+会无法启动</span><br><br><span class="hljs-comment"># 临时切换到JDK 1.8</span><br><span class="hljs-built_in">export</span> JAVA_HOME=/path/to/jdk1.8<br><span class="hljs-built_in">export</span> PATH=<span class="hljs-variable">$JAVA_HOME</span>/bin:<span class="hljs-variable">$PATH</span><br><br><span class="hljs-comment"># 重新启动Monitor</span><br>monitor<br></code></pre></td></tr></table></figure>
+
+<h3 id="2-连接失败"><a href="#2-连接失败" class="headerlink" title="2. 连接失败"></a>2. 连接失败</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 检查ADB连接</span><br>adb kill-server &amp;&amp; adb start-server<br><br><span class="hljs-comment"># 确认USB调试已开启</span><br>adb shell getprop ro.debuggable<br></code></pre></td></tr></table></figure>
+
+<h3 id="3-权限不足"><a href="#3-权限不足" class="headerlink" title="3. 权限不足"></a>3. 权限不足</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># Root设备</span><br>adb root<br>adb remount<br><br><span class="hljs-comment"># 非Root设备 - 使用可调试版本</span><br>adb install -r app-debug.apk<br></code></pre></td></tr></table></figure>
+
+<h3 id="4-性能影响"><a href="#4-性能影响" class="headerlink" title="4. 性能影响"></a>4. 性能影响</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// 生产环境移除调试代码</span><br><span class="hljs-keyword">if</span> (BuildConfig.DEBUG) &#123;<br>    Debug.startMethodTracing(<span class="hljs-string">&quot;production_trace&quot;</span>);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h2><ol>
+<li><strong>性能开销</strong>：Monitor会显著影响应用性能，仅在调试时使用</li>
+<li><strong>隐私安全</strong>：避免在生产环境记录敏感信息</li>
+<li><strong>存储空间</strong>：追踪文件可能很大，及时清理</li>
+<li><strong>版本兼容</strong>：不同Android版本的Monitor功能略有差异</li>
+</ol>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>Android Monitor是逆向分析的强大工具，掌握其使用方法能够：</p>
+<ul>
+<li>深入理解应用运行机制</li>
+<li>快速定位性能瓶颈</li>
+<li>辅助安全漏洞挖掘</li>
+<li>提升逆向分析效率</li>
+</ul>
+<p>建议结合Frida、Xposed等动态分析工具使用，构建完整的Android逆向分析工具链。</p>
+<hr>
+<p><em>本教程仅供学习研究使用，请遵守相关法律法规</em></p>
+
+                
+              </div>
+            
+
+              <!--打赏-->
+              <div class="reward">
+                  <div class="reward-button">赏 <span class="reward-code">
+		<span class="alipay-code"> <img class="alipay-img wdp-appear" src="/img/alipay.png" srcset="/img/loading.gif" lazyload><b>支付宝打赏</b> </span>
+		<span class="wechat-code"> <img class="wechat-img wdp-appear" src="/img/wechat.png" srcset="/img/loading.gif" lazyload><b>微信打赏</b> </span> </span>
+                  </div>
+                  <p class="reward-notice">如果文章对你有帮助，欢迎点击上方按钮打赏作者，更多功能请访问<a href="https://blog.fxcxy.com">博客站</a></p>
+              </div>
+              <!--打赏-->
+              <hr/>
+              <div style="text-align:right;"> <!-- 自己添加的“分享到”模块：开始。用的是 social-share.js。让所有的分享按钮右对齐-->
+
+                  <div class="social-share-container" style="margin-top: 15px;"> <!-- 生成一组分享按钮 -->
+                       <!--如果博客语言是中文，就显示“点击分享到：”，非中文一律显示“Share it:”-->
+                      点击分享到：&nbsp;&nbsp;
+                      
+                  </div>
+                  <!-- 加载 jQuery 库 -->
+                  
+<script src="/js/jquery.min.js"></script>
+
+                  <!-- 导入 qrcode.min.js -->
+                  
+<script src="/js/qrcode.min.js"></script>
+
+                  <!-- 加载 social-share.js 的 js 库，另外还要加载 social-share.js 的 CSS，可以修改 `_config.fluid.yml` 的 `custom_css` 加载，也可以修改 `themes/fluid/layout/_partial/css.ejs` 加载。-->
+                  
+<script src="/js/social-share.min.js"></script>
+
+                  <script>
+                    /* 执行 js 代码，new 一个新对象，详见 social-share.js 在 GitHub 的文档 */
+                    new SocialShare('.social-share-container', {
+                      theme: 'circle',  // 使用圆形主题
+                      // 单独定义wechat分享参数
+                      wechat: {
+                        sort: 1, // 排序参数，数字较小的展示在前面,默认999
+                      },
+                      twitter: {
+                        sort: 2, // 排序参数，数字较小的展示在前面,默认999
+                      },
+                      facebook: {
+                        sort: 3, // 排序参数，数字较小的展示在前面,默认999
+                      }
+                    });
+                  </script>
+              </div> <!-- 自己添加的“分享到”模块：结束。-->
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Android%E5%AE%89%E5%85%A8/" class="category-chain-item">Android安全</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/Android%E5%AE%89%E5%85%A8/%E9%80%86%E5%90%91%E5%88%86%E6%9E%90/" class="category-chain-item">逆向分析</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/Android/" class="print-no-link">#Android</a>
+      
+        <a href="/tags/%E9%80%86%E5%90%91%E5%B7%A5%E7%A8%8B/" class="print-no-link">#逆向工程</a>
+      
+        <a href="/tags/Monitor/" class="print-no-link">#Monitor</a>
+      
+        <a href="/tags/%E8%B0%83%E8%AF%95%E5%B7%A5%E5%85%B7/" class="print-no-link">#调试工具</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>Android Monitor使用教程:逆向必备</div>
+      <div>https://blog.fxcxy.com/2025/05/29/Android—Monitor使用教程-逆向必备/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>spatacus</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2025年5月29日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2025/06/03/Android%E2%80%94Hook%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B-%E9%80%86%E5%90%91%E5%BF%85%E5%A4%87/" title="Android Hook实用教程:逆向必备">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Android Hook实用教程:逆向必备</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2025/05/28/%E9%80%86%E5%90%91%E5%B7%A5%E7%A8%8B%E4%B8%AD%E7%9A%84%E5%B8%B8%E8%A7%81%E6%83%85%E5%86%B5%E4%B8%8E%E5%A4%84%E7%90%86%E6%96%B9%E5%BC%8F/" title="逆向工程中的常见情况与处理方式">
+                        <span class="hidden-mobile">逆向工程中的常见情况与处理方式</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://lib.baomitu.com/valine/1.5.1/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"J7kyQXV9R3CXOiA1eubrlflY-gzGzoHsz","appKey":"qHZzPzRcvsutXvHvBewqGmhw","path":"window.location.pathname","placeholder":"输入您的评论","avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":false},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          var imgSelector = '#valine .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  <div class="footer-links" style="margin: 20px 0 10px 0; text-align: center;">
+    <a href="https://tv.zymn.cc" target="_blank" style="margin: 0 12px; color: #bdbdbd; text-decoration: none; font-weight: 500;">免费电影</a>
+    <a href="https://sl.zymn.cc" target="_blank" style="margin: 0 12px; color: #bdbdbd; text-decoration: none; font-weight: 500;">短链生成器</a>
+    <a href="https://yhjf.zymn.cc" target="_blank" style="margin: 0 12px; color: #bdbdbd; text-decoration: none; font-weight: 500;">隐秘信使</a>
+  </div>
+  
+    <div class="footer-content">
+       <a href="https://www.youtube.com/channel/UCn0Yarp_h6oqn1-QLvlgbDg?sub_confirmation=1" target="_blank" rel="nofollow noopener"><span>Youtube</span></a>- <a href="https://twitter.com/spatacus1986" target="_blank" rel="nofollow noopener"><span>Twitter</span></a>- <a href="https://t.me/+8W45Y29o5T1mMGI1" target="_blank" rel="nofollow noopener"><span>电报群</span></a>- <a href="https://v.douyin.com/iNpPYY4E/" target="_blank" rel="nofollow noopener"><span>抖音</span></a>- <a href="https://www.ixigua.com/home/103680436540" target="_blank" rel="nofollow noopener"><span>西瓜视频</span></a> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="leancloud-site-pv-container" style="display: none">
+        总访问量 
+        <span id="leancloud-site-pv"></span>
+         次
+      </span>
+    
+    
+      <span id="leancloud-site-uv-container" style="display: none">
+        总访客数 
+        <span id="leancloud-site-uv"></span>
+         人
+      </span>
+    
+    
+
+  
+</div>
+
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script defer src="/js/leancloud.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
