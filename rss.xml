@@ -5,6 +5,18 @@
         <link>https://www.zymn.cc</link>
         <description>欢迎来到我的个人博客！在这里，我将分享关于技术、编程、以及个人成长的经验和见解，帮助你在学习和工作中更进一步。</description>
         <item>
+            <title>Claude Code用法全面拆解</title>
+            <link>https://www.zymn.cc/2025/09/04/Claude-Code用法全面拆解/</link>
+            <description>详细介绍Claude Code的用法，包括命令示例与工作流模板。</description>
+            <pubDate>Sat, 04 Sep 2025 10:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title>Windows安装及使用OpenSSH指南</title>
+            <link>https://www.zymn.cc/2025/09/01/Windows安装及使用OpenSSH指南/</link>
+            <description>详细介绍如何安装及使用OpenSSH，包括命令示例与工作流模板。</description>
+            <pubDate>Mon, 01 Sep 2025 10:00:00 GMT</pubDate>
+        </item>
+        <item>
             <title>周报还在手写？`./ai-weekly.py` 一键飞起！</title>
             <link>https://www.zymn.cc/2025/08/11/一键飞起！/</link>
             <description>详细介绍如何使用AI生成周报，包括命令示例与工作流模板。</description>
