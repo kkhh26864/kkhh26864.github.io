@@ -4,6 +4,37 @@
   
   
   <entry>
+    <title>2025年最新Google Play商店App上架教程</title>
+    <link href="/2025/10/26/play%E5%95%86%E5%BA%97App%E4%B8%8A%E6%9E%B6%E6%95%99%E7%A8%8B/"/>
+    <url>/2025/10/26/play%E5%95%86%E5%BA%97App%E4%B8%8A%E6%9E%B6%E6%95%99%E7%A8%8B/</url>
+    
+    <content type="html"><![CDATA[<h1 id="📱-前言"><a href="#📱-前言" class="headerlink" title="📱 前言"></a>📱 前言</h1><p>Google Play商店是Android应用分发的主要渠道，对于开发者来说，成功将应用上架到Google Play商店是非常重要的。本教程将详细介绍2025年最新的Google Play商店App上架流程，包括账号注册、应用准备、上架步骤以及常见问题解决。</p><h2 id="🔧-账号注册"><a href="#🔧-账号注册" class="headerlink" title="🔧 账号注册"></a>🔧 账号注册</h2><h3 id="注册步骤"><a href="#注册步骤" class="headerlink" title="注册步骤"></a>注册步骤</h3><ol><li><p><strong>访问注册页面</strong>：前往 Google Play 开发者注册页面</p><ul><li>网址：<a href="https://play.google.com/console/signup">https://play.google.com/console/signup</a></li></ul></li><li><p><strong>登录Google账号</strong></p><ul><li>使用现有的Google账号登录</li><li>如果没有Google账号，需要先创建一个</li></ul></li><li><p><strong>同意协议</strong></p><ul><li>仔细阅读并同意开发者分发协议</li></ul></li><li><p><strong>支付注册费用</strong></p><ul><li>一次性支付25美元的注册费用</li><li>支持信用卡或借记卡支付</li></ul></li><li><p><strong>填写开发者信息</strong></p><ul><li>开发者名称</li><li>电子邮件地址</li><li>电话号码</li><li>网站（如果有）</li></ul></li></ol><h3 id="⚠️-账号注意事项"><a href="#⚠️-账号注意事项" class="headerlink" title="⚠️ 账号注意事项"></a>⚠️ 账号注意事项</h3><p>账号是上架成功的关键因素。如果采用第三方购买的成品账号，请确保：</p><ul><li>账号状态良好，没有违规记录</li><li>避免使用有问题的账号，否则提交应用审核时可能直接被封号</li></ul><p><strong>推荐方案</strong>：购买已经上架过应用的老账号，这种账号通常稳定可靠，只要应用本身没有问题，审核通过率会大大提高。</p><h2 id="📋-App准备"><a href="#📋-App准备" class="headerlink" title="📋 App准备"></a>📋 App准备</h2><h3 id="必需文件清单"><a href="#必需文件清单" class="headerlink" title="必需文件清单"></a>必需文件清单</h3><ol><li><p><strong>应用程序包（AAB文件）</strong></p><ul><li>确保应用程序已打包成AAB格式</li><li>这是Google Play商店目前唯一接受的格式</li><li>注意：APK格式已不再接受上传</li></ul></li><li><p><strong>应用图标和截图</strong></p><ul><li>应用图标：512x512像素高清图标</li><li>应用截图：至少4张，最多8张</li><li>功能介绍图：用于展示应用核心功能</li></ul></li></ol><h3 id="📐-尺寸规格要求"><a href="#📐-尺寸规格要求" class="headerlink" title="📐 尺寸规格要求"></a>📐 尺寸规格要求</h3><h4 id="Android启动图尺寸"><a href="#Android启动图尺寸" class="headerlink" title="Android启动图尺寸"></a>Android启动图尺寸</h4><ul><li><strong>hdpi</strong>: 720 x 1280</li><li><strong>xhdpi</strong>: 1125 x 2436</li><li><strong>xxhdpi</strong>: 1242 x 2688</li></ul><h4 id="功能介绍图"><a href="#功能介绍图" class="headerlink" title="功能介绍图"></a>功能介绍图</h4><ul><li><strong>标准尺寸</strong>: 1024×500</li></ul><h4 id="设备截图尺寸"><a href="#设备截图尺寸" class="headerlink" title="设备截图尺寸"></a>设备截图尺寸</h4><ul><li><strong>手机和平板7寸</strong>: 720×1280</li><li><strong>平板10寸</strong>: 1080×1920</li></ul><h3 id="💡-准备建议"><a href="#💡-准备建议" class="headerlink" title="💡 准备建议"></a>💡 准备建议</h3><ul><li>确保所有图片清晰度高质量</li><li>截图要能充分展示应用的核心功能</li><li>建议准备多个不同尺寸的图标以适配各种设备</li></ul><h2 id="🚀-创建APP步骤"><a href="#🚀-创建APP步骤" class="headerlink" title="🚀 创建APP步骤"></a>🚀 创建APP步骤</h2><h3 id="步骤1：创建新应用"><a href="#步骤1：创建新应用" class="headerlink" title="步骤1：创建新应用"></a>步骤1：创建新应用</h3><p>首先在Google Play控制台中创建新的应用项目。</p><p><img src="https://r2.fxcxy.com/google/1.png" alt="Image"></p><h3 id="步骤2：填写应用基本信息"><a href="#步骤2：填写应用基本信息" class="headerlink" title="步骤2：填写应用基本信息"></a>步骤2：填写应用基本信息</h3><p>按照实际情况填写应用的详细信息：</p><ul><li><strong>应用名称</strong>：确保名称唯一，不能与已有应用重复</li><li><strong>默认语言</strong>：选择应用的主要语言</li><li><strong>应用类别</strong>：选择合适的应用分类</li></ul><p><img src="https://r2.fxcxy.com/google/2.png" alt="Image"></p><h3 id="步骤3：完善应用设置"><a href="#步骤3：完善应用设置" class="headerlink" title="步骤3：完善应用设置"></a>步骤3：完善应用设置</h3><p>进入Dashboard中的”Set up your app”选项，按照系统指引逐步完成所有必要信息的填写。</p><p><img src="https://r2.fxcxy.com/google/3.png" alt="Image"></p><h3 id="步骤4：设置隐私政策"><a href="#步骤4：设置隐私政策" class="headerlink" title="步骤4：设置隐私政策"></a>步骤4：设置隐私政策</h3><p><strong>重要提醒</strong>：如果应用涉及用户数据收集，必须提供隐私政策链接。特别是使用了安装应用权限的应用，必须在隐私政策中明确说明：</p><ul><li>数据收集的类型和目的</li><li>数据使用方式</li><li>用户数据保护措施</li></ul><p><img src="https://r2.fxcxy.com/google/4.png" alt="Image"></p><h3 id="步骤5：APP访问权限设置"><a href="#步骤5：APP访问权限设置" class="headerlink" title="步骤5：APP访问权限设置"></a>步骤5：APP访问权限设置</h3><p>如果应用需要登录才能访问，必须提供测试账号和密码，以便审核人员能够正常测试应用功能。</p><p><strong>配置说明</strong>：</p><ul><li>Instruction name: <code>Instructions for Accessing [应用名称] with User Login</code></li><li>确保测试账号可以正常使用</li></ul><p><img src="https://r2.fxcxy.com/google/5.png" alt="Image"><br><img src="https://r2.fxcxy.com/google/6.png" alt="Image"></p><h3 id="步骤6：广告设置"><a href="#步骤6：广告设置" class="headerlink" title="步骤6：广告设置"></a>步骤6：广告设置</h3><p>根据应用实际情况选择广告选项：</p><ul><li><strong>有广告</strong>：如实声明应用包含广告功能</li><li><strong>没有广告</strong>：选择此选项表示应用不含广告</li></ul><p><img src="https://r2.fxcxy.com/google/7.png" alt="Image"></p><h3 id="步骤7：内容分级设置"><a href="#步骤7：内容分级设置" class="headerlink" title="步骤7：内容分级设置"></a>步骤7：内容分级设置</h3><p>根据应用的内容，选择合适的内容分级。Google提供问卷工具帮助确定正确的分级：</p><ul><li>根据应用包含的内容类型选择</li><li>考虑目标用户群体</li><li>确保分级准确，避免误导用户</li></ul><p><img src="https://r2.fxcxy.com/google/8.png" alt="Image"><br><img src="https://r2.fxcxy.com/google/9.png" alt="Image"><br><img src="https://r2.fxcxy.com/google/10.png" alt="Image"><br><img src="https://r2.fxcxy.com/google/11.png" alt="Image"></p><h3 id="步骤8：目标受众和内容设置"><a href="#步骤8：目标受众和内容设置" class="headerlink" title="步骤8：目标受众和内容设置"></a>步骤8：目标受众和内容设置</h3><p>根据应用的目标用户群体，选择合适的年龄段和受众类型：</p><ul><li><strong>主要受众</strong>：确定应用的核心用户群体</li><li><strong>年龄段</strong>：选择适合的年龄范围</li><li><strong>内容类型</strong>：明确应用的主要内容分类</li></ul><p><img src="https://r2.fxcxy.com/google/12.png" alt="Image"></p><h3 id="步骤9：数据安全设置"><a href="#步骤9：数据安全设置" class="headerlink" title="步骤9：数据安全设置"></a>步骤9：数据安全设置</h3><p>根据应用收集和处理的数据类型，如实填写数据安全问卷。</p><p><strong>🔒 关键要求</strong>：</p><ul><li>如果收集用户数据或设备信息，必须如实填写</li><li><strong>需要登录使用的应用</strong>：必须提供删除账号的API接口</li><li><strong>应用内功能</strong>：必须包含注销账号的功能</li></ul><p><img src="https://r2.fxcxy.com/google/13.png" alt="Image"></p><p><strong>⚠️ API要求</strong>：</p><ul><li>提供的删除数据API必须能正常访问</li><li>不能出现404错误</li><li>不需要登录即可调用删除接口</li></ul><p><img src="https://r2.fxcxy.com/google/14.png" alt="Image"></p><p><strong>📋 权限声明</strong>：</p><ul><li>应用使用的所有权限必须在此处声明</li><li>权限应声明为临时使用，需要用户主动授权</li><li>确保权限声明与应用实际使用情况一致</li></ul><p><img src="https://r2.fxcxy.com/google/15.png" alt="Image"><br><img src="https://r2.fxcxy.com/google/16.png" alt="Image"><br><img src="https://r2.fxcxy.com/google/17.png" alt="Image"><br><img src="https://r2.fxcxy.com/google/18.png" alt="Image"><br><img src="https://r2.fxcxy.com/google/19.png" alt="Image"></p><h3 id="步骤10：政府机构应用声明"><a href="#步骤10：政府机构应用声明" class="headerlink" title="步骤10：政府机构应用声明"></a>步骤10：政府机构应用声明</h3><p>声明应用是否由政府机构开发。选择”是”需要提供相关证明文件。</p><p><img src="https://r2.fxcxy.com/google/20.png" alt="Image"></p><h3 id="步骤11：金融服务功能声明"><a href="#步骤11：金融服务功能声明" class="headerlink" title="步骤11：金融服务功能声明"></a>步骤11：金融服务功能声明</h3><p>声明应用是否包含金融服务功能，如支付、投资、借贷等。</p><p><img src="https://r2.fxcxy.com/google/21.png" alt="Image"></p><h3 id="步骤12：App内容声明"><a href="#步骤12：App内容声明" class="headerlink" title="步骤12：App内容声明"></a>步骤12：App内容声明</h3><p>声明应用是否包含以下内容：</p><ul><li>广告功能</li><li>健康相关内容</li><li>其他敏感内容类型</li></ul><p><img src="https://r2.fxcxy.com/google/22.png" alt="Image"><br><img src="https://r2.fxcxy.com/google/23.png" alt="Image"><br><img src="https://r2.fxcxy.com/google/24.png" alt="Image"></p><h3 id="步骤13：设置APP分类和Store信息"><a href="#步骤13：设置APP分类和Store信息" class="headerlink" title="步骤13：设置APP分类和Store信息"></a>步骤13：设置APP分类和Store信息</h3><p>配置应用在Google Play商店中的显示信息：</p><ul><li><strong>应用分类</strong>：选择主要和次要分类</li><li><strong>商店页面</strong>：设置应用在商店中的展示方式</li></ul><p><img src="https://r2.fxcxy.com/google/25.png" alt="Image"><br><img src="https://r2.fxcxy.com/google/26.png" alt="Image"></p><h3 id="步骤14：完善应用基本信息和截图"><a href="#步骤14：完善应用基本信息和截图" class="headerlink" title="步骤14：完善应用基本信息和截图"></a>步骤14：完善应用基本信息和截图</h3><p><strong>📝 应用描述</strong>：</p><ul><li><strong>Short description</strong>：简短描述（少于80字符）</li><li><strong>Full description</strong>：详细描述（少于4000字符）</li></ul><p><img src="https://r2.fxcxy.com/google/27.png" alt="Image"></p><p><strong>🖼️ 视觉资源</strong>：</p><ul><li><strong>APP icon</strong>：512×512像素的应用图标</li><li><strong>Feature graphic</strong>：1024×500像素的功能介绍图</li></ul><p><img src="https://r2.fxcxy.com/google/28.png" alt="Image"></p><h3 id="步骤15：选择发布国家和地区"><a href="#步骤15：选择发布国家和地区" class="headerlink" title="步骤15：选择发布国家和地区"></a>步骤15：选择发布国家和地区</h3><p>选择应用要发布的目标国家和地区，建议根据目标用户群体来选择。</p><p><img src="https://r2.fxcxy.com/google/29.png" alt="Image"><br><img src="https://r2.fxcxy.com/google/30.png" alt="Image"></p><h3 id="步骤16：更改应用签名"><a href="#步骤16：更改应用签名" class="headerlink" title="步骤16：更改应用签名"></a>步骤16：更改应用签名</h3><p>在发布之前，强烈建议将默认的Google Play签名更改为自己的签名，这样可以更好地管理应用签名。</p><p><img src="https://r2.fxcxy.com/google/31.png" alt="Image"><br><img src="https://r2.fxcxy.com/google/32.png" alt="Image"></p><p><strong>🔑 生成Google Play签名</strong>：<br>使用以下命令生成签名文件，然后将生成的output.zip文件上传到Google Play控制台中更改签名：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">java -jar pepk.jar --keystore=test.keystore --<span class="hljs-built_in">alias</span>=<span class="hljs-built_in">test</span> --output=output.zip --signing-keystore=test.keystore --signing-key-alias=<span class="hljs-built_in">test</span> --rsa-aes-encryption --encryption-key-path=/Users/android/app/encryption_public_key.pem<br></code></pre></td></tr></table></figure><p><strong>参数说明</strong>：</p><ul><li><code>--keystore</code>: 你的密钥库文件路径</li><li><code>--alias</code>: 密钥别名</li><li><code>--output</code>: 输出文件路径</li><li><code>--signing-keystore</code>: 签名密钥库</li><li><code>--signing-key-alias</code>: 签名密钥别名</li><li><code>--encryption-key-path</code>: Google提供的公钥文件路径</li></ul><h3 id="步骤17：上传AAB文件并发布"><a href="#步骤17：上传AAB文件并发布" class="headerlink" title="步骤17：上传AAB文件并发布"></a>步骤17：上传AAB文件并发布</h3><p>将准备好的AAB文件上传到Google Play控制台，设置发布类型（内测、公测或正式发布）。</p><p><img src="https://r2.fxcxy.com/google/33.png" alt="Image"></p><h3 id="步骤18：提交审核"><a href="#步骤18：提交审核" class="headerlink" title="步骤18：提交审核"></a>步骤18：提交审核</h3><p>完成所有设置后，提交应用进行Google Play审核。</p><p><img src="https://r2.fxcxy.com/google/35.png" alt="Image"></p><h2 id="⚠️-常见问题及解决方案"><a href="#⚠️-常见问题及解决方案" class="headerlink" title="⚠️ 常见问题及解决方案"></a>⚠️ 常见问题及解决方案</h2><h3 id="问题：Photo-and-video-permissions"><a href="#问题：Photo-and-video-permissions" class="headerlink" title="问题：Photo and video permissions"></a>问题：Photo and video permissions</h3><p>在审核过程中，Google可能会询问关于照片和视频权限的使用情况。</p><p><img src="https://r2.fxcxy.com/google/34.png" alt="Image"></p><p><strong>回复示例</strong>：</p><figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs pgsql">The app uses the READ_MEDIA_IMAGES permission <span class="hljs-keyword">only</span> <span class="hljs-keyword">when</span> users upload profile <span class="hljs-keyword">or</span> resume photos. <span class="hljs-keyword">Access</span> <span class="hljs-keyword">is</span> <span class="hljs-keyword">user</span>-initiated through the <span class="hljs-keyword">system</span> picker <span class="hljs-keyword">and</span> <span class="hljs-keyword">not</span> continuous <span class="hljs-keyword">or</span> automatic. <span class="hljs-keyword">No</span> background <span class="hljs-keyword">access</span> <span class="hljs-keyword">or</span> data collection occurs.<br></code></pre></td></tr></table></figure><p><strong>翻译</strong>：<br>应用仅在用户上传头像或简历照片时使用READ_MEDIA_IMAGES权限。访问是通过系统选择器由用户主动发起的，并非持续或自动的。不会进行后台访问或数据收集。</p><h2 id="💡-上架成功建议"><a href="#💡-上架成功建议" class="headerlink" title="💡 上架成功建议"></a>💡 上架成功建议</h2><ol><li><strong>仔细阅读政策</strong>：确保应用完全符合Google Play政策要求</li><li><strong>测试充分</strong>：在提交前进行充分测试，确保应用稳定运行</li><li><strong>如实填写</strong>：所有信息必须真实准确，避免误导性信息</li><li><strong>及时响应</strong>：审核过程中如有问题，及时回复并提供必要信息</li><li><strong>保持更新</strong>：定期更新应用，修复bug并添加新功能</li></ol><h2 id="📞-获取帮助"><a href="#📞-获取帮助" class="headerlink" title="📞 获取帮助"></a>📞 获取帮助</h2><p>如果在上架过程中遇到问题，可以：</p><ul><li>查看Google Play开发者帮助中心</li><li>联系Google Play支持团队</li><li>参考其他成功案例和经验分享</li></ul><hr><p><em>祝您的应用成功上架Google Play商店！</em> 🎉</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>移动开发</category>
+      
+      <category>Google Play</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Android</tag>
+      
+      <tag>Google Play</tag>
+      
+      <tag>App上架</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Claude Code 神级操作大揭秘：这些隐藏功能让编程效率暴增10倍！</title>
     <link href="/2025/09/04/Claude-Code%E7%94%A8%E6%B3%95%E5%85%A8%E9%9D%A2%E6%8B%86%E8%A7%A3/"/>
     <url>/2025/09/04/Claude-Code%E7%94%A8%E6%B3%95%E5%85%A8%E9%9D%A2%E6%8B%86%E8%A7%A3/</url>
@@ -20,15 +51,15 @@
     
     <tags>
       
-      <tag>开发工具</tag>
-      
       <tag>Claude</tag>
-      
-      <tag>效率工具</tag>
       
       <tag>AI工具</tag>
       
+      <tag>开发工具</tag>
+      
       <tag>编程</tag>
+      
+      <tag>效率工具</tag>
       
     </tags>
     
@@ -74,13 +105,13 @@
     
     <tags>
       
+      <tag>效率工具</tag>
+      
       <tag>Python</tag>
       
       <tag>AI</tag>
       
       <tag>GitHub</tag>
-      
-      <tag>效率工具</tag>
       
       <tag>程序员</tag>
       
@@ -320,9 +351,9 @@
       
       <tag>Android</tag>
       
-      <tag>抓包</tag>
-      
       <tag>逆向工程</tag>
+      
+      <tag>抓包</tag>
       
       <tag>反编译</tag>
       
@@ -819,6 +850,8 @@
     
     <tags>
       
+      <tag>开发工具</tag>
+      
       <tag>JetBrains</tag>
       
       <tag>破解</tag>
@@ -826,8 +859,6 @@
       <tag>激活</tag>
       
       <tag>IDE</tag>
-      
-      <tag>开发工具</tag>
       
     </tags>
     
@@ -1177,9 +1208,9 @@
     
     <tags>
       
-      <tag>GPT</tag>
-      
       <tag>AI</tag>
+      
+      <tag>GPT</tag>
       
       <tag>前端开发</tag>
       
@@ -1498,9 +1529,9 @@
     
     <categories>
       
-      <category>软件工具</category>
-      
       <category>视频教程</category>
+      
+      <category>软件工具</category>
       
       <category>破解软件</category>
       
@@ -1851,9 +1882,9 @@
     
     <tags>
       
-      <tag>Charles</tag>
-      
       <tag>抓包</tag>
+      
+      <tag>Charles</tag>
       
       <tag>App</tag>
       
