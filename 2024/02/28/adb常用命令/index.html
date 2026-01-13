@@ -19,11 +19,11 @@
     <meta name="twitter:title" content="adb常用命令及将android手机屏幕共享到电脑上 - 自由码农" />
     <meta name="twitter:description" content="准备 1.在电脑上安装adb工具或者安装android sdk 2.配置环境变量 3.打开手机usb调试模式 4.用线连接电脑和手机，输入命令 adb tcpip 5555 5.确保手机和电脑用的连接同一个wifi或路由器 第一次通过adb命令连接手机会弹出下面的授权提示,点击允许  命令1.给设备设置监听端口（TCP&amp;#x2F;IP）adb tcpip 5555  2.连接手机adb conne" />
     <meta name="twitter:image" content="/img/adb.png" />
-
+  
   <meta name="theme-color" content="#2f4154">
   <meta name="author" content="spatacus">
   <meta name="keywords" content="自由码农,技术博客,工具分享，网站开发，App开发，小程序开发，H5开发">
-
+  
     <meta name="description" content="准备 1.在电脑上安装adb工具或者安装android sdk 2.配置环境变量 3.打开手机usb调试模式 4.用线连接电脑和手机，输入命令 adb tcpip 5555 5.确保手机和电脑用的连接同一个wifi或路由器 第一次通过adb命令连接手机会弹出下面的授权提示,点击允许  命令1.给设备设置监听端口（TCP&#x2F;IP）adb tcpip 5555  2.连接手机adb conne">
 <meta property="og:type" content="article">
 <meta property="og:title" content="adb常用命令及将android手机屏幕共享到电脑上">
@@ -40,9 +40,9 @@
 <meta property="article:tag" content="文章">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://blog.fxcxy.com/img/adb.png">
-
-
-
+  
+  
+  
   <title>adb常用命令及将android手机屏幕共享到电脑上 - 自由码农</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
@@ -71,13 +71,13 @@
 
 
   <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
-
+  
     <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
 
 
 
-
-
+  
 <link rel="stylesheet" href="//at.alicdn.com/t/c/font_4443546_u6jwvi2qcka.css">
 <link rel="stylesheet" href="/css/social-share.min.css">
 <link rel="stylesheet" href="/css/myreward.css">
@@ -96,11 +96,11 @@
   </script>
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
+  
 
+  
 
-
-
-
+  
     <!-- Google tag (gtag.js) -->
     <script async>
       if (!Fluid.ctx.dnt) {
@@ -114,29 +114,29 @@
         });
       }
     </script>
+  
+
+  
+
+  
+
+  
+
+  
+    
+  
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
+  
 <meta name="generator" content="Hexo 7.1.1"></head>
 
 
 <body>
-
+  
 
   <header>
-
+    
 
 <div class="header-inner" style="height: 70vh;">
   <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
@@ -154,88 +154,88 @@
     <!-- Collapsible content -->
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav ml-auto text-center">
-
-
-
-
-
+        
+          
+          
+          
+          
             <li class="nav-item">
               <a class="nav-link" href="/" target="_self">
                 <i class="iconfont icon-home-fill"></i>
                 <span>首页</span>
               </a>
             </li>
-
-
-
-
-
-
+          
+        
+          
+          
+          
+          
             <li class="nav-item">
               <a class="nav-link" href="/archives/" target="_self">
                 <i class="iconfont icon-archive-fill"></i>
                 <span>归档</span>
               </a>
             </li>
-
-
-
-
-
-
+          
+        
+          
+          
+          
+          
             <li class="nav-item">
               <a class="nav-link" href="/categories/" target="_self">
                 <i class="iconfont icon-category-fill"></i>
                 <span>分类</span>
               </a>
             </li>
-
-
-
-
-
-
+          
+        
+          
+          
+          
+          
             <li class="nav-item">
               <a class="nav-link" href="/tags/" target="_self">
                 <i class="iconfont icon-tags-fill"></i>
                 <span>标签</span>
               </a>
             </li>
-
-
-
-
-
-
+          
+        
+          
+          
+          
+          
             <li class="nav-item">
               <a class="nav-link" href="/about/" target="_self">
                 <i class="iconfont icon-user-fill"></i>
                 <span>关于</span>
               </a>
             </li>
-
-
-
+          
+        
+        
           <li class="nav-item" id="search-btn">
             <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
               <i class="iconfont icon-search"></i>
             </a>
           </li>
-
-
-
+          
+        
+        
           <li class="nav-item" id="color-toggle-btn">
             <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
               <i class="iconfont icon-dark" id="color-toggle-icon"></i>
             </a>
           </li>
-
+        
       </ul>
     </div>
   </div>
 </nav>
 
-
+  
 
 <div id="banner" class="banner" parallax=true
      style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
@@ -243,63 +243,63 @@
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
-
+          
             <span id="subtitle" data-typed-text="adb常用命令及将android手机屏幕共享到电脑上"></span>
-
+          
         </div>
 
-
-
+        
+          
   <div class="mt-3">
-
-
+    
+    
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
         <time datetime="2024-02-28 10:07" pubdate>
           2024年2月28日 上午
         </time>
       </span>
-
+    
   </div>
 
   <div class="mt-1">
-
+    
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
-
+        
           417 字
-
+        
       </span>
+    
 
-
-
+    
       <span class="post-meta mr-2">
         <i class="iconfont icon-clock-fill"></i>
-
-
-
+        
+        
+        
           4 分钟
-
+        
       </span>
+    
 
-
-
-
-
+    
+    
+      
         <span id="leancloud-page-views-container" class="post-meta" style="display: none">
           <i class="iconfont icon-eye" aria-hidden="true"></i>
           <span id="leancloud-page-views"></span>次
         </span>
-
-
-
+        
+      
+    
   </div>
 
 
-
+        
       </div>
 
-
+      
     </div>
   </div>
 </div>
@@ -309,13 +309,13 @@
   </header>
 
   <main>
-
-
+    
+      
 
 <div class="container-fluid nopadding-x">
   <div class="row nomargin-x">
     <div class="side-col d-none d-lg-block col-lg-2">
-
+      
 
     </div>
 
@@ -324,19 +324,19 @@
         <div id="board">
           <article class="post-content mx-auto">
             <h1 id="seo-header">adb常用命令及将android手机屏幕共享到电脑上</h1>
-
-
+            
+            
               <div class="markdown-body">
-
+                
                 <h3 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h3><p> 1.在电脑上安装adb工具或者安装android sdk<br> 2.配置环境变量<br> 3.打开手机usb调试模式<br> 4.用线连接电脑和手机，输入命令 adb tcpip 5555<br> 5.确保手机和电脑用的连接同一个wifi或路由器</p>
 <h4 id="第一次通过adb命令连接手机会弹出下面的授权提示-点击允许"><a href="#第一次通过adb命令连接手机会弹出下面的授权提示-点击允许" class="headerlink" title="第一次通过adb命令连接手机会弹出下面的授权提示,点击允许"></a>第一次通过adb命令连接手机会弹出下面的授权提示,点击允许</h4><img src="/2024/02/28/adb%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/2.jpg" srcset="/img/loading.gif" lazyload class="" width="400" title="第一次通过adb命令连接手机会弹出下面的授权提示">
 
 <h3 id="命令"><a href="#命令" class="headerlink" title="命令"></a>命令</h3><h4 id="1-给设备设置监听端口（TCP-IP）"><a href="#1-给设备设置监听端口（TCP-IP）" class="headerlink" title="1.给设备设置监听端口（TCP&#x2F;IP）"></a>1.给设备设置监听端口（TCP&#x2F;IP）</h4><pre><code class="hljs">adb tcpip 5555
 </code></pre>
-<h4 id="2-连接手机"><a href="#2-连接手机" class="headerlink" title="2.连接手机"></a>2.连接手机</h4><pre><code class="hljs">adb connect 192.168.3.9
+<h4 id="2-连接手机"><a href="#2-连接手机" class="headerlink" title="2.连接手机"></a>2.连接手机</h4><pre><code class="hljs">adb connect 192.168.3.9  
 </code></pre>
 <p>192.168.3.9代表的是手机的局域网ip</p>
-<h4 id="3-断开连接"><a href="#3-断开连接" class="headerlink" title="3.断开连接"></a>3.断开连接</h4><pre><code class="hljs">adb disconnect 192.168.3.9
+<h4 id="3-断开连接"><a href="#3-断开连接" class="headerlink" title="3.断开连接"></a>3.断开连接</h4><pre><code class="hljs">adb disconnect 192.168.3.9  
 </code></pre>
 <p>192.168.3.9代表的是手机的局域网ip</p>
 <h4 id="4-查看当前电脑连接的设备-手机"><a href="#4-查看当前电脑连接的设备-手机" class="headerlink" title="4.查看当前电脑连接的设备(手机)"></a>4.查看当前电脑连接的设备(手机)</h4><pre><code class="hljs">adb devices
@@ -345,7 +345,7 @@
 adb install -t 文件目录/app.apk
 </code></pre>
 <p>-r 覆盖安装<br>-t 安装测试版，一般是程序员编译运行的代码，不是发布版本。需要用这个参数</p>
-<h4 id="6-adb连接了多台设备，在执行adb命令时，需要指定设备-s-设备"><a href="#6-adb连接了多台设备，在执行adb命令时，需要指定设备-s-设备" class="headerlink" title="6.adb连接了多台设备，在执行adb命令时，需要指定设备 -s 设备"></a>6.adb连接了多台设备，在执行adb命令时，需要指定设备 -s 设备</h4><pre><code class="hljs">adb -s 192.168.3.9:5555 install -r 文件目录/app.apk
+<h4 id="6-adb连接了多台设备，在执行adb命令时，需要指定设备-s-设备"><a href="#6-adb连接了多台设备，在执行adb命令时，需要指定设备-s-设备" class="headerlink" title="6.adb连接了多台设备，在执行adb命令时，需要指定设备 -s 设备"></a>6.adb连接了多台设备，在执行adb命令时，需要指定设备 -s 设备</h4><pre><code class="hljs">adb -s 192.168.3.9:5555 install -r 文件目录/app.apk 
 </code></pre>
 <h4 id="7-重置adb"><a href="#7-重置adb" class="headerlink" title="7.重置adb"></a>7.重置adb</h4><pre><code class="hljs">adb kill-server
 </code></pre>
@@ -363,9 +363,9 @@ adb install -t 文件目录/app.apk
 </code></pre>
 <p> 5M表示带宽也就是传输速率，不是越大越好，也要看你的网络<br> 192.168.3.73 手机的局域网ip</p>
 
-
+                
               </div>
-
+            
 
               <!--打赏-->
               <div class="reward">
@@ -382,18 +382,18 @@ adb install -t 文件目录/app.apk
                   <div class="social-share-container" style="margin-top: 15px;"> <!-- 生成一组分享按钮 -->
                        <!--如果博客语言是中文，就显示“点击分享到：”，非中文一律显示“Share it:”-->
                       点击分享到：&nbsp;&nbsp;
-
+                      
                   </div>
                   <!-- 加载 jQuery 库 -->
-
+                  
 <script src="/js/jquery.min.js"></script>
 
                   <!-- 导入 qrcode.min.js -->
-
+                  
 <script src="/js/qrcode.min.js"></script>
 
                   <!-- 加载 social-share.js 的 js 库，另外还要加载 social-share.js 的 CSS，可以修改 `_config.fluid.yml` 的 `custom_css` 加载，也可以修改 `themes/fluid/layout/_partial/css.ejs` 加载。-->
-
+                  
 <script src="/js/social-share.min.js"></script>
 
                   <script>
@@ -416,55 +416,55 @@ adb install -t 文件目录/app.apk
             <hr/>
             <div>
               <div class="post-metas my-3">
-
+  
     <div class="post-meta mr-3 d-flex align-items-center">
       <i class="iconfont icon-category"></i>
-
+      
 
 <span class="category-chains">
-
-
-
+  
+  
+    
       <span class="category-chain">
-
+        
   <a href="/categories/%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/" class="category-chain-item">技术分享</a>
-
-
+  
+  
 
       </span>
-
-
-
+    
+  
+    
       <span class="category-chain">
-
+        
   <a href="/categories/Android/" class="category-chain-item">Android</a>
-
-
+  
+  
 
       </span>
-
-
+    
+  
 </span>
 
     </div>
-
-
+  
+  
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
-
+      
         <a href="/tags/adb/" class="print-no-link">#adb</a>
-
+      
         <a href="/tags/%E5%91%BD%E4%BB%A4/" class="print-no-link">#命令</a>
-
+      
         <a href="/tags/%E6%96%87%E7%AB%A0/" class="print-no-link">#文章</a>
-
+      
     </div>
-
+  
 </div>
 
 
-
-
+              
+  
 
   <div class="license-box my-3">
     <div class="license-title">
@@ -472,73 +472,73 @@ adb install -t 文件目录/app.apk
       <div>https://blog.fxcxy.com/2024/02/28/adb常用命令/</div>
     </div>
     <div class="license-meta">
-
+      
         <div class="license-meta-item">
           <div>作者</div>
           <div>spatacus</div>
         </div>
-
-
+      
+      
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
           <div>2024年2月28日</div>
         </div>
-
-
-
+      
+      
+      
         <div class="license-meta-item">
           <div>许可协议</div>
           <div>
-
-
-
+            
+              
+              
                 <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
                   <span class="hint--top hint--rounded" aria-label="BY - 署名">
                     <i class="iconfont icon-by"></i>
                   </span>
                 </a>
-
-
+              
+            
           </div>
         </div>
-
+      
     </div>
     <div class="license-icon iconfont"></div>
   </div>
 
 
 
-
+              
                 <div class="post-prevnext my-3">
                   <article class="post-prev col-6">
-
-
+                    
+                    
                       <a href="/2024/02/28/%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BAReactNative%E9%A1%B9%E7%9B%AE/" title="快速搭建ReactNative项目">
                         <i class="iconfont icon-arrowleft"></i>
                         <span class="hidden-mobile">快速搭建ReactNative项目</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
-
+                    
                   </article>
                   <article class="post-next col-6">
-
-
+                    
+                    
                       <a href="/2023/12/23/%E4%BD%BF%E7%94%A8Charles%E5%AE%9E%E7%8E%B0%E7%A7%BB%E5%8A%A8App%E6%8E%A5%E5%8F%A3%E6%95%B0%E6%8D%AE%E6%8A%93%E5%8C%85%E6%95%99%E7%A8%8B/" title="使用Charles实现移动App接口数据抓包教程">
                         <span class="hidden-mobile">使用Charles实现移动App接口数据抓包教程</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
-
+                    
                   </article>
                 </div>
-
+              
             </div>
 
-
-
-
+            
+  
+  
     <article id="comments" lazyload>
-
+      
   <div id="valine"></div>
   <script type="text/javascript">
     Fluid.utils.loadComments('#valine', function() {
@@ -563,7 +563,7 @@ adb install -t 文件目录/app.apk
 
 
     </article>
-
+  
 
 
           </article>
@@ -572,7 +572,7 @@ adb install -t 文件目录/app.apk
     </div>
 
     <div class="side-col d-none d-lg-block col-lg-2">
-
+      
   <aside class="sidebar" style="margin-left: -1rem">
     <div id="toc">
   <p class="toc-header">
@@ -595,6 +595,23 @@ adb install -t 文件目录/app.apk
 
 
 
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
 
 
 
@@ -602,32 +619,15 @@ adb install -t 文件目录/app.apk
 
 
 
+    
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    
       <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
         <i class="iconfont icon-arrowup" aria-hidden="true"></i>
       </a>
+    
 
-
-
+    
       <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
      aria-hidden="true">
   <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
@@ -649,9 +649,9 @@ adb install -t 文件目录/app.apk
   </div>
 </div>
 
+    
 
-
-
+    
   </main>
 
   <footer>
@@ -661,45 +661,45 @@ adb install -t 文件目录/app.apk
     <a href="https://sl.zymn.cc" target="_blank" style="margin: 0 12px; color: #bdbdbd; text-decoration: none; font-weight: 500;">短链生成器</a>
     <a href="https://yhjf.zymn.cc" target="_blank" style="margin: 0 12px; color: #bdbdbd; text-decoration: none; font-weight: 500;">隐秘信使</a>
   </div>
-
+  
     <div class="footer-content">
-       <a href="https://www.youtube.com/channel/UCn0Yarp_h6oqn1-QLvlgbDg?sub_confirmation=1" target="_blank" rel="nofollow noopener"><span>Youtube</span></a>- <a href="https://twitter.com/corder2025" target="_blank" rel="nofollow noopener"><span>X</span></a>- <a href="https://t.me/+8W45Y29o5T1mMGI1" target="_blank" rel="nofollow noopener"><span>电报群</span></a>- <a href="https://v.douyin.com/iNpPYY4E/" target="_blank" rel="nofollow noopener"><span>抖音</span></a>- <a href="https://www.ixigua.com/home/103680436540" target="_blank" rel="nofollow noopener"><span>西瓜视频</span></a>
+       <a href="https://www.youtube.com/channel/UCn0Yarp_h6oqn1-QLvlgbDg?sub_confirmation=1" target="_blank" rel="nofollow noopener"><span>Youtube</span></a>- <a href="https://x.com/corder2025" target="_blank" rel="nofollow noopener"><span>X</span></a>- <a href="https://t.me/+8W45Y29o5T1mMGI1" target="_blank" rel="nofollow noopener"><span>电报群</span></a>- <a href="https://v.douyin.com/iNpPYY4E/" target="_blank" rel="nofollow noopener"><span>抖音</span></a>- <a href="https://www.ixigua.com/home/103680436540" target="_blank" rel="nofollow noopener"><span>西瓜视频</span></a> 
     </div>
-
-
+  
+  
     <div class="statistics">
+  
+  
 
-
-
-
-
+  
+    
       <span id="leancloud-site-pv-container" style="display: none">
-        总访问量
+        总访问量 
         <span id="leancloud-site-pv"></span>
          次
       </span>
-
-
+    
+    
       <span id="leancloud-site-uv-container" style="display: none">
-        总访客数
+        总访客数 
         <span id="leancloud-site-uv"></span>
          人
       </span>
+    
+    
 
-
-
-
+  
 </div>
 
-
-
-
+  
+  
+  
 </div>
 
   </footer>
 
   <!-- Scripts -->
-
+  
   <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
   <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
 
@@ -727,23 +727,23 @@ adb install -t 文件目录/app.apk
         return;
       }
       var text = subtitle.getAttribute('data-typed-text');
-
+      
         typing(text);
-
+      
     })(window, document);
   </script>
 
 
 
 
-
+  
     <script  src="/js/img-lazyload.js" ></script>
+  
 
 
 
 
-
-
+  
 <script>
   Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
     var toc = jQuery('#toc');
@@ -788,7 +788,7 @@ adb install -t 文件目录/app.apk
   <script>Fluid.plugins.codeWidget();</script>
 
 
-
+  
 <script>
   Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
     window.anchors.options = {
@@ -826,7 +826,7 @@ adb install -t 文件目录/app.apk
 </script>
 
 
-
+  
 <script>
   Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
     Fluid.plugins.fancyBox();
@@ -849,7 +849,7 @@ adb install -t 文件目录/app.apk
 <script  src="/js/boot.js" ></script>
 
 
-
+  
 
   <noscript>
     <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
