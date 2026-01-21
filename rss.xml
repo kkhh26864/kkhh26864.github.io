@@ -4,6 +4,12 @@
         <title>我的博客</title>
         <link>https://www.zymn.cc</link>
         <description>欢迎来到我的个人博客！在这里，我将分享关于技术、编程、以及个人成长的经验和见解，帮助你在学习和工作中更进一步。</description>
+         <item>
+            <title>一键发布！用 Claude Skills 将 Markdown 文章自动发布到 X 平台</title>
+            <link>https://www.zymn.cc/2026/01/21/将Markdown文章自动发布到X//</link>
+            <description>详细介绍如何使用Claude Skills将Markdown文章自动发布到X平台，包括准备工作、安装依赖、配置API等步骤。</description>
+            <pubDate>Wed, 21 Jan 2026 10:00:00 GMT</pubDate>
+        </item>
         <item>
             <title>2026 年最强 AI 编程方案：让 Claude、GPT、Gemini 像团队一样协作</title>
             <link>https://www.zymn.cc/2026/01/15/opencode-oh-my-opencoded的安装与使用/</link>
