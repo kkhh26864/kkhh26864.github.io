@@ -4,6 +4,12 @@
         <title>我的博客</title>
         <link>https://www.zymn.cc</link>
         <description>欢迎来到我的个人博客！在这里，我将分享关于技术、编程、以及个人成长的经验和见解，帮助你在学习和工作中更进一步。</description>
+        <item>
+            <title>用AI自动炒股赚钱？OpenClaw智能交易系统完整教程（含部署+实战策略）</title>
+            <link>https://www.zymn.cc/2026/03/04/OpenClaw重构量化交易逻辑：AI全自动炒股终极指南/</link>
+            <description>OpenClaw AI量化交易系统完整搭建教程，从零开始教你如何部署智能交易助手，实现24小时自动盯盘、智能分析决策和风险控制。包含阿里云部署指南、四大实战场景、风控体系和三大经典交易策略。</description>
+            <pubDate>Thu, 27 Feb 2026 10:00:00 GMT</pubDate>
+        </item>
          <item>
             <title>一键发布！用 Claude Skills 将 Markdown 文章自动发布到 X 平台</title>
             <link>https://www.zymn.cc/2026/01/21/将Markdown文章自动发布到X//</link>
