@@ -1,0 +1,1076 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/logo.png">
+  <link rel="icon" href="/img/logo.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3232532601275150"
+     crossorigin="anonymous"></script>
+    <meta name="twitter:card" content="/img/openclaw-agent-tutorial.png" />
+    <meta name="twitter:site" content="自由码农" />
+    <meta name="twitter:creator" content="@corder2025">
+    <meta name="twitter:title" content="保姆级教程：0基础搭建你的第一个AI智能助手军团（OpenClaw完整实战） - 自由码农" />
+    <meta name="twitter:description" content="想要一个24小时在线的AI助手团队？这篇文章教你从零搭建你是否遇到过这些困扰：  信息太多处理不过来，需要花大量时间整理和调研 重复性工作太多，写代码、写文章、发布内容都要亲力亲为 想要多个AI助手协同工作，但不知道怎么配置  如果有一支AI助手军团，能够24小时帮你调研信息、编写代码、创作内容，该多好？ 今天分享一个完整的 OpenClaw AI Agent 搭建教程，从环境安装到组建多Agen" />
+    <meta name="twitter:image" content="/img/openclaw-agent-tutorial.png" />
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="spatacus">
+  <meta name="keywords" content="自由码农,技术博客,工具分享，网站开发，App开发，小程序开发，H5开发">
+  
+    <meta name="description" content="想要一个24小时在线的AI助手团队？这篇文章教你从零搭建你是否遇到过这些困扰：  信息太多处理不过来，需要花大量时间整理和调研 重复性工作太多，写代码、写文章、发布内容都要亲力亲为 想要多个AI助手协同工作，但不知道怎么配置  如果有一支AI助手军团，能够24小时帮你调研信息、编写代码、创作内容，该多好？ 今天分享一个完整的 OpenClaw AI Agent 搭建教程，从环境安装到组建多Agen">
+<meta property="og:type" content="article">
+<meta property="og:title" content="保姆级教程：0基础搭建你的第一个AI智能助手军团（OpenClaw完整实战）">
+<meta property="og:url" content="https://blog.fxcxy.com/2026/03/05/%E4%BF%9D%E5%A7%86%E7%BA%A7%E6%95%99%E7%A8%8B%EF%BC%9A0%E5%9F%BA%E7%A1%80%E6%90%AD%E5%BB%BA%E4%BD%A0%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AAAI%E6%99%BA%E8%83%BD%E5%8A%A9%E6%89%8B%E5%86%9B%E5%9B%A2%EF%BC%88OpenClaw%E5%AE%8C%E6%95%B4%E5%AE%9E%E6%88%98%EF%BC%89/index.html">
+<meta property="og:site_name" content="自由码农">
+<meta property="og:description" content="想要一个24小时在线的AI助手团队？这篇文章教你从零搭建你是否遇到过这些困扰：  信息太多处理不过来，需要花大量时间整理和调研 重复性工作太多，写代码、写文章、发布内容都要亲力亲为 想要多个AI助手协同工作，但不知道怎么配置  如果有一支AI助手军团，能够24小时帮你调研信息、编写代码、创作内容，该多好？ 今天分享一个完整的 OpenClaw AI Agent 搭建教程，从环境安装到组建多Agen">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://blog.fxcxy.com/img/openclaw-agent-tutorial.png">
+<meta property="article:published_time" content="2026-03-05T15:18:08.000Z">
+<meta property="article:modified_time" content="2026-03-05T15:20:05.209Z">
+<meta property="article:author" content="spatacus">
+<meta property="article:tag" content="人工智能">
+<meta property="article:tag" content="OpenClaw">
+<meta property="article:tag" content="AI Agent">
+<meta property="article:tag" content="智能助手">
+<meta property="article:tag" content="自动化工具">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://blog.fxcxy.com/img/openclaw-agent-tutorial.png">
+  
+  
+  
+  <title>保姆级教程：0基础搭建你的第一个AI智能助手军团（OpenClaw完整实战） - 自由码农</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+  
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_4443546_u6jwvi2qcka.css">
+<link rel="stylesheet" href="/css/social-share.min.css">
+<link rel="stylesheet" href="/css/myreward.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"blog.fxcxy.com","root":"/","version":"1.9.7","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"复制"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"J7kyQXV9R3CXOiA1eubrlflY-gzGzoHsz","app_key":"qHZzPzRcvsutXvHvBewqGmhw","server_url":"https://leancloud.fxcxy.com","path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+
+  
+    <!-- Google tag (gtag.js) -->
+    <script async>
+      if (!Fluid.ctx.dnt) {
+        Fluid.utils.createScript("https://www.googletagmanager.com/gtag/js?id=", function() {
+          window.dataLayer = window.dataLayer || [];
+          function gtag() {
+            dataLayer.push(arguments);
+          }
+          gtag('js', new Date());
+          gtag('config', '');
+        });
+      }
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+    
+  
+
+
+
+  
+<meta name="generator" content="Hexo 7.1.1"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>自由码农</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="保姆级教程：0基础搭建你的第一个AI智能助手军团（OpenClaw完整实战）"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2026-03-05 23:18" pubdate>
+          2026年3月5日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          2.9k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          24 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="leancloud-page-views"></span>次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">保姆级教程：0基础搭建你的第一个AI智能助手军团（OpenClaw完整实战）</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h2 id="想要一个24小时在线的AI助手团队？这篇文章教你从零搭建"><a href="#想要一个24小时在线的AI助手团队？这篇文章教你从零搭建" class="headerlink" title="想要一个24小时在线的AI助手团队？这篇文章教你从零搭建"></a>想要一个24小时在线的AI助手团队？这篇文章教你从零搭建</h2><p>你是否遇到过这些困扰：</p>
+<ul>
+<li>信息太多处理不过来，需要花大量时间整理和调研</li>
+<li>重复性工作太多，写代码、写文章、发布内容都要亲力亲为</li>
+<li>想要多个AI助手协同工作，但不知道怎么配置</li>
+</ul>
+<p>如果有一支AI助手军团，能够24小时帮你调研信息、编写代码、创作内容，该多好？</p>
+<p>今天分享一个完整的 OpenClaw AI Agent 搭建教程，<strong>从环境安装到组建多Agent团队，预计1-2小时即可完成</strong>。即使你是零基础小白，跟着步骤操作也能成功。</p>
+<h2 id="OpenClaw是什么？能帮你做什么？"><a href="#OpenClaw是什么？能帮你做什么？" class="headerlink" title="OpenClaw是什么？能帮你做什么？"></a>OpenClaw是什么？能帮你做什么？</h2><p>OpenClaw 是一个开源的 AI Agent 框架，可以让你创建多个具有不同能力的智能助手：</p>
+<ul>
+<li>✅ <strong>记忆能力</strong>：记住你的对话历史和偏好</li>
+<li>✅ <strong>编程能力</strong>：自动编写和调试代码</li>
+<li>✅ <strong>搜索能力</strong>：自动调研信息、浏览网页</li>
+<li>✅ <strong>协同工作</strong>：多个Agent可以组成团队分工协作</li>
+</ul>
+<p>适合人群：</p>
+<ul>
+<li>程序员：需要AI助手帮助编码和调研</li>
+<li>内容创作者：需要AI帮助写作和发布</li>
+<li>知识工作者：需要AI帮助整理信息和自动化任务</li>
+</ul>
+<h2 id="完整搭建流程"><a href="#完整搭建流程" class="headerlink" title="完整搭建流程"></a>完整搭建流程</h2><h3 id="一、环境安装（10分钟）"><a href="#一、环境安装（10分钟）" class="headerlink" title="一、环境安装（10分钟）"></a>一、环境安装（10分钟）</h3><h4 id="1-准备工作"><a href="#1-准备工作" class="headerlink" title="1. 准备工作"></a>1. 准备工作</h4><p>以 Mac 为例，首先打开终端应用。</p>
+<h4 id="2-安装步骤"><a href="#2-安装步骤" class="headerlink" title="2. 安装步骤"></a>2. 安装步骤</h4><p><strong>第一步：安装 Homebrew（Mac包管理工具）</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">/bin/bash -c <span class="hljs-string">&quot;<span class="hljs-subst">$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)</span>&quot;</span><br></code></pre></td></tr></table></figure>
+
+<p><strong>第二步：安装 Node.js</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">brew install nodejs<br></code></pre></td></tr></table></figure>
+
+<p><strong>第三步：安装 OpenClaw</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">curl -fsSL https://openclaw.ai/install.sh | bash<br></code></pre></td></tr></table></figure>
+
+<p>安装完成后，验证是否成功：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">openclaw --version<br></code></pre></td></tr></table></figure>
+
+<p>如果显示版本号，说明安装成功。</p>
+<h3 id="二、创建你的第一个AI助手（15分钟）"><a href="#二、创建你的第一个AI助手（15分钟）" class="headerlink" title="二、创建你的第一个AI助手（15分钟）"></a>二、创建你的第一个AI助手（15分钟）</h3><h4 id="1-为什么选择-Telegram"><a href="#1-为什么选择-Telegram" class="headerlink" title="1. 为什么选择 Telegram"></a>1. 为什么选择 Telegram</h4><p>我们使用 Telegram 作为与AI助手的通讯渠道，原因是：</p>
+<ul>
+<li>配置简单，对新手友好</li>
+<li>支持群聊，方便多个Agent协同</li>
+<li>跨平台，手机和电脑都能用</li>
+</ul>
+<h4 id="2-创建-Telegram-Bot"><a href="#2-创建-Telegram-Bot" class="headerlink" title="2. 创建 Telegram Bot"></a>2. 创建 Telegram Bot</h4><p>打开 Telegram，搜索 <code>@BotFather</code>：</p>
+<ol>
+<li>发送 <code>/start</code> 开始对话</li>
+<li>发送 <code>/newbot</code> 创建新机器人</li>
+<li>输入 Bot 显示名称（例如：AI助手大总管）</li>
+<li>输入 Bot 用户名（必须以 <code>_bot</code> 结尾，例如：<code>my_ai_assistant_bot</code>）</li>
+</ol>
+<p>成功后，BotFather 会返回一个 <strong>Token</strong>（格式类似：<code>7691627338:AAHo9ix-evUZaz2FgmVAF9juHohsSSX3KOa</code>），<strong>请保存好这个Token</strong>。</p>
+<p>同时注意消息中的 <code>t.me/xxx</code> 链接，点击即可进入与你的机器人的对话页面。</p>
+<h4 id="3-初始化-OpenClaw"><a href="#3-初始化-OpenClaw" class="headerlink" title="3. 初始化 OpenClaw"></a>3. 初始化 OpenClaw</h4><p>在终端执行：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">openclaw onboard --install-daemon<br></code></pre></td></tr></table></figure>
+
+<p>按照以下步骤配置：</p>
+<ol>
+<li><p><strong>第一步</strong>：选择 <code>yes</code>（使用方向键向左，因为默认是 <code>no</code>）</p>
+</li>
+<li><p><strong>第二步</strong>：选择 <code>QuickStart</code></p>
+</li>
+<li><p><strong>第三步</strong>：选择模型</p>
+<ul>
+<li>推荐使用 <strong>OpenAI</strong>、<strong>Gemini</strong> 或 <strong>Claude</strong></li>
+<li>这里选择 OpenAI，通过方向键选择，按回车确认</li>
+<li>选择 Codex 进行认证</li>
+<li>⚠️ 注意：需要将 VPN 开启 TUN 模式</li>
+</ul>
+</li>
+<li><p><strong>第四步</strong>：选择通讯频道</p>
+<ul>
+<li>选择 Telegram（第一个选项），按回车</li>
+<li>粘贴刚才保存的 Token</li>
+</ul>
+</li>
+<li><p><strong>第五步</strong>：Skills 安装</p>
+<ul>
+<li>选择 <code>no</code>，后面手动安装</li>
+</ul>
+</li>
+<li><p><strong>第六步</strong>：API Key 配置</p>
+<ul>
+<li>全部选择 <code>no</code></li>
+</ul>
+</li>
+<li><p><strong>第七步</strong>：Enable hooks?</p>
+<ul>
+<li>使用方向键选择 <code>Skip for now</code>，按空格，再按回车</li>
+</ul>
+</li>
+<li><p><strong>第八步</strong>：选择 UI 页面</p>
+<ul>
+<li>选择 <code>Open the Web UI</code>，即可看到管理界面</li>
+</ul>
+</li>
+</ol>
+<h4 id="4-配置代理（重要）"><a href="#4-配置代理（重要）" class="headerlink" title="4. 配置代理（重要）"></a>4. 配置代理（重要）</h4><p>OpenClaw 需要通过代理访问 Telegram。首先查看你的 VPN 工具的代理端口（例如 Clash Verge 的端口是 7897）。</p>
+<p>如果不清楚端口号，可以在 VPN 软件设置中查找，或者询问网页版AI：”我现在电脑上开启了vpn，想知道我的代理端口是什么，我的代理软件是 xxx”。</p>
+<p>执行以下命令配置代理（将 7897 替换为你的端口）：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">echo</span> -e <span class="hljs-string">&#x27;\nexport http_proxy=http://127.0.0.1:7897\nexport https_proxy=http://127.0.0.1:7897\nexport all_proxy=socks5://127.0.0.1:7897&#x27;</span> &gt;&gt; ~/.zshrc &amp;&amp; <span class="hljs-built_in">source</span> ~/.zshrc<br></code></pre></td></tr></table></figure>
+
+<p>然后重启服务：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">source</span> ~/.zshrc<br>openclaw gateway restart<br></code></pre></td></tr></table></figure>
+
+<p>首次给 Bot 发送消息时，会提示需要放行，按照提示在终端执行命令即可。</p>
+<h3 id="三、定义AI助手的人格和角色（10分钟）"><a href="#三、定义AI助手的人格和角色（10分钟）" class="headerlink" title="三、定义AI助手的人格和角色（10分钟）"></a>三、定义AI助手的人格和角色（10分钟）</h3><h4 id="1-介绍自己"><a href="#1-介绍自己" class="headerlink" title="1. 介绍自己"></a>1. 介绍自己</h4><p>首先向AI助手介绍自己：</p>
+<ul>
+<li>如何称呼你</li>
+<li>你的背景和工作领域</li>
+<li>所在时区</li>
+</ul>
+<h4 id="2-定义人格和行为规则"><a href="#2-定义人格和行为规则" class="headerlink" title="2. 定义人格和行为规则"></a>2. 定义人格和行为规则</h4><p>编辑 <code>~/.openclaw/workspace/SOUL.md</code> 文件，这是最重要的配置。</p>
+<p>参考示例（你可以根据需求自定义）：</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs markdown"><span class="hljs-section">## 核心身份</span><br>你是我的首席AI助手和幕僚。你拥有强大的执行力、第一性原理思维，能够高效完成各种任务。<br><br><span class="hljs-section">## 你的角色</span><br>你是整个 AI 团队的协调者。你的职责：<br><span class="hljs-bullet">-</span> 接收我的指令并拆解成可执行的任务<br><span class="hljs-bullet">-</span> 分配给合适的工具或其他Agent<br><span class="hljs-bullet">-</span> 做出关键决策<br><span class="hljs-bullet">-</span> 向我汇报进度和结果<br><br><span class="hljs-section">## 原则</span><br><span class="hljs-bullet">-</span> 第一性原理思考：把问题拆解到最基本<br><span class="hljs-bullet">-</span> 高效执行：快速响应，注重结果<br><span class="hljs-bullet">-</span> 追求卓越：不接受平庸的方案<br><span class="hljs-bullet">-</span> 数据驱动：用事实和数据说话<br><br><span class="hljs-section">## 工作风格</span><br>直接、高效、零废话。总是给出清晰的行动计划和时间表。<br></code></pre></td></tr></table></figure>
+
+<h4 id="3-配置工具权限"><a href="#3-配置工具权限" class="headerlink" title="3. 配置工具权限"></a>3. 配置工具权限</h4><p>定义好后，让AI助手更新配置。如果提示没有权限，打开 Web UI 界面：</p>
+<ol>
+<li>点击左侧的”配置”</li>
+<li>点击 “Tools”</li>
+<li>选择 <code>exec tool</code></li>
+<li>点击 <code>raw</code> 进行文件修改</li>
+</ol>
+<p>修改为：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs json">tools<span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>  profile<span class="hljs-punctuation">:</span> &#x27;full&#x27;<span class="hljs-punctuation">,</span><br>  allow<span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span>&#x27;read&#x27;<span class="hljs-punctuation">,</span> &#x27;write&#x27;<span class="hljs-punctuation">,</span> &#x27;edit&#x27;<span class="hljs-punctuation">,</span> &#x27;exec&#x27;<span class="hljs-punctuation">,</span> &#x27;shell&#x27;<span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span><br>  agentToAgent<span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>    enabled<span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">true</span></span><span class="hljs-punctuation">,</span><br>    allow<span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span><br>  <span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">,</span><br>  exec<span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>    security<span class="hljs-punctuation">:</span> &#x27;full&#x27;<span class="hljs-punctuation">,</span><br>    ask<span class="hljs-punctuation">:</span> &#x27;off&#x27;<span class="hljs-punctuation">,</span><br>  <span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">,</span><br><span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">,</span><br></code></pre></td></tr></table></figure>
+
+<p>完成后，你就拥有了一个可以对话并完成任务的AI助手。</p>
+<h3 id="四、为AI助手添加记忆能力（10分钟）"><a href="#四、为AI助手添加记忆能力（10分钟）" class="headerlink" title="四、为AI助手添加记忆能力（10分钟）"></a>四、为AI助手添加记忆能力（10分钟）</h3><h4 id="为什么需要记忆？"><a href="#为什么需要记忆？" class="headerlink" title="为什么需要记忆？"></a>为什么需要记忆？</h4><p>记忆能力让AI助手能够：</p>
+<ul>
+<li>记住你的对话历史</li>
+<li>记住你的偏好和习惯</li>
+<li>积累知识和经验</li>
+</ul>
+<h4 id="安装-MemOS-记忆插件"><a href="#安装-MemOS-记忆插件" class="headerlink" title="安装 MemOS 记忆插件"></a>安装 MemOS 记忆插件</h4><p>MemOS 是一个优秀的记忆方案，告诉你的AI助手：</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs awk">https:<span class="hljs-regexp">//gi</span>thub.com<span class="hljs-regexp">/MemTensor/</span>MemOS-Cloud-OpenClaw-Plugin<br>帮我安装这个插件，并且将记忆功能改为用这个。你中间可能会改动配置文件，注意要参考 openclaw 的文档，不要把自己改崩了。<br></code></pre></td></tr></table></figure>
+
+<p>然后在 <a target="_blank" rel="noopener" href="https://memos-dashboard.openmem.net/cn/apikeys">https://memos-dashboard.openmem.net/cn/apikeys</a> 申请一个密钥，填入配置。</p>
+<h3 id="五、为AI助手添加编程能力（10分钟）"><a href="#五、为AI助手添加编程能力（10分钟）" class="headerlink" title="五、为AI助手添加编程能力（10分钟）"></a>五、为AI助手添加编程能力（10分钟）</h3><h4 id="为什么需要编程能力？"><a href="#为什么需要编程能力？" class="headerlink" title="为什么需要编程能力？"></a>为什么需要编程能力？</h4><p>编程能力让AI助手可以：</p>
+<ul>
+<li>自动编写代码</li>
+<li>调试和修复Bug</li>
+<li>创建自动化脚本</li>
+</ul>
+<h4 id="配置方案"><a href="#配置方案" class="headerlink" title="配置方案"></a>配置方案</h4><p>推荐使用 <strong>Codex</strong> 或 <strong>Claude Code</strong> 作为编程引擎。</p>
+<p>让AI助手帮你安装好 Claude Code 和 Codex，然后告诉它：</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs markdown">编程任务标准流程：<br>收到编程任务后直接启动，不要等确认。你是指挥官，Codex 是执行者。<br><br>Phase 1: 启动<br><span class="hljs-bullet">1.</span> 快速拆解任务，明确验收标准<br><span class="hljs-bullet">2.</span> 确定工作目录<br><span class="hljs-bullet">3.</span> 立即启动 Codex<br><br>Phase 2: 监控（每 10 分钟）<br><span class="hljs-bullet">1.</span> 检查状态和输出<br><span class="hljs-bullet">2.</span> 向我汇报进度<br><span class="hljs-bullet">3.</span> 如果进程异常，自动重启<br><br>Phase 3: Code Review<br><span class="hljs-bullet">1.</span> 审查代码质量<br><span class="hljs-bullet">2.</span> 有问题则修复<br><span class="hljs-bullet">3.</span> 通过后向我汇报<br><br>原则：<br><span class="hljs-bullet">-</span> 不要自己手写代码（除非少于5行）<br><span class="hljs-bullet">-</span> 进程死了必须重启<br><span class="hljs-bullet">-</span> Review 必须真看代码<br></code></pre></td></tr></table></figure>
+
+<h3 id="六、添加浏览和搜索能力（15分钟）"><a href="#六、添加浏览和搜索能力（15分钟）" class="headerlink" title="六、添加浏览和搜索能力（15分钟）"></a>六、添加浏览和搜索能力（15分钟）</h3><h4 id="1-安装浏览器插件"><a href="#1-安装浏览器插件" class="headerlink" title="1. 安装浏览器插件"></a>1. 安装浏览器插件</h4><p>告诉AI助手：</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk">帮我安装下 browserwing，根据 https:<span class="hljs-regexp">//</span>raw.githubusercontent.com<span class="hljs-regexp">/browserwing/</span>browserwing<span class="hljs-regexp">/main/</span>INSTALL.md<br></code></pre></td></tr></table></figure>
+
+<h4 id="2-配置搜索能力"><a href="#2-配置搜索能力" class="headerlink" title="2. 配置搜索能力"></a>2. 配置搜索能力</h4><p><strong>简单搜索 - Tavily</strong></p>
+<ul>
+<li>每月 1000 次免费额度</li>
+<li>申请地址：<a target="_blank" rel="noopener" href="https://app.tavily.com/home">https://app.tavily.com/home</a></li>
+</ul>
+<p><strong>深度调研 - Codex</strong></p>
+<ul>
+<li>让 Codex 调用 websearch 功能进行深度调研</li>
+</ul>
+<p><strong>网页抓取 - Agent Reach</strong></p>
+<ul>
+<li>支持全网语义搜索</li>
+<li>支持小红书、推特、YouTube、Reddit、B站、RSS 等平台</li>
+</ul>
+<p>安装 Agent Reach：</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk">帮我安装 Agent Reach：https:<span class="hljs-regexp">//</span>raw.githubusercontent.com<span class="hljs-regexp">/Panniantong/</span>agent-reach<span class="hljs-regexp">/main/</span>docs/install.md<br></code></pre></td></tr></table></figure>
+
+<h4 id="3-搜索规则"><a href="#3-搜索规则" class="headerlink" title="3. 搜索规则"></a>3. 搜索规则</h4><p>将以下规则添加到配置中：</p>
+<figure class="highlight 1c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs 1c">L1 快速搜索 — Tavily/Exa 语义搜索，用于事实查询<br>L2 平台抓取 — Agent Reach，用于指定平台内容提取<br>L3 深度调研 — Codex websearch，交付结构化报告<br><br>选择：有URL/指定平台 → L2 <span class="hljs-string">| 一句话能答 → L1 | 多源对比/&quot;</span>帮我调研<span class="hljs-string">&quot; → L3</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="七、安装技能扩展（10分钟）"><a href="#七、安装技能扩展（10分钟）" class="headerlink" title="七、安装技能扩展（10分钟）"></a>七、安装技能扩展（10分钟）</h3><h4 id="1-注册-ClawHub"><a href="#1-注册-ClawHub" class="headerlink" title="1. 注册 ClawHub"></a>1. 注册 ClawHub</h4><p>访问 <a target="_blank" rel="noopener" href="https://clawhub.ai/">https://clawhub.ai</a> 注册账号：</p>
+<ol>
+<li>点击头像</li>
+<li>选择”设置”</li>
+<li>点击 “Create Token”</li>
+<li>保存 Token</li>
+</ol>
+<h4 id="2-安装必备-Skills"><a href="#2-安装必备-Skills" class="headerlink" title="2. 安装必备 Skills"></a>2. 安装必备 Skills</h4><p>在终端执行：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash">npm i -g clawhub<br>clawhub login --token 你的Token<br>clawhub install self-improving-agent  <span class="hljs-comment"># 自动学习</span><br>clawhub install find-skills  <span class="hljs-comment"># 查找skills</span><br>clawhub install skill-creator  <span class="hljs-comment"># 创建skill</span><br></code></pre></td></tr></table></figure>
+
+<p>推荐必装的 Skills：</p>
+<ul>
+<li><strong>self-improving-agent</strong>：总结经验自动学习</li>
+<li><strong>find-skills</strong>：查找更多 Skills</li>
+<li><strong>skill-creator</strong>：创建自定义 Skill</li>
+</ul>
+<p>后续需要什么功能，直接让AI助手调用 find-skills 查找即可。</p>
+<h3 id="八、安全守则（重要）"><a href="#八、安全守则（重要）" class="headerlink" title="八、安全守则（重要）"></a>八、安全守则（重要）</h3><p>安全配置建议参考 OpenClaw 官方安全指南：</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/slowmist/openclaw-security-practice-guide/blob/main/docs/OpenClaw%E6%9E%81%E7%AE%80%E5%AE%89%E5%85%A8%E5%AE%9E%E8%B7%B5%E6%8C%87%E5%8D%97.md">https://github.com/slowmist/openclaw-security-practice-guide/blob/main/docs/OpenClaw极简安全实践指南.md</a></p>
+<p>将这个文档发给你的AI助手，让它自查安全配置。</p>
+<h3 id="九、组建AI助手军团（20分钟）"><a href="#九、组建AI助手军团（20分钟）" class="headerlink" title="九、组建AI助手军团（20分钟）"></a>九、组建AI助手军团（20分钟）</h3><h4 id="1-什么时候需要多个Agent？"><a href="#1-什么时候需要多个Agent？" class="headerlink" title="1. 什么时候需要多个Agent？"></a>1. 什么时候需要多个Agent？</h4><p><strong>应该创建多个Agent的情况：</strong></p>
+<p>✅ 上下文会持续积累且互不干扰</p>
+<ul>
+<li>例子：调研Agent积累行业知识，写作Agent积累写作风格</li>
+</ul>
+<p>✅ 需要不同的”记忆”和”专业知识”</p>
+<ul>
+<li>例子：技术调研Agent vs 市场调研Agent</li>
+</ul>
+<p>✅ 工作流程完全独立</p>
+<ul>
+<li>例子：内容创作流程 vs 代码开发流程</li>
+</ul>
+<p><strong>不应该拆分的情况：</strong></p>
+<p>❌ 只是工具不同，但上下文相同</p>
+<ul>
+<li>错误：前端Agent、后端Agent（都是编程，统一用Codex）</li>
+</ul>
+<p>❌ 只是输出格式不同</p>
+<ul>
+<li>错误：小红书Agent、公众号Agent（都是写作，只是Skills不同）</li>
+</ul>
+<p>❌ 任务之间需要频繁共享信息</p>
+<ul>
+<li>错误：需求分析Agent、架构设计Agent（应该是一个Agent的不同阶段）</li>
+</ul>
+<h4 id="2-创建多Agent示例"><a href="#2-创建多Agent示例" class="headerlink" title="2. 创建多Agent示例"></a>2. 创建多Agent示例</h4><p>以创建两个Agent为例：</p>
+<ul>
+<li><strong>佩奇</strong>：负责调研</li>
+<li><strong>格雷厄姆</strong>：负责写作</li>
+</ul>
+<p><strong>步骤1：创建Bot Token</strong></p>
+<p>参照前面的方式，为两个Agent分别创建Bot Token。</p>
+<p><strong>步骤2：设置群聊权限</strong></p>
+<p>对BotFather输入：</p>
+<ol>
+<li><code>/setprivacy</code></li>
+<li>选择你的Bot</li>
+<li>选择 Disable</li>
+</ol>
+<p>这样Bot就能读取群内消息了。</p>
+<p><strong>步骤3：创建群组</strong></p>
+<ol>
+<li>点击 New Group 创建群组</li>
+<li>输入群组名称（例如：AI工作室）</li>
+<li>将你的Bot拉入群组</li>
+</ol>
+<p><strong>步骤4：获取ID</strong></p>
+<p>搜索 <code>@userinfobot</code> 机器人：</p>
+<ol>
+<li>选择 user，点击自己的头像（获取用户ID）</li>
+<li>选择 Group，点击你创建的群组（获取群组ID）</li>
+<li>保存这两个ID</li>
+</ol>
+<p><strong>步骤5：配置Agent</strong></p>
+<p>使用这个配置模板：<br><a target="_blank" rel="noopener" href="https://github.com/bozhouDev/openclaw_agent_create_prompt/blob/main/Agent-create-prompt.md">https://github.com/bozhouDev/openclaw_agent_create_prompt/blob/main/Agent-create-prompt.md</a></p>
+<p>将模板内容修改后，让你的主AI助手来进行配置。</p>
+<p><strong>步骤6：启动军团</strong></p>
+<p>配置完成后，执行：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">openclaw gateway restart<br></code></pre></td></tr></table></figure>
+
+<p>然后就可以在群里 @ 机器人进行协同工作了。</p>
+<h3 id="十、后续优化建议"><a href="#十、后续优化建议" class="headerlink" title="十、后续优化建议"></a>十、后续优化建议</h3><p>搭建完成只是第一步，接下来需要：</p>
+<ol>
+<li><strong>多与Agent沟通</strong>：布置任务，观察表现</li>
+<li><strong>总结经验</strong>：让Agent总结完成任务的经验和技巧</li>
+<li><strong>持续学习</strong>：将优秀的文章和案例分享给Agent学习</li>
+<li><strong>命令速查</strong>：熟悉常用命令，提高效率</li>
+</ol>
+<h2 id="总结：你将拥有什么？"><a href="#总结：你将拥有什么？" class="headerlink" title="总结：你将拥有什么？"></a>总结：你将拥有什么？</h2><p>完成本教程后，你将拥有：</p>
+<p>✅ 一个或多个24小时在线的AI助手<br>✅ 具备记忆、编程、搜索、协同等核心能力<br>✅ 可扩展的技能系统，随时添加新功能<br>✅ 多Agent协同工作的团队</p>
+<p><strong>预计时间投入</strong>：1-2小时<br><strong>适合人群</strong>：零基础小白到进阶用户<br><strong>成本</strong>：开源免费（需要API费用）</p>
+<p>随着时间推移和不断使用，你的AI助手军团会越来越强大，真正成为你的24小时智能工作伙伴。</p>
+<hr>
+<p><strong>需要帮助部署？</strong> 可以联系作者提供有偿同城上门或远程部署服务。</p>
+
+                
+              </div>
+            
+
+              <!--打赏-->
+              <div class="reward">
+                  <div class="reward-button">赏 <span class="reward-code">
+		<span class="alipay-code"> <img class="alipay-img wdp-appear" src="/img/alipay.png" srcset="/img/loading.gif" lazyload><b>支付宝打赏</b> </span>
+		<span class="wechat-code"> <img class="wechat-img wdp-appear" src="/img/wechat.png" srcset="/img/loading.gif" lazyload><b>微信打赏</b> </span> </span>
+                  </div>
+                  <p class="reward-notice">如果文章对你有帮助，欢迎点击上方按钮打赏作者，更多功能请访问<a href="https://blog.fxcxy.com">博客站</a></p>
+              </div>
+              <!--打赏-->
+              <hr/>
+              <div style="text-align:right;"> <!-- 自己添加的“分享到”模块：开始。用的是 social-share.js。让所有的分享按钮右对齐-->
+
+                  <div class="social-share-container" style="margin-top: 15px;"> <!-- 生成一组分享按钮 -->
+                       <!--如果博客语言是中文，就显示“点击分享到：”，非中文一律显示“Share it:”-->
+                      点击分享到：&nbsp;&nbsp;
+                      
+                  </div>
+                  <!-- 加载 jQuery 库 -->
+                  
+<script src="/js/jquery.min.js"></script>
+
+                  <!-- 导入 qrcode.min.js -->
+                  
+<script src="/js/qrcode.min.js"></script>
+
+                  <!-- 加载 social-share.js 的 js 库，另外还要加载 social-share.js 的 CSS，可以修改 `_config.fluid.yml` 的 `custom_css` 加载，也可以修改 `themes/fluid/layout/_partial/css.ejs` 加载。-->
+                  
+<script src="/js/social-share.min.js"></script>
+
+                  <script>
+                    /* 执行 js 代码，new 一个新对象，详见 social-share.js 在 GitHub 的文档 */
+                    new SocialShare('.social-share-container', {
+                      theme: 'circle',  // 使用圆形主题
+                      // 单独定义wechat分享参数
+                      wechat: {
+                        sort: 1, // 排序参数，数字较小的展示在前面,默认999
+                      },
+                      twitter: {
+                        sort: 2, // 排序参数，数字较小的展示在前面,默认999
+                      },
+                      facebook: {
+                        sort: 3, // 排序参数，数字较小的展示在前面,默认999
+                      }
+                    });
+                  </script>
+              </div> <!-- 自己添加的“分享到”模块：结束。-->
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/AI%E5%B7%A5%E5%85%B7/" class="category-chain-item">AI工具</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/" class="print-no-link">#人工智能</a>
+      
+        <a href="/tags/OpenClaw/" class="print-no-link">#OpenClaw</a>
+      
+        <a href="/tags/AI-Agent/" class="print-no-link">#AI Agent</a>
+      
+        <a href="/tags/%E6%99%BA%E8%83%BD%E5%8A%A9%E6%89%8B/" class="print-no-link">#智能助手</a>
+      
+        <a href="/tags/%E8%87%AA%E5%8A%A8%E5%8C%96%E5%B7%A5%E5%85%B7/" class="print-no-link">#自动化工具</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>保姆级教程：0基础搭建你的第一个AI智能助手军团（OpenClaw完整实战）</div>
+      <div>https://blog.fxcxy.com/2026/03/05/保姆级教程：0基础搭建你的第一个AI智能助手军团（OpenClaw完整实战）/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>spatacus</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2026年3月5日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2026/03/05/%E6%88%91%E8%8A%B1%E4%BA%8630%E5%A4%A9%EF%BC%8C%E6%8A%8AOpenClaw%E4%BB%8E%E4%BA%BA%E5%B7%A5%E6%99%BA%E9%9A%9C%E8%B0%83%E6%95%99%E6%88%9024%E5%B0%8F%E6%97%B6%E5%9C%A8%E7%BA%BF%E6%89%93%E5%B7%A5%E4%BA%BA/" title="我花了30天，把OpenClaw从&#34;人工智障&#34;调教成24小时在线打工人">
+                        <span class="hidden-mobile">我花了30天，把OpenClaw从&#34;人工智障&#34;调教成24小时在线打工人</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://lib.baomitu.com/valine/1.5.1/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"J7kyQXV9R3CXOiA1eubrlflY-gzGzoHsz","appKey":"qHZzPzRcvsutXvHvBewqGmhw","path":"window.location.pathname","placeholder":"输入您的评论","avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":false},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          var imgSelector = '#valine .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  <div class="footer-links" style="margin: 20px 0 10px 0; text-align: center;">
+    <a href="https://tv.zymn.cc" target="_blank" style="margin: 0 12px; color: #bdbdbd; text-decoration: none; font-weight: 500;">免费电影</a>
+    <a href="https://sl.zymn.cc" target="_blank" style="margin: 0 12px; color: #bdbdbd; text-decoration: none; font-weight: 500;">短链生成器</a>
+    <a href="https://yhjf.zymn.cc" target="_blank" style="margin: 0 12px; color: #bdbdbd; text-decoration: none; font-weight: 500;">隐秘信使</a>
+  </div>
+  
+    <div class="footer-content">
+       <a href="https://www.youtube.com/channel/UCn0Yarp_h6oqn1-QLvlgbDg?sub_confirmation=1" target="_blank" rel="nofollow noopener"><span>Youtube</span></a>- <a href="https://x.com/corder2025" target="_blank" rel="nofollow noopener"><span>X</span></a>- <a href="https://t.me/+FEyFQq_5u004OWU0" target="_blank" rel="nofollow noopener"><span>电报群</span></a>- <a href="https://v.douyin.com/iNpPYY4E/" target="_blank" rel="nofollow noopener"><span>抖音</span></a>- <a href="https://www.ixigua.com/home/103680436540" target="_blank" rel="nofollow noopener"><span>西瓜视频</span></a> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="leancloud-site-pv-container" style="display: none">
+        总访问量 
+        <span id="leancloud-site-pv"></span>
+         次
+      </span>
+    
+    
+      <span id="leancloud-site-uv-container" style="display: none">
+        总访客数 
+        <span id="leancloud-site-uv"></span>
+         人
+      </span>
+    
+    
+
+  
+</div>
+
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script defer src="/js/leancloud.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
