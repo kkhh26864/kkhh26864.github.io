@@ -5,6 +5,13 @@
         <link>https://www.zymn.cc</link>
         <description>欢迎来到我的个人博客！在这里，我将分享关于技术、编程、以及个人成长的经验和见解，帮助你在学习和工作中更进一步。</description>
         <item>
+            <title>我花了30天，把OpenClaw从"人工智障"调教成24小时在线打工人</title>
+            <link>https://www.zymn.cc/2026/03/05/我花了30天，把OpenClaw从人工智障调教成24小时在线打工人/</link>
+            <description>OpenClaw不是装完就能用的工具，而是需要你"调教"的AI助手。这篇文章分享我一个月的实战经验，从个人档案配置、技能安装、工具组合到变现方向，教你如何让它真正为你打工。</description>
+            <pubDate>Wed, 05 Mar 2026 03:11:36 GMT</pubDate>
+            <category>AI工具</category>
+        </item>
+        <item>
             <title>用AI自动炒股赚钱？OpenClaw智能交易系统完整教程（含部署+实战策略）</title>
             <link>https://www.zymn.cc/2026/03/04/OpenClaw重构量化交易逻辑：AI全自动炒股终极指南/</link>
             <description>OpenClaw AI量化交易系统完整搭建教程，从零开始教你如何部署智能交易助手，实现24小时自动盯盘、智能分析决策和风险控制。包含阿里云部署指南、四大实战场景、风控体系和三大经典交易策略。</description>
