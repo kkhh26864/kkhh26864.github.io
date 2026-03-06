@@ -1,0 +1,1092 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/logo.png">
+  <link rel="icon" href="/img/logo.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3232532601275150"
+     crossorigin="anonymous"></script>
+    <meta name="twitter:card" content="/img/qwen35-local-deployment.png" />
+    <meta name="twitter:site" content="自由码农" />
+    <meta name="twitter:creator" content="@corder2025">
+    <meta name="twitter:title" content="在自己电脑上跑大模型需要什么配置？Qwen3.5-9B 本地部署完整指南 - 自由码农" />
+    <meta name="twitter:description" content="想在自己的电脑上运行大模型？本文详细介绍Qwen3.5-9B ToolHub的配置要求（8GB显存即可）、完整安装教程、使用指南和常见问题解答。包括一键安装、多种启动方式、显存优化方案等实用内容。" />
+    <meta name="twitter:image" content="/img/qwen35-local-deployment.png" />
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="spatacus">
+  <meta name="keywords" content="自由码农,技术博客,工具分享，网站开发，App开发，小程序开发，H5开发">
+  
+    <meta name="description" content="想在自己的电脑上运行大模型？本文详细介绍Qwen3.5-9B ToolHub的配置要求（8GB显存即可）、完整安装教程、使用指南和常见问题解答。包括一键安装、多种启动方式、显存优化方案等实用内容。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="在自己电脑上跑大模型需要什么配置？Qwen3.5-9B 本地部署完整指南">
+<meta property="og:url" content="https://blog.fxcxy.com/2026/03/06/%E5%9C%A8%E8%87%AA%E5%B7%B1%E7%94%B5%E8%84%91%E4%B8%8A%E8%B7%91%E5%A4%A7%E6%A8%A1%E5%9E%8B%E9%9C%80%E8%A6%81%E4%BB%80%E4%B9%88%E9%85%8D%E7%BD%AE%EF%BC%9FQwen3-5-9B%E6%9C%AC%E5%9C%B0%E9%83%A8%E7%BD%B2%E5%AE%8C%E6%95%B4%E6%8C%87%E5%8D%97/index.html">
+<meta property="og:site_name" content="自由码农">
+<meta property="og:description" content="想在自己的电脑上运行大模型？本文详细介绍Qwen3.5-9B ToolHub的配置要求（8GB显存即可）、完整安装教程、使用指南和常见问题解答。包括一键安装、多种启动方式、显存优化方案等实用内容。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://blog.fxcxy.com/img/qwen35-local-deployment.png">
+<meta property="article:published_time" content="2026-03-06T01:43:52.000Z">
+<meta property="article:modified_time" content="2026-03-06T02:47:17.399Z">
+<meta property="article:author" content="spatacus">
+<meta property="article:tag" content="AI工具">
+<meta property="article:tag" content="大模型">
+<meta property="article:tag" content="Qwen">
+<meta property="article:tag" content="本地部署">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://blog.fxcxy.com/img/qwen35-local-deployment.png">
+  
+  
+  
+  <title>在自己电脑上跑大模型需要什么配置？Qwen3.5-9B 本地部署完整指南 - 自由码农</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+  
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_4443546_u6jwvi2qcka.css">
+<link rel="stylesheet" href="/css/social-share.min.css">
+<link rel="stylesheet" href="/css/myreward.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"blog.fxcxy.com","root":"/","version":"1.9.7","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"复制"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"J7kyQXV9R3CXOiA1eubrlflY-gzGzoHsz","app_key":"qHZzPzRcvsutXvHvBewqGmhw","server_url":"https://leancloud.fxcxy.com","path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+
+  
+    <!-- Google tag (gtag.js) -->
+    <script async>
+      if (!Fluid.ctx.dnt) {
+        Fluid.utils.createScript("https://www.googletagmanager.com/gtag/js?id=", function() {
+          window.dataLayer = window.dataLayer || [];
+          function gtag() {
+            dataLayer.push(arguments);
+          }
+          gtag('js', new Date());
+          gtag('config', '');
+        });
+      }
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+    
+  
+
+
+
+  
+<meta name="generator" content="Hexo 7.1.1"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>自由码农</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="在自己电脑上跑大模型需要什么配置？Qwen3.5-9B 本地部署完整指南"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2026-03-06 09:43" pubdate>
+          2026年3月6日 上午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          2.1k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          18 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="leancloud-page-views"></span>次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">在自己电脑上跑大模型需要什么配置？Qwen3.5-9B 本地部署完整指南</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <p>想在自己的电脑上运行大模型，体验 AI 助手的强大功能吗？今天给大家介绍一个开源项目 <strong>Qwen3.5-9B ToolHub</strong>，它能让你在本地轻松运行一个功能完整的 AI 助手。最重要的是，<strong>你不需要超高端的配置</strong>！</p>
+<span id="more"></span>
+
+<h2 id="🖥️-你的电脑需要什么配置？"><a href="#🖥️-你的电脑需要什么配置？" class="headerlink" title="🖥️ 你的电脑需要什么配置？"></a>🖥️ 你的电脑需要什么配置？</h2><p>很多人觉得运行大模型需要非常高端的电脑，其实不然。下面是 Qwen3.5-9B ToolHub 的<strong>最低配置要求</strong>：</p>
+<h3 id="硬件配置要求"><a href="#硬件配置要求" class="headerlink" title="硬件配置要求"></a>硬件配置要求</h3><table>
+<thead>
+<tr>
+<th>配置项</th>
+<th>要求</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>操作系统</strong></td>
+<td>Windows 10 &#x2F; 11</td>
+<td>支持 WSL（Linux 子系统）</td>
+</tr>
+<tr>
+<td><strong>显卡（GPU）</strong></td>
+<td>NVIDIA 显卡</td>
+<td>驱动版本 &gt;&#x3D; 525，<strong>建议 6GB 以上显存</strong></td>
+</tr>
+<tr>
+<td><strong>内存（RAM）</strong></td>
+<td>建议 16GB 以上</td>
+<td>8GB 也可以运行，但可能会卡</td>
+</tr>
+<tr>
+<td><strong>硬盘空间</strong></td>
+<td>至少 20GB 可用空间</td>
+<td>用于存储模型文件和依赖</td>
+</tr>
+<tr>
+<td><strong>Python</strong></td>
+<td>3.10 及以上版本</td>
+<td>需要加入系统 PATH</td>
+</tr>
+<tr>
+<td><strong>PowerShell</strong></td>
+<td>5.1 或 7.0+</td>
+<td>Windows 自带</td>
+</tr>
+</tbody></table>
+<h3 id="显存占用说明"><a href="#显存占用说明" class="headerlink" title="显存占用说明"></a>显存占用说明</h3><ul>
+<li><strong>模型本体</strong>：约 5.5GB（Q4_K_M 量化版本）</li>
+<li><strong>视觉投影模型</strong>：约 0.6GB</li>
+<li><strong>总计</strong>：约 6.1GB</li>
+</ul>
+<blockquote>
+<p>💡 <strong>好消息</strong>：即使你的显卡只有 8GB 显存，也可以正常运行！如果显存更少（比如 6GB），可以通过调整上下文窗口大小来降低显存占用。</p>
+</blockquote>
+<h3 id="常见显卡参考"><a href="#常见显卡参考" class="headerlink" title="常见显卡参考"></a>常见显卡参考</h3><table>
+<thead>
+<tr>
+<th>显卡型号</th>
+<th>显存大小</th>
+<th>能否运行</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>RTX 3060</td>
+<td>12GB</td>
+<td>✅ 完美运行</td>
+</tr>
+<tr>
+<td>RTX 3050</td>
+<td>8GB</td>
+<td>✅ 可以运行</td>
+</tr>
+<tr>
+<td>RTX 2060</td>
+<td>6GB</td>
+<td>⚠️ 可以运行（需调整参数）</td>
+</tr>
+<tr>
+<td>GTX 1660 Ti</td>
+<td>6GB</td>
+<td>⚠️ 可以运行（需调整参数）</td>
+</tr>
+<tr>
+<td>GTX 1650</td>
+<td>4GB</td>
+<td>❌ 显存不足</td>
+</tr>
+</tbody></table>
+<h2 id="🎯-这个本地-AI-助手能做什么？"><a href="#🎯-这个本地-AI-助手能做什么？" class="headerlink" title="🎯 这个本地 AI 助手能做什么？"></a>🎯 这个本地 AI 助手能做什么？</h2><p>Qwen3.5-9B ToolHub 不是一个简单的聊天机器人，它内置了多种实用工具：</p>
+<h3 id="核心功能"><a href="#核心功能" class="headerlink" title="核心功能"></a>核心功能</h3><ol>
+<li><strong>💬 智能对话</strong>：流式输出，边生成边显示</li>
+<li><strong>🔍 联网搜索</strong>：实时搜索互联网，自动抓取网页内容并提炼关键信息</li>
+<li><strong>🖼️ 图像理解</strong>：上传图片后直接提问，支持局部放大分析细节，支持以图搜图</li>
+<li><strong>📁 文件浏览</strong>：浏览和读取本机文件（只读模式，不会修改你的文件）</li>
+<li><strong>🧠 深度思考</strong>：内置思维链，复杂问题可展开推理过程</li>
+<li><strong>🔌 API 接口</strong>：兼容 OpenAI API，可对接第三方客户端</li>
+</ol>
+<h3 id="内置工具清单"><a href="#内置工具清单" class="headerlink" title="内置工具清单"></a>内置工具清单</h3><table>
+<thead>
+<tr>
+<th>工具</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>web_search</code></td>
+<td>互联网搜索</td>
+</tr>
+<tr>
+<td><code>web_fetch</code></td>
+<td>抓取网页正文内容</td>
+</tr>
+<tr>
+<td><code>web_extractor</code></td>
+<td>提取网页结构化信息</td>
+</tr>
+<tr>
+<td><code>image_search</code></td>
+<td>按关键词搜索图片</td>
+</tr>
+<tr>
+<td><code>image_zoom_in_tool</code></td>
+<td>对图片指定区域放大查看</td>
+</tr>
+<tr>
+<td><code>filesystem</code></td>
+<td>浏览和读取本机文件（只读）</td>
+</tr>
+<tr>
+<td><code>read_memory</code></td>
+<td>读取已保存记忆</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>⚠️ <strong>安全提示</strong>：网关模式下文件系统为只读，不提供系统命令执行与代码执行能力，安全可靠。</p>
+</blockquote>
+<h2 id="📦-完整安装教程"><a href="#📦-完整安装教程" class="headerlink" title="📦 完整安装教程"></a>📦 完整安装教程</h2><h3 id="方法一：一键安装（推荐）"><a href="#方法一：一键安装（推荐）" class="headerlink" title="方法一：一键安装（推荐）"></a>方法一：一键安装（推荐）</h3><p>这是最简单的方法，<strong>只需双击一个文件</strong>：</p>
+<ol>
+<li><p><strong>下载项目</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">git <span class="hljs-built_in">clone</span> https://github.com/chixi4/Qwen3.5-9B-ToolHub.git<br><span class="hljs-built_in">cd</span> Qwen3.5-9B-ToolHub<br></code></pre></td></tr></table></figure>
+</li>
+<li><p><strong>双击 <code>bootstrap.bat</code> 文件</strong></p>
+<p>安装脚本会自动完成：</p>
+<ul>
+<li>✅ 创建 Python 虚拟环境</li>
+<li>✅ 安装所有依赖包</li>
+<li>✅ 下载 llama.cpp CUDA 运行时</li>
+<li>✅ 下载 Qwen3.5-9B 模型（约 5.5GB）</li>
+<li>✅ 下载视觉投影模型（约 0.6GB）</li>
+</ul>
+</li>
+</ol>
+<h3 id="方法二：命令行安装"><a href="#方法二：命令行安装" class="headerlink" title="方法二：命令行安装"></a>方法二：命令行安装</h3><p>如果你更喜欢用命令行，可以：</p>
+<p><strong>Windows CMD 方式</strong>：</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cmd">.\install.<span class="hljs-built_in">cmd</span><br></code></pre></td></tr></table></figure>
+
+<p><strong>PowerShell 方式</strong>（需要避免执行策略拦截）：</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs powershell">powershell <span class="hljs-literal">-NoProfile</span> <span class="hljs-literal">-ExecutionPolicy</span> Bypass <span class="hljs-operator">-File</span> .\install.ps1<br></code></pre></td></tr></table></figure>
+
+<p><strong>WSL&#x2F;Linux 方式</strong>：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">./install.sh<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>💡 <strong>安装时间</strong>：根据网速不同，首次安装需要 10-30 分钟（主要是下载模型文件）。</p>
+</blockquote>
+<h2 id="🚀-启动和使用"><a href="#🚀-启动和使用" class="headerlink" title="🚀 启动和使用"></a>🚀 启动和使用</h2><h3 id="1-启动服务"><a href="#1-启动服务" class="headerlink" title="1. 启动服务"></a>1. 启动服务</h3><p><strong>方法 A：使用 CMD 文件</strong>（推荐）</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cmd">.\start_8080_toolhub_stack.<span class="hljs-built_in">cmd</span> <span class="hljs-built_in">start</span><br></code></pre></td></tr></table></figure>
+
+<p><strong>方法 B：使用 PowerShell 脚本</strong></p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs powershell">.\start_8080_toolhub_stack.ps1 <span class="hljs-built_in">start</span><br></code></pre></td></tr></table></figure>
+
+<p><strong>方法 C：在 WSL 中</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">./start_8080_toolhub_stack.sh start<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>⏱️ 首次启动需要 30-60 秒加载模型到 GPU，看到 <strong>“栈已启动”</strong> 表示就绪。</p>
+</blockquote>
+<h3 id="2-打开网页"><a href="#2-打开网页" class="headerlink" title="2. 打开网页"></a>2. 打开网页</h3><p>浏览器访问：<a target="_blank" rel="noopener" href="http://127.0.0.1:8080/">http://127.0.0.1:8080</a></p>
+<h3 id="3-开始使用"><a href="#3-开始使用" class="headerlink" title="3. 开始使用"></a>3. 开始使用</h3><p>在网页界面中，你可以：</p>
+<ul>
+<li>💬 直接输入问题聊天</li>
+<li>🔍 让它搜索最新资讯：”今天有什么科技新闻？”</li>
+<li>🖼️ 上传图片提问：”这张图片里有什么？”</li>
+<li>📁 浏览本地文件：”帮我看看 D:\Documents 里有什么文件”</li>
+</ul>
+<h3 id="4-停止服务"><a href="#4-停止服务" class="headerlink" title="4. 停止服务"></a>4. 停止服务</h3><p>使用完毕后，记得停止服务：</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cmd">.\start_8080_toolhub_stack.<span class="hljs-built_in">cmd</span> stop<br></code></pre></td></tr></table></figure>
+
+<h2 id="⚙️-高级配置"><a href="#⚙️-高级配置" class="headerlink" title="⚙️ 高级配置"></a>⚙️ 高级配置</h2><h3 id="配置文件"><a href="#配置文件" class="headerlink" title="配置文件"></a>配置文件</h3><p>复制 <code>.env.example</code> 为 <code>.env</code>，可以自定义以下参数：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs env"># 端口配置<br>GATEWAY_PORT=8080       # 网关端口<br>BACKEND_PORT=8081       # 模型后端端口<br><br># 推理参数<br>THINK_MODE=think-on     # 思考模式：think-on 或 think-off<br>CTX_SIZE=16384          # 上下文窗口大小<br>IMAGE_MIN_TOKENS=256    # 图像最小 token 数<br>IMAGE_MAX_TOKENS=1024   # 图像最大 token 数<br>MMPROJ_OFFLOAD=off      # 视觉投影卸载开关<br></code></pre></td></tr></table></figure>
+
+<h3 id="思考模式切换"><a href="#思考模式切换" class="headerlink" title="思考模式切换"></a>思考模式切换</h3><p><strong>开启思考模式</strong>（复杂问题会展开推理过程）：</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs powershell"><span class="hljs-variable">$env:THINK_MODE</span>=<span class="hljs-string">&#x27;think-on&#x27;</span>; .\start_8080_toolhub_stack.cmd restart<br></code></pre></td></tr></table></figure>
+
+<p><strong>关闭思考模式</strong>（直接给出答案）：</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs powershell"><span class="hljs-variable">$env:THINK_MODE</span>=<span class="hljs-string">&#x27;think-off&#x27;</span>; .\start_8080_toolhub_stack.cmd restart<br></code></pre></td></tr></table></figure>
+
+<h3 id="显存不足时的优化"><a href="#显存不足时的优化" class="headerlink" title="显存不足时的优化"></a>显存不足时的优化</h3><p>如果遇到显存不足错误，可以尝试以下调整：</p>
+<p><strong>1. 减小上下文窗口</strong>（从 16K 降至 8K）：</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs powershell"><span class="hljs-variable">$env:CTX_SIZE</span>=<span class="hljs-string">&#x27;8192&#x27;</span>; .\start_8080_toolhub_stack.cmd restart<br></code></pre></td></tr></table></figure>
+
+<p><strong>2. 减小图像 token 数</strong>：</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs powershell"><span class="hljs-variable">$env:IMAGE_MAX_TOKENS</span>=<span class="hljs-string">&#x27;512&#x27;</span>; .\start_8080_toolhub_stack.cmd restart<br></code></pre></td></tr></table></figure>
+
+<p><strong>3. 关闭视觉投影卸载</strong>：</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs powershell"><span class="hljs-variable">$env:MMPROJ_OFFLOAD</span>=<span class="hljs-string">&#x27;off&#x27;</span>; .\start_8080_toolhub_stack.cmd restart<br></code></pre></td></tr></table></figure>
+
+<h2 id="🔧-服务管理命令"><a href="#🔧-服务管理命令" class="headerlink" title="🔧 服务管理命令"></a>🔧 服务管理命令</h2><figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs cmd"># 启动服务<br>.\start_8080_toolhub_stack.<span class="hljs-built_in">cmd</span> <span class="hljs-built_in">start</span><br><br># 停止服务<br>.\start_8080_toolhub_stack.<span class="hljs-built_in">cmd</span> stop<br><br># 重启服务<br>.\start_8080_toolhub_stack.<span class="hljs-built_in">cmd</span> restart<br><br># 查看状态<br>.\start_8080_toolhub_stack.<span class="hljs-built_in">cmd</span> status<br><br># 查看日志<br>.\start_8080_toolhub_stack.<span class="hljs-built_in">cmd</span> logs<br></code></pre></td></tr></table></figure>
+
+<h2 id="🌐-API-使用"><a href="#🌐-API-使用" class="headerlink" title="🌐 API 使用"></a>🌐 API 使用</h2><p>Qwen3.5-9B ToolHub 提供了兼容 OpenAI 的 API 接口，可以对接各种第三方客户端。</p>
+<h3 id="基本用法"><a href="#基本用法" class="headerlink" title="基本用法"></a>基本用法</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs bash">curl http://127.0.0.1:8080/v1/chat/completions \<br>  -H <span class="hljs-string">&quot;Content-Type: application/json&quot;</span> \<br>  -d <span class="hljs-string">&#x27;&#123;</span><br><span class="hljs-string">    &quot;model&quot;: &quot;Qwen3.5-9B-Q4_K_M&quot;,</span><br><span class="hljs-string">    &quot;stream&quot;: true,</span><br><span class="hljs-string">    &quot;messages&quot;: [</span><br><span class="hljs-string">      &#123;&quot;role&quot;: &quot;user&quot;, &quot;content&quot;: &quot;今天有什么科技新闻？&quot;&#125;</span><br><span class="hljs-string">    ]</span><br><span class="hljs-string">  &#125;&#x27;</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="在第三方客户端中使用"><a href="#在第三方客户端中使用" class="headerlink" title="在第三方客户端中使用"></a>在第三方客户端中使用</h3><p>将 Base URL 设置为：<code>http://127.0.0.1:8080/v1</code></p>
+<p>支持的客户端：</p>
+<ul>
+<li><strong>ChatGPT Next Web</strong></li>
+<li><strong>LobeChat</strong></li>
+<li><strong>Open WebUI</strong></li>
+<li><strong>BetterChatGPT</strong></li>
+<li>等所有支持 OpenAI API 的客户端</li>
+</ul>
+<h2 id="🏗️-系统架构"><a href="#🏗️-系统架构" class="headerlink" title="🏗️ 系统架构"></a>🏗️ 系统架构</h2><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-string">┌──────────────────────────────────────────┐</span><br><span class="hljs-string">│</span>    <span class="hljs-string">浏览器</span> <span class="hljs-string">/</span> <span class="hljs-string">第三方客户端</span>                  <span class="hljs-string">│</span><br><span class="hljs-string">└────────────────────┬─────────────────────┘</span><br>                     <span class="hljs-string">│</span><br>                     <span class="hljs-string">▼</span><br><span class="hljs-string">┌──────────────────────────────────────────┐</span><br><span class="hljs-string">│</span>         <span class="hljs-string">网关层</span> <span class="hljs-string">(端口</span> <span class="hljs-number">8080</span><span class="hljs-string">)</span>                <span class="hljs-string">│</span><br><span class="hljs-string">│</span>    <span class="hljs-string">run_8080_toolhub_gateway.py</span>           <span class="hljs-string">│</span><br><span class="hljs-string">├──────────────────────────────────────────┤</span><br><span class="hljs-string">│</span>  <span class="hljs-string">•</span> <span class="hljs-string">OpenAI</span> <span class="hljs-string">兼容</span> <span class="hljs-string">API</span>                        <span class="hljs-string">│</span><br><span class="hljs-string">│</span>  <span class="hljs-string">•</span> <span class="hljs-string">工具调用代理</span>                           <span class="hljs-string">│</span><br><span class="hljs-string">│</span>  <span class="hljs-string">•</span> <span class="hljs-string">流式</span> <span class="hljs-string">SSE</span> <span class="hljs-string">输出</span>                          <span class="hljs-string">│</span><br><span class="hljs-string">│</span>  <span class="hljs-string">•</span> <span class="hljs-string">WebUI</span> <span class="hljs-string">透传</span>                             <span class="hljs-string">│</span><br><span class="hljs-string">└────────────────────┬─────────────────────┘</span><br>                     <span class="hljs-string">│</span><br>                     <span class="hljs-string">▼</span><br><span class="hljs-string">┌──────────────────────────────────────────┐</span><br><span class="hljs-string">│</span>        <span class="hljs-string">模型后端</span> <span class="hljs-string">(端口</span> <span class="hljs-number">8081</span><span class="hljs-string">)</span>               <span class="hljs-string">│</span><br><span class="hljs-string">│</span>      <span class="hljs-string">llama-server</span> <span class="hljs-string">(llama.cpp)</span>            <span class="hljs-string">│</span><br><span class="hljs-string">├──────────────────────────────────────────┤</span><br><span class="hljs-string">│</span>  <span class="hljs-string">•</span> <span class="hljs-string">Qwen3.5-9B</span> <span class="hljs-string">推理</span>                        <span class="hljs-string">│</span><br><span class="hljs-string">│</span>  <span class="hljs-string">•</span> <span class="hljs-string">视觉理解</span> <span class="hljs-string">(mmproj)</span>                      <span class="hljs-string">│</span><br><span class="hljs-string">│</span>  <span class="hljs-string">•</span> <span class="hljs-string">GPU</span> <span class="hljs-string">全层卸载</span> <span class="hljs-string">+</span> <span class="hljs-string">Flash</span> <span class="hljs-string">Attention</span>        <span class="hljs-string">│</span><br><span class="hljs-string">└──────────────────────────────────────────┘</span><br></code></pre></td></tr></table></figure>
+
+<h2 id="❓-常见问题解答"><a href="#❓-常见问题解答" class="headerlink" title="❓ 常见问题解答"></a>❓ 常见问题解答</h2><h3 id="Q1-页面报内容编码错误怎么办？"><a href="#Q1-页面报内容编码错误怎么办？" class="headerlink" title="Q1: 页面报内容编码错误怎么办？"></a>Q1: 页面报内容编码错误怎么办？</h3><p><strong>解决方法</strong>：重启服务</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cmd">.\start_8080_toolhub_stack.<span class="hljs-built_in">cmd</span> restart<br></code></pre></td></tr></table></figure>
+
+<h3 id="Q2-启动后模型未就绪？"><a href="#Q2-启动后模型未就绪？" class="headerlink" title="Q2: 启动后模型未就绪？"></a>Q2: 启动后模型未就绪？</h3><p><strong>排查步骤</strong>：</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs cmd"># 查看状态<br>.\start_8080_toolhub_stack.<span class="hljs-built_in">cmd</span> status<br><br># 查看日志<br>.\start_8080_toolhub_stack.<span class="hljs-built_in">cmd</span> logs<br></code></pre></td></tr></table></figure>
+
+<h3 id="Q3-提示-llama-server-exe-不存在？"><a href="#Q3-提示-llama-server-exe-不存在？" class="headerlink" title="Q3: 提示 llama-server.exe 不存在？"></a>Q3: 提示 llama-server.exe 不存在？</h3><p><strong>解决方法</strong>：重新执行安装脚本，确认文件存在：</p>
+<figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs asciidoc"><span class="hljs-title">.tmp\llama_win_cuda\llama-server.exe</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="Q4-提示模型文件不完整？"><a href="#Q4-提示模型文件不完整？" class="headerlink" title="Q4: 提示模型文件不完整？"></a>Q4: 提示模型文件不完整？</h3><p><strong>检查以下文件是否存在</strong>：</p>
+<ul>
+<li><code>.tmp\models\crossrepo\lmstudio-community__Qwen3.5-9B-GGUF\Qwen3.5-9B-Q4_K_M.gguf</code></li>
+<li><code>.tmp\models\crossrepo\lmstudio-community__Qwen3.5-9B-GGUF\mmproj-Qwen3.5-9B-BF16.gguf</code></li>
+</ul>
+<p>如果文件不完整，重新运行安装脚本。</p>
+<h3 id="Q5-我的显卡是-AMD-或-Intel，能用吗？"><a href="#Q5-我的显卡是-AMD-或-Intel，能用吗？" class="headerlink" title="Q5: 我的显卡是 AMD 或 Intel，能用吗？"></a>Q5: 我的显卡是 AMD 或 Intel，能用吗？</h3><p><strong>目前不支持</strong>。此项目依赖 NVIDIA CUDA，只支持 NVIDIA 显卡。如果你有 AMD 或 Intel 显卡，可以：</p>
+<ul>
+<li>使用 CPU 模式（会非常慢，不推荐）</li>
+<li>考虑使用云服务（如 Google Colab）</li>
+</ul>
+<h3 id="Q6-可以在-macOS-上运行吗？"><a href="#Q6-可以在-macOS-上运行吗？" class="headerlink" title="Q6: 可以在 macOS 上运行吗？"></a>Q6: 可以在 macOS 上运行吗？</h3><p><strong>理论上可以</strong>，但需要修改安装脚本：</p>
+<ul>
+<li>macOS 使用 Metal 而不是 CUDA</li>
+<li>需要下载 macOS 版本的 llama-server</li>
+<li>可以参考 llama.cpp 官方文档进行适配</li>
+</ul>
+<h2 id="📚-项目目录结构"><a href="#📚-项目目录结构" class="headerlink" title="📚 项目目录结构"></a>📚 项目目录结构</h2><figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs cmake">.<br>├── bootstrap.bat                    <span class="hljs-comment"># Windows 一键安装入口</span><br>├── <span class="hljs-keyword">install</span>.cmd                      <span class="hljs-comment"># Windows 安装入口（免策略拦截）</span><br>├── <span class="hljs-keyword">install</span>.ps1                      <span class="hljs-comment"># 安装分发器（默认 Win，可选 WSL）</span><br>├── <span class="hljs-keyword">install</span>.win.ps1                  <span class="hljs-comment"># Windows 安装脚本（主流程）</span><br>├── <span class="hljs-keyword">install</span>.sh                       <span class="hljs-comment"># WSL 安装脚本</span><br>├── start_8080_toolhub_stack.cmd     <span class="hljs-comment"># Windows 服务启停入口（免策略拦截）</span><br>├── start_8080_toolhub_stack.ps1     <span class="hljs-comment"># Windows 服务启停管理（主流程）</span><br>├── switch_qwen35_webui.ps1          <span class="hljs-comment"># Windows 模型后端控制（主流程）</span><br>├── start_8080_toolhub_stack.sh      <span class="hljs-comment"># WSL 服务启停管理</span><br>├── switch_qwen35_webui.sh           <span class="hljs-comment"># WSL 模型后端控制</span><br>├── run_8080_toolhub_gateway.py      <span class="hljs-comment"># 网关服务</span><br>├── toolhub_gateway_agent.py         <span class="hljs-comment"># 工具代理逻辑</span><br>├── agent_runtime/                   <span class="hljs-comment"># 工具实现</span><br>├── requirements.txt                 <span class="hljs-comment"># Python 依赖</span><br>├── .env.example                     <span class="hljs-comment"># 配置模板</span><br>└── docs/                            <span class="hljs-comment"># 补充文档</span><br></code></pre></td></tr></table></figure>
+
+<h2 id="🎓-总结"><a href="#🎓-总结" class="headerlink" title="🎓 总结"></a>🎓 总结</h2><p><strong>Qwen3.5-9B ToolHub</strong> 是一个非常适合个人使用的本地 AI 助手解决方案：</p>
+<h3 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h3><ul>
+<li>✅ <strong>配置要求适中</strong>：8GB 显存即可运行</li>
+<li>✅ <strong>功能完整</strong>：联网搜索、图像理解、文件浏览</li>
+<li>✅ <strong>安装简单</strong>：一键安装，开箱即用</li>
+<li>✅ <strong>隐私安全</strong>：数据完全本地处理</li>
+<li>✅ <strong>开源免费</strong>：无需付费订阅</li>
+</ul>
+<h3 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h3><ul>
+<li>⚠️ 只支持 Windows（或 WSL）</li>
+<li>⚠️ 只支持 NVIDIA 显卡</li>
+<li>⚠️ 需要一定的硬盘空间（约 20GB）</li>
+</ul>
+<h3 id="适合人群"><a href="#适合人群" class="headerlink" title="适合人群"></a>适合人群</h3><ul>
+<li>🎯 有一定动手能力的技术爱好者</li>
+<li>🎯 重视隐私，不想使用云服务的用户</li>
+<li>🎯 想要本地部署 AI 助手的开发者</li>
+<li>🎯 拥有 NVIDIA 显卡的 Windows 用户</li>
+</ul>
+<h2 id="🔗-相关链接"><a href="#🔗-相关链接" class="headerlink" title="🔗 相关链接"></a>🔗 相关链接</h2><ul>
+<li><strong>项目地址</strong>：<a target="_blank" rel="noopener" href="https://github.com/chixi4/Qwen3.5-9B-ToolHub">https://github.com/chixi4/Qwen3.5-9B-ToolHub</a></li>
+<li><strong>Qwen3.5 官方</strong>：<a target="_blank" rel="noopener" href="https://github.com/QwenLM/Qwen3">https://github.com/QwenLM/Qwen3</a></li>
+<li><strong>llama.cpp 官方</strong>：<a target="_blank" rel="noopener" href="https://github.com/ggml-org/llama.cpp">https://github.com/ggml-org/llama.cpp</a></li>
+</ul>
+<hr>
+<p>希望这篇教程能帮你顺利在本地部署自己的 AI 助手！如果遇到问题，可以到项目的 GitHub Issues 中提问。</p>
+<p><strong>祝你使用愉快！</strong> 🎉</p>
+
+                
+              </div>
+            
+
+              <!--打赏-->
+              <div class="reward">
+                  <div class="reward-button">赏 <span class="reward-code">
+		<span class="alipay-code"> <img class="alipay-img wdp-appear" src="/img/alipay.png" srcset="/img/loading.gif" lazyload><b>支付宝打赏</b> </span>
+		<span class="wechat-code"> <img class="wechat-img wdp-appear" src="/img/wechat.png" srcset="/img/loading.gif" lazyload><b>微信打赏</b> </span> </span>
+                  </div>
+                  <p class="reward-notice">如果文章对你有帮助，欢迎点击上方按钮打赏作者，更多功能请访问<a href="https://blog.fxcxy.com">博客站</a></p>
+              </div>
+              <!--打赏-->
+              <hr/>
+              <div style="text-align:right;"> <!-- 自己添加的“分享到”模块：开始。用的是 social-share.js。让所有的分享按钮右对齐-->
+
+                  <div class="social-share-container" style="margin-top: 15px;"> <!-- 生成一组分享按钮 -->
+                       <!--如果博客语言是中文，就显示“点击分享到：”，非中文一律显示“Share it:”-->
+                      点击分享到：&nbsp;&nbsp;
+                      
+                  </div>
+                  <!-- 加载 jQuery 库 -->
+                  
+<script src="/js/jquery.min.js"></script>
+
+                  <!-- 导入 qrcode.min.js -->
+                  
+<script src="/js/qrcode.min.js"></script>
+
+                  <!-- 加载 social-share.js 的 js 库，另外还要加载 social-share.js 的 CSS，可以修改 `_config.fluid.yml` 的 `custom_css` 加载，也可以修改 `themes/fluid/layout/_partial/css.ejs` 加载。-->
+                  
+<script src="/js/social-share.min.js"></script>
+
+                  <script>
+                    /* 执行 js 代码，new 一个新对象，详见 social-share.js 在 GitHub 的文档 */
+                    new SocialShare('.social-share-container', {
+                      theme: 'circle',  // 使用圆形主题
+                      // 单独定义wechat分享参数
+                      wechat: {
+                        sort: 1, // 排序参数，数字较小的展示在前面,默认999
+                      },
+                      twitter: {
+                        sort: 2, // 排序参数，数字较小的展示在前面,默认999
+                      },
+                      facebook: {
+                        sort: 3, // 排序参数，数字较小的展示在前面,默认999
+                      }
+                    });
+                  </script>
+              </div> <!-- 自己添加的“分享到”模块：结束。-->
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/AI%E5%B7%A5%E5%85%B7/" class="category-chain-item">AI工具</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/AI%E5%B7%A5%E5%85%B7/" class="print-no-link">#AI工具</a>
+      
+        <a href="/tags/%E5%A4%A7%E6%A8%A1%E5%9E%8B/" class="print-no-link">#大模型</a>
+      
+        <a href="/tags/Qwen/" class="print-no-link">#Qwen</a>
+      
+        <a href="/tags/%E6%9C%AC%E5%9C%B0%E9%83%A8%E7%BD%B2/" class="print-no-link">#本地部署</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>在自己电脑上跑大模型需要什么配置？Qwen3.5-9B 本地部署完整指南</div>
+      <div>https://blog.fxcxy.com/2026/03/06/在自己电脑上跑大模型需要什么配置？Qwen3-5-9B本地部署完整指南/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>spatacus</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2026年3月6日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2026/03/06/GPT-5-4%E6%B7%B1%E5%BA%A6%E8%A7%A3%E8%AF%BB2026%E6%94%BF%E5%BA%9C%E5%B7%A5%E4%BD%9C%E6%8A%A5%E5%91%8A%EF%BC%9A%E6%99%AE%E9%80%9A%E4%BA%BA%E5%BF%85%E7%9C%8B%E7%9A%8412%E4%B8%AA%E5%85%B3%E9%94%AE%E4%BF%A1%E5%8F%B7/" title="GPT-5.4深度解读2026政府工作报告：普通人必看的12个关键信号（附完整分析）">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">GPT-5.4深度解读2026政府工作报告：普通人必看的12个关键信号（附完整分析）</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2026/03/05/%E4%BF%9D%E5%A7%86%E7%BA%A7%E6%95%99%E7%A8%8B%EF%BC%9A0%E5%9F%BA%E7%A1%80%E6%90%AD%E5%BB%BA%E4%BD%A0%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AAAI%E6%99%BA%E8%83%BD%E5%8A%A9%E6%89%8B%E5%86%9B%E5%9B%A2%EF%BC%88OpenClaw%E5%AE%8C%E6%95%B4%E5%AE%9E%E6%88%98%EF%BC%89/" title="保姆级教程：0基础搭建你的第一个AI智能助手军团（OpenClaw完整实战）">
+                        <span class="hidden-mobile">保姆级教程：0基础搭建你的第一个AI智能助手军团（OpenClaw完整实战）</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://lib.baomitu.com/valine/1.5.1/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"J7kyQXV9R3CXOiA1eubrlflY-gzGzoHsz","appKey":"qHZzPzRcvsutXvHvBewqGmhw","path":"window.location.pathname","placeholder":"输入您的评论","avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":false},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          var imgSelector = '#valine .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  <div class="footer-links" style="margin: 20px 0 10px 0; text-align: center;">
+    <a href="https://tv.zymn.cc" target="_blank" style="margin: 0 12px; color: #bdbdbd; text-decoration: none; font-weight: 500;">免费电影</a>
+    <a href="https://sl.zymn.cc" target="_blank" style="margin: 0 12px; color: #bdbdbd; text-decoration: none; font-weight: 500;">短链生成器</a>
+    <a href="https://yhjf.zymn.cc" target="_blank" style="margin: 0 12px; color: #bdbdbd; text-decoration: none; font-weight: 500;">隐秘信使</a>
+  </div>
+  
+    <div class="footer-content">
+       <a href="https://www.youtube.com/channel/UCn0Yarp_h6oqn1-QLvlgbDg?sub_confirmation=1" target="_blank" rel="nofollow noopener"><span>Youtube</span></a>- <a href="https://x.com/corder2025" target="_blank" rel="nofollow noopener"><span>X</span></a>- <a href="https://t.me/+FEyFQq_5u004OWU0" target="_blank" rel="nofollow noopener"><span>电报群</span></a>- <a href="https://v.douyin.com/iNpPYY4E/" target="_blank" rel="nofollow noopener"><span>抖音</span></a>- <a href="https://www.ixigua.com/home/103680436540" target="_blank" rel="nofollow noopener"><span>西瓜视频</span></a> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="leancloud-site-pv-container" style="display: none">
+        总访问量 
+        <span id="leancloud-site-pv"></span>
+         次
+      </span>
+    
+    
+      <span id="leancloud-site-uv-container" style="display: none">
+        总访客数 
+        <span id="leancloud-site-uv"></span>
+         人
+      </span>
+    
+    
+
+  
+</div>
+
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script defer src="/js/leancloud.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
