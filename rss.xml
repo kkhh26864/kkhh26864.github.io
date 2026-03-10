@@ -5,6 +5,13 @@
         <link>https://www.zymn.cc</link>
         <description>欢迎来到我的个人博客！在这里，我将分享关于技术、编程、以及个人成长的经验和见解，帮助你在学习和工作中更进一步。</description>
         <item>
+            <title>每月多花80%冤枉钱？OpenClaw隐形Token消耗完全拆解与实战优化</title>
+            <link>https://www.zymn.cc/2026/03/10/OpenClaw账单爆炸？九大维度实操砍掉60-90-Token实战指南/</link>
+            <description>用了OpenClaw，账单比预期高好几倍？原因是你真正的对话只占5–20%，剩下80–95%是隐形开销：配置文件全量注入、历史对话膨胀、心跳机制异常触发……本文逐条拆解九大隐形成本，提供可直接落地的配置方案，亲测后台消耗降70%以上。</description>
+            <pubDate>Mon, 10 Mar 2026 01:30:01 GMT</pubDate>
+            <category>AI工具</category>
+        </item>
+        <item>
             <title>腾讯大楼下排长队装OpenClaw？我在家10分钟搞定，无需虚拟机</title>
             <link>https://www.zymn.cc/2026/03/09/Windows11原生运行OpenClaw完整指南/</link>
             <description>腾讯官方工程师在大楼下"摆摊"帮人装OpenClaw，队伍排得老长。其实不用排队，在家10分钟就能装好。本文分享Windows 11最简单的安装方法，避开虚拟机的各种报错，一条关键指令搞定所有依赖冲突。</description>
