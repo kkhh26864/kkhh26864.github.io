@@ -5,6 +5,13 @@
         <link>https://www.zymn.cc</link>
         <description>欢迎来到我的个人博客！在这里，我将分享关于技术、编程、以及个人成长的经验和见解，帮助你在学习和工作中更进一步。</description>
         <item>
+            <title>金融团队怎么用 OpenClaw 搭一套 AI 投研工作台？这 10 个 Skills 值得先装</title>
+            <link>https://www.zymn.cc/2026/03/12/金融团队怎么用OpenClaw搭一套AI投研工作台？这10个Skills值得先装/</link>
+            <description>如果你想给金融团队搭一套 OpenClaw 工作流，重点不是装多少工具，而是把数据获取、信息搜索、内容处理、实时监控和网页执行串成闭环。本文把 10 个关键 Skills 按数据、搜索、摘要、监控和执行五个环节拆开，讲清楚哪些值得先装、适合什么场景，以及更稳妥的安装方式。</description>
+            <pubDate>Thu, 12 Mar 2026 10:44:33 GMT</pubDate>
+            <category>AI工具</category>
+        </item>
+        <item>
             <title>OpenClaw为什么总是失忆？深度解析它的四层记忆架构</title>
             <link>https://www.zymn.cc/2026/03/11/OpenClaw为什么总是失忆？深度解析它的四层记忆架构/</link>
             <description>刚刚交待的任务，OpenClaw转眼就忘了？这不是bug，而是它刻意的架构权衡。本文深度解析四层文件式记忆机制（SOUL.md、USER.md、短期日志、长期记忆），揭示上下文强制压缩和主观策展损失两大失忆根因，并给出外部持久化和Prompt显式唤醒两个实用预防策略。</description>
