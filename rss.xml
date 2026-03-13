@@ -5,6 +5,13 @@
         <link>https://www.zymn.cc</link>
         <description>欢迎来到我的个人博客！在这里，我将分享关于技术、编程、以及个人成长的经验和见解，帮助你在学习和工作中更进一步。</description>
         <item>
+            <title>OpenAI Codex CLI实战手册：17大命令模块全拆解，开发效率翻倍</title>
+            <link>https://www.zymn.cc/2026/03/13/OpenAI-Codex-CLI实战手册：17大命令模块全拆解，开发效率翻倍/</link>
+            <description>每天写代码还在网页粘贴来粘贴去？Codex CLI直接在终端里跑，支持交互对话、批量自动化、代码审查、会话管理、MCP工具集成。本文基于0.111.0实测，17大命令模块逐一拆解，含国内中转配置、IDE插件使用、斜杠命令速查和自动确认设置，直接可抄。</description>
+            <pubDate>Thu, 13 Mar 2026 10:45:00 GMT</pubDate>
+            <category>AI工具</category>
+        </item>
+        <item>
             <title>金融团队怎么用 OpenClaw 搭一套 AI 投研工作台？这 10 个 Skills 值得先装</title>
             <link>https://www.zymn.cc/2026/03/12/金融团队怎么用OpenClaw搭一套AI投研工作台？这10个Skills值得先装/</link>
             <description>如果你想给金融团队搭一套 OpenClaw 工作流，重点不是装多少工具，而是把数据获取、信息搜索、内容处理、实时监控和网页执行串成闭环。本文把 10 个关键 Skills 按数据、搜索、摘要、监控和执行五个环节拆开，讲清楚哪些值得先装、适合什么场景，以及更稳妥的安装方式。</description>
