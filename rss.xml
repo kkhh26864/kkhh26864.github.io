@@ -5,6 +5,13 @@
         <link>https://www.zymn.cc</link>
         <description>欢迎来到我的个人博客！在这里，我将分享关于技术、编程、以及个人成长的经验和见解，帮助你在学习和工作中更进一步。</description>
         <item>
+            <title>一个AI不够用？OpenClaw多Agent协作系统搭建实战：从串行到并行的效率革命</title>
+            <link>https://www.zymn.cc/2026/03/14/一个AI不够用？OpenClaw多Agent协作系统搭建实战：从串行到并行的效率革命/</link>
+            <description>单 Agent 配置越多越慢、越来越傻？这不是 Bug，是架构天花板。本文用 5 步教你把单个臃肿 Agent 拆成多个专职 Agent，放进同一个 Telegram 群组协作。附完整 .openclaw.json 配置模板，以及全网整理最全的 AI Agent 角色库资源。</description>
+            <pubDate>Fri, 14 Mar 2026 11:31:00 GMT</pubDate>
+            <category>AI工具</category>
+        </item>
+        <item>
             <title>OpenAI Codex CLI实战手册：17大命令模块全拆解，开发效率翻倍</title>
             <link>https://www.zymn.cc/2026/03/13/OpenAI-Codex-CLI实战手册：17大命令模块全拆解，开发效率翻倍/</link>
             <description>每天写代码还在网页粘贴来粘贴去？Codex CLI直接在终端里跑，支持交互对话、批量自动化、代码审查、会话管理、MCP工具集成。本文基于0.111.0实测，17大命令模块逐一拆解，含国内中转配置、IDE插件使用、斜杠命令速查和自动确认设置，直接可抄。</description>
