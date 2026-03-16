@@ -1,0 +1,998 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/logo.png">
+  <link rel="icon" href="/img/logo.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3232532601275150"
+     crossorigin="anonymous"></script>
+    <meta name="twitter:card" content="/img/opencli-tool.png" />
+    <meta name="twitter:site" content="自由码农" />
+    <meta name="twitter:creator" content="@corder2025">
+    <meta name="twitter:title" content="终于找到了！一个命令就能查B站热榜、知乎热搜、微博热点的神器 - 自由码农" />
+    <meta name="twitter:description" content="不用写代码，一行命令就能抓取B站热榜、知乎热搜、微博热点、小红书等17个主流平台的数据，还能保留登录状态——OpenCLI 这个开源工具彻底改变了我获取互联网数据的方式。" />
+    <meta name="twitter:image" content="/img/opencli-tool.png" />
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="spatacus">
+  <meta name="keywords" content="自由码农,技术博客,工具分享，网站开发，App开发，小程序开发，H5开发">
+  
+    <meta name="description" content="不用写代码，一行命令就能抓取B站热榜、知乎热搜、微博热点、小红书等17个主流平台的数据，还能保留登录状态——OpenCLI 这个开源工具彻底改变了我获取互联网数据的方式。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="终于找到了！一个命令就能查B站热榜、知乎热搜、微博热点的神器">
+<meta property="og:url" content="https://blog.fxcxy.com/2026/03/16/%E7%BB%88%E4%BA%8E%E6%89%BE%E5%88%B0%E4%BA%86%EF%BC%81%E4%B8%80%E4%B8%AA%E5%91%BD%E4%BB%A4%E5%B0%B1%E8%83%BD%E6%9F%A5B%E7%AB%99%E7%83%AD%E6%A6%9C%E3%80%81%E7%9F%A5%E4%B9%8E%E7%83%AD%E6%90%9C%E3%80%81%E5%BE%AE%E5%8D%9A%E7%83%AD%E7%82%B9%E7%9A%84%E7%A5%9E%E5%99%A8/index.html">
+<meta property="og:site_name" content="自由码农">
+<meta property="og:description" content="不用写代码，一行命令就能抓取B站热榜、知乎热搜、微博热点、小红书等17个主流平台的数据，还能保留登录状态——OpenCLI 这个开源工具彻底改变了我获取互联网数据的方式。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://blog.fxcxy.com/img/opencli-tool.png">
+<meta property="article:published_time" content="2026-03-16T01:27:03.000Z">
+<meta property="article:modified_time" content="2026-03-16T01:52:31.915Z">
+<meta property="article:author" content="spatacus">
+<meta property="article:tag" content="开发工具">
+<meta property="article:tag" content="效率工具">
+<meta property="article:tag" content="爬虫">
+<meta property="article:tag" content="CLI工具">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://blog.fxcxy.com/img/opencli-tool.png">
+  
+  
+  
+  <title>终于找到了！一个命令就能查B站热榜、知乎热搜、微博热点的神器 - 自由码农</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+  
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_4443546_u6jwvi2qcka.css">
+<link rel="stylesheet" href="/css/social-share.min.css">
+<link rel="stylesheet" href="/css/myreward.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"blog.fxcxy.com","root":"/","version":"1.9.7","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"复制"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"J7kyQXV9R3CXOiA1eubrlflY-gzGzoHsz","app_key":"qHZzPzRcvsutXvHvBewqGmhw","server_url":"https://leancloud.fxcxy.com","path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+
+  
+    <!-- Google tag (gtag.js) -->
+    <script async>
+      if (!Fluid.ctx.dnt) {
+        Fluid.utils.createScript("https://www.googletagmanager.com/gtag/js?id=", function() {
+          window.dataLayer = window.dataLayer || [];
+          function gtag() {
+            dataLayer.push(arguments);
+          }
+          gtag('js', new Date());
+          gtag('config', '');
+        });
+      }
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+    
+  
+
+
+
+  
+<meta name="generator" content="Hexo 7.1.1"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>自由码农</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="终于找到了！一个命令就能查B站热榜、知乎热搜、微博热点的神器"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2026-03-16 09:27" pubdate>
+          2026年3月16日 上午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          2k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          17 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="leancloud-page-views"></span>次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">终于找到了！一个命令就能查B站热榜、知乎热搜、微博热点的神器</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <p>你有没有遇到过这种情况：</p>
+<p>想看一下B站当前热榜，但打开 App 却刷了半小时；想快速抓一下知乎热搜做竞品分析，却发现接口不好找、登录态也丢了；想让 AI 自动帮你监控某个平台的内容变化，却不知道怎么接入……</p>
+<p><strong>我最近发现了一个开源工具，彻底解决了这些问题——OpenCLI。</strong></p>
+<hr>
+<h2 id="它能帮你做什么？"><a href="#它能帮你做什么？" class="headerlink" title="它能帮你做什么？"></a>它能帮你做什么？</h2><p>用一句话说：<strong>把任何网站变成你的命令行工具。</strong></p>
+<p>举几个你马上能用上的场景：</p>
+<p><strong>场景一：1秒查热榜</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash">opencli bilibili hot --<span class="hljs-built_in">limit</span> 10     <span class="hljs-comment"># 查B站热榜前10</span><br>opencli zhihu hot -f json           <span class="hljs-comment"># 知乎热搜，输出JSON格式</span><br>opencli weibo hot                   <span class="hljs-comment"># 微博热搜</span><br>opencli hackernews top --<span class="hljs-built_in">limit</span> 5    <span class="hljs-comment"># HackerNews今日热榜</span><br></code></pre></td></tr></table></figure>
+
+<p>直接在终端输出结果，可以是表格、JSON、CSV、Markdown——想接哪个系统就接哪个系统。</p>
+<p><strong>场景二：数据导出，直接拿走</strong></p>
+<p>输出格式支持 <code>table</code>、<code>json</code>、<code>yaml</code>、<code>csv</code>、<code>markdown</code> 五种，导出后直接喂给 Excel、数据库、AI 都行。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">opencli bilibili hot -f csv &gt; bilibili_hot.csv    <span class="hljs-comment"># 直接存文件</span><br>opencli zhihu hot -f table                        <span class="hljs-comment"># 终端里看表格</span><br></code></pre></td></tr></table></figure>
+
+<p><strong>场景三：股票和财经数据监控</strong></p>
+<p>做投资的同学应该会喜欢这个。雪球是国内最活跃的股票社区之一，OpenCLI 直接支持抓取它的热门帖子和热门股票动态：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">opencli xueqiu hot        <span class="hljs-comment"># 雪球热门讨论</span><br>opencli xueqiu hot-stock  <span class="hljs-comment"># 热门股票</span><br>opencli xueqiu feed       <span class="hljs-comment"># 社区动态</span><br></code></pre></td></tr></table></figure>
+
+<p><strong>场景四：遇到不支持的网站怎么办？</strong></p>
+<p>这是我觉得最实用的功能之一。OpenCLI 提供了 <code>generate</code> 和 <code>synthesize</code> 命令，<strong>让你自己扩展，给任何网站写一个适配器</strong>。</p>
+<p>比如你想抓某个小众论坛、公司内部系统、或者某个行业垂直网站的数据，你不需要从头写爬虫，只需要：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">opencli generate &lt;网站名&gt; &lt;目标数据&gt;    <span class="hljs-comment"># AI 自动生成适配器</span><br>opencli synthesize &lt;网站名&gt;            <span class="hljs-comment"># 从 YAML 合成适配器</span><br></code></pre></td></tr></table></figure>
+
+<p>工具会分析网站结构，自动生成对应的抓取逻辑。即便是那些没有公开 API 的小网站，一样可以通过这个方式接入。</p>
+<p><strong>场景五：接入 AI Agent</strong></p>
+<p>这是我觉得最有战略价值的地方。OpenCLI 专门为 AI Agent 设计了接口，你可以让 Claude、GPT 或者任何 AI 工具直接调用这些命令，<strong>实现自动监控、定时抓取、内容分析的全自动流水线</strong>。</p>
+<p>比如让 AI 每天早上自动抓取知乎热搜 + 雪球热帖 + 路透社新闻，分析热点话题，生成一份行业日报——完全不需要人工介入。</p>
+<hr>
+<h2 id="支持哪些平台？"><a href="#支持哪些平台？" class="headerlink" title="支持哪些平台？"></a>支持哪些平台？</h2><p>目前支持 <strong>17 个主流平台，共 57 个命令</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>平台</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>B站 (bilibili)</td>
+<td>热榜、视频数据</td>
+</tr>
+<tr>
+<td>知乎 (zhihu)</td>
+<td>热搜、问答</td>
+</tr>
+<tr>
+<td>微博 (weibo)</td>
+<td>热搜榜</td>
+</tr>
+<tr>
+<td>小红书 (xiaohongshu)</td>
+<td>内容数据</td>
+</tr>
+<tr>
+<td>Twitter&#x2F;X</td>
+<td>推文、热点</td>
+</tr>
+<tr>
+<td>Reddit</td>
+<td>热帖</td>
+</tr>
+<tr>
+<td>GitHub</td>
+<td>项目数据</td>
+</tr>
+<tr>
+<td>HackerNews</td>
+<td>技术热帖</td>
+</tr>
+<tr>
+<td>雪球 (xueqiu)</td>
+<td>股票社区内容</td>
+</tr>
+<tr>
+<td>BOSS直聘 (boss)</td>
+<td>职位信息</td>
+</tr>
+<tr>
+<td>去哪儿 (ctrip)</td>
+<td>旅行数据</td>
+</tr>
+<tr>
+<td>什么值得买 (smzdm)</td>
+<td>优惠信息</td>
+</tr>
+<tr>
+<td>YouTube</td>
+<td>视频数据</td>
+</tr>
+<tr>
+<td>BBC、路透社、雅虎财经</td>
+<td>新闻数据</td>
+</tr>
+<tr>
+<td>V2EX</td>
+<td>技术社区</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="拿到数据之后能做什么？"><a href="#拿到数据之后能做什么？" class="headerlink" title="拿到数据之后能做什么？"></a>拿到数据之后能做什么？</h2><p>很多人到这里就停了——“能抓数据，然后呢？”</p>
+<p>这才是关键。数据本身没有价值，<strong>把数据喂给 AI 处理，才是真正创造价值的地方。</strong></p>
+<hr>
+<p><strong>场景一：找工作，让 AI 帮你筛出最匹配的岗位</strong></p>
+<p>普通人找工作是自己一条条刷招聘 App，费时费力还容易错过。换个思路：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">opencli boss search <span class="hljs-string">&quot;产品经理&quot;</span> -f json &gt; jobs.json<br></code></pre></td></tr></table></figure>
+
+<p>把 BOSS直聘上的搜索结果导出来，然后把你的简历和这份数据一起扔给 AI：</p>
+<blockquote>
+<p>“这是我的简历，这是这批岗位的JD，帮我找出最匹配的10个，说明理由，并指出每个岗位我需要补充哪些能力。”</p>
+</blockquote>
+<p>AI 会帮你做完整的匹配分析。不是简单关键词搜索，而是真正理解你的背景和岗位要求后的综合判断。<strong>原来要花一整天的事，5分钟搞定。</strong></p>
+<hr>
+<p><strong>场景二：做内容，不再为选题发愁</strong></p>
+<p>内容创作者最头疼的是选题。现在可以这样做：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">opencli bilibili hot -f json &gt; bili.json<br>opencli zhihu hot -f json &gt; zhihu.json<br>opencli xiaohongshu hot -f json &gt; xhs.json<br></code></pre></td></tr></table></figure>
+
+<p>把三个平台今天的热榜数据一起喂给 AI：</p>
+<blockquote>
+<p>“分析这些热点，找出其中有深度可挖的方向，结合我的账号定位（科技工具类），给我推荐5个选题，每个说明为什么现在适合发。”</p>
+</blockquote>
+<p>不是随便猜，是基于真实数据的选题决策。</p>
+<hr>
+<p><strong>场景三：股票研究，用社区情绪辅助判断</strong></p>
+<p>股市里很多人靠感觉操作，其实社区情绪是可以量化的。雪球是国内最活跃的股票社区，OpenCLI 支持抓取它的热门内容：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">opencli xueqiu hot -f json &gt; xueqiu.json       <span class="hljs-comment"># 雪球热帖</span><br>opencli xueqiu hot-stock -f json &gt; stocks.json  <span class="hljs-comment"># 热门股票</span><br>opencli xueqiu feed -f json &gt; feed.json         <span class="hljs-comment"># 社区动态</span><br></code></pre></td></tr></table></figure>
+
+<p>把这些内容汇总后喂给 AI：</p>
+<blockquote>
+<p>“分析这些帖子的情绪倾向，重点关注新能源板块，总结今日主要观点，识别其中值得关注的信号。”</p>
+</blockquote>
+<p>不是让 AI 帮你炒股，而是<strong>把大量信息整理成结构化的参考，让你的决策更有依据</strong>。</p>
+<hr>
+<p><strong>场景四：HR 反向用，快速了解候选人市场</strong></p>
+<p>招聘方和创业者也可以反过来用：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">opencli boss search <span class="hljs-string">&quot;AI工程师&quot;</span> -f csv &gt; market.csv<br></code></pre></td></tr></table></figure>
+
+<p>导出搜索结果后喂给 AI：</p>
+<blockquote>
+<p>“分析这批AI工程师岗位：薪资区间分布、高频要求技能、哪些公司在大量招聘，我们公司的薪资竞争力如何？”</p>
+</blockquote>
+<p>快速摸清人才市场现状，省去大量调研时间。</p>
+<hr>
+<p><strong>核心逻辑就一句话：OpenCLI 负责把数据从网上搬下来，AI 负责把数据变成决策。</strong></p>
+<p>数据 + AI &#x3D; 真正的信息优势。</p>
+<hr>
+<h2 id="最让我惊喜的一点：不会暴露账号密码"><a href="#最让我惊喜的一点：不会暴露账号密码" class="headerlink" title="最让我惊喜的一点：不会暴露账号密码"></a>最让我惊喜的一点：不会暴露账号密码</h2><p>很多爬虫工具让你填账号密码，安全风险极高。OpenCLI 完全不同——<strong>它直接复用你 Chrome 浏览器里已经登录的 session</strong>。</p>
+<p>换句话说，你在 Chrome 里登录了小红书，OpenCLI 就能用那个登录状态去抓数据，账号密码全程不经过任何第三方。</p>
+<hr>
+<h2 id="怎么安装？5分钟搞定"><a href="#怎么安装？5分钟搞定" class="headerlink" title="怎么安装？5分钟搞定"></a>怎么安装？5分钟搞定</h2><p><strong>前提条件</strong>：</p>
+<ul>
+<li>Node.js 18.0 以上版本</li>
+<li>Chrome 浏览器（并且已经登录你想抓的网站）</li>
+</ul>
+<p><strong>安装命令</strong>：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">npm install -g @jackwener/opencli<br></code></pre></td></tr></table></figure>
+
+<p>装完验证一下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">opencli list     <span class="hljs-comment"># 查看所有支持的命令</span><br></code></pre></td></tr></table></figure>
+
+<p>如果看到一堆命令列表，就说明安装成功了。</p>
+<p><strong>连接 Chrome</strong>：</p>
+<p>OpenCLI 需要连接到你的 Chrome 才能复用登录状态，支持两种方式：</p>
+<ul>
+<li><strong>方式一</strong>：安装 Playwright MCP Bridge 扩展（推荐，更稳定）</li>
+<li><strong>方式二</strong>：使用 Chrome 144+ 的自动发现功能</li>
+</ul>
+<p>具体配置步骤参考项目 README：<a target="_blank" rel="noopener" href="https://github.com/jackwener/opencli">https://github.com/jackwener/opencli</a></p>
+<hr>
+<h2 id="试用一下？"><a href="#试用一下？" class="headerlink" title="试用一下？"></a>试用一下？</h2><p>装完之后，先跑这个命令感受一下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">opencli bilibili hot -f table<br></code></pre></td></tr></table></figure>
+
+<p>你会在终端里看到一份整整齐齐的B站热榜表格。</p>
+<p>然后试试这个，把知乎热搜存成CSV文件：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">opencli zhihu hot -f csv &gt; zhihu_hot_today.csv<br></code></pre></td></tr></table></figure>
+
+<p>打开文件，数据干净整齐，直接拿去做分析。</p>
+<hr>
+<h2 id="适合哪些人用？"><a href="#适合哪些人用？" class="headerlink" title="适合哪些人用？"></a>适合哪些人用？</h2><ul>
+<li><strong>内容创作者</strong>：每天快速摸清各平台热点，选题不再发愁</li>
+<li><strong>数据分析师</strong>：定期抓取多平台数据，省去大量手动操作</li>
+<li><strong>开发者</strong>：搭建 AI Agent 的数据输入层，让 AI 自动监控互联网动态</li>
+<li><strong>产品&#x2F;运营</strong>：竞品监控、用户声音收集、舆情分析</li>
+</ul>
+<hr>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>OpenCLI 的核心价值就一句话：<strong>把你每天要手动去看的那些网站，变成可以自动化的数据接口。</strong></p>
+<p>不用写爬虫，不用研究 API，一行命令搞定。</p>
+<p>项目地址：<a target="_blank" rel="noopener" href="https://github.com/jackwener/opencli">https://github.com/jackwener/opencli</a>（截至2026年3月，516 Star，持续更新中）</p>
+<p>如果你也在用，欢迎留言分享你的使用场景——我挺好奇大家都拿它来做什么。</p>
+
+                
+              </div>
+            
+
+              <!--打赏-->
+              <div class="reward">
+                  <div class="reward-button">赏 <span class="reward-code">
+		<span class="alipay-code"> <img class="alipay-img wdp-appear" src="/img/alipay.png" srcset="/img/loading.gif" lazyload><b>支付宝打赏</b> </span>
+		<span class="wechat-code"> <img class="wechat-img wdp-appear" src="/img/wechat.png" srcset="/img/loading.gif" lazyload><b>微信打赏</b> </span> </span>
+                  </div>
+                  <p class="reward-notice">如果文章对你有帮助，欢迎点击上方按钮打赏作者，更多功能请访问<a href="https://blog.fxcxy.com">博客站</a></p>
+              </div>
+              <!--打赏-->
+              <hr/>
+              <div style="text-align:right;"> <!-- 自己添加的“分享到”模块：开始。用的是 social-share.js。让所有的分享按钮右对齐-->
+
+                  <div class="social-share-container" style="margin-top: 15px;"> <!-- 生成一组分享按钮 -->
+                       <!--如果博客语言是中文，就显示“点击分享到：”，非中文一律显示“Share it:”-->
+                      点击分享到：&nbsp;&nbsp;
+                      
+                  </div>
+                  <!-- 加载 jQuery 库 -->
+                  
+<script src="/js/jquery.min.js"></script>
+
+                  <!-- 导入 qrcode.min.js -->
+                  
+<script src="/js/qrcode.min.js"></script>
+
+                  <!-- 加载 social-share.js 的 js 库，另外还要加载 social-share.js 的 CSS，可以修改 `_config.fluid.yml` 的 `custom_css` 加载，也可以修改 `themes/fluid/layout/_partial/css.ejs` 加载。-->
+                  
+<script src="/js/social-share.min.js"></script>
+
+                  <script>
+                    /* 执行 js 代码，new 一个新对象，详见 social-share.js 在 GitHub 的文档 */
+                    new SocialShare('.social-share-container', {
+                      theme: 'circle',  // 使用圆形主题
+                      // 单独定义wechat分享参数
+                      wechat: {
+                        sort: 1, // 排序参数，数字较小的展示在前面,默认999
+                      },
+                      twitter: {
+                        sort: 2, // 排序参数，数字较小的展示在前面,默认999
+                      },
+                      facebook: {
+                        sort: 3, // 排序参数，数字较小的展示在前面,默认999
+                      }
+                    });
+                  </script>
+              </div> <!-- 自己添加的“分享到”模块：结束。-->
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/" class="category-chain-item">开发工具</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/" class="print-no-link">#开发工具</a>
+      
+        <a href="/tags/%E6%95%88%E7%8E%87%E5%B7%A5%E5%85%B7/" class="print-no-link">#效率工具</a>
+      
+        <a href="/tags/%E7%88%AC%E8%99%AB/" class="print-no-link">#爬虫</a>
+      
+        <a href="/tags/CLI%E5%B7%A5%E5%85%B7/" class="print-no-link">#CLI工具</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>终于找到了！一个命令就能查B站热榜、知乎热搜、微博热点的神器</div>
+      <div>https://blog.fxcxy.com/2026/03/16/终于找到了！一个命令就能查B站热榜、知乎热搜、微博热点的神器/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>spatacus</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2026年3月16日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2026/03/14/%E4%B8%80%E4%B8%AAAI%E4%B8%8D%E5%A4%9F%E7%94%A8%EF%BC%9FOpenClaw%E5%A4%9AAgent%E5%8D%8F%E4%BD%9C%E7%B3%BB%E7%BB%9F%E6%90%AD%E5%BB%BA%E5%AE%9E%E6%88%98%EF%BC%9A%E4%BB%8E%E4%B8%B2%E8%A1%8C%E5%88%B0%E5%B9%B6%E8%A1%8C%E7%9A%84%E6%95%88%E7%8E%87%E9%9D%A9%E5%91%BD/" title="一个AI不够用？OpenClaw多Agent协作系统搭建实战：从串行到并行的效率革命">
+                        <span class="hidden-mobile">一个AI不够用？OpenClaw多Agent协作系统搭建实战：从串行到并行的效率革命</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://lib.baomitu.com/valine/1.5.1/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"J7kyQXV9R3CXOiA1eubrlflY-gzGzoHsz","appKey":"qHZzPzRcvsutXvHvBewqGmhw","path":"window.location.pathname","placeholder":"输入您的评论","avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":false},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          var imgSelector = '#valine .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  <div class="footer-links" style="margin: 20px 0 10px 0; text-align: center;">
+    <a href="https://tv.zymn.cc" target="_blank" style="margin: 0 12px; color: #bdbdbd; text-decoration: none; font-weight: 500;">免费电影</a>
+    <a href="https://sl.zymn.cc" target="_blank" style="margin: 0 12px; color: #bdbdbd; text-decoration: none; font-weight: 500;">短链生成器</a>
+    <a href="https://yhjf.zymn.cc" target="_blank" style="margin: 0 12px; color: #bdbdbd; text-decoration: none; font-weight: 500;">隐秘信使</a>
+  </div>
+  
+    <div class="footer-content">
+       <a href="https://www.youtube.com/channel/UCn0Yarp_h6oqn1-QLvlgbDg?sub_confirmation=1" target="_blank" rel="nofollow noopener"><span>Youtube</span></a>- <a href="https://x.com/corder2025" target="_blank" rel="nofollow noopener"><span>X</span></a>- <a href="https://t.me/+FEyFQq_5u004OWU0" target="_blank" rel="nofollow noopener"><span>电报群</span></a>- <a href="https://v.douyin.com/iNpPYY4E/" target="_blank" rel="nofollow noopener"><span>抖音</span></a>- <a href="https://www.ixigua.com/home/103680436540" target="_blank" rel="nofollow noopener"><span>西瓜视频</span></a> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="leancloud-site-pv-container" style="display: none">
+        总访问量 
+        <span id="leancloud-site-pv"></span>
+         次
+      </span>
+    
+    
+      <span id="leancloud-site-uv-container" style="display: none">
+        总访客数 
+        <span id="leancloud-site-uv"></span>
+         人
+      </span>
+    
+    
+
+  
+</div>
+
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script defer src="/js/leancloud.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

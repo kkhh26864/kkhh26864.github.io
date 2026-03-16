@@ -5,6 +5,13 @@
         <link>https://www.zymn.cc</link>
         <description>欢迎来到我的个人博客！在这里，我将分享关于技术、编程、以及个人成长的经验和见解，帮助你在学习和工作中更进一步。</description>
         <item>
+            <title>终于找到了！一个命令就能查B站热榜、知乎热搜、微博热点的神器</title>
+            <link>https://www.zymn.cc/2026/03/16/终于找到了！一个命令就能查B站热榜、知乎热搜、微博热点的神器/</link>
+            <description>不用写代码，一行命令就能抓取B站热榜、知乎热搜、微博热点、小红书等17个主流平台的数据，还能保留登录状态——OpenCLI 这个开源工具彻底改变了我获取互联网数据的方式。</description>
+            <pubDate>Sun, 16 Mar 2026 01:27:00 GMT</pubDate>
+            <category>开发工具</category>
+        </item>
+        <item>
             <title>一个AI不够用？OpenClaw多Agent协作系统搭建实战：从串行到并行的效率革命</title>
             <link>https://www.zymn.cc/2026/03/14/一个AI不够用？OpenClaw多Agent协作系统搭建实战：从串行到并行的效率革命/</link>
             <description>单 Agent 配置越多越慢、越来越傻？这不是 Bug，是架构天花板。本文用 5 步教你把单个臃肿 Agent 拆成多个专职 Agent，放进同一个 Telegram 群组协作。附完整 .openclaw.json 配置模板，以及全网整理最全的 AI Agent 角色库资源。</description>
