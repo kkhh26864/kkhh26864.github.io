@@ -5,6 +5,13 @@
         <link>https://www.zymn.cc</link>
         <description>欢迎来到我的个人博客！在这里，我将分享关于技术、编程、以及个人成长的经验和见解，帮助你在学习和工作中更进一步。</description>
         <item>
+            <title>AI 调试浏览器终于不用反复登录了：Chrome DevTools MCP 实战指南</title>
+            <link>https://blog.fxcxy.com/2026/03/16/chrome-devtools-mcp-ai-debugging/</link>
+            <description>Chrome 官方发布 DevTools MCP Server，让 AI 编程助手（Claude、Cursor、Gemini）直接接管你的浏览器调试会话。支持复用已登录的 Chrome 实例、分析网络请求、截图、执行自动化操作，26 个工具覆盖日常调试全场景。</description>
+            <pubDate>Mon, 16 Mar 2026 08:30:00 GMT</pubDate>
+            <category>效率工具</category>
+        </item>
+        <item>
             <title>终于找到了！一个命令就能查B站热榜、知乎热搜、微博热点的神器</title>
             <link>https://www.zymn.cc/2026/03/16/终于找到了！一个命令就能查B站热榜、知乎热搜、微博热点的神器/</link>
             <description>不用写代码，一行命令就能抓取B站热榜、知乎热搜、微博热点、小红书等17个主流平台的数据，还能保留登录状态——OpenCLI 这个开源工具彻底改变了我获取互联网数据的方式。</description>
