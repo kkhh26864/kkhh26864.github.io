@@ -1,0 +1,930 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/logo.png">
+  <link rel="icon" href="/img/logo.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3232532601275150"
+     crossorigin="anonymous"></script>
+    <meta name="twitter:card" content="/img/meta-jemalloc-renewed-commitment.png" />
+    <meta name="twitter:site" content="自由码农" />
+    <meta name="twitter:creator" content="@corder2025">
+    <meta name="twitter:title" content="Meta 重启 jemalloc：为什么“基础设施洁癖”才是性能的长期解 - 自由码农" />
+    <meta name="twitter:description" content="Meta 宣布重新投入 jemalloc：清技术债、现代化代码、优化 Hugepage/ARM64，并把仓库重新开放。本文用开发者视角讲清内存分配器为什么决定性能上限，以及你在服务端/容器环境里该怎么用 jemalloc。" />
+    <meta name="twitter:image" content="/img/meta-jemalloc-renewed-commitment.png" />
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="spatacus">
+  <meta name="keywords" content="自由码农,技术博客,工具分享，网站开发，App开发，小程序开发，H5开发">
+  
+    <meta name="description" content="Meta 宣布重新投入 jemalloc：清技术债、现代化代码、优化 Hugepage&#x2F;ARM64，并把仓库重新开放。本文用开发者视角讲清内存分配器为什么决定性能上限，以及你在服务端&#x2F;容器环境里该怎么用 jemalloc。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Meta 重启 jemalloc：为什么“基础设施洁癖”才是性能的长期解">
+<meta property="og:url" content="https://blog.fxcxy.com/2026/03/17/meta-jemalloc-renewed-commitment/index.html">
+<meta property="og:site_name" content="自由码农">
+<meta property="og:description" content="Meta 宣布重新投入 jemalloc：清技术债、现代化代码、优化 Hugepage&#x2F;ARM64，并把仓库重新开放。本文用开发者视角讲清内存分配器为什么决定性能上限，以及你在服务端&#x2F;容器环境里该怎么用 jemalloc。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://blog.fxcxy.com/img/meta-jemalloc-renewed-commitment.png">
+<meta property="article:published_time" content="2026-03-17T00:44:14.000Z">
+<meta property="article:modified_time" content="2026-03-17T00:48:11.973Z">
+<meta property="article:author" content="spatacus">
+<meta property="article:tag" content="开发工具">
+<meta property="article:tag" content="性能优化">
+<meta property="article:tag" content="基础设施">
+<meta property="article:tag" content="C&#x2F;C++">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://blog.fxcxy.com/img/meta-jemalloc-renewed-commitment.png">
+  
+  
+  
+  <title>Meta 重启 jemalloc：为什么“基础设施洁癖”才是性能的长期解 - 自由码农</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+  
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_4443546_u6jwvi2qcka.css">
+<link rel="stylesheet" href="/css/social-share.min.css">
+<link rel="stylesheet" href="/css/myreward.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"blog.fxcxy.com","root":"/","version":"1.9.7","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"复制"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"J7kyQXV9R3CXOiA1eubrlflY-gzGzoHsz","app_key":"qHZzPzRcvsutXvHvBewqGmhw","server_url":"https://leancloud.fxcxy.com","path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+
+  
+    <!-- Google tag (gtag.js) -->
+    <script async>
+      if (!Fluid.ctx.dnt) {
+        Fluid.utils.createScript("https://www.googletagmanager.com/gtag/js?id=", function() {
+          window.dataLayer = window.dataLayer || [];
+          function gtag() {
+            dataLayer.push(arguments);
+          }
+          gtag('js', new Date());
+          gtag('config', '');
+        });
+      }
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+    
+  
+
+
+
+  
+<meta name="generator" content="Hexo 7.1.1"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>自由码农</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Meta 重启 jemalloc：为什么“基础设施洁癖”才是性能的长期解"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2026-03-17 08:44" pubdate>
+          2026年3月17日 早上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          1.3k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          11 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="leancloud-page-views"></span>次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">Meta 重启 jemalloc：为什么“基础设施洁癖”才是性能的长期解</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h2 id="先说结论：你以为在优化“业务代码”，其实性能瓶颈常常在-allocator"><a href="#先说结论：你以为在优化“业务代码”，其实性能瓶颈常常在-allocator" class="headerlink" title="先说结论：你以为在优化“业务代码”，其实性能瓶颈常常在 allocator"></a>先说结论：你以为在优化“业务代码”，其实性能瓶颈常常在 allocator</h2><p>很多团队做性能优化的第一反应是：</p>
+<ul>
+<li>查慢 SQL</li>
+<li>减少 GC</li>
+<li>打点看 P99</li>
+<li>缓存&#x2F;并发&#x2F;批量</li>
+</ul>
+<p>这些当然重要，但当你的系统进入“成熟期”（流量稳定、QPS 上来、机器成本开始被 CFO 盯上），你会发现一个尴尬事实：<strong>很多 CPU 时间和内存碎片，根本不是你的业务逻辑造成的，而是 malloc&#x2F;free 的策略决定的。</strong></p>
+<p>这也是为什么 Meta 最近公开表示：要重新投入 jemalloc，并且把官方仓库重新 unarchive。</p>
+<hr>
+<h2 id="jemalloc-是什么？它解决的不是“快一点”，而是“稳很多”"><a href="#jemalloc-是什么？它解决的不是“快一点”，而是“稳很多”" class="headerlink" title="jemalloc 是什么？它解决的不是“快一点”，而是“稳很多”"></a>jemalloc 是什么？它解决的不是“快一点”，而是“稳很多”</h2><p>jemalloc 是一个通用的高性能内存分配器（allocator）。你可以把它理解成：</p>
+<blockquote>
+<p>负责把 <code>malloc()</code> &#x2F; <code>free()</code> 这种“每次都要向系统申请&#x2F;归还内存”的粗活，变成更聪明、更可控的“分配与回收策略”。</p>
+</blockquote>
+<p>它核心关注点不是某一次分配的极限速度，而是长期运行下的几个硬指标：</p>
+<ul>
+<li><strong>碎片（fragmentation）控制</strong>：内存不会越跑越“空洞”</li>
+<li><strong>并发可扩展性</strong>：多线程下锁竞争更少</li>
+<li><strong>可观测&#x2F;可调优</strong>：暴露统计与参数，能定位问题</li>
+</ul>
+<blockquote>
+<p>你可以把它类比成“操作系统级别的连接池&#x2F;缓存策略”。业务代码不变，但底层策略一换，成本和稳定性可能直接两位数改善。</p>
+</blockquote>
+<hr>
+<h2 id="Meta-为什么要“重启”-jemalloc？核心是：技术债把项目拖慢了"><a href="#Meta-为什么要“重启”-jemalloc？核心是：技术债把项目拖慢了" class="headerlink" title="Meta 为什么要“重启” jemalloc？核心是：技术债把项目拖慢了"></a>Meta 为什么要“重启” jemalloc？核心是：技术债把项目拖慢了</h2><p>Meta 在工程博客里说得很直接：jemalloc 这种“高杠杆组件”需要极高的工程纪律，但过去几年为了短期收益，逐步偏离了核心原则，导致技术债堆积、进展变慢。</p>
+<p>所以他们这次明确了几个方向（这几条很适合作为你公司基础设施的 road map 模板）：</p>
+<ol>
+<li><strong>减少技术债、重构与现代化代码</strong>：让维护成本下降</li>
+<li><strong>Hugepage allocator（HPA）继续演进</strong>：更好利用 THP，提高 CPU 效率</li>
+<li><strong>内存效率改进</strong>：packing &#x2F; caching &#x2F; purging（更省内存、更可控）</li>
+<li><strong>AArch64&#x2F;ARM64 优化</strong>：确保在 ARM 服务器上有开箱即用的性能</li>
+</ol>
+<p>同时，Meta 也提到和社区（包括 jemalloc 作者 Jason Evans）沟通，仓库被重新 unarchive —— 这代表“回到开源协作”的姿态。</p>
+<hr>
+<h2 id="作为开发者，这对你意味着什么？3-个能直接落地的判断"><a href="#作为开发者，这对你意味着什么？3-个能直接落地的判断" class="headerlink" title="作为开发者，这对你意味着什么？3 个能直接落地的判断"></a>作为开发者，这对你意味着什么？3 个能直接落地的判断</h2><h3 id="1）当你看到-P99-抖动、RSS-缓慢上涨，先别只怪-GC"><a href="#1）当你看到-P99-抖动、RSS-缓慢上涨，先别只怪-GC" class="headerlink" title="1）当你看到 P99 抖动、RSS 缓慢上涨，先别只怪 GC"></a>1）当你看到 P99 抖动、RSS 缓慢上涨，先别只怪 GC</h3><p>很多线上“看似 GC 的问题”，本质可能是：</p>
+<ul>
+<li>allocator 造成碎片</li>
+<li>释放策略导致内存无法及时归还 OS</li>
+<li>多线程分配的锁竞争</li>
+</ul>
+<p>jemalloc 的价值是：<strong>给你多一个可控旋钮</strong>，而不是被系统默认 allocator 牵着走。</p>
+<h3 id="2）容器时代，allocator-更重要了"><a href="#2）容器时代，allocator-更重要了" class="headerlink" title="2）容器时代，allocator 更重要了"></a>2）容器时代，allocator 更重要了</h3><p>在容器里你会更敏感地看到：</p>
+<ul>
+<li>内存被 cgroup 限制</li>
+<li>RSS 高就可能触发 OOMKill</li>
+</ul>
+<p>这时“更省、更稳”的分配器，能直接降低事故概率。</p>
+<h3 id="3）ARM64-不是未来，是现在"><a href="#3）ARM64-不是未来，是现在" class="headerlink" title="3）ARM64 不是未来，是现在"></a>3）ARM64 不是未来，是现在</h3><p>越来越多云厂商在推 ARM 服务器（成本&#x2F;能耗都更好）。Meta 把 AArch64 明确列为优先项，本质是承认：<strong>allocator 也必须跟上硬件迁移节奏</strong>。</p>
+<hr>
+<h2 id="实操：怎么在-Linux-上把程序切到-jemalloc？"><a href="#实操：怎么在-Linux-上把程序切到-jemalloc？" class="headerlink" title="实操：怎么在 Linux 上把程序切到 jemalloc？"></a>实操：怎么在 Linux 上把程序切到 jemalloc？</h2><blockquote>
+<p>提示：不同语言&#x2F;框架方式不同，但最通用的路径是 <strong>LD_PRELOAD</strong>。</p>
+</blockquote>
+<h3 id="方式-A：LD-PRELOAD（最快验证）"><a href="#方式-A：LD-PRELOAD（最快验证）" class="headerlink" title="方式 A：LD_PRELOAD（最快验证）"></a>方式 A：LD_PRELOAD（最快验证）</h3><p>1）安装 jemalloc（以 Debian&#x2F;Ubuntu 为例）：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo apt-get update<br>sudo apt-get install -y libjemalloc2<br></code></pre></td></tr></table></figure>
+
+<p>2）启动服务时 preload：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">export</span> LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libjemalloc.so.2<br>./your-service<br></code></pre></td></tr></table></figure>
+
+<p>如果你的系统路径不同，可以用：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">ldconfig -p | grep jemalloc<br></code></pre></td></tr></table></figure>
+
+<h3 id="方式-B：在-systemd-Docker-中固定注入"><a href="#方式-B：在-systemd-Docker-中固定注入" class="headerlink" title="方式 B：在 systemd &#x2F; Docker 中固定注入"></a>方式 B：在 systemd &#x2F; Docker 中固定注入</h3><ul>
+<li>systemd：在 service 文件里加 <code>Environment=LD_PRELOAD=...</code></li>
+<li>Docker：在 entrypoint 脚本里 export 后再启动主进程</li>
+</ul>
+<hr>
+<h2 id="调优方向：先把“能看见”做好，再谈参数"><a href="#调优方向：先把“能看见”做好，再谈参数" class="headerlink" title="调优方向：先把“能看见”做好，再谈参数"></a>调优方向：先把“能看见”做好，再谈参数</h2><p>jemalloc 的参数很多，但我建议按这个顺序：</p>
+<ol>
+<li><strong>先拿到指标</strong>：确认碎片、活跃页、驻留内存的变化趋势</li>
+<li><strong>再做最小调整</strong>：例如 decay &#x2F; purge 相关策略（不同版本默认值不同）</li>
+<li><strong>最后才是激进优化</strong>：hugepage、arena 数量等</li>
+</ol>
+<p>否则很容易陷入“改了一堆参数，性能没变，反而更难解释”的局面。</p>
+<hr>
+<h2 id="关键对比：jemalloc-glibc-malloc-tcmalloc-该怎么选？"><a href="#关键对比：jemalloc-glibc-malloc-tcmalloc-该怎么选？" class="headerlink" title="关键对比：jemalloc &#x2F; glibc malloc &#x2F; tcmalloc 该怎么选？"></a>关键对比：jemalloc &#x2F; glibc malloc &#x2F; tcmalloc 该怎么选？</h2><table>
+<thead>
+<tr>
+<th>场景</th>
+<th>更常见选择</th>
+<th>理由</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>通用服务端、长期运行、关注碎片</td>
+<td>jemalloc</td>
+<td>稳定、可调、社区成熟</td>
+</tr>
+<tr>
+<td>特定 Google 生态&#x2F;已深度绑定</td>
+<td>tcmalloc</td>
+<td>工程体系配套更完整</td>
+</tr>
+<tr>
+<td>默认环境、无性能诉求</td>
+<td>glibc malloc</td>
+<td>省心，但不可控</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>真实世界里，很多团队的决策其实是：先 jemalloc 验证收益，再决定是否长期绑定。</p>
+</blockquote>
+<hr>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>Meta 这次“重启 jemalloc”的信号很明确：<strong>当一个组件足够底层、足够高杠杆时，长期的工程纪律比短期 patch 更重要。</strong></p>
+<p>如果你正在做性能优化，建议把 allocator 纳入排查清单：</p>
+<ul>
+<li>P99 抖动</li>
+<li>RSS 上涨</li>
+<li>容器 OOM</li>
+<li>多线程高并发锁竞争</li>
+</ul>
+<p>很多时候，换一个 allocator + 做少量正确的观测，就能让系统稳定性和成本发生肉眼可见的改善。</p>
+<hr>
+<p><em>参考链接：Meta 工程博客（jemalloc 复兴说明）· jemalloc GitHub 仓库</em></p>
+
+                
+              </div>
+            
+
+              <!--打赏-->
+              <div class="reward">
+                  <div class="reward-button">赏 <span class="reward-code">
+		<span class="alipay-code"> <img class="alipay-img wdp-appear" src="/img/alipay.png" srcset="/img/loading.gif" lazyload><b>支付宝打赏</b> </span>
+		<span class="wechat-code"> <img class="wechat-img wdp-appear" src="/img/wechat.png" srcset="/img/loading.gif" lazyload><b>微信打赏</b> </span> </span>
+                  </div>
+                  <p class="reward-notice">如果文章对你有帮助，欢迎点击上方按钮打赏作者，更多功能请访问<a href="https://blog.fxcxy.com">博客站</a></p>
+              </div>
+              <!--打赏-->
+              <hr/>
+              <div style="text-align:right;"> <!-- 自己添加的“分享到”模块：开始。用的是 social-share.js。让所有的分享按钮右对齐-->
+
+                  <div class="social-share-container" style="margin-top: 15px;"> <!-- 生成一组分享按钮 -->
+                       <!--如果博客语言是中文，就显示“点击分享到：”，非中文一律显示“Share it:”-->
+                      点击分享到：&nbsp;&nbsp;
+                      
+                  </div>
+                  <!-- 加载 jQuery 库 -->
+                  
+<script src="/js/jquery.min.js"></script>
+
+                  <!-- 导入 qrcode.min.js -->
+                  
+<script src="/js/qrcode.min.js"></script>
+
+                  <!-- 加载 social-share.js 的 js 库，另外还要加载 social-share.js 的 CSS，可以修改 `_config.fluid.yml` 的 `custom_css` 加载，也可以修改 `themes/fluid/layout/_partial/css.ejs` 加载。-->
+                  
+<script src="/js/social-share.min.js"></script>
+
+                  <script>
+                    /* 执行 js 代码，new 一个新对象，详见 social-share.js 在 GitHub 的文档 */
+                    new SocialShare('.social-share-container', {
+                      theme: 'circle',  // 使用圆形主题
+                      // 单独定义wechat分享参数
+                      wechat: {
+                        sort: 1, // 排序参数，数字较小的展示在前面,默认999
+                      },
+                      twitter: {
+                        sort: 2, // 排序参数，数字较小的展示在前面,默认999
+                      },
+                      facebook: {
+                        sort: 3, // 排序参数，数字较小的展示在前面,默认999
+                      }
+                    });
+                  </script>
+              </div> <!-- 自己添加的“分享到”模块：结束。-->
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E6%95%88%E7%8E%87%E5%B7%A5%E5%85%B7/" class="category-chain-item">效率工具</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/" class="print-no-link">#开发工具</a>
+      
+        <a href="/tags/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/" class="print-no-link">#性能优化</a>
+      
+        <a href="/tags/%E5%9F%BA%E7%A1%80%E8%AE%BE%E6%96%BD/" class="print-no-link">#基础设施</a>
+      
+        <a href="/tags/C-C/" class="print-no-link">#C/C++</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>Meta 重启 jemalloc：为什么“基础设施洁癖”才是性能的长期解</div>
+      <div>https://blog.fxcxy.com/2026/03/17/meta-jemalloc-renewed-commitment/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>spatacus</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2026年3月17日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2026/03/18/openclaw-skills-workbench/" title="AI 助手最怕的不是不聪明，而是不会干活：OpenClaw 5000+ Skills 实战指南">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">AI 助手最怕的不是不聪明，而是不会干活：OpenClaw 5000+ Skills 实战指南</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2026/03/16/chrome-devtools-mcp-ai-debugging/" title="AI 调试浏览器终于不用反复登录了：Chrome DevTools MCP 实战指南">
+                        <span class="hidden-mobile">AI 调试浏览器终于不用反复登录了：Chrome DevTools MCP 实战指南</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://lib.baomitu.com/valine/1.5.1/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"J7kyQXV9R3CXOiA1eubrlflY-gzGzoHsz","appKey":"qHZzPzRcvsutXvHvBewqGmhw","path":"window.location.pathname","placeholder":"输入您的评论","avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":false},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          var imgSelector = '#valine .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  <div class="footer-links" style="margin: 20px 0 10px 0; text-align: center;">
+    <a href="https://tv.zymn.cc" target="_blank" style="margin: 0 12px; color: #bdbdbd; text-decoration: none; font-weight: 500;">免费电影</a>
+    <a href="https://sl.zymn.cc" target="_blank" style="margin: 0 12px; color: #bdbdbd; text-decoration: none; font-weight: 500;">短链生成器</a>
+    <a href="https://yhjf.zymn.cc" target="_blank" style="margin: 0 12px; color: #bdbdbd; text-decoration: none; font-weight: 500;">隐秘信使</a>
+  </div>
+  
+    <div class="footer-content">
+       <a href="https://www.youtube.com/channel/UCn0Yarp_h6oqn1-QLvlgbDg?sub_confirmation=1" target="_blank" rel="nofollow noopener"><span>Youtube</span></a>- <a href="https://x.com/corder2025" target="_blank" rel="nofollow noopener"><span>X</span></a>- <a href="https://t.me/+FEyFQq_5u004OWU0" target="_blank" rel="nofollow noopener"><span>电报群</span></a>- <a href="https://v.douyin.com/iNpPYY4E/" target="_blank" rel="nofollow noopener"><span>抖音</span></a>- <a href="https://www.ixigua.com/home/103680436540" target="_blank" rel="nofollow noopener"><span>西瓜视频</span></a> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="leancloud-site-pv-container" style="display: none">
+        总访问量 
+        <span id="leancloud-site-pv"></span>
+         次
+      </span>
+    
+    
+      <span id="leancloud-site-uv-container" style="display: none">
+        总访客数 
+        <span id="leancloud-site-uv"></span>
+         人
+      </span>
+    
+    
+
+  
+</div>
+
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script defer src="/js/leancloud.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

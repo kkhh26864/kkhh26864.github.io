@@ -1,0 +1,1077 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/logo.png">
+  <link rel="icon" href="/img/logo.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3232532601275150"
+     crossorigin="anonymous"></script>
+    <meta name="twitter:card" content="/img/openclaw-skills-workbench.png" />
+    <meta name="twitter:site" content="自由码农" />
+    <meta name="twitter:creator" content="@corder2025">
+    <meta name="twitter:title" content="AI 助手最怕的不是不聪明，而是不会干活：OpenClaw 5000+ Skills 实战指南 - 自由码农" />
+    <meta name="twitter:description" content="很多 AI 助手看起来很聪明，真正用起来却推进不了任务。OpenClaw 的特别之处，在于它可以通过 Skills 变成一套按项目切换、按工作流组装的 AI 工作台。本文用安装、选 Skill、装 Skill、组合工作流四个步骤，讲清楚怎么把 5000+ 社区 Skills 变成今天就能用的自动化能力。" />
+    <meta name="twitter:image" content="/img/openclaw-skills-workbench.png" />
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="独立开发">
+  <meta name="keywords" content="自由码农,技术博客,工具分享，网站开发，App开发，小程序开发，H5开发">
+  
+    <meta name="description" content="很多 AI 助手看起来很聪明，真正用起来却推进不了任务。OpenClaw 的特别之处，在于它可以通过 Skills 变成一套按项目切换、按工作流组装的 AI 工作台。本文用安装、选 Skill、装 Skill、组合工作流四个步骤，讲清楚怎么把 5000+ 社区 Skills 变成今天就能用的自动化能力。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="AI 助手最怕的不是不聪明，而是不会干活：OpenClaw 5000+ Skills 实战指南">
+<meta property="og:url" content="https://blog.fxcxy.com/2026/03/18/openclaw-skills-workbench/index.html">
+<meta property="og:site_name" content="自由码农">
+<meta property="og:description" content="很多 AI 助手看起来很聪明，真正用起来却推进不了任务。OpenClaw 的特别之处，在于它可以通过 Skills 变成一套按项目切换、按工作流组装的 AI 工作台。本文用安装、选 Skill、装 Skill、组合工作流四个步骤，讲清楚怎么把 5000+ 社区 Skills 变成今天就能用的自动化能力。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://blog.fxcxy.com/img/openclaw-skills-workbench.png">
+<meta property="article:published_time" content="2026-03-18T06:55:33.000Z">
+<meta property="article:modified_time" content="2026-03-18T09:49:47.316Z">
+<meta property="article:author" content="spatacus">
+<meta property="article:tag" content="开发工具">
+<meta property="article:tag" content="效率工具">
+<meta property="article:tag" content="教程">
+<meta property="article:tag" content="AI自动化">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://blog.fxcxy.com/img/openclaw-skills-workbench.png">
+  
+  
+  
+  <title>AI 助手最怕的不是不聪明，而是不会干活：OpenClaw 5000+ Skills 实战指南 - 自由码农</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+  
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_4443546_u6jwvi2qcka.css">
+<link rel="stylesheet" href="/css/social-share.min.css">
+<link rel="stylesheet" href="/css/myreward.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"blog.fxcxy.com","root":"/","version":"1.9.7","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"复制"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"J7kyQXV9R3CXOiA1eubrlflY-gzGzoHsz","app_key":"qHZzPzRcvsutXvHvBewqGmhw","server_url":"https://leancloud.fxcxy.com","path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+
+  
+    <!-- Google tag (gtag.js) -->
+    <script async>
+      if (!Fluid.ctx.dnt) {
+        Fluid.utils.createScript("https://www.googletagmanager.com/gtag/js?id=", function() {
+          window.dataLayer = window.dataLayer || [];
+          function gtag() {
+            dataLayer.push(arguments);
+          }
+          gtag('js', new Date());
+          gtag('config', '');
+        });
+      }
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+    
+  
+
+
+
+  
+<meta name="generator" content="Hexo 7.1.1"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>自由码农</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="AI 助手最怕的不是不聪明，而是不会干活：OpenClaw 5000+ Skills 实战指南"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2026-03-18 14:55" pubdate>
+          2026年3月18日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          3.7k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          32 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="leancloud-page-views"></span>次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">AI 助手最怕的不是不聪明，而是不会干活：OpenClaw 5000+ Skills 实战指南</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <p>很多 AI 助手的问题，从来不是回答得不够聪明，而是你真把任务交给它时，它推进不下去。</p>
+<p>你让它查资料，它能说一堆；你让它整理工作流，它也能讲概念；可一到真正要接工具、接渠道、接自动化、接项目上下文的时候，大多数产品又会退回成一个“会聊天的输入框”。</p>
+<p>这也是我最近看 OpenClaw 时最强烈的感觉。单看“本地运行的个人 AI 助手”这个标签，它很容易被理解成另一个聊天入口。但如果你往下看它的 Skills 生态、ClawHub 安装方式，以及 workspace 级别的技能优先级，你会发现它更像一个可以自己拼装的 <strong>AI 工作台</strong>：你不是只在“用一个助手”，而是在给这个助手不断装能力。</p>
+<p>这件事一旦想明白，OpenClaw 的价值就完全不一样了。</p>
+<p>它不再只是“回答问题”，而是能往你已经在用的环境里扩展：消息渠道、自动化、浏览器操作、外部服务连接、定时任务、研究工具、开发工具，最后拼成你自己的工作流。</p>
+<blockquote>
+<p>如果你更愿意把 AI 当成“可组装的工作台”而不是“另一个聊天框”，那 OpenClaw 这条路就很值得看。</p>
+</blockquote>
+<hr>
+<h2 id="为什么有些-AI-助手看起来很强，一到干活就掉线？"><a href="#为什么有些-AI-助手看起来很强，一到干活就掉线？" class="headerlink" title="为什么有些 AI 助手看起来很强，一到干活就掉线？"></a>为什么有些 AI 助手看起来很强，一到干活就掉线？</h2><p>OpenClaw 官方对自己的描述很直接：它是一个运行在你自己设备上的 personal AI assistant。</p>
+<p>安装方式也非常明确，官方推荐路径是先装 CLI，再走 onboard 向导：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">npm install -g openclaw@latest<br>openclaw onboard --install-daemon<br></code></pre></td></tr></table></figure>
+
+<p>这一点很重要，因为 <code>openclaw onboard</code> 不是一个“装完就结束”的命令，它实际在帮你把 gateway、workspace、channels、skills 这些东西串起来。也就是说，OpenClaw 从一开始就不是把“聊天”当成唯一入口，而是把 <strong>控制面 + 技能层 + 渠道层</strong> 一起搭起来。</p>
+<p>如果只把它当成另一个 AI 对话框，确实不一定有多大吸引力；但如果把它理解为“一个能持续加能力的个人自动化中枢”，它就很值得研究了。</p>
+<p>从官方 README 和生态资料里，至少有几个信号很明显：</p>
+<ul>
+<li>OpenClaw 自己把 skills 放在核心能力里，而不是边缘插件</li>
+<li>Skills 支持 bundled、managed、workspace 多种来源</li>
+<li>社区已经围绕 Skills 做出了公开目录和安装工作流</li>
+<li>不同 Skill 可以对应不同场景，而不是只服务一个固定用例</li>
+</ul>
+<p>简单说，<strong>OpenClaw 的增长点不是单个模型回答得多聪明，而是你能不能把它变成一个真的能替你做事的系统。</strong></p>
+<hr>
+<h2 id="先别急着装一堆-Skill，先把“工作台思路”搭起来"><a href="#先别急着装一堆-Skill，先把“工作台思路”搭起来" class="headerlink" title="先别急着装一堆 Skill，先把“工作台思路”搭起来"></a>先别急着装一堆 Skill，先把“工作台思路”搭起来</h2><p>很多人第一次看到几千个 Skill，第一反应会很兴奋，第二反应通常就是混乱。</p>
+<p>因为 Skill 多，不代表你该装很多；真正有价值的，是先想清楚你要解决哪几类重复问题。</p>
+<p>我觉得最实用的方式，不是按“这个 Skill 看起来酷不酷”来装，而是按下面 4 类任务来拆：</p>
+<ol>
+<li><strong>信息输入</strong>：抓资料、查网页、搜 GitHub、拉文档、收集上下文</li>
+<li><strong>信息处理</strong>：总结、筛选、分类、对比、生成中间结果</li>
+<li><strong>外部动作</strong>：发消息、调接口、操作浏览器、执行命令、跑自动化</li>
+<li><strong>持续运行</strong>：定时任务、重复流程、固定模板、长期工作流</li>
+</ol>
+<p>一旦按这个思路看，你就会发现 OpenClaw Skills 不是“功能列表”，而是“能力模块”。</p>
+<h3 id="你可以把-OpenClaw-想成这条链路"><a href="#你可以把-OpenClaw-想成这条链路" class="headerlink" title="你可以把 OpenClaw 想成这条链路"></a>你可以把 OpenClaw 想成这条链路</h3><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs text">需求出现<br>   ↓<br>找到合适 Skill<br>   ↓<br>装到 OpenClaw / workspace<br>   ↓<br>把 Skill 串进自己的工作流<br>   ↓<br>让 AI 不只是回答，而是真的往前推进任务<br></code></pre></td></tr></table></figure>
+
+<p>比如你是开发者，你可以把它拼成：</p>
+<ul>
+<li>研究资料 Skill</li>
+<li>GitHub &#x2F; issue &#x2F; PR 相关 Skill</li>
+<li>浏览器自动化 Skill</li>
+<li>日程或通知 Skill</li>
+<li>安全扫描 &#x2F; vetting Skill</li>
+</ul>
+<p>如果你是内容作者，组合又会不一样：</p>
+<ul>
+<li>热点发现 Skill</li>
+<li>网页提取 Skill</li>
+<li>素材整理 Skill</li>
+<li>发布前检查 Skill</li>
+<li>社媒分发 Skill</li>
+</ul>
+<p>这才是它最有意思的地方：<strong>同样是一个 OpenClaw，不同人装出来的是不同的“个人操作系统”。</strong></p>
+<hr>
+<h2 id="5000-Skills-从哪来？先看-ClawHub-和社区目录"><a href="#5000-Skills-从哪来？先看-ClawHub-和社区目录" class="headerlink" title="5000+ Skills 从哪来？先看 ClawHub 和社区目录"></a>5000+ Skills 从哪来？先看 ClawHub 和社区目录</h2><p>这波生态最让我有感觉的，不是“有插件”，而是它已经开始形成比较像样的公开供给。</p>
+<p>社区整理的 <code>awesome-openclaw-skills</code> 提供了一个非常直观的信号：它把 Skills 按类别分组，方便你按用途找，而不是盲目搜关键词。</p>
+<p>里面提到几个关键信息：</p>
+<ul>
+<li>ClawHub 是 OpenClaw 的公开 Skill registry</li>
+<li>社区整理列表里已经收录了 <strong>5000+ Skills</strong></li>
+<li>官方公开注册表在 2026-02-28 时提到的规模更大，达到 <strong>13,729</strong> 个 community-built skills</li>
+<li>社区列表同时明确做了过滤，去掉了垃圾、重复、低质量和可疑项</li>
+</ul>
+<p>这意味着什么？</p>
+<p>意味着现在看 OpenClaw，已经不能只看“本体功能”，还得看它有没有形成一个你能持续拿来用的能力市场。至少从趋势上看，这件事已经开始成型了。</p>
+<p>而且它不是那种“看起来很多，其实没法装”的生态。它给出了明确安装方式。</p>
+<hr>
+<h2 id="最短可执行路径：先装-OpenClaw，再装第一个-Skill"><a href="#最短可执行路径：先装-OpenClaw，再装第一个-Skill" class="headerlink" title="最短可执行路径：先装 OpenClaw，再装第一个 Skill"></a>最短可执行路径：先装 OpenClaw，再装第一个 Skill</h2><p>如果你今天就想开始，不要先研究半天架构，直接按最短路径走。</p>
+<h3 id="第一步：装-OpenClaw"><a href="#第一步：装-OpenClaw" class="headerlink" title="第一步：装 OpenClaw"></a>第一步：装 OpenClaw</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">npm install -g openclaw@latest<br>openclaw onboard --install-daemon<br></code></pre></td></tr></table></figure>
+
+<p>如果你需要明确指定认证来源，社区资料里也给了 OpenAI 方向的 onboard 方式：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">openclaw onboard --auth-choice openai-api-key<br><span class="hljs-comment"># 或者使用订阅方式</span><br>openclaw onboard --auth-choice openai-codex<br></code></pre></td></tr></table></figure>
+
+<p>这类命令的好处是，你不是在手工拼环境，而是在用它自己提供的入口把运行时和认证拉起来。</p>
+<h3 id="第二步：从-ClawHub-安装-Skill"><a href="#第二步：从-ClawHub-安装-Skill" class="headerlink" title="第二步：从 ClawHub 安装 Skill"></a>第二步：从 ClawHub 安装 Skill</h3><p>最直接的方法是：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">clawhub install &lt;skill-slug&gt;<br></code></pre></td></tr></table></figure>
+
+<p>这条命令非常关键，因为它把“发现 Skill”和“装 Skill”两件事连起来了。对普通用户来说，真正能改变使用门槛的，不是 Skill 多，而是安装动作足够短。</p>
+<h3 id="第三步：理解-Skill-放在哪"><a href="#第三步：理解-Skill-放在哪" class="headerlink" title="第三步：理解 Skill 放在哪"></a>第三步：理解 Skill 放在哪</h3><p>如果你不想全局安装，或者你希望一个项目一套能力，社区资料也给了手动安装路径：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 全局</span><br>~/.openclaw/skills/<br><br><span class="hljs-comment"># 项目级 / workspace 级</span><br>&lt;project&gt;/skills/<br></code></pre></td></tr></table></figure>
+
+<p>而且它明确说明了优先级：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs text">Workspace &gt; Local &gt; Bundled<br></code></pre></td></tr></table></figure>
+
+<p>这一条非常实用。它意味着：</p>
+<ul>
+<li>你可以保留一套全局通用 Skill</li>
+<li>也可以给某个项目单独放一套 Skill</li>
+<li>项目里的 Skill 可以覆盖默认能力</li>
+</ul>
+<h3 id="一个最小可执行例子"><a href="#一个最小可执行例子" class="headerlink" title="一个最小可执行例子"></a>一个最小可执行例子</h3><p>如果你现在就想试，可以先假设自己要搭一个“研究型工作台”：</p>
+<ol>
+<li>先完成 <code>openclaw onboard --install-daemon</code></li>
+<li>去 ClawHub 找一个搜索或资料整理相关的 Skill</li>
+<li>用 <code>clawhub install &lt;skill-slug&gt;</code> 装进去</li>
+<li>连续给它 3 个真实任务测试：<ul>
+<li>查一个新项目</li>
+<li>整理一篇文档</li>
+<li>输出一份可执行结论</li>
+</ul>
+</li>
+</ol>
+<p>只要这 3 个任务能稳定跑通，你就已经不是“在试一个 AI 产品”，而是在搭自己的第一块能力面板了。</p>
+<p><img src="/img/openclaw-multi-agent.png" srcset="/img/loading.gif" lazyload></p>
+<p>如果你经常在不同项目、不同客户、不同内容工作流之间切换，这个设计非常值钱。因为它天然支持“<strong>场景隔离</strong>”。</p>
+<hr>
+<h2 id="为什么我觉得-workspace-级-Skill-才是-OpenClaw-的关键"><a href="#为什么我觉得-workspace-级-Skill-才是-OpenClaw-的关键" class="headerlink" title="为什么我觉得 workspace 级 Skill 才是 OpenClaw 的关键"></a>为什么我觉得 workspace 级 Skill 才是 OpenClaw 的关键</h2><p>真正让我觉得 OpenClaw 有潜力的，不是“它支持很多平台”，而是它把能力组织成了 workspace 可组合的结构。</p>
+<p>这会直接改变你的用法。</p>
+<p>传统的 AI 工具，通常是这样的：</p>
+<ul>
+<li>一个统一入口</li>
+<li>一套固定功能</li>
+<li>少量集成</li>
+<li>大家用的是同一个产品逻辑</li>
+</ul>
+<p>但 OpenClaw 这种 Skill + workspace 的思路更像：</p>
+<ul>
+<li>一个基础运行时</li>
+<li>一组可更换的能力模块</li>
+<li>每个项目可以有自己的能力集合</li>
+<li>你可以按工作流来组织 AI，而不是按厂商给你的功能表来用</li>
+</ul>
+<p>举个最接地气的例子。</p>
+<p>如果你做内容生产，你完全可以给博客项目单独准备一个 <code>skills/</code> 目录，只放这几类能力：</p>
+<ul>
+<li>热点抓取</li>
+<li>网页信息提取</li>
+<li>GitHub 项目研究</li>
+<li>标题生成</li>
+<li>发布前检查</li>
+<li>渠道分发</li>
+</ul>
+<p>这样你的 OpenClaw 进到这个 workspace 里，天然就是“内容工作台”。</p>
+<p>如果你切到另一个代码仓库，又可以换成另一套：</p>
+<ul>
+<li>GitHub 工作流</li>
+<li>PR 检查</li>
+<li>构建观察</li>
+<li>浏览器回归验证</li>
+<li>文档补全</li>
+</ul>
+<p>这时你会发现，OpenClaw 的本质其实很像：</p>
+<p><strong>把大模型从“一个通用聊天框”变成“一个跟着项目切换的能力环境”。</strong></p>
+<p>这比单纯比较哪个模型更聪明，更有现实价值。</p>
+<hr>
+<h2 id="Skill-多，不代表可以乱装，安全反而是第一问题"><a href="#Skill-多，不代表可以乱装，安全反而是第一问题" class="headerlink" title="Skill 多，不代表可以乱装，安全反而是第一问题"></a>Skill 多，不代表可以乱装，安全反而是第一问题</h2><p>生态一旦起来，安全就会变成第一位的问题。</p>
+<p>这一点社区资料写得很直白：Skills 是 curated，不是 audited。也就是说，能被收录，不等于绝对安全。</p>
+<p>更关键的是，Skills 这种东西天然比普通提示词更敏感，因为它可能涉及：</p>
+<ul>
+<li>外部服务权限</li>
+<li>浏览器操作</li>
+<li>命令执行</li>
+<li>数据处理</li>
+<li>隐藏的 prompt injection 风险</li>
+<li>有害代码或恶意 payload</li>
+</ul>
+<p>社区整理页甚至明确提醒了这些风险，并建议在安装前审查来源和代码。这一点我非常认同。</p>
+<p>所以更稳的用法不是“看到一个好玩的就装”，而是遵守 3 条最基本原则：</p>
+<h3 id="1-先看来源，再看描述"><a href="#1-先看来源，再看描述" class="headerlink" title="1. 先看来源，再看描述"></a>1. 先看来源，再看描述</h3><p>优先选来源清晰、用途明确、维护状态正常的 Skill。不要因为名字很酷就直接装。</p>
+<h3 id="2-优先在项目级-workspace-里试"><a href="#2-优先在项目级-workspace-里试" class="headerlink" title="2. 优先在项目级 workspace 里试"></a>2. 优先在项目级 workspace 里试</h3><p>不要一上来装全局。先放到 <code>&lt;project&gt;/skills/</code>，只在当前工作流试用，风险更可控。</p>
+<h3 id="3-把-Skill-当成代码依赖，而不是提示词收藏"><a href="#3-把-Skill-当成代码依赖，而不是提示词收藏" class="headerlink" title="3. 把 Skill 当成代码依赖，而不是提示词收藏"></a>3. 把 Skill 当成代码依赖，而不是提示词收藏</h3><p>很多人会把 Skill 当成“高级 prompt”，其实不是。它更接近“带行为能力的依赖项”。</p>
+<p>所以安装 Skill 的心态应该更像：</p>
+<ul>
+<li>装 npm 包之前先看说明</li>
+<li>接第三方服务之前先看权限</li>
+<li>跑自动化之前先明确边界</li>
+</ul>
+<p>这一层如果不做好，Skill 越多，系统越脆。</p>
+<hr>
+<h2 id="我会怎么搭一个“能马上产生价值”的-OpenClaw-工作台"><a href="#我会怎么搭一个“能马上产生价值”的-OpenClaw-工作台" class="headerlink" title="我会怎么搭一个“能马上产生价值”的 OpenClaw 工作台"></a>我会怎么搭一个“能马上产生价值”的 OpenClaw 工作台</h2><p>如果让我今天就开始搭，我不会追求“最强”，我会先追求“能用”。</p>
+<p>我会按下面这个顺序来：</p>
+<table>
+<thead>
+<tr>
+<th>组合</th>
+<th>解决什么问题</th>
+<th>适合谁</th>
+<th>先装什么类型的 Skill</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>信息研究台</td>
+<td>减少搜资料、切窗口、手工整理</td>
+<td>开发者 &#x2F; 研究者 &#x2F; 内容作者</td>
+<td>搜索、网页提取、GitHub、总结分类</td>
+</tr>
+<tr>
+<td>内容生产台</td>
+<td>把选题、资料整理、成稿前准备串起来</td>
+<td>博客作者 &#x2F; 自媒体 &#x2F; 运营</td>
+<td>热点发现、资料抓取、标题摘要、发布检查</td>
+</tr>
+<tr>
+<td>开发协作台</td>
+<td>降低 PR、文档、验证的重复操作</td>
+<td>开发者 &#x2F; 独立开发者 &#x2F; 技术团队</td>
+<td>GitHub、代码搜索、浏览器自动化、安全审计</td>
+</tr>
+</tbody></table>
+<h3 id="组合-1：信息研究台"><a href="#组合-1：信息研究台" class="headerlink" title="组合 1：信息研究台"></a>组合 1：信息研究台</h3><p>目标：减少我自己到处找资料、复制链接、切窗口的时间。</p>
+<p>需要的能力：</p>
+<ul>
+<li>搜索 &#x2F; 研究类 Skill</li>
+<li>GitHub 项目读取类 Skill</li>
+<li>网页提取类 Skill</li>
+<li>总结 &#x2F; 分类类 Skill</li>
+</ul>
+<p>结果是：一个新工具火了，我不用手工拆十几个标签页，OpenClaw 就可以先把资料收齐、归类，再给我一版可读结论。</p>
+<h3 id="组合-2：内容生产台"><a href="#组合-2：内容生产台" class="headerlink" title="组合 2：内容生产台"></a>组合 2：内容生产台</h3><p>目标：把“找到值得写的话题”这件事自动化。</p>
+<p>需要的能力：</p>
+<ul>
+<li>热点发现</li>
+<li>工具资料抓取</li>
+<li>文章大纲生成</li>
+<li>标题与摘要生成</li>
+<li>发布前检查</li>
+</ul>
+<p>这类组合特别适合做博客、公众号、社媒内容的人，因为它解决的不是“帮我写一句话”，而是“帮我把整条内容工作流推进到下一步”。</p>
+<h3 id="组合-3：开发协作台"><a href="#组合-3：开发协作台" class="headerlink" title="组合 3：开发协作台"></a>组合 3：开发协作台</h3><p>目标：减少上下文切换和重复操作。</p>
+<p>需要的能力：</p>
+<ul>
+<li>GitHub &#x2F; issue &#x2F; PR 类 Skill</li>
+<li>代码搜索 &#x2F; 文档搜索类 Skill</li>
+<li>浏览器自动化类 Skill</li>
+<li>安全或审计类 Skill</li>
+</ul>
+<p>这时 OpenClaw 更像一个站在项目旁边的执行层，而不是单纯回答问题的机器人。</p>
+<p><img src="/img/openclaw-agent-tutorial.png" srcset="/img/loading.gif" lazyload></p>
+<p>这 3 套里，我最推荐普通人先做第一套。因为一旦“搜资料 + 整理资料”这一步被自动化，你很快就能体会到 Skill 工作台和普通聊天助手的差别。</p>
+<hr>
+<h2 id="这套东西为什么值得现在就上手"><a href="#这套东西为什么值得现在就上手" class="headerlink" title="这套东西为什么值得现在就上手"></a>这套东西为什么值得现在就上手</h2><p>我觉得原因只有一个：它已经开始从“概念”进入“可拼装”。</p>
+<p>以前很多 AI 产品的问题是，演示看起来很强，但落地时你只能照着厂商给的玩法用。OpenClaw 这条路不太一样，它在把能力开放成一个可以继续安装、继续覆盖、继续按 workspace 重组的系统。</p>
+<p>对普通用户来说，这会带来两个现实收益：</p>
+<ul>
+<li><p><strong>收益一：复用你的高频工作流</strong><br>不是每次从头提示，而是把常用能力稳定装进去。</p>
+</li>
+<li><p><strong>收益二：让 AI 更贴近项目上下文</strong><br>同一个人面对不同项目时，本来就需要不同能力组合。workspace 级 Skill 正好解决这个问题。</p>
+</li>
+</ul>
+<p>如果你最近正好在找一种方式，把 AI 从“偶尔问一问”变成“持续替你推进事情”，那 OpenClaw 值得你花半小时认真装一次。</p>
+<p>不是因为它最热，而是因为它已经给出了一个比较清晰的方向：</p>
+<p><strong>AI 助手的下一步，不是再多一个聊天窗口，而是成为一套可安装、可组合、可按项目切换的能力工作台。</strong></p>
+<hr>
+<h2 id="最后给你一个最小行动清单"><a href="#最后给你一个最小行动清单" class="headerlink" title="最后给你一个最小行动清单"></a>最后给你一个最小行动清单</h2><p>如果你看完只想做一件事，我建议就按这个顺序：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">npm install -g openclaw@latest<br>openclaw onboard --install-daemon<br>clawhub install &lt;skill-slug&gt;<br></code></pre></td></tr></table></figure>
+
+<p>然后只做两件事：</p>
+<ol>
+<li>选一个你每周都会重复的任务</li>
+<li>只装 1 到 3 个真正围绕这个任务的 Skill</li>
+</ol>
+<p>别贪多。</p>
+<h3 id="我建议你优先试的-3-个动作"><a href="#我建议你优先试的-3-个动作" class="headerlink" title="我建议你优先试的 3 个动作"></a>我建议你优先试的 3 个动作</h3><ul>
+<li><strong>动作 1：先装，不折腾架构</strong><br>不要一开始就研究所有概念，先把 OpenClaw 跑起来。</li>
+<li><strong>动作 2：只围绕一个真实任务选 Skill</strong><br>比如“收集资料”“整理文档”“检查 PR”，不要为了凑热闹装一堆。</li>
+<li><strong>动作 3：优先在 workspace 里试运行</strong><br>先把风险和范围控制住，再决定哪些 Skill 值得变成长期能力。</li>
+</ul>
+<p>先把一个小工作流跑通，你就会知道自己到底需要什么类型的 Skill，也会更容易看懂 OpenClaw 这波生态真正值钱的地方。</p>
+<p>对我来说，这件事最吸引人的地方，不是“又一个 AI 工具”，而是：</p>
+<p><strong>终于有一个方向，开始让 AI 助手变成可以自己搭、自己改、自己按项目换能力的工作台。</strong></p>
+
+                
+              </div>
+            
+
+              <!--打赏-->
+              <div class="reward">
+                  <div class="reward-button">赏 <span class="reward-code">
+		<span class="alipay-code"> <img class="alipay-img wdp-appear" src="/img/alipay.png" srcset="/img/loading.gif" lazyload><b>支付宝打赏</b> </span>
+		<span class="wechat-code"> <img class="wechat-img wdp-appear" src="/img/wechat.png" srcset="/img/loading.gif" lazyload><b>微信打赏</b> </span> </span>
+                  </div>
+                  <p class="reward-notice">如果文章对你有帮助，欢迎点击上方按钮打赏作者，更多功能请访问<a href="https://blog.fxcxy.com">博客站</a></p>
+              </div>
+              <!--打赏-->
+              <hr/>
+              <div style="text-align:right;"> <!-- 自己添加的“分享到”模块：开始。用的是 social-share.js。让所有的分享按钮右对齐-->
+
+                  <div class="social-share-container" style="margin-top: 15px;"> <!-- 生成一组分享按钮 -->
+                       <!--如果博客语言是中文，就显示“点击分享到：”，非中文一律显示“Share it:”-->
+                      点击分享到：&nbsp;&nbsp;
+                      
+                  </div>
+                  <!-- 加载 jQuery 库 -->
+                  
+<script src="/js/jquery.min.js"></script>
+
+                  <!-- 导入 qrcode.min.js -->
+                  
+<script src="/js/qrcode.min.js"></script>
+
+                  <!-- 加载 social-share.js 的 js 库，另外还要加载 social-share.js 的 CSS，可以修改 `_config.fluid.yml` 的 `custom_css` 加载，也可以修改 `themes/fluid/layout/_partial/css.ejs` 加载。-->
+                  
+<script src="/js/social-share.min.js"></script>
+
+                  <script>
+                    /* 执行 js 代码，new 一个新对象，详见 social-share.js 在 GitHub 的文档 */
+                    new SocialShare('.social-share-container', {
+                      theme: 'circle',  // 使用圆形主题
+                      // 单独定义wechat分享参数
+                      wechat: {
+                        sort: 1, // 排序参数，数字较小的展示在前面,默认999
+                      },
+                      twitter: {
+                        sort: 2, // 排序参数，数字较小的展示在前面,默认999
+                      },
+                      facebook: {
+                        sort: 3, // 排序参数，数字较小的展示在前面,默认999
+                      }
+                    });
+                  </script>
+              </div> <!-- 自己添加的“分享到”模块：结束。-->
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/AI%E5%B7%A5%E5%85%B7/" class="category-chain-item">AI工具</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/" class="print-no-link">#开发工具</a>
+      
+        <a href="/tags/%E6%95%88%E7%8E%87%E5%B7%A5%E5%85%B7/" class="print-no-link">#效率工具</a>
+      
+        <a href="/tags/%E6%95%99%E7%A8%8B/" class="print-no-link">#教程</a>
+      
+        <a href="/tags/AI%E8%87%AA%E5%8A%A8%E5%8C%96/" class="print-no-link">#AI自动化</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>AI 助手最怕的不是不聪明，而是不会干活：OpenClaw 5000+ Skills 实战指南</div>
+      <div>https://blog.fxcxy.com/2026/03/18/openclaw-skills-workbench/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>独立开发</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2026年3月18日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2026/03/19/nemoclaw-openshell-sandbox-openclaw/" title="AI Agent 最怕权限失控：NemoClaw 把 OpenClaw 关进沙箱后，终于敢持续跑任务了">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">AI Agent 最怕权限失控：NemoClaw 把 OpenClaw 关进沙箱后，终于敢持续跑任务了</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2026/03/17/meta-jemalloc-renewed-commitment/" title="Meta 重启 jemalloc：为什么“基础设施洁癖”才是性能的长期解">
+                        <span class="hidden-mobile">Meta 重启 jemalloc：为什么“基础设施洁癖”才是性能的长期解</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://lib.baomitu.com/valine/1.5.1/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"J7kyQXV9R3CXOiA1eubrlflY-gzGzoHsz","appKey":"qHZzPzRcvsutXvHvBewqGmhw","path":"window.location.pathname","placeholder":"输入您的评论","avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":false},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          var imgSelector = '#valine .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  <div class="footer-links" style="margin: 20px 0 10px 0; text-align: center;">
+    <a href="https://tv.zymn.cc" target="_blank" style="margin: 0 12px; color: #bdbdbd; text-decoration: none; font-weight: 500;">免费电影</a>
+    <a href="https://sl.zymn.cc" target="_blank" style="margin: 0 12px; color: #bdbdbd; text-decoration: none; font-weight: 500;">短链生成器</a>
+    <a href="https://yhjf.zymn.cc" target="_blank" style="margin: 0 12px; color: #bdbdbd; text-decoration: none; font-weight: 500;">隐秘信使</a>
+  </div>
+  
+    <div class="footer-content">
+       <a href="https://www.youtube.com/channel/UCn0Yarp_h6oqn1-QLvlgbDg?sub_confirmation=1" target="_blank" rel="nofollow noopener"><span>Youtube</span></a>- <a href="https://x.com/corder2025" target="_blank" rel="nofollow noopener"><span>X</span></a>- <a href="https://t.me/+FEyFQq_5u004OWU0" target="_blank" rel="nofollow noopener"><span>电报群</span></a>- <a href="https://v.douyin.com/iNpPYY4E/" target="_blank" rel="nofollow noopener"><span>抖音</span></a>- <a href="https://www.ixigua.com/home/103680436540" target="_blank" rel="nofollow noopener"><span>西瓜视频</span></a> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="leancloud-site-pv-container" style="display: none">
+        总访问量 
+        <span id="leancloud-site-pv"></span>
+         次
+      </span>
+    
+    
+      <span id="leancloud-site-uv-container" style="display: none">
+        总访客数 
+        <span id="leancloud-site-uv"></span>
+         人
+      </span>
+    
+    
+
+  
+</div>
+
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script defer src="/js/leancloud.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

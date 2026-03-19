@@ -5,6 +5,31 @@
         <link>https://www.zymn.cc</link>
         <description>欢迎来到我的个人博客！在这里，我将分享关于技术、编程、以及个人成长的经验和见解，帮助你在学习和工作中更进一步。</description>
         <item>
+            <title>从0写一个抖音自动评论工作流Skill</title>
+            <link>https://www.zymn.com/2026/03/19/%E4%BB%8E0%E5%86%99%E4%B8%80%E4%B8%AA%E6%8A%96%E9%9F%B3%E8%87%AA%E5%8A%A8%E8%AF%84%E8%AE%BA%E5%B7%A5%E4%BD%9C%E6%B5%81Skill/</link>
+            <description>很多人知道 Claude Code 很强，但一到“怎么写自己的 Skill”就不知道从哪下手。本文用一个更容易上手的案例——抖音自动评论工作流，带你从 0 理解 Skill 的结构、写法、执行流程和调试方法。</description>
+            <pubDate>Thu, 19 Mar 2026 09:58:39 +0800</pubDate>
+            <category>AI工具</category>
+        </item>
+        <item>
+            <title>AI Agent 最怕权限失控：NemoClaw 把 OpenClaw 关进沙箱后，终于敢持续跑任务了</title>
+            <link>https://www.zymn.com/2026/03/19/nemoclaw-openshell-sandbox-openclaw/</link>
+            <description>很多人想把 AI Agent 持续跑起来，真正卡住的不是模型，而是权限边界：能不能联网、能不能读文件、会不会乱调接口。NVIDIA 开源的 NemoClaw 用 OpenShell 给 OpenClaw 套上一层沙箱，把网络、文件系统、进程和推理出口都管起来，适合想认真把 Agent 跑进工作流的人。</description>
+            <pubDate>Thu, 19 Mar 2026 08:37:32 +0800</pubDate>
+        </item>
+        <item>
+            <title>AI 助手最怕的不是不聪明，而是不会干活：OpenClaw 5000+ Skills 实战指南</title>
+            <link>https://blog.fxcxy.com/2026/03/18/openclaw-skills-workbench/</link>
+            <description>很多 AI 助手看起来很聪明，真正用起来却推进不了任务。OpenClaw 的特别之处，在于它可以通过 Skills 变成一套按项目切换、按工作流组装的 AI 工作台。本文用安装、选 Skill、装 Skill、组合工作流四个步骤，讲清楚怎么把 5000+ 社区 Skills 变成今天就能用的自动化能力。</description>
+            <pubDate>Wed, 18 Mar 2026 14:55:33 +0800</pubDate>
+        </item>
+        <item>
+            <title>Meta 重启 jemalloc：为什么“基础设施洁癖”才是性能的长期解</title>
+            <link>https://blog.fxcxy.com/2026/03/17/meta-jemalloc-renewed-commitment/</link>
+            <description>Meta 宣布重新投入 jemalloc：清技术债、现代化代码、优化 Hugepage/ARM64，并把仓库重新开放。本文用开发者视角讲清内存分配器为什么决定性能上限，以及你在服务端/容器环境里该怎么用 jemalloc。</description>
+            <pubDate>Tue, 17 Mar 2026 08:44:14 +0800</pubDate>
+        </item>
+        <item>
             <title>AI 调试浏览器终于不用反复登录了：Chrome DevTools MCP 实战指南</title>
             <link>https://blog.fxcxy.com/2026/03/16/chrome-devtools-mcp-ai-debugging/</link>
             <description>Chrome 官方发布 DevTools MCP Server，让 AI 编程助手（Claude、Cursor、Gemini）直接接管你的浏览器调试会话。支持复用已登录的 Chrome 实例、分析网络请求、截图、执行自动化操作，26 个工具覆盖日常调试全场景。</description>
