@@ -5,15 +5,29 @@
         <link>https://www.zymn.cc</link>
         <description>欢迎来到我的个人博客！在这里，我将分享关于技术、编程、以及个人成长的经验和见解，帮助你在学习和工作中更进一步。</description>
         <item>
+            <title>别再手动盯盘了：用 OpenClaw 搭一个 A 股 AI 盯盘助手</title>
+            <link>https://www.zymn.cc/2026/03/20/%E5%88%AB%E5%86%8D%E6%89%8B%E5%8A%A8%E7%9B%AF%E7%9B%98%E4%BA%86%EF%BC%9A%E7%94%A8-OpenClaw-%E6%90%AD%E4%B8%80%E4%B8%AA-A-%E8%82%A1-AI-%E7%9B%AF%E7%9B%98%E5%8A%A9%E6%89%8B/</link>
+            <description>这篇文章把一篇 X 上的 OpenClaw 股票监控教程，改写成更适合 A 股投资者落地的版本：从为什么需要 AI 盯盘，到如何配置、如何提问、怎么避坑，一次讲清楚。</description>
+            <pubDate>Fri, 20 Mar 2026 11:04:25 +0800</pubDate>
+            <category>AI工具</category>
+        </item>
+        <item>
+            <title>Claude Code Channels 实战：把 Telegram 和 Discord 变成你的远程 AI 工作台</title>
+            <link>https://www.zymn.cc/2026/03/20/claude-code-channels-telegram-discord/</link>
+            <description>Claude Code Channels 能把 Telegram、Discord 里的消息直接推到正在运行的 Claude Code 会话里。本文用安装、配对、权限控制、典型场景四个部分讲清楚怎么把它搭成一个真正能远程收消息、回消息、处理任务的 AI 工作台。</description>
+            <pubDate>Fri, 20 Mar 2026 08:40:00 +0800</pubDate>
+            <category>AI工具</category>
+        </item>
+        <item>
             <title>从0写一个抖音自动评论工作流Skill</title>
-            <link>https://www.zymn.com/2026/03/19/%E4%BB%8E0%E5%86%99%E4%B8%80%E4%B8%AA%E6%8A%96%E9%9F%B3%E8%87%AA%E5%8A%A8%E8%AF%84%E8%AE%BA%E5%B7%A5%E4%BD%9C%E6%B5%81Skill/</link>
+            <link>https://www.zymn.cc/2026/03/19/%E4%BB%8E0%E5%86%99%E4%B8%80%E4%B8%AA%E6%8A%96%E9%9F%B3%E8%87%AA%E5%8A%A8%E8%AF%84%E8%AE%BA%E5%B7%A5%E4%BD%9C%E6%B5%81Skill/</link>
             <description>很多人知道 Claude Code 很强，但一到“怎么写自己的 Skill”就不知道从哪下手。本文用一个更容易上手的案例——抖音自动评论工作流，带你从 0 理解 Skill 的结构、写法、执行流程和调试方法。</description>
             <pubDate>Thu, 19 Mar 2026 09:58:39 +0800</pubDate>
             <category>AI工具</category>
         </item>
         <item>
             <title>AI Agent 最怕权限失控：NemoClaw 把 OpenClaw 关进沙箱后，终于敢持续跑任务了</title>
-            <link>https://www.zymn.com/2026/03/19/nemoclaw-openshell-sandbox-openclaw/</link>
+            <link>https://www.zymn.cc/2026/03/19/nemoclaw-openshell-sandbox-openclaw/</link>
             <description>很多人想把 AI Agent 持续跑起来，真正卡住的不是模型，而是权限边界：能不能联网、能不能读文件、会不会乱调接口。NVIDIA 开源的 NemoClaw 用 OpenShell 给 OpenClaw 套上一层沙箱，把网络、文件系统、进程和推理出口都管起来，适合想认真把 Agent 跑进工作流的人。</description>
             <pubDate>Thu, 19 Mar 2026 08:37:32 +0800</pubDate>
         </item>
