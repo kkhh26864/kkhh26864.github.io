@@ -5,6 +5,13 @@
         <link>https://www.zymn.cc</link>
         <description>欢迎来到我的个人博客！在这里，我将分享关于技术、编程、以及个人成长的经验和见解，帮助你在学习和工作中更进一步。</description>
         <item>
+            <title>别再只会装 Skills 了：照着这份 OpenClaw 用例库，3 步搭出自己的自动化工作流</title>
+            <link>https://www.zymn.cc/2026/03/21/%E7%94%A8OpenClaw%E7%94%A8%E4%BE%8B%E5%BA%93%E6%90%AD%E8%87%AA%E5%8A%A8%E5%8C%96%E5%B7%A5%E4%BD%9C%E6%B5%81/</link>
+            <description>很多人装了 OpenClaw 也只是在聊天，真正卡住的不是能力不够，而是不知道先做什么。这篇文章用 awesome-openclaw-usecases 里的真实案例，教你怎么从“看案例”走到“搭出自己的自动化工作流”。</description>
+            <pubDate>Sat, 21 Mar 2026 21:49:02 +0800</pubDate>
+            <category>AI实战</category>
+        </item>
+        <item>
             <title>别再手动盯盘了：用 OpenClaw 搭一个 A 股 AI 盯盘助手</title>
             <link>https://www.zymn.cc/2026/03/20/%E5%88%AB%E5%86%8D%E6%89%8B%E5%8A%A8%E7%9B%AF%E7%9B%98%E4%BA%86%EF%BC%9A%E7%94%A8-OpenClaw-%E6%90%AD%E4%B8%80%E4%B8%AA-A-%E8%82%A1-AI-%E7%9B%AF%E7%9B%98%E5%8A%A9%E6%89%8B/</link>
             <description>这篇文章把一篇 X 上的 OpenClaw 股票监控教程，改写成更适合 A 股投资者落地的版本：从为什么需要 AI 盯盘，到如何配置、如何提问、怎么避坑，一次讲清楚。</description>
