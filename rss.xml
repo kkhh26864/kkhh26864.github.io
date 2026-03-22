@@ -5,6 +5,20 @@
         <link>https://www.zymn.cc</link>
         <description>欢迎来到我的个人博客！在这里，我将分享关于技术、编程、以及个人成长的经验和见解，帮助你在学习和工作中更进一步。</description>
         <item>
+            <title>Claude Code + Codex 怎么分工？我用这套双 AI 编程流，把写代码到提 PR 串起来了</title>
+            <link>https://www.zymn.cc/2026/03/22/claude-code-codex-workflow/</link>
+            <description>只装一个 AI 编程工具，很多人最后都会卡在边界上。这篇文章基于 Claude Code 官方文档和 Codex 官方 README，讲清楚两者各自擅长什么、怎么分工，以及怎么把它们接成一条更顺手的双 AI 编程工作流。</description>
+            <pubDate>Sun, 22 Mar 2026 10:45:39 +0800</pubDate>
+            <category>AI实战</category>
+        </item>
+        <item>
+            <title>OpenClaw Skills 太多不会挑？这份 5000+ 技能清单，教你 10 分钟搭出能落地的工作流</title>
+            <link>https://www.zymn.cc/2026/03/22/openclaw-skills-guide/</link>
+            <description>Skills 越多，很多人越容易装一堆却用不起来。这篇文章基于 awesome-openclaw-skills 和 ClawSkills 的公开信息，教你怎么从 5000+ OpenClaw Skills 里快速筛出真正值得安装的那几个，并拼成一个能落地的工作流。</description>
+            <pubDate>Sun, 22 Mar 2026 06:07:42 +0800</pubDate>
+            <category>AI实战</category>
+        </item>
+        <item>
             <title>别再只会装 Skills 了：照着这份 OpenClaw 用例库，3 步搭出自己的自动化工作流</title>
             <link>https://www.zymn.cc/2026/03/21/%E7%94%A8OpenClaw%E7%94%A8%E4%BE%8B%E5%BA%93%E6%90%AD%E8%87%AA%E5%8A%A8%E5%8C%96%E5%B7%A5%E4%BD%9C%E6%B5%81/</link>
             <description>很多人装了 OpenClaw 也只是在聊天，真正卡住的不是能力不够，而是不知道先做什么。这篇文章用 awesome-openclaw-usecases 里的真实案例，教你怎么从“看案例”走到“搭出自己的自动化工作流”。</description>
