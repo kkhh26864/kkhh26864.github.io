@@ -33,7 +33,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://blog.fxcxy.com/img/openclaw-onboard-guide.png">
 <meta property="article:published_time" content="2026-03-22T22:07:36.000Z">
-<meta property="article:modified_time" content="2026-03-22T22:11:26.735Z">
+<meta property="article:modified_time" content="2026-03-23T12:27:54.844Z">
 <meta property="article:author" content="spatacus">
 <meta property="article:tag" content="AI工具">
 <meta property="article:tag" content="OpenClaw">
@@ -333,6 +333,8 @@
 <p>很多人第一次接触这类 AI Agent 工具，都会在几个地方反复踩坑：Node 版本不对、装完不知道该先跑什么、Gateway 状态没确认、升级后配置没迁移、明明命令能执行但助手就是不稳定。结果不是能力不够，而是第一条链路没有跑顺。</p>
 <p>这篇文章就只解决一件事：<strong>用 OpenClaw 官方推荐的 onboard 流程，把一个能长期运行的个人 AI 助手搭起来，并顺手把后续升级避坑一起讲清楚。</strong> 如果你想要的是一套今天就能用、后面还能继续扩展到 Telegram、Slack、Discord 等渠道的方案，这一篇正好适合。</p>
 <h2 id="为什么很多人安装了-OpenClaw，还是很快放弃？"><a href="#为什么很多人安装了-OpenClaw，还是很快放弃？" class="headerlink" title="为什么很多人安装了 OpenClaw，还是很快放弃？"></a>为什么很多人安装了 OpenClaw，还是很快放弃？</h2><p>表面上看，OpenClaw 的安装并不复杂。官方给了安装脚本，也提供了 Getting Started、Updating、Channels 等文档，README 里甚至直接写明了推荐路径：**优先运行 <code>openclaw onboard</code>**。</p>
+<img src="/2026/03/23/openclaw-onboard-guide/inline-01-openclaw.png" srcset="/img/loading.gif" lazyload class="" title="为什么很多人安装了 OpenClaw，还是很快放弃 示意图">
+
 <p>但真正让新手放弃的，通常不是某一条命令报错，而是下面这几个问题叠在一起：</p>
 <ul>
 <li>不知道自己当前 Node 版本是否满足要求</li>
@@ -343,6 +345,8 @@
 </ul>
 <p>如果你把 OpenClaw 只当成“终端里运行一次的聊天工具”，体验通常不会稳定。因为从官方设计来看，它更像一套<strong>运行在你自己设备上的个人 AI 助手控制平面</strong>：CLI 只是入口，真正长期工作的，是 Gateway、渠道接入、模型配置和后续技能能力。</p>
 <h2 id="OpenClaw-的推荐安装路径，到底是什么？"><a href="#OpenClaw-的推荐安装路径，到底是什么？" class="headerlink" title="OpenClaw 的推荐安装路径，到底是什么？"></a>OpenClaw 的推荐安装路径，到底是什么？</h2><p>基于官方 README 和 Getting Started 页面，可以先把结论说清楚：</p>
+<img src="/2026/03/23/openclaw-onboard-guide/inline-02-openclaw-2.png" srcset="/img/loading.gif" lazyload class="" title="OpenClaw 的推荐安装路径，到底是什么 示意图">
+
 <ol>
 <li>运行环境优先用 <strong>Node 24</strong>，兼容下限是 <strong>Node 22.16+</strong></li>
 <li>安装完成后，不要自己东拼西凑命令，优先跑：</li>
