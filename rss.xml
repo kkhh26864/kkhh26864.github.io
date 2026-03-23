@@ -5,6 +5,13 @@
         <link>https://www.zymn.cc</link>
         <description>欢迎来到我的个人博客！在这里，我将分享关于技术、编程、以及个人成长的经验和见解，帮助你在学习和工作中更进一步。</description>
         <item>
+            <title>OpenClaw 安装总卡在第一步？用 onboard 10 分钟搭好你的常驻 AI 助手（含升级避坑）</title>
+            <link>https://www.zymn.cc/2026/03/23/openclaw-onboard-guide/</link>
+            <description>很多人不是不会用 OpenClaw，而是卡在安装、Gateway、daemon 和升级这几个最容易出问题的环节。这篇文章基于官方 README 与文档，带你用 onboard 跑通第一套可长期在线的个人 AI 助手。</description>
+            <pubDate>Mon, 23 Mar 2026 06:07:36 +0800</pubDate>
+            <category>AI实战</category>
+        </item>
+        <item>
             <title>Claude Code + Codex 怎么分工？我用这套双 AI 编程流，把写代码到提 PR 串起来了</title>
             <link>https://www.zymn.cc/2026/03/22/claude-code-codex-workflow/</link>
             <description>只装一个 AI 编程工具，很多人最后都会卡在边界上。这篇文章基于 Claude Code 官方文档和 Codex 官方 README，讲清楚两者各自擅长什么、怎么分工，以及怎么把它们接成一条更顺手的双 AI 编程工作流。</description>
