@@ -5,6 +5,13 @@
         <link>https://www.zymn.cc</link>
         <description>欢迎来到我的个人博客！在这里，我将分享关于技术、编程、以及个人成长的经验和见解，帮助你在学习和工作中更进一步。</description>
         <item>
+            <title>Claude Code 效率上不去？把 Hooks、Subagents、Worktree 串起来后，我的开发流终于顺了</title>
+            <link>https://www.zymn.cc/2026/03/24/claude-code-hooks-subagents-worktree/</link>
+            <description>很多人用 Claude Code 还是停留在“会话里问几句、改几行代码”的阶段，效率自然上不去。这篇文章基于 Claude Code 官方文档和《How I'm Productive with Claude Code》，讲清楚怎样用 hooks、subagents、worktree 和多入口能力，把 Claude Code 从聊天工具变成真正能推进任务的开发工作流。</description>
+            <pubDate>Tue, 24 Mar 2026 06:20:00 +0800</pubDate>
+            <category>AI实战</category>
+        </item>
+        <item>
             <title>OpenClaw 安装总卡在第一步？用 onboard 10 分钟搭好你的常驻 AI 助手（含升级避坑）</title>
             <link>https://www.zymn.cc/2026/03/23/openclaw-onboard-guide/</link>
             <description>很多人不是不会用 OpenClaw，而是卡在安装、Gateway、daemon 和升级这几个最容易出问题的环节。这篇文章基于官方 README 与文档，带你用 onboard 跑通第一套可长期在线的个人 AI 助手。</description>
