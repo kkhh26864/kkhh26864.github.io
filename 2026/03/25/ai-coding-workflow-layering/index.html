@@ -1,0 +1,1023 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/logo.png">
+  <link rel="icon" href="/img/logo.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3232532601275150"
+     crossorigin="anonymous"></script>
+    <meta name="twitter:card" content="/img/ai-coding-workflow-layering.png" />
+    <meta name="twitter:site" content="自由码农" />
+    <meta name="twitter:creator" content="@corder2025">
+    <meta name="twitter:title" content="大家都在 AI Coding，为什么你的产出还是没变快？问题不在模型，在工作流分层 - 自由码农" />
+    <meta name="twitter:description" content="为什么很多人已经能用 Claude Code、Codex、OpenClaw 甚至一堆 MCP 和 Skills，实际产出却还是没有明显变快？问题通常不在模型能力，而在工作流没有分层。这篇文章不谈空泛观点，直接拆给你看：个人开发者和小团队怎样把“会用 AI”升级成“能持续交付”的 AI Coding 工作流。" />
+    <meta name="twitter:image" content="/img/ai-coding-workflow-layering.png" />
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="独立开发">
+  <meta name="keywords" content="自由码农,技术博客,工具分享，网站开发，App开发，小程序开发，H5开发">
+  
+    <meta name="description" content="为什么很多人已经能用 Claude Code、Codex、OpenClaw 甚至一堆 MCP 和 Skills，实际产出却还是没有明显变快？问题通常不在模型能力，而在工作流没有分层。这篇文章不谈空泛观点，直接拆给你看：个人开发者和小团队怎样把“会用 AI”升级成“能持续交付”的 AI Coding 工作流。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="大家都在 AI Coding，为什么你的产出还是没变快？问题不在模型，在工作流分层">
+<meta property="og:url" content="https://blog.fxcxy.com/2026/03/25/ai-coding-workflow-layering/index.html">
+<meta property="og:site_name" content="自由码农">
+<meta property="og:description" content="为什么很多人已经能用 Claude Code、Codex、OpenClaw 甚至一堆 MCP 和 Skills，实际产出却还是没有明显变快？问题通常不在模型能力，而在工作流没有分层。这篇文章不谈空泛观点，直接拆给你看：个人开发者和小团队怎样把“会用 AI”升级成“能持续交付”的 AI Coding 工作流。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://blog.fxcxy.com/img/ai-coding-workflow-layering.png">
+<meta property="article:published_time" content="2026-03-25T02:35:00.000Z">
+<meta property="article:modified_time" content="2026-03-25T07:51:38.450Z">
+<meta property="article:author" content="spatacus">
+<meta property="article:tag" content="AI工具">
+<meta property="article:tag" content="OpenClaw">
+<meta property="article:tag" content="Claude Code">
+<meta property="article:tag" content="AI Coding">
+<meta property="article:tag" content="工作流">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://blog.fxcxy.com/img/ai-coding-workflow-layering.png">
+  
+  
+  
+  <title>大家都在 AI Coding，为什么你的产出还是没变快？问题不在模型，在工作流分层 - 自由码农</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+  
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_4443546_u6jwvi2qcka.css">
+<link rel="stylesheet" href="/css/social-share.min.css">
+<link rel="stylesheet" href="/css/myreward.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"blog.fxcxy.com","root":"/","version":"1.9.7","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"复制"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"J7kyQXV9R3CXOiA1eubrlflY-gzGzoHsz","app_key":"qHZzPzRcvsutXvHvBewqGmhw","server_url":"https://leancloud.fxcxy.com","path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+
+  
+    <!-- Google tag (gtag.js) -->
+    <script async>
+      if (!Fluid.ctx.dnt) {
+        Fluid.utils.createScript("https://www.googletagmanager.com/gtag/js?id=", function() {
+          window.dataLayer = window.dataLayer || [];
+          function gtag() {
+            dataLayer.push(arguments);
+          }
+          gtag('js', new Date());
+          gtag('config', '');
+        });
+      }
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+    
+  
+
+
+
+  
+<meta name="generator" content="Hexo 7.1.1"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>自由码农</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="大家都在 AI Coding，为什么你的产出还是没变快？问题不在模型，在工作流分层"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2026-03-25 10:35" pubdate>
+          2026年3月25日 上午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          3.1k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          26 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="leancloud-page-views"></span>次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">大家都在 AI Coding，为什么你的产出还是没变快？问题不在模型，在工作流分层</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <p>这段时间关于 AI Coding 的讨论特别多，但我发现一个很有意思的现象：<strong>会用的人越来越多，真正明显提速的人却没那么多。</strong></p>
+<p>很多人手里已经有一整套工具：Claude Code、Codex、OpenClaw、MCP、Skills、多模型路由、浏览器自动化，配置拉满，看起来像是已经进入了“一个人带一队 AI 员工”的状态。可真到交付时，节奏还是很熟悉：</p>
+<ul>
+<li>一会儿在补 prompt</li>
+<li>一会儿在切模型</li>
+<li>一会儿在看 agent 为什么跑偏</li>
+<li>一会儿又回到自己手动收尾</li>
+</ul>
+<p>最后结果是：<strong>AI 参与度很高，产出速度却没有同步提高。</strong></p>
+<p>所以我越来越认同一个判断：现在阻碍大多数人 AI Coding 提效的，往往已经不是模型能力，而是<strong>工作流没有分层</strong>。</p>
+<p>如果你的感觉也是“AI 很强，但我还是没快到哪去”，问题大概率不在你没找到更强的模型，而在于你现在还把 AI 当成“随叫随到的万能打工人”，而不是一条能持续推进任务的执行流水线。</p>
+<h2 id="先说结论：AI-Coding-变快，不是因为模型更强，而是因为你把任务拆成了不同层"><a href="#先说结论：AI-Coding-变快，不是因为模型更强，而是因为你把任务拆成了不同层" class="headerlink" title="先说结论：AI Coding 变快，不是因为模型更强，而是因为你把任务拆成了不同层"></a>先说结论：AI Coding 变快，不是因为模型更强，而是因为你把任务拆成了不同层</h2><p>很多人理解提效，第一反应还是：</p>
+<ul>
+<li>模型更聪明</li>
+<li>上下文更长</li>
+<li>工具更多</li>
+<li>价格更低</li>
+</ul>
+<p>这些当然重要，但它们更像是<strong>算力和原材料</strong>。</p>
+<p>真正决定你能不能持续提速的，是你有没有把工作拆成不同层，让 AI 在合适的位置干合适的事。</p>
+<p>我现在更愿意把 AI Coding 分成 4 层：</p>
+<ol>
+<li><strong>输入层</strong>：需求、资料、上下文怎么喂进去</li>
+<li><strong>执行层</strong>：谁负责搜索、谁负责写、谁负责验证</li>
+<li><strong>控制层</strong>：哪些步骤自动化，哪些地方必须拦截确认</li>
+<li><strong>交付层</strong>：改完之后怎么验证、发布、复盘、复用</li>
+</ol>
+<p>如果这 4 层没有分开，AI 很容易表现得“看起来很忙，实际上很乱”。</p>
+<p>这也是为什么很多人明明接入了很多工具，最后还是没快起来。因为工具越多，只会让混乱更快发生；只有<strong>层次清楚</strong>，工具才会变成加速器。</p>
+<h2 id="为什么很多人的-AI-Coding-一开始很惊艳，后面却越来越慢？"><a href="#为什么很多人的-AI-Coding-一开始很惊艳，后面却越来越慢？" class="headerlink" title="为什么很多人的 AI Coding 一开始很惊艳，后面却越来越慢？"></a>为什么很多人的 AI Coding 一开始很惊艳，后面却越来越慢？</h2><p>因为大多数人的工作流，停留在一个很典型的阶段：<strong>把所有事都塞进同一个会话里。</strong></p>
+<p>比如你可能会这样做：</p>
+<ul>
+<li>让 AI 理解需求</li>
+<li>顺便搜文档</li>
+<li>顺便看仓库</li>
+<li>顺便改代码</li>
+<li>顺便跑测试</li>
+<li>顺便解释错误</li>
+<li>顺便生成提交信息</li>
+</ul>
+<p>表面看非常丝滑，实际上问题也很明显：</p>
+<ul>
+<li>上下文越来越脏</li>
+<li>一个环节出错会拖累全部环节</li>
+<li>你不知道慢是慢在搜索、决策、执行还是验证</li>
+<li>工具一多，AI 反而开始来回试探</li>
+<li>最终还是得你自己兜底整理残局</li>
+</ul>
+<p>这套流程的最大问题，不是“AI 不够聪明”，而是<strong>没有分工</strong>。</p>
+<p>你可以把它想象成一个团队里只有一个人：</p>
+<ul>
+<li>他既要开会</li>
+<li>又要调研</li>
+<li>又要写代码</li>
+<li>又要测</li>
+<li>又要发版</li>
+<li>还要自己做复盘</li>
+</ul>
+<p>只要任务稍微复杂一点，这个人一定会变慢。AI 也是一样。</p>
+<h2 id="第一层：输入层不干净，后面全都白搭"><a href="#第一层：输入层不干净，后面全都白搭" class="headerlink" title="第一层：输入层不干净，后面全都白搭"></a>第一层：输入层不干净，后面全都白搭</h2><p>很多人觉得 AI Coding 慢，是因为模型没理解自己。但往前追一层，问题通常不是理解能力，而是<strong>你喂进去的输入本来就混在一起。</strong></p>
+<p>最常见的几种情况：</p>
+<ul>
+<li>需求、背景、限制条件混在一大段聊天里</li>
+<li>参考资料没有筛选，什么都丢进去</li>
+<li>代码库太大，但没有先把范围收窄</li>
+<li>已有结论和待确认问题没有分开</li>
+</ul>
+<p>结果就是，AI 在第一步就已经拿到了一个噪音很高的任务包。</p>
+<h3 id="更高效的做法是什么？"><a href="#更高效的做法是什么？" class="headerlink" title="更高效的做法是什么？"></a>更高效的做法是什么？</h3><p>先把输入层拆开，只给 AI 它在这一轮真正需要的内容。</p>
+<p>例如你可以先整理成这样的结构：</p>
+<ol>
+<li><strong>这次要完成什么</strong></li>
+<li><strong>边界是什么，不能做什么</strong></li>
+<li><strong>只给相关文件 &#x2F; 相关文档 &#x2F; 相关页面</strong></li>
+<li><strong>哪些是已知事实，哪些是待验证问题</strong></li>
+</ol>
+<p>这么做的价值，不只是更容易让 AI 理解任务，而是后面你才能进一步把执行层拆出去。</p>
+<p>因为只有输入干净，后面你才能放心把“搜索”“计划”“改代码”“跑验证”分别交给不同步骤。</p>
+<p>如果输入层本来就是一锅粥，后面加再多 agent、MCP 和 Skill，也只是把一锅粥接上更多管子。</p>
+<h2 id="第二层：执行层一定要分工，别让一个-AI-会话包打天下"><a href="#第二层：执行层一定要分工，别让一个-AI-会话包打天下" class="headerlink" title="第二层：执行层一定要分工，别让一个 AI 会话包打天下"></a>第二层：执行层一定要分工，别让一个 AI 会话包打天下</h2><p>这是我觉得 AI Coding 能不能真正提速的分水岭。</p>
+<p>大多数人现在最大的问题，不是不会用工具，而是<strong>不会把执行动作拆开。</strong></p>
+<p>真正高效的执行层，至少应该分成这几类工种：</p>
+<ul>
+<li><strong>搜索型</strong>：找资料、找代码、找接口、找历史实现</li>
+<li><strong>规划型</strong>：把任务拆成步骤，确认范围和顺序</li>
+<li><strong>实现型</strong>：真正写代码、改配置、改文案</li>
+<li><strong>验证型</strong>：跑测试、看日志、做回归检查</li>
+</ul>
+<p>如果这些事情全放在同一个会话里做，会出现两个典型问题。</p>
+<h3 id="第一种问题：上下文被搜索噪音淹没"><a href="#第一种问题：上下文被搜索噪音淹没" class="headerlink" title="第一种问题：上下文被搜索噪音淹没"></a>第一种问题：上下文被搜索噪音淹没</h3><p>搜索和调研天然会产生很多中间信息。你真正要的，通常只是：</p>
+<ul>
+<li>找到哪几个关键文件</li>
+<li>哪个方案更贴近现在代码</li>
+<li>哪段日志说明了真正的根因</li>
+</ul>
+<p>但如果这些内容都直接堆进主会话，你的实现上下文很快就会被冲淡。最后 AI 不是更会写，而是更容易忘记最初目标。</p>
+<h3 id="第二种问题：一个环节卡住，全流程停摆"><a href="#第二种问题：一个环节卡住，全流程停摆" class="headerlink" title="第二种问题：一个环节卡住，全流程停摆"></a>第二种问题：一个环节卡住，全流程停摆</h3><p>比如它在验证环节卡住了，你本来只想让它汇报测试结果，但因为实现、调研、计划全混在一个会话里，它很容易又开始重新解释背景、重新读文件、重新猜需求。</p>
+<p>这就是很多人觉得“AI 越聊越慢”的根源。</p>
+<h3 id="更合理的执行方式是什么？"><a href="#更合理的执行方式是什么？" class="headerlink" title="更合理的执行方式是什么？"></a>更合理的执行方式是什么？</h3><p>让不同步骤承担不同职责：</p>
+<ul>
+<li>主会话负责推进目标</li>
+<li>搜索任务单独做，只返回结论</li>
+<li>计划任务单独做，只给步骤</li>
+<li>验证任务单独做，只给结果和问题</li>
+</ul>
+<p>你会发现，一旦这样分工，AI Coding 的节奏会明显变化：<strong>不是一团会说话的智能体在陪你绕圈，而是一组能接力的执行节点在推进任务。</strong></p>
+<h2 id="第三层：控制层不是束缚-AI，而是防止它把速度浪费在错误路径上"><a href="#第三层：控制层不是束缚-AI，而是防止它把速度浪费在错误路径上" class="headerlink" title="第三层：控制层不是束缚 AI，而是防止它把速度浪费在错误路径上"></a>第三层：控制层不是束缚 AI，而是防止它把速度浪费在错误路径上</h2><p>很多人听到“控制层”会下意识觉得，这是不是会让 AI 更慢？</p>
+<img src="/2026/03/25/ai-coding-workflow-layering/inline-01-ai.png" srcset="/img/loading.gif" lazyload class="" title="第三层控制层不是束缚 AI，而是防止它把速度浪费在错误路径上 示意图">
+
+<p>恰恰相反。真正让 AI 变慢的，往往不是限制，而是<strong>缺少边界导致它反复试错。</strong></p>
+<p>控制层最重要的价值，不是“防风险”这一个目的，而是帮你减少无效执行。</p>
+<p>比如这些场景，本来就不该让 AI 每次自己猜：</p>
+<ul>
+<li>哪些命令必须确认后才能执行</li>
+<li>改完文件后要自动跑哪些检查</li>
+<li>哪些目录改动必须触发额外验证</li>
+<li>哪些步骤必须停下来等人工确认</li>
+</ul>
+<p>如果没有控制层，AI 每次都会在这些地方浪费上下文和动作预算。</p>
+<p>说白了，<strong>控制层是在告诉 AI：哪里可以放手跑，哪里不要乱跑。</strong></p>
+<p>这件事对个人开发者尤其重要。因为个人最容易陷入一种错觉：</p>
+<blockquote>
+<p>“我项目小，流程简单，不需要这么多控制。”</p>
+</blockquote>
+<p>实际上正因为你人少，才更需要把这些边界提前写清楚。否则每次切回人工接管，都是在吞掉 AI 本来帮你省下来的时间。</p>
+<h2 id="第四层：交付层没有闭环，AI-就永远只是“帮忙写点东西”"><a href="#第四层：交付层没有闭环，AI-就永远只是“帮忙写点东西”" class="headerlink" title="第四层：交付层没有闭环，AI 就永远只是“帮忙写点东西”"></a>第四层：交付层没有闭环，AI 就永远只是“帮忙写点东西”</h2><p>很多人的 AI Coding 卡在最后一步：前面看起来都挺快，到了真正交付时又慢下来。</p>
+<img src="/2026/03/25/ai-coding-workflow-layering/inline-02-ai-2.png" srcset="/img/loading.gif" lazyload class="" title="第四层交付层没有闭环，AI 就永远只是“帮忙写点东西” 示意图">
+
+<p>为什么？因为前面只是“生成”，后面才是“交付”。</p>
+<p>真正影响效率的，往往是这些动作：</p>
+<ul>
+<li>改完后有没有可验证结果</li>
+<li>图片 &#x2F; 文案 &#x2F; 配置是不是都落到正确位置</li>
+<li>有没有更新关联文件</li>
+<li>有没有形成下一次还能复用的流程</li>
+</ul>
+<p>如果交付层没有闭环，AI 再会写也只是“帮你完成局部动作”，最后仍然要靠你把碎片拼起来。</p>
+<p>所以 AI Coding 真正有效的交付层，至少应该做到：</p>
+<ol>
+<li><strong>结果是可验证的</strong></li>
+<li><strong>关键产物都落到正确位置</strong></li>
+<li><strong>后续步骤能顺着接下去</strong></li>
+<li><strong>这次做法可以复用到下次</strong></li>
+</ol>
+<p>当你把这一层补起来后，AI 的价值就不只是“帮你生成内容”了，而是“把任务从输入推进到完成”。</p>
+<h2 id="对个人开发者来说，最值得先补的不是更多模型，而是一条最小闭环"><a href="#对个人开发者来说，最值得先补的不是更多模型，而是一条最小闭环" class="headerlink" title="对个人开发者来说，最值得先补的不是更多模型，而是一条最小闭环"></a>对个人开发者来说，最值得先补的不是更多模型，而是一条最小闭环</h2><img src="/2026/03/25/ai-coding-workflow-layering/inline-03-section.png" srcset="/img/loading.gif" lazyload class="" title="对个人开发者来说最值得先补的不是更多模型而是一条最小闭环 示意图">
+
+<p>如果你现在是一个人做项目，不需要一上来就上最复杂的多 Agent 架构。</p>
+<p>更有效的做法是先搭一条<strong>最小闭环</strong>：</p>
+<ol>
+<li><strong>先整理输入</strong>：明确任务目标和边界</li>
+<li><strong>把搜索和实现拆开</strong>：不要一个会话包打天下</li>
+<li><strong>给关键步骤加控制</strong>：危险动作、自动检查、确认点</li>
+<li><strong>把交付链补齐</strong>：写完之后自动把该更新的东西都补上</li>
+</ol>
+<p>这时候你再去加更多工具、更多模型、更多技能，才是在扩大产能，而不是扩大混乱。</p>
+<p>很多人现在会纠结：</p>
+<ul>
+<li>Claude Code 和 Codex 怎么选</li>
+<li>OpenClaw 和 Claude Code 谁更强</li>
+<li>MCP 装多少才够</li>
+<li>Skill 要不要装满</li>
+</ul>
+<p>我自己的看法越来越明确：这些都不是第一问题。</p>
+<p>第一问题永远是：<strong>你有没有一条能稳定推进任务的工作流分层。</strong></p>
+<p>没有这层结构，再强的模型也只是临时救火队；有了这层结构，哪怕模型没换，节奏也会立刻变顺。</p>
+<h2 id="小团队最容易踩的坑：把“工具堆叠”误当成“流程升级”"><a href="#小团队最容易踩的坑：把“工具堆叠”误当成“流程升级”" class="headerlink" title="小团队最容易踩的坑：把“工具堆叠”误当成“流程升级”"></a>小团队最容易踩的坑：把“工具堆叠”误当成“流程升级”</h2><p>如果你是两三个人的小团队，这个问题会更明显。</p>
+<p>小团队特别容易因为焦虑而不断堆工具：</p>
+<ul>
+<li>看到新 MCP 就接</li>
+<li>看到新 Skill 就装</li>
+<li>看到新模型就切</li>
+<li>看到新代理就试</li>
+</ul>
+<p>结果很快就会进入一个看起来很先进、实际上很低效的状态：</p>
+<ul>
+<li>工具很多</li>
+<li>入口很多</li>
+<li>配置很多</li>
+<li>但谁负责什么不清楚</li>
+</ul>
+<p>这不是流程升级，而是<strong>复杂度升级</strong>。</p>
+<p>小团队更适合先回答这几个问题：</p>
+<ul>
+<li>哪类任务必须人工拍板？</li>
+<li>哪类任务可以完全交给 AI 跑？</li>
+<li>哪类任务要先研究再执行？</li>
+<li>哪类任务必须自动验证才能算完成？</li>
+</ul>
+<p>把这些分清楚之后，工具才有位置；否则工具越多，只会让责任边界更模糊。</p>
+<h2 id="最后一句：AI-Coding-的下一阶段，不是谁先用上更多工具，而是谁先把工作流做成分层系统"><a href="#最后一句：AI-Coding-的下一阶段，不是谁先用上更多工具，而是谁先把工作流做成分层系统" class="headerlink" title="最后一句：AI Coding 的下一阶段，不是谁先用上更多工具，而是谁先把工作流做成分层系统"></a>最后一句：AI Coding 的下一阶段，不是谁先用上更多工具，而是谁先把工作流做成分层系统</h2><p>这也是我现在越来越确定的一点。</p>
+<p>AI Coding 的早期红利，来自“原来它已经能写这么多”。</p>
+<p>但接下来的红利，不会再主要来自单次生成能力，而会来自：</p>
+<ul>
+<li>你有没有把输入整理干净</li>
+<li>有没有把执行做成分工协作</li>
+<li>有没有给关键节点加控制层</li>
+<li>有没有把交付做成闭环</li>
+</ul>
+<p>当你把这四层搭起来后，AI 才会真正从“会帮忙”升级成“会推进交付”。</p>
+<p>所以如果你最近也有类似感受：工具越来越多、模型越来越强，但自己并没有明显更快，那先别急着换下一套。最值得做的，反而是回头问一句：</p>
+<p><strong>我现在的问题，到底是模型不够强，还是工作流根本没有分层？</strong></p>
+<p>很多时候，答案已经在那里了。</p>
+
+                
+              </div>
+            
+
+              <!--打赏-->
+              <div class="reward">
+                  <div class="reward-button">赏 <span class="reward-code">
+		<span class="alipay-code"> <img class="alipay-img wdp-appear" src="/img/alipay.png" srcset="/img/loading.gif" lazyload><b>支付宝打赏</b> </span>
+		<span class="wechat-code"> <img class="wechat-img wdp-appear" src="/img/wechat.png" srcset="/img/loading.gif" lazyload><b>微信打赏</b> </span> </span>
+                  </div>
+                  <p class="reward-notice">如果文章对你有帮助，欢迎点击上方按钮打赏作者，更多功能请访问<a href="https://blog.fxcxy.com">博客站</a></p>
+              </div>
+              <!--打赏-->
+              <hr/>
+              <div style="text-align:right;"> <!-- 自己添加的“分享到”模块：开始。用的是 social-share.js。让所有的分享按钮右对齐-->
+
+                  <div class="social-share-container" style="margin-top: 15px;"> <!-- 生成一组分享按钮 -->
+                       <!--如果博客语言是中文，就显示“点击分享到：”，非中文一律显示“Share it:”-->
+                      点击分享到：&nbsp;&nbsp;
+                      
+                  </div>
+                  <!-- 加载 jQuery 库 -->
+                  
+<script src="/js/jquery.min.js"></script>
+
+                  <!-- 导入 qrcode.min.js -->
+                  
+<script src="/js/qrcode.min.js"></script>
+
+                  <!-- 加载 social-share.js 的 js 库，另外还要加载 social-share.js 的 CSS，可以修改 `_config.fluid.yml` 的 `custom_css` 加载，也可以修改 `themes/fluid/layout/_partial/css.ejs` 加载。-->
+                  
+<script src="/js/social-share.min.js"></script>
+
+                  <script>
+                    /* 执行 js 代码，new 一个新对象，详见 social-share.js 在 GitHub 的文档 */
+                    new SocialShare('.social-share-container', {
+                      theme: 'circle',  // 使用圆形主题
+                      // 单独定义wechat分享参数
+                      wechat: {
+                        sort: 1, // 排序参数，数字较小的展示在前面,默认999
+                      },
+                      twitter: {
+                        sort: 2, // 排序参数，数字较小的展示在前面,默认999
+                      },
+                      facebook: {
+                        sort: 3, // 排序参数，数字较小的展示在前面,默认999
+                      }
+                    });
+                  </script>
+              </div> <!-- 自己添加的“分享到”模块：结束。-->
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/AI%E5%AE%9E%E6%88%98/" class="category-chain-item">AI实战</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/AI%E5%B7%A5%E5%85%B7/" class="print-no-link">#AI工具</a>
+      
+        <a href="/tags/OpenClaw/" class="print-no-link">#OpenClaw</a>
+      
+        <a href="/tags/Claude-Code/" class="print-no-link">#Claude Code</a>
+      
+        <a href="/tags/AI-Coding/" class="print-no-link">#AI Coding</a>
+      
+        <a href="/tags/%E5%B7%A5%E4%BD%9C%E6%B5%81/" class="print-no-link">#工作流</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>大家都在 AI Coding，为什么你的产出还是没变快？问题不在模型，在工作流分层</div>
+      <div>https://blog.fxcxy.com/2026/03/25/ai-coding-workflow-layering/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>独立开发</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2026年3月25日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2026/03/25/%E5%BC%A0%E9%9B%AA%E5%B3%B0%E5%8E%BB%E4%B8%96%EF%BC%8C%E5%88%BA%E7%97%9B%E4%BA%86%E6%97%A0%E6%95%B080%E5%90%8E%EF%BC%9A%E6%88%91%E4%BB%AC%E7%9C%9F%E7%9A%84%E5%88%B0%E4%BA%86%E4%B8%8D%E8%83%BD%E7%A1%AC%E6%89%9B%E7%9A%84%E5%B9%B4%E7%BA%AA/" title="张雪峰去世，刺痛了无数80后：我们真的到了不能硬扛的年纪">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">张雪峰去世，刺痛了无数80后：我们真的到了不能硬扛的年纪</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2026/03/24/claude-code-hooks-subagents-worktree/" title="Claude Code 效率上不去？把 Hooks、Subagents、Worktree 串起来后，我的开发流终于顺了">
+                        <span class="hidden-mobile">Claude Code 效率上不去？把 Hooks、Subagents、Worktree 串起来后，我的开发流终于顺了</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://lib.baomitu.com/valine/1.5.1/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"J7kyQXV9R3CXOiA1eubrlflY-gzGzoHsz","appKey":"qHZzPzRcvsutXvHvBewqGmhw","path":"window.location.pathname","placeholder":"输入您的评论","avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":false},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          var imgSelector = '#valine .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  <div class="footer-links" style="margin: 20px 0 10px 0; text-align: center;">
+    <a href="https://tv.zymn.cc" target="_blank" style="margin: 0 12px; color: #bdbdbd; text-decoration: none; font-weight: 500;">免费电影</a>
+    <a href="https://sl.zymn.cc" target="_blank" style="margin: 0 12px; color: #bdbdbd; text-decoration: none; font-weight: 500;">短链生成器</a>
+    <a href="https://yhjf.zymn.cc" target="_blank" style="margin: 0 12px; color: #bdbdbd; text-decoration: none; font-weight: 500;">隐秘信使</a>
+  </div>
+  
+    <div class="footer-content">
+       <a href="https://www.youtube.com/channel/UCn0Yarp_h6oqn1-QLvlgbDg?sub_confirmation=1" target="_blank" rel="nofollow noopener"><span>Youtube</span></a>- <a href="https://x.com/corder2025" target="_blank" rel="nofollow noopener"><span>X</span></a>- <a href="https://t.me/+FEyFQq_5u004OWU0" target="_blank" rel="nofollow noopener"><span>电报群</span></a>- <a href="https://v.douyin.com/iNpPYY4E/" target="_blank" rel="nofollow noopener"><span>抖音</span></a>- <a href="https://www.ixigua.com/home/103680436540" target="_blank" rel="nofollow noopener"><span>西瓜视频</span></a> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="leancloud-site-pv-container" style="display: none">
+        总访问量 
+        <span id="leancloud-site-pv"></span>
+         次
+      </span>
+    
+    
+      <span id="leancloud-site-uv-container" style="display: none">
+        总访客数 
+        <span id="leancloud-site-uv"></span>
+         人
+      </span>
+    
+    
+
+  
+</div>
+
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script defer src="/js/leancloud.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
