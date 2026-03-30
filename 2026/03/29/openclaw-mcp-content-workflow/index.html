@@ -1,0 +1,975 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/logo.png">
+  <link rel="icon" href="/img/logo.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3232532601275150"
+     crossorigin="anonymous"></script>
+    <meta name="twitter:card" content="/img/openclaw-mcp-content-workflow.png" />
+    <meta name="twitter:site" content="自由码农" />
+    <meta name="twitter:creator" content="@corder2025">
+    <meta name="twitter:title" content="OpenClaw 不只是聊天机器人：接入 MCP 后，我把选题、写稿、分发串成了一条内容流水线 - 自由码农" />
+    <meta name="twitter:description" content="很多人把 OpenClaw 用成了一个“高级聊天框”。有问题就问一句，需要写稿就丢一段 Prompt，等它吐一版答案；觉得不满意，再补一轮说明；想加数据，再手动复制网页、文档、截图、表格。这样当然也能用，但它离“持续替你干活”其实还差很远。 真正的分水岭，不在模型本身，而在你有没有把外部工具、外部数据、固定流程接进来。MCP 解决的正是这件事：让 OpenClaw 不再只靠你手工喂上下文，而是能按" />
+    <meta name="twitter:image" content="/img/openclaw-mcp-content-workflow.png" />
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="独立开发">
+  <meta name="keywords" content="自由码农,技术博客,工具分享，网站开发，App开发，小程序开发，H5开发">
+  
+    <meta name="description" content="很多人把 OpenClaw 用成了一个“高级聊天框”。有问题就问一句，需要写稿就丢一段 Prompt，等它吐一版答案；觉得不满意，再补一轮说明；想加数据，再手动复制网页、文档、截图、表格。这样当然也能用，但它离“持续替你干活”其实还差很远。 真正的分水岭，不在模型本身，而在你有没有把外部工具、外部数据、固定流程接进来。MCP 解决的正是这件事：让 OpenClaw 不再只靠你手工喂上下文，而是能按">
+<meta property="og:type" content="article">
+<meta property="og:title" content="OpenClaw 不只是聊天机器人：接入 MCP 后，我把选题、写稿、分发串成了一条内容流水线">
+<meta property="og:url" content="https://blog.fxcxy.com/2026/03/29/openclaw-mcp-content-workflow/index.html">
+<meta property="og:site_name" content="自由码农">
+<meta property="og:description" content="很多人把 OpenClaw 用成了一个“高级聊天框”。有问题就问一句，需要写稿就丢一段 Prompt，等它吐一版答案；觉得不满意，再补一轮说明；想加数据，再手动复制网页、文档、截图、表格。这样当然也能用，但它离“持续替你干活”其实还差很远。 真正的分水岭，不在模型本身，而在你有没有把外部工具、外部数据、固定流程接进来。MCP 解决的正是这件事：让 OpenClaw 不再只靠你手工喂上下文，而是能按">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://blog.fxcxy.com/img/openclaw-mcp-content-workflow.png">
+<meta property="article:published_time" content="2026-03-29T11:19:23.000Z">
+<meta property="article:modified_time" content="2026-03-30T00:30:20.691Z">
+<meta property="article:author" content="spatacus">
+<meta property="article:tag" content="AI工具">
+<meta property="article:tag" content="自动化">
+<meta property="article:tag" content="OpenClaw">
+<meta property="article:tag" content="MCP">
+<meta property="article:tag" content="内容工作流">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://blog.fxcxy.com/img/openclaw-mcp-content-workflow.png">
+  
+  
+  
+  <title>OpenClaw 不只是聊天机器人：接入 MCP 后，我把选题、写稿、分发串成了一条内容流水线 - 自由码农</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+  
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_4443546_u6jwvi2qcka.css">
+<link rel="stylesheet" href="/css/social-share.min.css">
+<link rel="stylesheet" href="/css/myreward.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"blog.fxcxy.com","root":"/","version":"1.9.7","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"复制"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"J7kyQXV9R3CXOiA1eubrlflY-gzGzoHsz","app_key":"qHZzPzRcvsutXvHvBewqGmhw","server_url":"https://leancloud.fxcxy.com","path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+
+  
+    <!-- Google tag (gtag.js) -->
+    <script async>
+      if (!Fluid.ctx.dnt) {
+        Fluid.utils.createScript("https://www.googletagmanager.com/gtag/js?id=", function() {
+          window.dataLayer = window.dataLayer || [];
+          function gtag() {
+            dataLayer.push(arguments);
+          }
+          gtag('js', new Date());
+          gtag('config', '');
+        });
+      }
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+    
+  
+
+
+
+  
+<meta name="generator" content="Hexo 7.1.1"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>自由码农</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="OpenClaw 不只是聊天机器人：接入 MCP 后，我把选题、写稿、分发串成了一条内容流水线"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2026-03-29 19:19" pubdate>
+          2026年3月29日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          2.8k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          24 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="leancloud-page-views"></span>次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">OpenClaw 不只是聊天机器人：接入 MCP 后，我把选题、写稿、分发串成了一条内容流水线</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <p>很多人把 OpenClaw 用成了一个“高级聊天框”。有问题就问一句，需要写稿就丢一段 Prompt，等它吐一版答案；觉得不满意，再补一轮说明；想加数据，再手动复制网页、文档、截图、表格。这样当然也能用，但它离“持续替你干活”其实还差很远。</p>
+<p>真正的分水岭，不在模型本身，而在你有没有把<strong>外部工具、外部数据、固定流程</strong>接进来。MCP 解决的正是这件事：让 OpenClaw 不再只靠你手工喂上下文，而是能按规则去读资料、调工具、接入已有系统，把原本散落在浏览器、文档、命令行里的动作串成一条能复用的工作链。</p>
+<p>如果你平时要做公众号、博客、X、知识库、日报、行业跟踪，这篇文章你可以直接拿去落地。我的目标不是聊概念，而是带你搭出一个最有现实价值的最小闭环：<strong>找题材 → 拉资料 → 出提纲&#x2F;初稿 → 生成分发素材</strong>。不求一步到位全自动，但至少从今天开始，你不用再重复搬运上下文了。</p>
+<h2 id="为什么很多人的-OpenClaw-一直停留在“能聊”，却很难变成“能持续产出”？"><a href="#为什么很多人的-OpenClaw-一直停留在“能聊”，却很难变成“能持续产出”？" class="headerlink" title="为什么很多人的 OpenClaw 一直停留在“能聊”，却很难变成“能持续产出”？"></a>为什么很多人的 OpenClaw 一直停留在“能聊”，却很难变成“能持续产出”？</h2><p>问题通常不是 Skill 装得不够多，也不是模型不够强，而是整个工作方式仍然是“人肉 orchestrator”。</p>
+<img src="/2026/03/29/openclaw-mcp-content-workflow/inline-01-openclaw.png" srcset="/img/loading.gif" lazyload class="" title="为什么很多人的 OpenClaw 一直停留在“能聊”，却很难变成“能持续产出” 示意图">
+
+<p>你可以对照一下，自己是不是也经常这样干：</p>
+<ul>
+<li>热点要自己去刷，刷完再复制给 AI</li>
+<li>文章参考资料散落在 GitHub、官方文档、网页、聊天记录里</li>
+<li>想让 AI 帮你整理结构，但每次都得重新解释背景</li>
+<li>想分发到多个渠道时，又要手动改格式、改标题、改封面要求</li>
+</ul>
+<p>表面看你已经在用 AI，实际上很多关键步骤仍然是手工完成的。AI 只是夹在中间帮你生成了一段文字，并没有接管流程。</p>
+<p>这就是为什么很多人会觉得 OpenClaw “很好玩，但没真正省下多少时间”。</p>
+<p>一旦你开始高频做内容，这种低效会被迅速放大。因为内容生产最耗时间的，从来不只是“写字”，而是：</p>
+<ol>
+<li>找到值得写的题</li>
+<li>迅速拿到可信资料</li>
+<li>组织成适合发布的结构</li>
+<li>针对不同渠道做二次处理</li>
+</ol>
+<p>如果这四步每次都靠你手工拼，OpenClaw 再聪明，也只是一个临时工。</p>
+<h2 id="MCP-到底解决了什么问题？"><a href="#MCP-到底解决了什么问题？" class="headerlink" title="MCP 到底解决了什么问题？"></a>MCP 到底解决了什么问题？</h2><p>按官方定义，MCP 可以把能力分成三层：</p>
+<ul>
+<li><strong>Prompts</strong>：用户主动触发的模板或命令</li>
+<li><strong>Resources</strong>：由应用附加给模型的上下文数据</li>
+<li><strong>Tools</strong>：模型可以实际调用的外部能力</li>
+</ul>
+<p>对普通用户来说，不用背协议细节，你只需要记一句话：</p>
+<blockquote>
+<p>MCP 的价值，就是把“你每次都要手动复制粘贴的东西”，变成 OpenClaw 可以稳定访问和调用的能力。</p>
+</blockquote>
+<p>比如以前你做一篇文章，可能要自己做这些动作：</p>
+<ul>
+<li>打开 GitHub 看 README</li>
+<li>复制一段发布说明</li>
+<li>再打开官方文档确认配置命令</li>
+<li>把这些内容手动粘给 OpenClaw</li>
+<li>再补一句“请按公众号风格写”</li>
+</ul>
+<p>有了 MCP 之后，这个流程就可以改写成：</p>
+<ul>
+<li>OpenClaw 直接连到文档、仓库、数据库或内部资料源</li>
+<li>按你定义好的 Prompt 和工具权限去拉取内容</li>
+<li>自动把相关资源组合进当前任务</li>
+<li>该查资料时查资料，该执行动作时执行动作</li>
+</ul>
+<p>官方文档里提到的典型场景很直白：接 issue tracker、查数据库、读设计稿、自动建 Gmail 草稿、接收外部事件推送。换成内容场景也是一样成立的——你可以把选题池、草稿模板、历史文章、封面要求、发布渠道都接入进来。</p>
+<p>更重要的是，Claude Code 官方已经把 MCP 的接法讲得非常实用：</p>
+<ul>
+<li>远程服务优先用 <strong>HTTP transport</strong></li>
+<li>老的 <strong>SSE transport</strong> 已经被标为 deprecated</li>
+<li>本地脚本或需要系统权限的能力，用 <strong>stdio server</strong> 最合适</li>
+<li>可以用 <code>claude mcp list</code>、<code>claude mcp get &lt;name&gt;</code>、<code>/mcp</code> 做管理和认证</li>
+</ul>
+<p>这意味着一件事：<strong>MCP 已经不是“未来概念”，而是现在就能接、接完就能用的工程化接口。</strong></p>
+<h2 id="为什么我觉得“内容工作流”是最适合拿来练手的-OpenClaw-场景？"><a href="#为什么我觉得“内容工作流”是最适合拿来练手的-OpenClaw-场景？" class="headerlink" title="为什么我觉得“内容工作流”是最适合拿来练手的 OpenClaw 场景？"></a>为什么我觉得“内容工作流”是最适合拿来练手的 OpenClaw 场景？</h2><p>因为它高频、碎片多，而且一旦跑顺，收益特别直接。</p>
+<p>你不一定每天写长文，但你大概率会持续做这些事：</p>
+<ul>
+<li>关注新工具、新项目、新功能</li>
+<li>判断哪些值得写，哪些只是噪音</li>
+<li>把零散资料整理成提纲或初稿</li>
+<li>针对博客、公众号、X 改不同版本</li>
+</ul>
+<p>这些动作看起来都不大，但它们组合在一起，足够吃掉你大量注意力。</p>
+<p>反过来，这正是最适合被 OpenClaw + MCP 改造的地方。因为这类工作流有几个天然优势：</p>
+<h3 id="1-输入源相对稳定"><a href="#1-输入源相对稳定" class="headerlink" title="1. 输入源相对稳定"></a>1. 输入源相对稳定</h3><p>你平时关注的信息源其实就那几类：GitHub、官方文档、技术博客、热榜、社媒、内部笔记。</p>
+<p>这些源一旦通过 MCP 接入，后续就不需要每次重新搬运。</p>
+<h3 id="2-输出结构高度重复"><a href="#2-输出结构高度重复" class="headerlink" title="2. 输出结构高度重复"></a>2. 输出结构高度重复</h3><p>无论你写博客、公众号还是日报，本质都在重复一个固定骨架：</p>
+<ul>
+<li>选题判断</li>
+<li>资料整合</li>
+<li>提纲</li>
+<li>正文初稿</li>
+<li>分发版本</li>
+</ul>
+<p>重复度越高，越值得做成工作流。</p>
+<h3 id="3-很容易做“半自动”而不是盲目全自动"><a href="#3-很容易做“半自动”而不是盲目全自动" class="headerlink" title="3. 很容易做“半自动”而不是盲目全自动"></a>3. 很容易做“半自动”而不是盲目全自动</h3><p>这是关键。很多人一上来就想无人值守，最后翻车。内容工作流更适合的方式是：</p>
+<ul>
+<li>AI 负责收集、清洗、归纳</li>
+<li>你负责最终判断和发布</li>
+</ul>
+<p>这样既能省时间，又不会把选题权和质量控制完全交出去。</p>
+<h2 id="一条最小可落地的-OpenClaw-内容流水线，应该怎么搭？"><a href="#一条最小可落地的-OpenClaw-内容流水线，应该怎么搭？" class="headerlink" title="一条最小可落地的 OpenClaw 内容流水线，应该怎么搭？"></a>一条最小可落地的 OpenClaw 内容流水线，应该怎么搭？</h2><p>我建议先从 4 段开始，不要一口气接十几个系统。</p>
+<h3 id="第-1-段：选题入口"><a href="#第-1-段：选题入口" class="headerlink" title="第 1 段：选题入口"></a>第 1 段：选题入口</h3><p>先定义固定信号源。比如：</p>
+<ul>
+<li>GitHub Trending &#x2F; Discussions</li>
+<li>官方博客或 release notes</li>
+<li>自己常看的技术站点</li>
+<li>某几个关键词的搜索结果</li>
+</ul>
+<p>你的目标不是“抓全世界所有热点”，而是稳定得到一批<strong>和你定位有关</strong>的候选题。</p>
+<p>比如这个博客更适合的，就不是泛科技新闻，而是：</p>
+<ul>
+<li>OpenClaw 实战</li>
+<li>AI 工具工作流</li>
+<li>投研提效</li>
+<li>热点监控</li>
+</ul>
+<p>只要入口够稳，后面才有筛选价值。</p>
+<h3 id="第-2-段：研究与补料"><a href="#第-2-段：研究与补料" class="headerlink" title="第 2 段：研究与补料"></a>第 2 段：研究与补料</h3><p>这是最容易浪费时间的一段。</p>
+<p>我现在更推荐的做法是，把“查官方文档、看 GitHub 仓库、补充关键配置命令”这类动作交给 MCP 接入的工具来做。这样你不用每次来回切页面，也不用担心漏掉关键参数。</p>
+<p>比如这次我在研究 GitHub Agentic Workflows 时，最有用的不是泛泛的二手解读，而是 GitHub 官方自己写清楚的几件事：</p>
+<ul>
+<li>它适合处理 Actions YAML 不好描述的仓库任务</li>
+<li>工作流主体可以用 Markdown 写</li>
+<li>配置里可以声明 trigger、permissions、safe outputs、tools</li>
+<li>默认只读，写操作必须通过显式安全输出控制</li>
+</ul>
+<p>这类信息特别适合拿来做内容素材，因为它们可验证、可引用、可转化成实操步骤。</p>
+<h3 id="第-3-段：结构化写作"><a href="#第-3-段：结构化写作" class="headerlink" title="第 3 段：结构化写作"></a>第 3 段：结构化写作</h3><p>到这一步，OpenClaw 最该做的不是“自由发挥写 3000 字”，而是先按固定格式产出：</p>
+<img src="/2026/03/29/openclaw-mcp-content-workflow/inline-02-3.png" srcset="/img/loading.gif" lazyload class="" title="第 3 段结构化写作 示意图">
+
+<ul>
+<li>这题为什么值得写</li>
+<li>面向谁</li>
+<li>核心步骤是什么</li>
+<li>风险&#x2F;边界是什么</li>
+<li>适合什么渠道发布</li>
+</ul>
+<p>你会发现，文章质量真正稳定下来，不是因为模型更强，而是因为输入结构和输出要求都更稳定了。</p>
+<h3 id="第-4-段：分发与二次加工"><a href="#第-4-段：分发与二次加工" class="headerlink" title="第 4 段：分发与二次加工"></a>第 4 段：分发与二次加工</h3><p>这一步最容易被忽略，但实际很值钱。</p>
+<p>同一篇内容，博客、公众号、X、内部知识库的要求完全不同。你不一定要全自动发布，但完全可以让 OpenClaw 先做这些重复劳动：</p>
+<ul>
+<li>生成 3 个不同风格标题</li>
+<li>输出摘要版、长文版、短帖版</li>
+<li>检查封面文案有没有超字数</li>
+<li>给不同平台生成不同 CTA</li>
+</ul>
+<p>这时 OpenClaw 就不只是“会写”，而是真的开始替你推进流程了。</p>
+<h2 id="一个很重要的提醒：别把-MCP-理解成“多接几个插件”"><a href="#一个很重要的提醒：别把-MCP-理解成“多接几个插件”" class="headerlink" title="一个很重要的提醒：别把 MCP 理解成“多接几个插件”"></a>一个很重要的提醒：别把 MCP 理解成“多接几个插件”</h2><p>这是很多人最容易踩的坑。</p>
+<p>MCP 的重点不是工具数量，而是<strong>工具是否进入了你的固定工作链</strong>。</p>
+<p>如果你今天接 Notion，明天接 Slack，后天接 GitHub，但没有任何一条流程是真正固定跑的，那你得到的不是生产力系统，而是一堆更复杂的入口。</p>
+<p>我更建议你用下面这个标准筛选要不要接：</p>
+<h3 id="这个能力，是不是每周至少会用-3-次？"><a href="#这个能力，是不是每周至少会用-3-次？" class="headerlink" title="这个能力，是不是每周至少会用 3 次？"></a>这个能力，是不是每周至少会用 3 次？</h3><p>低频动作不要急着接。高频动作优先。</p>
+<h3 id="它能不能减少上下文重复搬运？"><a href="#它能不能减少上下文重复搬运？" class="headerlink" title="它能不能减少上下文重复搬运？"></a>它能不能减少上下文重复搬运？</h3><p>如果每次都要手工复制信息给 OpenClaw，那就说明这一步最值得 MCP 化。</p>
+<h3 id="它是不是属于“AI-擅长预处理，人类负责拍板”的环节？"><a href="#它是不是属于“AI-擅长预处理，人类负责拍板”的环节？" class="headerlink" title="它是不是属于“AI 擅长预处理，人类负责拍板”的环节？"></a>它是不是属于“AI 擅长预处理，人类负责拍板”的环节？</h3><p>像信息归纳、结构整理、版本改写，这些最适合让 AI 接手。最终判断、选题价值、发布风险，还是你来定。</p>
+<h2 id="现在就能抄的实战思路"><a href="#现在就能抄的实战思路" class="headerlink" title="现在就能抄的实战思路"></a>现在就能抄的实战思路</h2><p>如果你今天想开始，不需要先做一个宏大的“AI 内容工厂”。</p>
+<p>最稳的起步方式其实很简单：</p>
+<ol>
+<li>先确定 2 到 3 个固定信息源</li>
+<li>给 OpenClaw 接上能读这些源的 MCP 工具</li>
+<li>只做一个固定输出：比如“每天给我 5 个候选题 + 1 个提纲”</li>
+<li>连续跑 7 天，看看哪些步骤最浪费时间，再继续补工具</li>
+</ol>
+<p>你会很快发现，真正值得优化的，从来不是“让 AI 再聪明一点”，而是让它<strong>少问你一次、少等你一次、少让你搬运一次上下文</strong>。</p>
+<p>这也是我最近越来越认可 OpenClaw + MCP 组合的原因。</p>
+<p>OpenClaw 负责把模型能力放进你自己的环境和工作习惯里，MCP 负责把外部工具和数据源接进来。两者一结合，聊天框才会开始变成工作台。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>如果你现在的 OpenClaw 还只是“有事问一句”，那问题大概率不在模型，而在流程没有打通。</p>
+<p>MCP 最值得普通人重视的，不是协议名词，而是它终于给了你一条现实路径：把资料、工具、动作、输出，接成一条能复用的工作流。</p>
+<p>对于内容创作者、独立开发者、投研从业者来说，这件事的意义非常直接——你不需要再把大量精力浪费在搬运、复制、切页面、重复解释背景上，而是可以把时间留给更值钱的判断。</p>
+<p>先别追求全自动。</p>
+<p>先搭一个最小闭环：让 OpenClaw 帮你稳定找题、补料、出结构、改分发版本。只要这条链能连续跑起来，它就已经不是玩具了。</p>
+<p>它开始真正替你干活了。</p>
+
+                
+              </div>
+            
+
+              <!--打赏-->
+              <div class="reward">
+                  <div class="reward-button">赏 <span class="reward-code">
+		<span class="alipay-code"> <img class="alipay-img wdp-appear" src="/img/alipay.png" srcset="/img/loading.gif" lazyload><b>支付宝打赏</b> </span>
+		<span class="wechat-code"> <img class="wechat-img wdp-appear" src="/img/wechat.png" srcset="/img/loading.gif" lazyload><b>微信打赏</b> </span> </span>
+                  </div>
+                  <p class="reward-notice">如果文章对你有帮助，欢迎点击上方按钮打赏作者，更多功能请访问<a href="https://blog.fxcxy.com">博客站</a></p>
+              </div>
+              <!--打赏-->
+              <hr/>
+              <div style="text-align:right;"> <!-- 自己添加的“分享到”模块：开始。用的是 social-share.js。让所有的分享按钮右对齐-->
+
+                  <div class="social-share-container" style="margin-top: 15px;"> <!-- 生成一组分享按钮 -->
+                       <!--如果博客语言是中文，就显示“点击分享到：”，非中文一律显示“Share it:”-->
+                      点击分享到：&nbsp;&nbsp;
+                      
+                  </div>
+                  <!-- 加载 jQuery 库 -->
+                  
+<script src="/js/jquery.min.js"></script>
+
+                  <!-- 导入 qrcode.min.js -->
+                  
+<script src="/js/qrcode.min.js"></script>
+
+                  <!-- 加载 social-share.js 的 js 库，另外还要加载 social-share.js 的 CSS，可以修改 `_config.fluid.yml` 的 `custom_css` 加载，也可以修改 `themes/fluid/layout/_partial/css.ejs` 加载。-->
+                  
+<script src="/js/social-share.min.js"></script>
+
+                  <script>
+                    /* 执行 js 代码，new 一个新对象，详见 social-share.js 在 GitHub 的文档 */
+                    new SocialShare('.social-share-container', {
+                      theme: 'circle',  // 使用圆形主题
+                      // 单独定义wechat分享参数
+                      wechat: {
+                        sort: 1, // 排序参数，数字较小的展示在前面,默认999
+                      },
+                      twitter: {
+                        sort: 2, // 排序参数，数字较小的展示在前面,默认999
+                      },
+                      facebook: {
+                        sort: 3, // 排序参数，数字较小的展示在前面,默认999
+                      }
+                    });
+                  </script>
+              </div> <!-- 自己添加的“分享到”模块：结束。-->
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/AI%E5%AE%9E%E6%88%98/" class="category-chain-item">AI实战</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/AI%E5%B7%A5%E5%85%B7/" class="print-no-link">#AI工具</a>
+      
+        <a href="/tags/%E8%87%AA%E5%8A%A8%E5%8C%96/" class="print-no-link">#自动化</a>
+      
+        <a href="/tags/OpenClaw/" class="print-no-link">#OpenClaw</a>
+      
+        <a href="/tags/MCP/" class="print-no-link">#MCP</a>
+      
+        <a href="/tags/%E5%86%85%E5%AE%B9%E5%B7%A5%E4%BD%9C%E6%B5%81/" class="print-no-link">#内容工作流</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>OpenClaw 不只是聊天机器人：接入 MCP 后，我把选题、写稿、分发串成了一条内容流水线</div>
+      <div>https://blog.fxcxy.com/2026/03/29/openclaw-mcp-content-workflow/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>独立开发</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2026年3月29日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2026/03/30/opencli-rs-rust-cli-ai-workflow/" title="opencli-rs 实战：把 55 个网站和本地 CLI 变成 AI 可调用工具，速度比 Node 版快 12 倍">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">opencli-rs 实战：把 55 个网站和本地 CLI 变成 AI 可调用工具，速度比 Node 版快 12 倍</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2026/03/28/opencli-admin-monitoring-dashboard/" title="OpenCLI Admin 实战：可视化舆情监控（多账号采集 + AI 打标 + 飞书推送）">
+                        <span class="hidden-mobile">OpenCLI Admin 实战：可视化舆情监控（多账号采集 + AI 打标 + 飞书推送）</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://lib.baomitu.com/valine/1.5.1/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"J7kyQXV9R3CXOiA1eubrlflY-gzGzoHsz","appKey":"qHZzPzRcvsutXvHvBewqGmhw","path":"window.location.pathname","placeholder":"输入您的评论","avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":false},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          var imgSelector = '#valine .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  <div class="footer-links" style="margin: 20px 0 10px 0; text-align: center;">
+    <a href="https://tv.zymn.cc" target="_blank" style="margin: 0 12px; color: #bdbdbd; text-decoration: none; font-weight: 500;">免费电影</a>
+    <a href="https://sl.zymn.cc" target="_blank" style="margin: 0 12px; color: #bdbdbd; text-decoration: none; font-weight: 500;">短链生成器</a>
+    <a href="https://yhjf.zymn.cc" target="_blank" style="margin: 0 12px; color: #bdbdbd; text-decoration: none; font-weight: 500;">隐秘信使</a>
+  </div>
+  
+    <div class="footer-content">
+       <a href="https://www.youtube.com/channel/UCn0Yarp_h6oqn1-QLvlgbDg?sub_confirmation=1" target="_blank" rel="nofollow noopener"><span>Youtube</span></a>- <a href="https://x.com/corder2025" target="_blank" rel="nofollow noopener"><span>X</span></a>- <a href="https://t.me/+FEyFQq_5u004OWU0" target="_blank" rel="nofollow noopener"><span>电报群</span></a>- <a href="https://v.douyin.com/iNpPYY4E/" target="_blank" rel="nofollow noopener"><span>抖音</span></a>- <a href="https://www.ixigua.com/home/103680436540" target="_blank" rel="nofollow noopener"><span>西瓜视频</span></a> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="leancloud-site-pv-container" style="display: none">
+        总访问量 
+        <span id="leancloud-site-pv"></span>
+         次
+      </span>
+    
+    
+      <span id="leancloud-site-uv-container" style="display: none">
+        总访客数 
+        <span id="leancloud-site-uv"></span>
+         人
+      </span>
+    
+    
+
+  
+</div>
+
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script defer src="/js/leancloud.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

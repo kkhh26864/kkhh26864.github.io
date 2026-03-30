@@ -5,6 +5,27 @@
         <link>https://www.zymn.cc</link>
         <description>欢迎来到我的个人博客！在这里，我将分享关于技术、编程、以及个人成长的经验和见解，帮助你在学习和工作中更进一步。</description>
         <item>
+            <title>opencli-rs 实战：把 55 个网站和本地 CLI 变成 AI 可调用工具，速度比 Node 版快 12 倍</title>
+            <link>https://www.zymn.cc/2026/03/30/opencli-rs-rust-cli-ai-workflow/</link>
+            <description>如果你已经在用 Claude Code、OpenClaw 或其他 Agent 工具，真正卡住你的往往不是模型，而是信息入口太散。本文围绕 opencli-rs，讲清楚它怎样把 55 个网站和本地 CLI 统一成 AI 可调用工具入口，以及它为什么比传统 Node 版更适合放进真实工作流。</description>
+            <pubDate>Mon, 30 Mar 2026 11:18:50 +0800</pubDate>
+            <category>AI实战</category>
+        </item>
+        <item>
+            <title>OpenCLI Admin 实战：可视化舆情监控（多账号采集 + AI 打标 + 飞书推送）</title>
+            <link>https://www.zymn.cc/2026/03/28/opencli-admin-monitoring-dashboard/</link>
+            <description>如果你已经在用 OpenCLI 抓热榜，下一步卡住的通常不是数据源，而是怎么把采集、调度、AI 打标和通知推送串成一条长期可运行的信息流水线。这篇文章聚焦 OpenCLI Admin，讲清楚它怎样把热点监控和舆情监测做成可视化系统。</description>
+            <pubDate>Sat, 28 Mar 2026 15:34:39 +0800</pubDate>
+            <category>AI实战</category>
+        </item>
+        <item>
+            <title>张雪峰去世，刺痛了无数80后：我们真的到了不能硬扛的年纪</title>
+            <link>https://www.zymn.cc/2026/03/25/%E5%BC%A0%E9%9B%AA%E5%B3%B0%E5%8E%BB%E4%B8%96%EF%BC%8C%E5%88%BA%E7%97%9B%E4%BA%86%E6%97%A0%E6%95%B080%E5%90%8E%EF%BC%9A%E6%88%91%E4%BB%AC%E7%9C%9F%E7%9A%84%E5%88%B0%E4%BA%86%E4%B8%8D%E8%83%BD%E7%A1%AC%E6%89%9B%E7%9A%84%E5%B9%B4%E7%BA%AA/</link>
+            <description>张雪峰去世的消息，让很多80后第一次如此真切地意识到：我们真的到了不能再靠熬夜、硬扛和透支身体往前冲的年纪。比起一味追逐成功，中年之后更重要的，也许是活得健康、清醒、有质量。</description>
+            <pubDate>Wed, 25 Mar 2026 15:26:11 +0800</pubDate>
+            <category>随笔</category>
+        </item>
+        <item>
             <title>大家都在 AI Coding，为什么你的产出还是没变快？问题不在模型，在工作流分层</title>
             <link>https://www.zymn.cc/2026/03/25/ai-coding-workflow-layering/</link>
             <description>为什么很多人已经能用 Claude Code、Codex、OpenClaw 甚至一堆 MCP 和 Skills，实际产出却还是没有明显变快？问题通常不在模型能力，而在工作流没有分层。这篇文章不谈空泛观点，直接拆给你看：个人开发者和小团队怎样把“会用 AI”升级成“能持续交付”的 AI Coding 工作流。</description>
