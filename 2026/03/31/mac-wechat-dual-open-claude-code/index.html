@@ -33,7 +33,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://blog.fxcxy.com/img/mac-wechat-dual-open-claude-code.png">
 <meta property="article:published_time" content="2026-03-31T06:50:00.000Z">
-<meta property="article:modified_time" content="2026-03-31T09:43:03.537Z">
+<meta property="article:modified_time" content="2026-03-31T09:55:12.841Z">
 <meta property="article:author" content="spatacus">
 <meta property="article:tag" content="AI工具">
 <meta property="article:tag" content="效率工具">
@@ -458,7 +458,7 @@
 
 <p>这样桌面上会生成一个 <code>微信双开.app</code>，双击即可启动双开微信。</p>
 <p>如果你还想让它看起来更自然，可以把原版微信图标复制过去：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">cp</span> <span class="hljs-string">&quot;/Applications/WeChat.app/Contents/Resources/AppIcon.icns&quot;</span> <span class="hljs-string">&quot;<span class="hljs-variable">$HOME</span>/Desktop/微信双开.app/Contents/Resources/AppIcon.icns&quot;</span><br>/usr/libexec/PlistBuddy -c <span class="hljs-string">&quot;Set :CFBundleIconFile AppIcon&quot;</span> <span class="hljs-string">&quot;<span class="hljs-variable">$HOME</span>/Desktop/微信双开.app/Contents/Info.plist&quot;</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">cp</span> <span class="hljs-string">&quot;/Applications/WeChat.app/Contents/Resources/AppIcon.icns&quot;</span> \<br>     <span class="hljs-string">&quot;<span class="hljs-variable">$HOME</span>/Desktop/微信双开.app/Contents/Resources/applet.icns&quot;</span> &amp;&amp; \<br>  <span class="hljs-built_in">touch</span> <span class="hljs-string">&quot;<span class="hljs-variable">$HOME</span>/Desktop/微信双开.app&quot;</span> &amp;&amp; \<br>  killall Finder &amp;&amp; \<br>  killall Dock<br></code></pre></td></tr></table></figure>
 
 <h2 id="本文附带脚本下载"><a href="#本文附带脚本下载" class="headerlink" title="本文附带脚本下载"></a>本文附带脚本下载</h2><p>如果你不想自己整理命令，可以直接下载我这次用到的脚本：</p>
 <ul>
