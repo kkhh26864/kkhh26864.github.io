@@ -1,0 +1,950 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/logo.png">
+  <link rel="icon" href="/img/logo.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3232532601275150"
+     crossorigin="anonymous"></script>
+    <meta name="twitter:card" content="/img/community-scout-dev-intel-agent-workflow.png" />
+    <meta name="twitter:site" content="自由码农" />
+    <meta name="twitter:creator" content="@corder2025">
+    <meta name="twitter:title" content="社区热点太散盯不过来？用 Community Scout + AI Agent 搭一个开发情报流 - 自由码农" />
+    <meta name="twitter:description" content="社区热点太多，不是信息不够，而是你没法每天筛一遍如果你平时会盯 Hacker News、GitHub Trending、Reddit、X，那应该很熟悉一种低效感：消息很多，但真正值得你跟进的没几条。 更麻烦的是，这些内容分散在不同平台。你要么一个个点进去看，要么开一堆 RSS、Bot、收藏夹，最后变成“信息都看了，但没有真正沉淀成行动”。 Community Scout 值得写，不是因为它又抓了几" />
+    <meta name="twitter:image" content="/img/community-scout-dev-intel-agent-workflow.png" />
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="独立开发">
+  <meta name="keywords" content="自由码农,技术博客,工具分享，网站开发，App开发，小程序开发，H5开发">
+  
+    <meta name="description" content="社区热点太多，不是信息不够，而是你没法每天筛一遍如果你平时会盯 Hacker News、GitHub Trending、Reddit、X，那应该很熟悉一种低效感：消息很多，但真正值得你跟进的没几条。 更麻烦的是，这些内容分散在不同平台。你要么一个个点进去看，要么开一堆 RSS、Bot、收藏夹，最后变成“信息都看了，但没有真正沉淀成行动”。 Community Scout 值得写，不是因为它又抓了几">
+<meta property="og:type" content="article">
+<meta property="og:title" content="社区热点太散盯不过来？用 Community Scout + AI Agent 搭一个开发情报流">
+<meta property="og:url" content="https://blog.fxcxy.com/2026/03/31/community-scout-dev-intel-agent-workflow/index.html">
+<meta property="og:site_name" content="自由码农">
+<meta property="og:description" content="社区热点太多，不是信息不够，而是你没法每天筛一遍如果你平时会盯 Hacker News、GitHub Trending、Reddit、X，那应该很熟悉一种低效感：消息很多，但真正值得你跟进的没几条。 更麻烦的是，这些内容分散在不同平台。你要么一个个点进去看，要么开一堆 RSS、Bot、收藏夹，最后变成“信息都看了，但没有真正沉淀成行动”。 Community Scout 值得写，不是因为它又抓了几">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://blog.fxcxy.com/img/community-scout-dev-intel-agent-workflow.png">
+<meta property="article:published_time" content="2026-03-30T23:27:26.000Z">
+<meta property="article:modified_time" content="2026-03-31T03:48:59.499Z">
+<meta property="article:author" content="spatacus">
+<meta property="article:tag" content="AI Agent">
+<meta property="article:tag" content="热点监控">
+<meta property="article:tag" content="Community Scout">
+<meta property="article:tag" content="GitHub Trending">
+<meta property="article:tag" content="Hacker News">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://blog.fxcxy.com/img/community-scout-dev-intel-agent-workflow.png">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>社区热点太散盯不过来？用 Community Scout + AI Agent 搭一个开发情报流 - 自由码农</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+  
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_4443546_u6jwvi2qcka.css">
+<link rel="stylesheet" href="/css/social-share.min.css">
+<link rel="stylesheet" href="/css/myreward.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"blog.fxcxy.com","root":"/","version":"1.9.7","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"复制"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"J7kyQXV9R3CXOiA1eubrlflY-gzGzoHsz","app_key":"qHZzPzRcvsutXvHvBewqGmhw","server_url":"https://leancloud.fxcxy.com","path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+
+  
+    <!-- Google tag (gtag.js) -->
+    <script async>
+      if (!Fluid.ctx.dnt) {
+        Fluid.utils.createScript("https://www.googletagmanager.com/gtag/js?id=", function() {
+          window.dataLayer = window.dataLayer || [];
+          function gtag() {
+            dataLayer.push(arguments);
+          }
+          gtag('js', new Date());
+          gtag('config', '');
+        });
+      }
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+    
+  
+
+
+
+  
+<meta name="generator" content="Hexo 7.1.1"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>自由码农</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="社区热点太散盯不过来？用 Community Scout + AI Agent 搭一个开发情报流"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2026-03-31 07:27" pubdate>
+          2026年3月31日 早上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          2.4k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          20 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="busuanzi_value_page_pv"></span>次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">社区热点太散盯不过来？用 Community Scout + AI Agent 搭一个开发情报流</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h2 id="社区热点太多，不是信息不够，而是你没法每天筛一遍"><a href="#社区热点太多，不是信息不够，而是你没法每天筛一遍" class="headerlink" title="社区热点太多，不是信息不够，而是你没法每天筛一遍"></a>社区热点太多，不是信息不够，而是你没法每天筛一遍</h2><p>如果你平时会盯 Hacker News、GitHub Trending、Reddit、X，那应该很熟悉一种低效感：消息很多，但真正值得你跟进的没几条。</p>
+<p>更麻烦的是，这些内容分散在不同平台。你要么一个个点进去看，要么开一堆 RSS、Bot、收藏夹，最后变成“信息都看了，但没有真正沉淀成行动”。</p>
+<p><code>Community Scout</code> 值得写，不是因为它又抓了几个网站，而是它把这件事拆成了更适合 AI 工作流的两段：<strong>先统一抓原始信号，再交给 Agent 做筛选和总结</strong>。对做内容选题、产品监控、技术情报、竞品观察的人来说，这个思路比“再加一个订阅源”更实用。</p>
+<h2 id="先讲结论：Community-Scout-不是情报结论器，而是情报原料机"><a href="#先讲结论：Community-Scout-不是情报结论器，而是情报原料机" class="headerlink" title="先讲结论：Community Scout 不是情报结论器，而是情报原料机"></a>先讲结论：Community Scout 不是情报结论器，而是情报原料机</h2><p>这个项目的定位很直接：</p>
+<blockquote>
+<p>AI-powered dev community intelligence. Monitors Reddit, Hacker News, GitHub Trending, and X&#x2F;Twitter.</p>
+</blockquote>
+<p>但它真正有价值的点，不是“监控 4 个平台”，而是<strong>只负责把原始数据抓下来，输出成 Agent 友好的纯文本报告</strong>。</p>
+<p>也就是说，它不试图替你做复杂的产品判断，而是把流程切成两层：</p>
+<ol>
+<li><code>community-scout.sh</code> 负责抓取与落盘</li>
+<li>你的 AI Agent 负责按你的兴趣、业务和目标做二次过滤</li>
+</ol>
+<p>这个结构很适合个人开发者和小团队，因为它天然支持你继续往后接：</p>
+<ul>
+<li>晨报摘要</li>
+<li>爆款选题池</li>
+<li>竞品跟踪</li>
+<li>安全风险提醒</li>
+<li>新工具发现清单</li>
+</ul>
+<h2 id="它到底抓什么？4-个平台-1-个占位入口"><a href="#它到底抓什么？4-个平台-1-个占位入口" class="headerlink" title="它到底抓什么？4 个平台 + 1 个占位入口"></a>它到底抓什么？4 个平台 + 1 个占位入口</h2><p>根据 README 和脚本本身，Community Scout 当前会处理这些来源：</p>
+<ul>
+<li><strong>Hacker News</strong>：从 top stories 里筛 AI &#x2F; agent 相关主题，或者高分内容</li>
+<li><strong>GitHub</strong>：抓最近 7 天创建、且有一定 star 的仓库，再做关键词过滤</li>
+<li><strong>Reddit</strong>：默认看 <code>ClaudeAI</code>、<code>LocalLLaMA</code>、<code>moltbot</code>，同时还会跑几组站内搜索</li>
+<li><strong>X &#x2F; Twitter</strong>：通过 xAI 的 <code>x_search</code> 能力抓最近 7 天相关帖子</li>
+<li><strong>Product Hunt</strong>：脚本里先留了入口，但当前只是标记“structured data 需要 API key”</li>
+</ul>
+<p>这几个源的组合很像一个开发者日常会手动刷的最小闭环：</p>
+<ul>
+<li>HN 适合看讨论热度</li>
+<li>GitHub 适合看新项目和工具爆发点</li>
+<li>Reddit 适合看真实使用反馈</li>
+<li>X 适合看新品首发、作者观点和传播动向</li>
+</ul>
+<p>如果你做的是 AI 工具、自动化工作流、热点监控，这几个源基本已经覆盖了“早发现 + 早判断”的核心需求。</p>
+<img src="/2026/03/31/community-scout-dev-intel-agent-workflow/inline-01-overview.png" srcset="/img/loading.gif" lazyload class="" title="多平台社区信号汇总">
+
+<h2 id="为什么这个项目适合接-AI-Agent，而不是自己做一堆规则？"><a href="#为什么这个项目适合接-AI-Agent，而不是自己做一堆规则？" class="headerlink" title="为什么这个项目适合接 AI Agent，而不是自己做一堆规则？"></a>为什么这个项目适合接 AI Agent，而不是自己做一堆规则？</h2><p>关键在于它输出的是<strong>纯文本 markdown 报告</strong>。</p>
+<p>README 里强调 <code>Plain text output</code>，跑完后结果会落到临时文件，脚本版默认是按日期生成 markdown 报告。这样做有 3 个很实际的好处。</p>
+<h3 id="1）对-Agent-最友好，不需要额外解释-JSON-结构"><a href="#1）对-Agent-最友好，不需要额外解释-JSON-结构" class="headerlink" title="1）对 Agent 最友好，不需要额外解释 JSON 结构"></a>1）对 Agent 最友好，不需要额外解释 JSON 结构</h3><p>很多监控工具的问题不是抓不到，而是抓完以后输出一坨结构化字段，最后你还得自己再写一层解析逻辑。</p>
+<p>Community Scout 反过来，直接把结果组织成可读的 markdown 段落和条目。对 Claude Code、OpenClaw、Clawdbot 这类会读文件的 Agent 来说，接入门槛非常低：<strong>让它读文件，再让它给结论</strong>。</p>
+<h3 id="2）抓取和判断解耦，后续更容易改"><a href="#2）抓取和判断解耦，后续更容易改" class="headerlink" title="2）抓取和判断解耦，后续更容易改"></a>2）抓取和判断解耦，后续更容易改</h3><p>今天你可能只想看 AI Agent 和 MCP；明天你可能想换成投研、开源情报、竞品舆情。</p>
+<p>如果规则全写死在采集脚本里，每次都要改抓取层。现在这种设计更轻：脚本只负责把原料拿回来，真正的“ relevance 判断 ”交给模型层做。</p>
+<p>这意味着你可以很自然地切出不同下游工作流：</p>
+<ul>
+<li>给自己做“每天只看 5 条最值得关注的信息”</li>
+<li>给公众号做“潜在选题池”</li>
+<li>给产品经理做“竞品和讨论动向摘要”</li>
+<li>给安全团队做“高风险依赖或舆情提醒”</li>
+</ul>
+<h3 id="3）特别适合-cron-和无人值守"><a href="#3）特别适合-cron-和无人值守" class="headerlink" title="3）特别适合 cron 和无人值守"></a>3）特别适合 cron 和无人值守</h3><p>README 直接给了定时执行示例：</p>
+<img src="/2026/03/31/community-scout-dev-intel-agent-workflow/inline-03-morning-brief.png" srcset="/img/loading.gif" lazyload class="" title="定时监控与晨报工作流">
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">crontab -e<br>0 10 * * 1,3,5 /path/to/community-scout/community-scout.sh<br></code></pre></td></tr></table></figure>
+
+<p>这意味着它天然不是一个“手动打开看一眼”的玩具，而是一个可以被塞进日常工作流的组件。</p>
+<p>如果你已经在用 Claude Code 的定时能力、n8n、LaunchAgent 或 OpenClaw 的自动任务，这种脚本型工具就很好接。</p>
+<h2 id="10-分钟上手：最小可用流程怎么搭"><a href="#10-分钟上手：最小可用流程怎么搭" class="headerlink" title="10 分钟上手：最小可用流程怎么搭"></a>10 分钟上手：最小可用流程怎么搭</h2><p>如果你只是想先跑通，不需要一上来就折腾复杂自动化。</p>
+<p>README 给出的最小路径非常短：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">git <span class="hljs-built_in">clone</span> https://github.com/rockywuest/community-scout.git<br><span class="hljs-built_in">cd</span> community-scout<br>./community-scout.sh<br></code></pre></td></tr></table></figure>
+
+<p>跑完以后，README 写的是输出会落到 <code>/tmp/community-scout-*.md</code> 这类报告文件里；如果你直接照脚本当前实现看，默认输出目录是它在脚本里配置的日期型 markdown 报告路径。</p>
+<p>你接下来只要做一件事：<strong>让 Agent 去读它</strong>。</p>
+<p>比如可以给 Agent 一个非常简单的任务：</p>
+<ul>
+<li>读取最新 scout 报告</li>
+<li>只保留和 AI 工作流 &#x2F; MCP &#x2F; 本地模型 &#x2F; 自动化工具相关的内容</li>
+<li>按“值得现在跟进”的程度排序</li>
+<li>输出 Top 5，并补一句为什么值得看</li>
+</ul>
+<p>这时候，Community Scout 才真正发挥价值：它不是替你做判断，而是给你的 Agent 提供更完整的输入面。</p>
+<h2 id="真正值得抄的，是它的工作流分层"><a href="#真正值得抄的，是它的工作流分层" class="headerlink" title="真正值得抄的，是它的工作流分层"></a>真正值得抄的，是它的工作流分层</h2><p>我觉得这个项目最值得借鉴的，不是 Reddit、HN 或 GitHub 的抓取细节，而是下面这条链路：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs text">多平台抓取 → 落地为统一报告 → Agent 结合个人兴趣过滤 → 输出行动建议<br></code></pre></td></tr></table></figure>
+
+<p>README 里的 agent integration 例子已经把思路写得很清楚：</p>
+<ul>
+<li>检查报告目录里有没有新文件</li>
+<li>按你的兴趣做 relevance 打分</li>
+<li>只把高于阈值的内容放进 morning briefing</li>
+</ul>
+<p>这套结构其实可以直接迁移到很多中文场景：</p>
+<h3 id="场景-1：做公众号或内容选题"><a href="#场景-1：做公众号或内容选题" class="headerlink" title="场景 1：做公众号或内容选题"></a>场景 1：做公众号或内容选题</h3><p>你可以把“值得写”的标准提前写给 Agent，例如：</p>
+<ul>
+<li>必须能落成教程</li>
+<li>必须和 AI 工具 &#x2F; 工作流 &#x2F; 信息监控有关</li>
+<li>不能只是融资新闻</li>
+<li>不能和近 7 天文章重复</li>
+</ul>
+<p>然后每天自动从报告里筛出 1 到 3 个候选，再让模型继续深挖一手资料。</p>
+<h3 id="场景-2：做个人技术雷达"><a href="#场景-2：做个人技术雷达" class="headerlink" title="场景 2：做个人技术雷达"></a>场景 2：做个人技术雷达</h3><p>很多独立开发者不是不知道信息在哪，而是没有能力持续筛。</p>
+<p>Community Scout 这种模式可以把“刷社区”从一个消耗注意力的动作，变成一个每天固定产出的输入源。你真正处理的是<strong>结论和行动项</strong>，不是网页本身。</p>
+<h3 id="场景-3：做竞品和趋势观察"><a href="#场景-3：做竞品和趋势观察" class="headerlink" title="场景 3：做竞品和趋势观察"></a>场景 3：做竞品和趋势观察</h3><p>如果你有明确关注的关键词，比如 MCP、Agent、语音模型、开源 IDE、自动化运营，就能直接改脚本里的 subreddit、keyword、X query，把它变成一个更窄、更有信噪比的监控器。</p>
+<h2 id="它的边界也很明显，别把它想成全能系统"><a href="#它的边界也很明显，别把它想成全能系统" class="headerlink" title="它的边界也很明显，别把它想成全能系统"></a>它的边界也很明显，别把它想成全能系统</h2><p>这个项目目前更像一个轻量骨架，而不是完整平台。</p>
+<p>几个边界你要提前知道：</p>
+<ul>
+<li><strong>X 依赖 xAI API key</strong>，没有就会跳过，但其他源照样能跑</li>
+<li><strong>Product Hunt 目前只是预留入口</strong>，不是完整结构化抓取</li>
+<li><strong>配置主要靠改脚本头部</strong>，不是可视化后台</li>
+<li><strong>最终价值高度依赖你的 Agent 提示词是否清楚</strong></li>
+</ul>
+<p>换句话说，它不能替你定义“什么叫重要”。</p>
+<p>但这反而是优点，因为“重要”这件事本来就强依赖你的目标：</p>
+<ul>
+<li>做内容的人关注能不能转成实战文章</li>
+<li>做产品的人关注是否值得跟进功能方向</li>
+<li>做投研的人关注是否能形成结构化观察</li>
+<li>做自动化的人关注是否能接进已有任务流</li>
+</ul>
+<p>Community Scout 只做第一步：把原料捞上来。</p>
+<h2 id="如果你已经在用-OpenClaw-Claude-Code，这篇项目最该怎么用？"><a href="#如果你已经在用-OpenClaw-Claude-Code，这篇项目最该怎么用？" class="headerlink" title="如果你已经在用 OpenClaw &#x2F; Claude Code，这篇项目最该怎么用？"></a>如果你已经在用 OpenClaw &#x2F; Claude Code，这篇项目最该怎么用？</h2><p>我更推荐你把它当成一个<strong>上游情报采集器</strong>，而不是终点工具。</p>
+<p>比较顺手的一条链路可以是这样：</p>
+<ol>
+<li><code>community-scout.sh</code> 定时跑</li>
+<li>生成最新报告</li>
+<li>Agent 读取报告，打 relevance 分数</li>
+<li>高分内容进入一个候选池</li>
+<li>只有候选池里的内容，才继续做深度研究、写作或提醒</li>
+</ol>
+<p>这样你就不会把模型预算浪费在“全网都看看”这种低价值动作上，而是把模型算力留给真正需要判断的环节。</p>
+<img src="/2026/03/31/community-scout-dev-intel-agent-workflow/inline-02-agent-filter.png" srcset="/img/loading.gif" lazyload class="" title="AI Agent 过滤与行动建议">
+
+<p>对公众号、技术博客、产品观察者来说，这个思路尤其值钱：<strong>先用脚本做广覆盖，再用 Agent 做高价值收缩</strong>。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>如果你现在的问题是“信息太多、每天盯盘太累、却又不想错过值得跟进的新工具和趋势”，那 Community Scout 值得你花 10 分钟试一下。</p>
+<p>它不花哨，也不是那种一眼惊艳的全栈产品，但胜在结构简单、接入门槛低，而且非常适合继续往 AI 工作流里扩。</p>
+<p>你可以把它理解成一个很轻的前置过滤器：</p>
+<ul>
+<li>帮你把多个社区的原始信号拉平</li>
+<li>帮 Agent 拿到更完整的输入</li>
+<li>最终把“刷信息”变成“收结论”</li>
+</ul>
+<p>这类工具最大的价值，从来不是多抓一个站点，而是让你终于不用再靠自己每天手动刷完整个互联网。</p>
+
+                
+              </div>
+            
+
+              <!--打赏-->
+              <div class="reward">
+                  <div class="reward-button">赏 <span class="reward-code">
+		<span class="alipay-code"> <img class="alipay-img wdp-appear" src="/img/alipay.png" srcset="/img/loading.gif" lazyload><b>支付宝打赏</b> </span>
+		<span class="wechat-code"> <img class="wechat-img wdp-appear" src="/img/wechat.png" srcset="/img/loading.gif" lazyload><b>微信打赏</b> </span> </span>
+                  </div>
+                  <p class="reward-notice">如果文章对你有帮助，欢迎点击上方按钮打赏作者，更多功能请访问<a href="https://blog.fxcxy.com">博客站</a></p>
+              </div>
+              <!--打赏-->
+              <hr/>
+              <div style="text-align:right;"> <!-- 自己添加的“分享到”模块：开始。用的是 social-share.js。让所有的分享按钮右对齐-->
+
+                  <div class="social-share-container" style="margin-top: 15px;"> <!-- 生成一组分享按钮 -->
+                       <!--如果博客语言是中文，就显示“点击分享到：”，非中文一律显示“Share it:”-->
+                      点击分享到：&nbsp;&nbsp;
+                      
+                  </div>
+                  <!-- 加载 jQuery 库 -->
+                  
+<script src="/js/jquery.min.js"></script>
+
+                  <!-- 导入 qrcode.min.js -->
+                  
+<script src="/js/qrcode.min.js"></script>
+
+                  <!-- 加载 social-share.js 的 js 库，另外还要加载 social-share.js 的 CSS，可以修改 `_config.fluid.yml` 的 `custom_css` 加载，也可以修改 `themes/fluid/layout/_partial/css.ejs` 加载。-->
+                  
+<script src="/js/social-share.min.js"></script>
+
+                  <script>
+                    /* 执行 js 代码，new 一个新对象，详见 social-share.js 在 GitHub 的文档 */
+                    new SocialShare('.social-share-container', {
+                      theme: 'circle',  // 使用圆形主题
+                      // 单独定义wechat分享参数
+                      wechat: {
+                        sort: 1, // 排序参数，数字较小的展示在前面,默认999
+                      },
+                      twitter: {
+                        sort: 2, // 排序参数，数字较小的展示在前面,默认999
+                      },
+                      facebook: {
+                        sort: 3, // 排序参数，数字较小的展示在前面,默认999
+                      }
+                    });
+                  </script>
+              </div> <!-- 自己添加的“分享到”模块：结束。-->
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/AI%E5%AE%9E%E6%88%98/" class="category-chain-item">AI实战</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/AI-Agent/" class="print-no-link">#AI Agent</a>
+      
+        <a href="/tags/%E7%83%AD%E7%82%B9%E7%9B%91%E6%8E%A7/" class="print-no-link">#热点监控</a>
+      
+        <a href="/tags/Community-Scout/" class="print-no-link">#Community Scout</a>
+      
+        <a href="/tags/GitHub-Trending/" class="print-no-link">#GitHub Trending</a>
+      
+        <a href="/tags/Hacker-News/" class="print-no-link">#Hacker News</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>社区热点太散盯不过来？用 Community Scout + AI Agent 搭一个开发情报流</div>
+      <div>https://blog.fxcxy.com/2026/03/31/community-scout-dev-intel-agent-workflow/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>独立开发</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2026年3月31日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2026/03/30/opencli-rs-rust-cli-ai-workflow/" title="opencli-rs 实战：把 55 个网站和本地 CLI 变成 AI 可调用工具，速度比 Node 版快 12 倍">
+                        <span class="hidden-mobile">opencli-rs 实战：把 55 个网站和本地 CLI 变成 AI 可调用工具，速度比 Node 版快 12 倍</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://lib.baomitu.com/valine/1.5.1/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"J7kyQXV9R3CXOiA1eubrlflY-gzGzoHsz","appKey":"qHZzPzRcvsutXvHvBewqGmhw","path":"window.location.pathname","placeholder":"输入您的评论","avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":false},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          var imgSelector = '#valine .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  <div class="footer-links" style="margin: 20px 0 10px 0; text-align: center;">
+    <a href="https://tv.zymn.cc" target="_blank" style="margin: 0 12px; color: #bdbdbd; text-decoration: none; font-weight: 500;">免费电影</a>
+    <a href="https://sl.zymn.cc" target="_blank" style="margin: 0 12px; color: #bdbdbd; text-decoration: none; font-weight: 500;">短链生成器</a>
+    <a href="https://yhjf.zymn.cc" target="_blank" style="margin: 0 12px; color: #bdbdbd; text-decoration: none; font-weight: 500;">隐秘信使</a>
+  </div>
+  
+    <div class="footer-content">
+       <a href="https://www.youtube.com/channel/UCn0Yarp_h6oqn1-QLvlgbDg?sub_confirmation=1" target="_blank" rel="nofollow noopener"><span>Youtube</span></a>- <a href="https://x.com/corder2025" target="_blank" rel="nofollow noopener"><span>X</span></a>- <a href="https://t.me/+FEyFQq_5u004OWU0" target="_blank" rel="nofollow noopener"><span>电报群</span></a>- <a href="https://v.douyin.com/iNpPYY4E/" target="_blank" rel="nofollow noopener"><span>抖音</span></a>- <a href="https://www.ixigua.com/home/103680436540" target="_blank" rel="nofollow noopener"><span>西瓜视频</span></a> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+  
+</div>
+
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script defer src="/js/leancloud.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
