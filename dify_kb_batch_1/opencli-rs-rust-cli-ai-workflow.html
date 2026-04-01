@@ -1,0 +1,629 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/logo.png">
+  <link rel="icon" href="/img/logo.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3232532601275150"
+     crossorigin="anonymous"></script>
+    <meta name="twitter:card" content="/img/opencli-rs-rust-cli-ai-workflow.png" />
+    <meta name="twitter:site" content="自由码农" />
+    <meta name="twitter:creator" content="@corder2025">
+    <meta name="twitter:title" content="opencli-rs 实战：把 55 个网站和本地 CLI 变成 AI 可调用工具，速度比 Node 版快 12 倍 - 自由码农" />
+    <meta name="twitter:description" content="自由码农的技术博客" />
+    <meta name="twitter:image" content="/img/opencli-rs-rust-cli-ai-workflow.png" />
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="独立开发">
+  <meta name="keywords" content="自由码农,技术博客,工具分享，网站开发，App开发，小程序开发，H5开发">
+  
+    <meta name="description" content="你缺的可能不是“再一个爬虫”，而是一个 AI 能直接调用的数据入口现在很多人折腾 AI 工作流，问题根本不在 Prompt，而在“外部信息怎么接进来”。 你可能也有过这种体验：  想让 Claude Code 或 OpenClaw 帮你分析一个话题，但还是得自己先打开 GitHub、Hacker News、知乎、X、B 站 找到内容后再复制链接、复制正文、复制评论，喂给 AI 想把结果接进自己的命">
+<meta property="og:type" content="website">
+<meta property="og:title" content="opencli-rs 实战：把 55 个网站和本地 CLI 变成 AI 可调用工具，速度比 Node 版快 12 倍">
+<meta property="og:url" content="https://blog.fxcxy.com/dify_kb_batch_1/opencli-rs-rust-cli-ai-workflow.html">
+<meta property="og:site_name" content="自由码农">
+<meta property="og:description" content="你缺的可能不是“再一个爬虫”，而是一个 AI 能直接调用的数据入口现在很多人折腾 AI 工作流，问题根本不在 Prompt，而在“外部信息怎么接进来”。 你可能也有过这种体验：  想让 Claude Code 或 OpenClaw 帮你分析一个话题，但还是得自己先打开 GitHub、Hacker News、知乎、X、B 站 找到内容后再复制链接、复制正文、复制评论，喂给 AI 想把结果接进自己的命">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://blog.fxcxy.com/img/opencli-rs-rust-cli-ai-workflow.png">
+<meta property="article:published_time" content="2026-03-30T03:18:50.000Z">
+<meta property="article:modified_time" content="2026-03-30T08:17:11.537Z">
+<meta property="article:author" content="spatacus">
+<meta property="article:tag" content="AI工具">
+<meta property="article:tag" content="opencli-rs">
+<meta property="article:tag" content="OpenCLI">
+<meta property="article:tag" content="Rust">
+<meta property="article:tag" content="工作流">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://blog.fxcxy.com/img/opencli-rs-rust-cli-ai-workflow.png">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>opencli-rs 实战：把 55 个网站和本地 CLI 变成 AI 可调用工具，速度比 Node 版快 12 倍 - 自由码农</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+  
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_4443546_u6jwvi2qcka.css">
+<link rel="stylesheet" href="/css/social-share.min.css">
+<link rel="stylesheet" href="/css/myreward.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"blog.fxcxy.com","root":"/","version":"1.9.7","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"复制"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"J7kyQXV9R3CXOiA1eubrlflY-gzGzoHsz","app_key":"qHZzPzRcvsutXvHvBewqGmhw","server_url":"https://leancloud.fxcxy.com","path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+
+  
+    <!-- Google tag (gtag.js) -->
+    <script async>
+      if (!Fluid.ctx.dnt) {
+        Fluid.utils.createScript("https://www.googletagmanager.com/gtag/js?id=", function() {
+          window.dataLayer = window.dataLayer || [];
+          function gtag() {
+            dataLayer.push(arguments);
+          }
+          gtag('js', new Date());
+          gtag('config', '');
+        });
+      }
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+    
+  
+
+
+
+  
+<meta name="generator" content="Hexo 7.1.1"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 60vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>自由码农</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="opencli-rs 实战：把 55 个网站和本地 CLI 变成 AI 可调用工具，速度比 Node 版快 12 倍"></span>
+          
+        </div>
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      <div class="container nopadding-x-md">
+        <div id="board"
+          >
+          
+          <div class="container">
+            <div class="row">
+              <div class="col-12 col-md-10 m-auto">
+                
+
+<article class="page-content">
+  <h2 id="你缺的可能不是“再一个爬虫”，而是一个-AI-能直接调用的数据入口"><a href="#你缺的可能不是“再一个爬虫”，而是一个-AI-能直接调用的数据入口" class="headerlink" title="你缺的可能不是“再一个爬虫”，而是一个 AI 能直接调用的数据入口"></a>你缺的可能不是“再一个爬虫”，而是一个 AI 能直接调用的数据入口</h2><p>现在很多人折腾 AI 工作流，问题根本不在 Prompt，而在“外部信息怎么接进来”。</p>
+<p>你可能也有过这种体验：</p>
+<ul>
+<li>想让 Claude Code 或 OpenClaw 帮你分析一个话题，但还是得自己先打开 GitHub、Hacker News、知乎、X、B 站</li>
+<li>找到内容后再复制链接、复制正文、复制评论，喂给 AI</li>
+<li>想把结果接进自己的命令行或自动化流程，又得额外写脚本</li>
+<li>工具一多，环境依赖也跟着膨胀：Node、浏览器扩展、各种脚本、各种 cookie 处理</li>
+</ul>
+<p>最后你会发现，真正拖慢你的，不是模型不会总结，而是<strong>信息入口太散，工具接口不统一</strong>。</p>
+<p>这也是我今天觉得 <code>opencli-rs</code> 值得写的原因。</p>
+<p>它不是一个“新爬虫站点合集”，而是把这件事做成了一个更适合 AI 工作流的底座：<strong>用一个 Rust 单文件 CLI，把网站、桌面应用、本地 CLI 都抽象成统一命令入口</strong>。对个人开发者、内容工作流、热点监控、投研信息流这几类场景，价值都很直接。</p>
+<h2 id="opencli-rs-到底是什么？先一句话讲清楚"><a href="#opencli-rs-到底是什么？先一句话讲清楚" class="headerlink" title="opencli-rs 到底是什么？先一句话讲清楚"></a>opencli-rs 到底是什么？先一句话讲清楚</h2><p><code>opencli-rs</code> 是一个用 Rust 重写的通用命令行工具，核心目标很明确：</p>
+<blockquote>
+<p><strong>让任何网站、部分桌面应用和本地 CLI，都能被统一成一个 AI 能发现、能调用、能编排的命令行入口。</strong></p>
+</blockquote>
+<p>它基于原来的 <code>opencli</code> 思路继续做，但换成了纯 Rust 实现。项目 README 给出的定位非常激进，也很直白：</p>
+<ul>
+<li>完全重写自 TypeScript 版 <code>opencli</code></li>
+<li>功能基本对齐</li>
+<li>体积更小：<strong>单个 4.7MB 二进制</strong></li>
+<li>运行时零依赖：<strong>不需要 Node.js</strong></li>
+<li>性能更快：一些真实命令测试里，<strong>最高能到 12x</strong></li>
+</ul>
+<p>如果你平时主要做的是：</p>
+<ul>
+<li>AI Agent 联网取数</li>
+<li>热点抓取与监控</li>
+<li>内容选题与资料整理</li>
+<li>把本地工具接进统一工作流</li>
+</ul>
+<p>那这个方向其实比“再多一个浏览器插件”更有意思，因为它解决的是<strong>入口标准化</strong>的问题。</p>
+<h2 id="它为什么比普通命令行工具更适合-AI-工作流？"><a href="#它为什么比普通命令行工具更适合-AI-工作流？" class="headerlink" title="它为什么比普通命令行工具更适合 AI 工作流？"></a>它为什么比普通命令行工具更适合 AI 工作流？</h2><p>我觉得可以从 4 个点看。</p>
+<h3 id="1）它不是只抓网站，而是想把“可调用能力”统一起来"><a href="#1）它不是只抓网站，而是想把“可调用能力”统一起来" class="headerlink" title="1）它不是只抓网站，而是想把“可调用能力”统一起来"></a>1）它不是只抓网站，而是想把“可调用能力”统一起来</h3><p>README 里列得很清楚，<code>opencli-rs</code> 并不只覆盖网页数据。</p>
+<p>它现在已经支持：</p>
+<ul>
+<li><strong>55 个站点，333 个命令</strong></li>
+<li>公共数据站点：Hacker News、Wikipedia、arXiv、Stack Overflow、Google News 等</li>
+<li>需要浏览器登录态的站点：X、B 站、知乎、小红书、微博、雪球、YouTube 等</li>
+<li>一部分桌面应用能力：Cursor、Codex、ChatGPT、Notion、Discord 等</li>
+<li>外部 CLI 透传：<code>gh</code>、<code>docker</code>、<code>kubectl</code>、<code>obsidian</code> 等</li>
+</ul>
+<p>这件事的意义不在“命令多”，而在于<strong>AI 不需要理解 10 套接口</strong>。</p>
+<p>对 AI 来说，最友好的世界不是“到处都是网页和 API 文档”，而是“所有能力都长得像命令”。一旦它们都能变成：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">opencli-rs &lt;site&gt; &lt;<span class="hljs-built_in">command</span>&gt;<br></code></pre></td></tr></table></figure>
+
+<p>那你后面无论接 OpenClaw、Claude Code、还是你自己的自动化脚本，心智负担都会低很多。</p>
+<h3 id="2）它把安装门槛压得非常低"><a href="#2）它把安装门槛压得非常低" class="headerlink" title="2）它把安装门槛压得非常低"></a>2）它把安装门槛压得非常低</h3><p>很多这类工具最容易死在第一步：你还没开始用，就先要配半天环境。</p>
+<p><code>opencli-rs</code> 的一个明显优势是分发方式足够干净。</p>
+<p>官方最新 release 是 <code>v0.1.3</code>，直接提供了：</p>
+<ul>
+<li>macOS（Apple Silicon &#x2F; Intel）</li>
+<li>Linux（x86_64 &#x2F; ARM64）</li>
+<li>Windows</li>
+<li>以及单独的 Chrome 扩展包</li>
+</ul>
+<p>也就是说，<strong>你可以直接下载二进制就跑</strong>。不需要先装 Node 20，不需要拖一坨 <code>node_modules</code>，这对想在多台机器、云主机、边缘节点部署的人非常友好。</p>
+<p>如果你只跑公共模式命令，比如：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">opencli-rs hackernews top --<span class="hljs-built_in">limit</span> 10<br>opencli-rs wikipedia trending<br>opencli-rs arxiv search <span class="hljs-string">&quot;agent workflow&quot;</span><br></code></pre></td></tr></table></figure>
+
+<p>甚至连浏览器扩展都不需要。</p>
+<h3 id="3）它对“AI-自动发现工具”这件事想得更前"><a href="#3）它对“AI-自动发现工具”这件事想得更前" class="headerlink" title="3）它对“AI 自动发现工具”这件事想得更前"></a>3）它对“AI 自动发现工具”这件事想得更前</h3><p>这点我觉得最值得内容工作流和 Agent 玩家关注。</p>
+
+
+<p>README 里明确写了两个很关键的设计：</p>
+<ul>
+<li>可以把 <code>opencli-rs list</code> 放进 <code>AGENT.md</code> 或类似规则文件，让 AI 自动发现可用工具</li>
+<li>可以通过 <code>register</code> 把本地 CLI 注册进去，让 AI 用同一套入口继续调用</li>
+</ul>
+<p>这和很多“单纯给人用的 CLI”不一样。它明显是把 <strong>AI Agent 作为第一类用户</strong> 来设计的。</p>
+<p>换句话说，你不是在装一个只给自己敲命令的工具，而是在给你的 AI 助手搭一层可发现的能力目录。</p>
+<p>如果你现在已经在用 Claude Code、OpenClaw 或 Cursor Agent，这个思路就很顺：</p>
+<ul>
+<li>公共信息 → 用 <code>opencli-rs</code> 取</li>
+<li>浏览器登录态信息 → 用 <code>opencli-rs</code> 取</li>
+<li>本地 CLI → 用 <code>opencli-rs</code> 统一转发</li>
+<li>AI 负责编排、筛选、总结和决策建议</li>
+</ul>
+<p>这才是真正的“让 AI 去联网干活”，而不是你自己先跑一轮，再把结果手抄过去。</p>
+<h3 id="4）Rust-重写带来的，不只是快，还有更稳的交付方式"><a href="#4）Rust-重写带来的，不只是快，还有更稳的交付方式" class="headerlink" title="4）Rust 重写带来的，不只是快，还有更稳的交付方式"></a>4）Rust 重写带来的，不只是快，还有更稳的交付方式</h3><p>README 里给了几组很容易传播、也确实有价值的数据：</p>
+<ul>
+<li>公共命令内存占用：<strong>15 MB vs 99 MB</strong></li>
+<li>浏览器命令内存占用：<strong>9 MB vs 95 MB</strong></li>
+<li>二进制大小：<strong>4.7 MB vs 约 50 MB node_modules</strong></li>
+<li><code>bilibili hot</code>：<strong>1.66s vs 20.1s</strong></li>
+<li><code>zhihu hot</code>：<strong>1.77s vs 20.5s</strong></li>
+<li><code>xueqiu search 茅台</code>：<strong>1.82s vs 9.2s</strong></li>
+</ul>
+<p>这些数字最打动我的地方，不只是“快”，而是它意味着你更容易把它放进真实工作流里。</p>
+<p>因为一旦一个工具：</p>
+<ul>
+<li>启动快</li>
+<li>占用小</li>
+<li>不依赖 Node 运行时</li>
+<li>能作为单文件分发</li>
+</ul>
+<p>它就更适合被放进：</p>
+<ul>
+<li>定时任务</li>
+<li>远程机器</li>
+<li>本地自动化脚本</li>
+<li>多节点采集系统</li>
+<li>Agent 的工具箱</li>
+</ul>
+<p>对个人用户来说，这比 benchmark 本身更重要。</p>
+<h2 id="你今天就能怎么用？我更建议先从-3-类场景下手"><a href="#你今天就能怎么用？我更建议先从-3-类场景下手" class="headerlink" title="你今天就能怎么用？我更建议先从 3 类场景下手"></a>你今天就能怎么用？我更建议先从 3 类场景下手</h2><h3 id="场景-1：做热点监控和内容选题"><a href="#场景-1：做热点监控和内容选题" class="headerlink" title="场景 1：做热点监控和内容选题"></a>场景 1：做热点监控和内容选题</h3><p>这是这个博客最直接的场景。</p>
+<p>你完全可以把 <code>opencli-rs</code> 当成一个统一取数层，先跑这些命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash">opencli-rs hackernews top --<span class="hljs-built_in">limit</span> 10 --format json<br>opencli-rs bilibili hot --<span class="hljs-built_in">limit</span> 20<br>opencli-rs zhihu hot --<span class="hljs-built_in">limit</span> 20<br>opencli-rs twitter search <span class="hljs-string">&quot;OpenClaw&quot;</span> --<span class="hljs-built_in">limit</span> 10<br></code></pre></td></tr></table></figure>
+
+<p>然后把输出交给 AI 去做第二层处理：</p>
+<ul>
+<li>哪些值得写</li>
+<li>哪些只是噪音</li>
+<li>哪些已经和最近 7 天文章重复</li>
+<li>哪些更适合写成教程，而不是新闻摘要</li>
+</ul>
+<p>这样你就不需要自己来回切站点了。</p>
+<h3 id="场景-2：给-OpenClaw-Claude-Code-增加统一联网能力"><a href="#场景-2：给-OpenClaw-Claude-Code-增加统一联网能力" class="headerlink" title="场景 2：给 OpenClaw &#x2F; Claude Code 增加统一联网能力"></a>场景 2：给 OpenClaw &#x2F; Claude Code 增加统一联网能力</h3><p>如果你用的是 Agent 型工作流，那 <code>opencli-rs</code> 的价值会更明显。</p>
+<p>因为很多时候你不缺模型，你缺的是：</p>
+<ul>
+<li>一个可枚举的工具目录</li>
+<li>一套稳定的取数入口</li>
+<li>一个能兼容公共页面和登录态页面的统一接口</li>
+</ul>
+<p>它在 README 里还提供了 AI discovery 能力，比如：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">opencli-rs explore https://www.example.com --site mysite<br>opencli-rs generate https://www.example.com --goal hot<br>opencli-rs cascade https://api.example.com/hot<br></code></pre></td></tr></table></figure>
+
+<p>这意味着它不只是“已有站点命令大全”，还在尝试帮你探索接口、生成适配器、判断认证方式。</p>
+<p>对于经常碰到“这个网站有没有现成接口”“能不能快速做个命令适配”的人来说，这一步很值钱。</p>
+<h3 id="场景-3：把你原来零散的本地命令也收进同一个入口"><a href="#场景-3：把你原来零散的本地命令也收进同一个入口" class="headerlink" title="场景 3：把你原来零散的本地命令也收进同一个入口"></a>场景 3：把你原来零散的本地命令也收进同一个入口</h3><p>这是我觉得很多人会低估的点。</p>
+<p><code>opencli-rs</code> 不只抓外部世界，还能把本地世界也统一一下。比如 <code>gh</code>、<code>docker</code>、<code>kubectl</code> 这些原本就常用的 CLI，可以继续从这个入口透传出去。</p>
+<p>这带来的好处是：</p>
+<ul>
+<li>你的 AI 更容易知道“它到底能调用什么”</li>
+<li>规则文件更容易维护</li>
+<li>工作流更容易组合</li>
+</ul>
+<p>对个人开发者来说，你最终想要的不是 20 个分散工具，而是<strong>一个可组合的命令总线</strong>。</p>
+<h2 id="它的工作方式，为什么比“硬写爬虫”更耐用？"><a href="#它的工作方式，为什么比“硬写爬虫”更耐用？" class="headerlink" title="它的工作方式，为什么比“硬写爬虫”更耐用？"></a>它的工作方式，为什么比“硬写爬虫”更耐用？</h2><p>README 里把能力拆成几种认证和执行策略：</p>
+<ul>
+<li><code>public</code></li>
+<li><code>cookie</code></li>
+<li><code>header</code></li>
+<li><code>intercept</code></li>
+<li><code>ui</code></li>
+</ul>
+<p>再加上 YAML pipeline、浏览器桥接、外部 CLI 透传，这说明它并不是在押注某一种单点方案，而是在做一个更通用的执行层。</p>
+<p>这种设计的好处是：</p>
+<h3 id="能处理公开数据，也能处理登录态数据"><a href="#能处理公开数据，也能处理登录态数据" class="headerlink" title="能处理公开数据，也能处理登录态数据"></a>能处理公开数据，也能处理登录态数据</h3><p>很多热点、资讯、论文站点走公开接口就够了；很多社媒、社区、平台型站点又必须依赖浏览器登录态。</p>
+<p>如果你要两套系统分别维护，复杂度会越来越高。<code>opencli-rs</code> 的做法，是尽量把这两类世界放到一个命令系统里。</p>
+<h3 id="新站点不一定要手写一坨代码"><a href="#新站点不一定要手写一坨代码" class="headerlink" title="新站点不一定要手写一坨代码"></a>新站点不一定要手写一坨代码</h3><p>它的适配器机制是 YAML pipeline。README 里直接给了样例：通过 <code>fetch</code>、<code>select</code>、<code>map</code>、<code>filter</code>、<code>sort</code>、<code>limit</code> 这些步骤描述一个站点命令。</p>
+
+
+<p>这至少说明两件事：</p>
+<ul>
+<li>新增站点能力的门槛被压低了</li>
+<li>站点命令更容易被维护和审阅</li>
+</ul>
+<p>对于经常需要小步快跑加数据源的人，这种方式明显比“每次都开新脚手架写一套逻辑”更省力。</p>
+<h2 id="什么时候该优先试-opencli-rs？什么时候不用急着上？"><a href="#什么时候该优先试-opencli-rs？什么时候不用急着上？" class="headerlink" title="什么时候该优先试 opencli-rs？什么时候不用急着上？"></a>什么时候该优先试 opencli-rs？什么时候不用急着上？</h2><p>我自己的判断标准很简单。</p>
+<h3 id="适合优先试的情况"><a href="#适合优先试的情况" class="headerlink" title="适合优先试的情况"></a>适合优先试的情况</h3><ol>
+<li><strong>你已经在做 AI 工作流，但联网取数还很散</strong></li>
+<li><strong>你需要同时覆盖公共站点和登录态站点</strong></li>
+<li><strong>你讨厌为了一个 CLI 再装一整套运行时</strong></li>
+<li><strong>你想把网站能力、本地命令、Agent 工具统一起来</strong></li>
+<li><strong>你在意部署体验，希望能单文件扔到机器上就跑</strong></li>
+</ol>
+<h3 id="可以先不急的情况"><a href="#可以先不急的情况" class="headerlink" title="可以先不急的情况"></a>可以先不急的情况</h3><ol>
+<li>你现在只需要一两个固定 API</li>
+<li>你根本没有 Agent &#x2F; 自动化工作流需求</li>
+<li>你只在浏览器里临时手动看，不打算沉淀成命令系统</li>
+</ol>
+<p>说白了，<code>opencli-rs</code> 最适合的不是“偶尔查一次数据”，而是你已经意识到：</p>
+<blockquote>
+<p><strong>信息获取，正在成为 AI 工作流里的基础设施。</strong></p>
+</blockquote>
+<h2 id="我对这个项目最看重的，不是“Rust-重写”，而是它把工具边界重新定义了"><a href="#我对这个项目最看重的，不是“Rust-重写”，而是它把工具边界重新定义了" class="headerlink" title="我对这个项目最看重的，不是“Rust 重写”，而是它把工具边界重新定义了"></a>我对这个项目最看重的，不是“Rust 重写”，而是它把工具边界重新定义了</h2><p>很多人看到这类项目，第一反应是：“哦，把 Node 版换成 Rust 了。”</p>
+<p>但如果只看到这里，就把它看小了。</p>
+<p>我更看重的是它传递出来的一种方向：</p>
+<ul>
+<li>网站不一定只能在浏览器里看</li>
+<li>桌面 App 不一定只能手点</li>
+<li>本地 CLI 不一定各自为战</li>
+<li>AI 不一定只能吃你复制进去的文本</li>
+</ul>
+<p>这些能力如果都能统一成一个稳定的命令入口，后面的自动化空间会大很多。</p>
+<p>尤其对想做以下事情的人：</p>
+<ul>
+<li>内容自动化</li>
+<li>热点监控</li>
+<li>投研信息流</li>
+<li>多工具编排</li>
+<li>个人 AI 助手</li>
+</ul>
+<p>这类“统一入口”工具的价值，往往比某个单点模型更新更持久。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>如果你现在已经在用 OpenClaw、Claude Code、Cursor Agent，或者你本来就在折腾热点抓取、信息流、内容工作流，那 <code>opencli-rs</code> 很值得你花一小时上手。</p>
+<p>它最大的吸引力，不只是 Rust 重写后更快、更小、更省资源，而是它把一个很关键的问题往前推了一步：</p>
+<p><strong>怎么把外部世界，变成 AI 可以稳定调用的工具世界。</strong></p>
+<p>这件事一旦跑通，AI 才不只是“会聊天”，而是真的开始替你处理信息、执行动作、串联流程。</p>
+<p>对个人开发者来说，这比单纯追新模型，实用得多。</p>
+
+
+  
+
+</article>
+
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  <div class="footer-links" style="margin: 20px 0 10px 0; text-align: center;">
+    <a href="https://tv.zymn.cc" target="_blank" style="margin: 0 12px; color: #bdbdbd; text-decoration: none; font-weight: 500;">免费电影</a>
+    <a href="https://sl.zymn.cc" target="_blank" style="margin: 0 12px; color: #bdbdbd; text-decoration: none; font-weight: 500;">短链生成器</a>
+    <a href="https://yhjf.zymn.cc" target="_blank" style="margin: 0 12px; color: #bdbdbd; text-decoration: none; font-weight: 500;">隐秘信使</a>
+  </div>
+  
+    <div class="footer-content">
+       <a href="https://www.youtube.com/channel/UCn0Yarp_h6oqn1-QLvlgbDg?sub_confirmation=1" target="_blank" rel="nofollow noopener"><span>Youtube</span></a>- <a href="https://x.com/corder2025" target="_blank" rel="nofollow noopener"><span>X</span></a>- <a href="https://t.me/+FEyFQq_5u004OWU0" target="_blank" rel="nofollow noopener"><span>电报群</span></a>- <a href="https://v.douyin.com/iNpPYY4E/" target="_blank" rel="nofollow noopener"><span>抖音</span></a>- <a href="https://www.ixigua.com/home/103680436540" target="_blank" rel="nofollow noopener"><span>西瓜视频</span></a> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+  
+</div>
+
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  <script defer src="/js/leancloud.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

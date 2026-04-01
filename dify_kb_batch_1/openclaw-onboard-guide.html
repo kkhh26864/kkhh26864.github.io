@@ -1,0 +1,551 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/logo.png">
+  <link rel="icon" href="/img/logo.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3232532601275150"
+     crossorigin="anonymous"></script>
+    <meta name="twitter:card" content="/img/openclaw-onboard-guide.png" />
+    <meta name="twitter:site" content="自由码农" />
+    <meta name="twitter:creator" content="@corder2025">
+    <meta name="twitter:title" content="OpenClaw 安装总卡在第一步？用 onboard 10 分钟搭好你的常驻 AI 助手（含升级避坑） - 自由码农" />
+    <meta name="twitter:description" content="很多人不是不会用 OpenClaw，而是卡在安装、Gateway、daemon 和升级这几个最容易出问题的环节。这篇文章基于官方 README 与文档，带你用 onboard 跑通第一套可长期在线的个人 AI 助手。" />
+    <meta name="twitter:image" content="/img/openclaw-onboard-guide.png" />
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="独立开发">
+  <meta name="keywords" content="自由码农,技术博客,工具分享，网站开发，App开发，小程序开发，H5开发">
+  
+    <meta name="description" content="很多人不是不会用 OpenClaw，而是卡在安装、Gateway、daemon 和升级这几个最容易出问题的环节。这篇文章基于官方 README 与文档，带你用 onboard 跑通第一套可长期在线的个人 AI 助手。">
+<meta property="og:type" content="website">
+<meta property="og:title" content="OpenClaw 安装总卡在第一步？用 onboard 10 分钟搭好你的常驻 AI 助手（含升级避坑）">
+<meta property="og:url" content="https://blog.fxcxy.com/dify_kb_batch_1/openclaw-onboard-guide.html">
+<meta property="og:site_name" content="自由码农">
+<meta property="og:description" content="很多人不是不会用 OpenClaw，而是卡在安装、Gateway、daemon 和升级这几个最容易出问题的环节。这篇文章基于官方 README 与文档，带你用 onboard 跑通第一套可长期在线的个人 AI 助手。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://blog.fxcxy.com/img/openclaw-onboard-guide.png">
+<meta property="article:published_time" content="2026-03-22T22:07:36.000Z">
+<meta property="article:modified_time" content="2026-03-23T12:27:54.844Z">
+<meta property="article:author" content="spatacus">
+<meta property="article:tag" content="OpenClaw">
+<meta property="article:tag" content="AI工具">
+<meta property="article:tag" content="安装教程">
+<meta property="article:tag" content="AI Agent">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://blog.fxcxy.com/img/openclaw-onboard-guide.png">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>OpenClaw 安装总卡在第一步？用 onboard 10 分钟搭好你的常驻 AI 助手（含升级避坑） - 自由码农</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+  
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_4443546_u6jwvi2qcka.css">
+<link rel="stylesheet" href="/css/social-share.min.css">
+<link rel="stylesheet" href="/css/myreward.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"blog.fxcxy.com","root":"/","version":"1.9.7","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"复制"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"J7kyQXV9R3CXOiA1eubrlflY-gzGzoHsz","app_key":"qHZzPzRcvsutXvHvBewqGmhw","server_url":"https://leancloud.fxcxy.com","path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+
+  
+    <!-- Google tag (gtag.js) -->
+    <script async>
+      if (!Fluid.ctx.dnt) {
+        Fluid.utils.createScript("https://www.googletagmanager.com/gtag/js?id=", function() {
+          window.dataLayer = window.dataLayer || [];
+          function gtag() {
+            dataLayer.push(arguments);
+          }
+          gtag('js', new Date());
+          gtag('config', '');
+        });
+      }
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+    
+  
+
+
+
+  
+<meta name="generator" content="Hexo 7.1.1"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 60vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>自由码农</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="OpenClaw 安装总卡在第一步？用 onboard 10 分钟搭好你的常驻 AI 助手（含升级避坑）"></span>
+          
+        </div>
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      <div class="container nopadding-x-md">
+        <div id="board"
+          >
+          
+          <div class="container">
+            <div class="row">
+              <div class="col-12 col-md-10 m-auto">
+                
+
+<article class="page-content">
+  <p>如果你已经准备开始用 OpenClaw，大概率第一个卡点不是“它能不能做事”，而是<strong>怎么把它稳定装起来、跑起来、留在本机长期在线</strong>。</p>
+<p>很多人第一次接触这类 AI Agent 工具，都会在几个地方反复踩坑：Node 版本不对、装完不知道该先跑什么、Gateway 状态没确认、升级后配置没迁移、明明命令能执行但助手就是不稳定。结果不是能力不够，而是第一条链路没有跑顺。</p>
+<p>这篇文章就只解决一件事：<strong>用 OpenClaw 官方推荐的 onboard 流程，把一个能长期运行的个人 AI 助手搭起来，并顺手把后续升级避坑一起讲清楚。</strong> 如果你想要的是一套今天就能用、后面还能继续扩展到 Telegram、Slack、Discord 等渠道的方案，这一篇正好适合。</p>
+<h2 id="为什么很多人安装了-OpenClaw，还是很快放弃？"><a href="#为什么很多人安装了-OpenClaw，还是很快放弃？" class="headerlink" title="为什么很多人安装了 OpenClaw，还是很快放弃？"></a>为什么很多人安装了 OpenClaw，还是很快放弃？</h2><p>表面上看，OpenClaw 的安装并不复杂。官方给了安装脚本，也提供了 Getting Started、Updating、Channels 等文档，README 里甚至直接写明了推荐路径：**优先运行 <code>openclaw onboard</code>**。</p>
+
+
+<p>但真正让新手放弃的，通常不是某一条命令报错，而是下面这几个问题叠在一起：</p>
+<ul>
+<li>不知道自己当前 Node 版本是否满足要求</li>
+<li>分不清安装、onboard、Gateway、daemon 之间的关系</li>
+<li>装完之后没有验证服务状态，后面所有问题都难排查</li>
+<li>升级时直接重装，遗漏 <code>doctor</code> 和重启步骤</li>
+<li>以为 OpenClaw 只是一个 CLI，没意识到它的核心其实是一个本地长期运行的 Gateway</li>
+</ul>
+<p>如果你把 OpenClaw 只当成“终端里运行一次的聊天工具”，体验通常不会稳定。因为从官方设计来看，它更像一套<strong>运行在你自己设备上的个人 AI 助手控制平面</strong>：CLI 只是入口，真正长期工作的，是 Gateway、渠道接入、模型配置和后续技能能力。</p>
+<h2 id="OpenClaw-的推荐安装路径，到底是什么？"><a href="#OpenClaw-的推荐安装路径，到底是什么？" class="headerlink" title="OpenClaw 的推荐安装路径，到底是什么？"></a>OpenClaw 的推荐安装路径，到底是什么？</h2><p>基于官方 README 和 Getting Started 页面，可以先把结论说清楚：</p>
+
+
+<ol>
+<li>运行环境优先用 <strong>Node 24</strong>，兼容下限是 <strong>Node 22.16+</strong></li>
+<li>安装完成后，不要自己东拼西凑命令，优先跑：</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">openclaw onboard --install-daemon<br></code></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>完成向导后，立刻检查 Gateway 状态：</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">openclaw gateway status<br></code></pre></td></tr></table></figure>
+
+<ol start="4">
+<li>后续升级优先使用：</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">openclaw update<br></code></pre></td></tr></table></figure>
+
+<ol start="5">
+<li>升级或回滚之后，把 <code>doctor</code> 和 Gateway 重启当成必做动作，而不是可选项</li>
+</ol>
+<p>这里最关键的不是命令本身，而是顺序。<strong>onboard 不是“锦上添花的安装向导”，而是官方推荐的新手主路径。</strong> 它会把模型提供商、API key、Gateway 这些首次安装最容易漏掉的环节串起来。</p>
+<h2 id="实操：10-分钟把-OpenClaw-跑起来"><a href="#实操：10-分钟把-OpenClaw-跑起来" class="headerlink" title="实操：10 分钟把 OpenClaw 跑起来"></a>实操：10 分钟把 OpenClaw 跑起来</h2><p>下面按最短路径走一遍，适合第一次上手的人。</p>
+<h3 id="第一步：先确认运行环境"><a href="#第一步：先确认运行环境" class="headerlink" title="第一步：先确认运行环境"></a>第一步：先确认运行环境</h3><p>先看 Node 版本：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">node --version<br></code></pre></td></tr></table></figure>
+
+<p>官方建议是 Node 24；如果你的环境还停在比较老的 Node 版本，先升级，再继续后面的步骤。除此之外，你还需要准备一个模型提供商的 API key，比如 Anthropic、OpenAI 或 Google。</p>
+<p>如果你在 Windows 上使用，官方文档说明原生 Windows 和 WSL2 都支持，但更推荐 <strong>WSL2</strong>。如果你之前总觉得这类工具在 Windows 上不稳定，优先切到 WSL2，通常会省掉很多环境兼容问题。</p>
+<h3 id="第二步：安装-OpenClaw"><a href="#第二步：安装-OpenClaw" class="headerlink" title="第二步：安装 OpenClaw"></a>第二步：安装 OpenClaw</h3><p>macOS &#x2F; Linux 可以直接跑官方安装脚本：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">curl -fsSL https://openclaw.ai/install.sh | bash<br></code></pre></td></tr></table></figure>
+
+<p>如果你更喜欢包管理，也可以用 npm、pnpm 或 Docker、Nix 这些方式，但对第一次上手的人来说，<strong>先按官方默认路径走一遍最稳</strong>。</p>
+<p>OpenClaw 官方 README 还给出了另一条常见路径：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">npm install -g openclaw@latest<br></code></pre></td></tr></table></figure>
+
+<p>不过如果你的目标是尽快跑通，不建议一开始就在多种安装方式之间切换。先固定一种方式，后面升级也会更好维护。</p>
+<h3 id="第三步：直接跑-onboard，不要自己手工拼配置"><a href="#第三步：直接跑-onboard，不要自己手工拼配置" class="headerlink" title="第三步：直接跑 onboard，不要自己手工拼配置"></a>第三步：直接跑 onboard，不要自己手工拼配置</h3><p>这是整套流程里最重要的一步：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">openclaw onboard --install-daemon<br></code></pre></td></tr></table></figure>
+
+<p><code>onboard</code> 的价值，不是帮你少打一条命令，而是把新手最容易卡住的 4 件事一次串起来：</p>
+<ul>
+<li>选择模型提供商</li>
+<li>填写 API key</li>
+<li>配置 Gateway</li>
+<li>安装 daemon，让服务以长期运行方式工作</li>
+</ul>
+<p>这一步做完，你得到的不是“一个暂时能跑的命令行 demo”，而是一个更接近真实使用状态的本地助手底座。</p>
+<h3 id="第四步：检查-Gateway-状态"><a href="#第四步：检查-Gateway-状态" class="headerlink" title="第四步：检查 Gateway 状态"></a>第四步：检查 Gateway 状态</h3><p>装完后别急着开始接频道、装技能或者写自动化。先验证基础设施是否真的正常：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">openclaw gateway status<br></code></pre></td></tr></table></figure>
+
+<p>根据官方文档，正常情况下你应该能确认 Gateway 正在工作，并监听在 <strong>18789</strong> 端口。这个检查非常重要，因为后面不管是 Dashboard、消息发送、还是渠道接入，都是建立在 Gateway 正常运行之上的。</p>
+<p>如果这一步没过，后面所有“好像能用但又不稳定”的问题，基本都应该先回到这里查。</p>
+<h3 id="第五步：打开控制台，发出第一条消息"><a href="#第五步：打开控制台，发出第一条消息" class="headerlink" title="第五步：打开控制台，发出第一条消息"></a>第五步：打开控制台，发出第一条消息</h3><p>官方文档给出的后续路径，是打开 Dashboard &#x2F; Control UI，然后发送第一条消息验证整条链路：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">openclaw dashboard<br></code></pre></td></tr></table></figure>
+
+<p>这一步的意义不是聊天本身，而是做一个最小闭环验证：</p>
+<ul>
+<li>模型配置已经生效</li>
+<li>Gateway 可用</li>
+<li>本地控制面正常</li>
+<li>你的助手已经不是“装好了”，而是“真的能接活了”</li>
+</ul>
+<p>如果你只做安装，不做这一步闭环验证，后面再去接 Telegram、Slack 或其他渠道时，排障成本会明显更高。</p>
+<h2 id="为什么-onboard-这条路更适合长期使用？"><a href="#为什么-onboard-这条路更适合长期使用？" class="headerlink" title="为什么 onboard 这条路更适合长期使用？"></a>为什么 onboard 这条路更适合长期使用？</h2><p>OpenClaw 在 README 里强调，它不是一个只存在于网页里的 AI 助手，而是一个<strong>运行在你自己设备上的 personal AI assistant</strong>。它可以接到 Telegram、WhatsApp、Slack、Discord、Google Chat、Signal、Feishu、LINE 等很多你已经在用的聊天渠道里。</p>
+<p>这意味着，OpenClaw 的真正价值不是“再给你一个聊天窗口”，而是把助手塞进你已有的工作和生活入口里。对个人用户来说，这个差别非常大：</p>
+<ul>
+<li>你不用再维护一个额外 App 的使用习惯</li>
+<li>工作消息可以走 Slack &#x2F; Teams &#x2F; Google Chat</li>
+<li>私人提醒和轻量交互可以走 Telegram &#x2F; Signal &#x2F; iMessage</li>
+<li>后续加 Skill、自动化任务、定时流程时，入口已经在了</li>
+</ul>
+<p>而 onboard + daemon 的组合，本质上是在帮你搭一个长期在线的基础设施。你后续再接频道、配代理、装 Skill、做多 Agent 路由，都会更顺。</p>
+<h2 id="升级最容易踩的坑，我建议你提前知道"><a href="#升级最容易踩的坑，我建议你提前知道" class="headerlink" title="升级最容易踩的坑，我建议你提前知道"></a>升级最容易踩的坑，我建议你提前知道</h2><p>很多人第一次装好之后，第二次出问题都发生在升级阶段。官方 Updating 页面给的建议很明确：**升级优先使用 <code>openclaw update</code>**。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">openclaw update<br></code></pre></td></tr></table></figure>
+
+<p>这条命令的意义，不只是“拉个新版本”，而是它会根据你当前的安装方式决定正确路径，并在升级后继续执行 <code>openclaw doctor</code>、重启 Gateway。这一点很关键，因为 OpenClaw 的配置和安全策略不是静态不变的，版本变动后如果不体检、不重启，就很容易留下“表面正常、实际异常”的隐患。</p>
+<p>如果你想更稳一点，可以先预览：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">openclaw update --dry-run<br></code></pre></td></tr></table></figure>
+
+<p>如果要切换到 beta 或指定目标版本，再用对应参数，不建议第一次接触时上来就混用多种发布通道。</p>
+<h2 id="升级后，这三个动作不要省"><a href="#升级后，这三个动作不要省" class="headerlink" title="升级后，这三个动作不要省"></a>升级后，这三个动作不要省</h2><p>官方文档已经把逻辑说得很清楚，实操里我建议你把下面三步直接记成模板：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">openclaw doctor<br>openclaw gateway restart<br>openclaw health<br></code></pre></td></tr></table></figure>
+
+<p>为什么这三步重要？</p>
+<ul>
+<li><code>openclaw doctor</code> 不只是体检，还会迁移配置、检查安全策略和 Gateway 健康状态</li>
+<li><code>openclaw gateway restart</code> 能把更新后的配置和运行状态真正切过去</li>
+<li><code>openclaw health</code> 则是最后的可用性确认</li>
+</ul>
+<p>很多人升级失败，不是新版本有问题，而是<strong>升级后的善后动作没做完</strong>。</p>
+<h2 id="一个更实用的理解：先把-OpenClaw-当“本地控制平面”，再谈技能和工作流"><a href="#一个更实用的理解：先把-OpenClaw-当“本地控制平面”，再谈技能和工作流" class="headerlink" title="一个更实用的理解：先把 OpenClaw 当“本地控制平面”，再谈技能和工作流"></a>一个更实用的理解：先把 OpenClaw 当“本地控制平面”，再谈技能和工作流</h2><p>如果你现在刚开始用 OpenClaw，我更建议你先建立这样一个心智模型：</p>
+<ul>
+<li>CLI 是入口</li>
+<li>Gateway 是底座</li>
+<li>daemon 是长期运行方式</li>
+<li>Dashboard &#x2F; Control UI 是调试和验证界面</li>
+<li>Channels 是扩展到真实沟通场景的通道</li>
+<li>Skills 和自动化，应该放在基础设施稳定之后再加</li>
+</ul>
+<p>这样你会少很多无效折腾。</p>
+<p>因为真实世界里，很多自动化失败并不是 Skill 写得不好，也不是模型不够强，而是底层环境不稳定：Gateway 没正常跑、升级后没 doctor、通道没正确接入、DM 安全策略没配清楚。把底座先搭稳，后面的价值才会持续放大。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>如果你之前总觉得 OpenClaw “看起来很强，但自己一装就乱”，问题大概率不在工具本身，而在于没有走官方推荐的最短稳定路径。</p>
+<p>最值得记住的其实就三件事：<strong>先确认 Node 环境，优先使用 <code>openclaw onboard --install-daemon</code>，安装或升级后立刻检查 Gateway &#x2F; doctor &#x2F; health。</strong> 只要这条基础链路跑顺，你后面不管是接 Telegram，还是继续做 Skills、自动化、渠道编排，都会轻松很多。</p>
+<p>对大多数人来说，OpenClaw 真正的门槛不是“能不能装上”，而是“能不能装成一个长期可用的个人助手系统”。而 onboard 这一步，正好就是把它从 demo 变成系统的分水岭。</p>
+<h2 id="下一步怎么做"><a href="#下一步怎么做" class="headerlink" title="下一步怎么做"></a>下一步怎么做</h2><p>如果你已经把本文这条安装链路跑通，下一步最值得看的不是再装更多东西，而是先把一个真实入口接上，比如 Telegram 或你平时就在用的工作聊天渠道。</p>
+<p>如果你想继续把 OpenClaw 用到真实任务里，下一步可以优先看合集《OpenClaw实战》，把部署、插件、自动化案例一起串起来。后面我也会继续把更适合个人工作流落地的内容，放到《AI工具与工作流》和相关实战案例里。</p>
+
+
+  
+
+</article>
+
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  <div class="footer-links" style="margin: 20px 0 10px 0; text-align: center;">
+    <a href="https://tv.zymn.cc" target="_blank" style="margin: 0 12px; color: #bdbdbd; text-decoration: none; font-weight: 500;">免费电影</a>
+    <a href="https://sl.zymn.cc" target="_blank" style="margin: 0 12px; color: #bdbdbd; text-decoration: none; font-weight: 500;">短链生成器</a>
+    <a href="https://yhjf.zymn.cc" target="_blank" style="margin: 0 12px; color: #bdbdbd; text-decoration: none; font-weight: 500;">隐秘信使</a>
+  </div>
+  
+    <div class="footer-content">
+       <a href="https://www.youtube.com/channel/UCn0Yarp_h6oqn1-QLvlgbDg?sub_confirmation=1" target="_blank" rel="nofollow noopener"><span>Youtube</span></a>- <a href="https://x.com/corder2025" target="_blank" rel="nofollow noopener"><span>X</span></a>- <a href="https://t.me/+FEyFQq_5u004OWU0" target="_blank" rel="nofollow noopener"><span>电报群</span></a>- <a href="https://v.douyin.com/iNpPYY4E/" target="_blank" rel="nofollow noopener"><span>抖音</span></a>- <a href="https://www.ixigua.com/home/103680436540" target="_blank" rel="nofollow noopener"><span>西瓜视频</span></a> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+  
+</div>
+
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  <script defer src="/js/leancloud.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

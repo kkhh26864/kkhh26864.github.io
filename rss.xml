@@ -5,6 +5,13 @@
         <link>https://www.zymn.cc</link>
         <description>欢迎来到我的个人博客！在这里，我将分享关于技术、编程、以及个人成长的经验和见解，帮助你在学习和工作中更进一步。</description>
         <item>
+            <title>MCP 1.0 正式发布：加入 Linux Foundation，开启 AI 工具标准化新纪元</title>
+            <link>https://www.zymn.cc/2026/04/01/mcp-1-0-release-linux-foundation/</link>
+            <description>这篇文章围绕 MCP 1.0 正式发布展开，重点解释它加入 Linux Foundation 的意义，以及统一注册表、会话恢复、安全增强提案这三项关键变化。文章面向 OpenClaw 和 AI 工具工作流读者，强调标准化之后，AI 工具接入会更稳、更安全、更容易扩展。</description>
+            <pubDate>Wed, 01 Apr 2026 21:18:00 +0800</pubDate>
+            <category>AI实战</category>
+        </item>
+        <item>
             <title>社区热点太散盯不过来？用 Community Scout + AI Agent 搭一个开发情报流</title>
             <link>https://www.zymn.cc/2026/03/31/community-scout-dev-intel-agent-workflow/</link>
             <description>每天刷 Hacker News、GitHub Trending、Reddit 和 X 很容易陷入信息过载。本文围绕 Community Scout，讲清楚怎样先把多平台社区信号汇总成统一报告，再交给 AI Agent 做过滤、晨报和候选池输出。</description>

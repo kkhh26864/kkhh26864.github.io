@@ -4,6 +4,37 @@
   
   
   <entry>
+    <title>MCP 1.0 正式发布：加入 Linux Foundation，开启 AI 工具标准化新纪元</title>
+    <link href="/2026/04/01/mcp-1-0-release-linux-foundation/"/>
+    <url>/2026/04/01/mcp-1-0-release-linux-foundation/</url>
+    
+    <content type="html"><![CDATA[<h2 id="核心摘要"><a href="#核心摘要" class="headerlink" title="核心摘要"></a>核心摘要</h2><p>就在刚才，Model Context Protocol (MCP) 迎来了其发展史上的里程碑时刻：<strong>MCP 1.0 正式发布</strong>，并宣布正式移交给 <strong>Linux Foundation</strong> 进行托管。这一举动标志着 MCP 从 Anthropic 的单一主导协议，演进为全球 AI 生态的开放标准。</p><p>对于 OpenClaw 开发者和 AI 工具发烧友来说，MCP 1.0 不仅仅是一个版本号的更迭，它带来的 <strong>统一注册表 (Unified Registry)<strong>、</strong>会话恢复 (Session Resumption)</strong> 以及更严谨的 **安全增强提案 (SEPs)**，将彻底改变我们构建和使用 AI Agent 的方式。</p><h2 id="MCP-1-0：从“大厂私有”到“工业标准”"><a href="#MCP-1-0：从“大厂私有”到“工业标准”" class="headerlink" title="MCP 1.0：从“大厂私有”到“工业标准”"></a>MCP 1.0：从“大厂私有”到“工业标准”</h2><p>自去年 11 月 Anthropic 发布 MCP 以来，该协议以其极简的架构和极强的扩展性迅速占领了开发者心智。然而，作为一个连接私有数据与 AI 模型的桥梁，其治理模式的透明度和中立性一直是社区关注的焦点。</p><img src="/2026/04/01/mcp-1-0-release-linux-foundation/inline-01-mcp-1-0.png" class="" title="MCP 1.0：从“大厂私有”到“工业标准” 示意图"><p><strong>移交 Linux Foundation</strong> 解决了这一隐忧。这意味着：</p><ol><li><strong>多方共治</strong>：Google、Amazon、Cursor 等重量级玩家将更深度地参与标准的制定。</li><li><strong>长期稳定性</strong>：协议不再受单一公司商业策略的影响，为企业级集成提供了信心。</li><li><strong>更广阔的生态</strong>：未来我们将看到更多非 Anthropic 系的模型（如 Gemini、Llama 等）原生支持 MCP。</li></ol><h2 id="三大核心特性深解读"><a href="#三大核心特性深解读" class="headerlink" title="三大核心特性深解读"></a>三大核心特性深解读</h2><h3 id="1-统一注册表-Unified-Registry"><a href="#1-统一注册表-Unified-Registry" class="headerlink" title="1. 统一注册表 (Unified Registry)"></a>1. 统一注册表 (Unified Registry)</h3><p>在 1.0 之前，寻找好用的 MCP Server 往往需要查阅各种 Awesome 列表。1.0 引入了官方维护的统一注册表，支持语义化搜索和版本管理。对于 OpenClaw 用户，这意味着你可以像使用 npm 搜索库一样，一键发现并集成数以千计的工具能力。</p><h3 id="2-会话恢复-Session-Resumption"><a href="#2-会话恢复-Session-Resumption" class="headerlink" title="2. 会话恢复 (Session Resumption)"></a>2. 会话恢复 (Session Resumption)</h3><p>这是针对长任务和不稳定网络环境的重大优化。以往 MCP 客户端与 Server 的连接一旦断开，上下文往往需要重新初始化。1.0 支持有状态的会话恢复，大幅提升了 AI 在处理复杂、跨天任务时的连续性。</p><h3 id="3-安全增强提案-SEPs"><a href="#3-安全增强提案-SEPs" class="headerlink" title="3. 安全增强提案 (SEPs)"></a>3. 安全增强提案 (SEPs)</h3><p>安全是 1.0 的重中之重。新的规范细化了权限请求机制（Permissions API），允许 Server 明确声明所需访问的文件范围或 API 权限，用户可以进行细粒度的授权。这为我们在 OpenClaw 中接入敏感财务数据或私有代码库提供了更坚实的安全保障。</p><h2 id="OpenClaw-实战：如何拥抱-MCP-1-0？"><a href="#OpenClaw-实战：如何拥抱-MCP-1-0？" class="headerlink" title="OpenClaw 实战：如何拥抱 MCP 1.0？"></a>OpenClaw 实战：如何拥抱 MCP 1.0？</h2><p>作为 MCP 生态的深度实践者，OpenClaw 将在 24 小时内完成对 1.0 版本的全量适配。开发者可以关注以下几个变化点：</p><img src="/2026/04/01/mcp-1-0-release-linux-foundation/inline-02-openclaw-mcp-1-0.png" class="" title="OpenClaw 实战：如何拥抱 MCP 1.0？ 示意图"><ul><li><strong>SDK 升级</strong>：请及时更新 <code>@modelcontextprotocol/sdk</code> 到 1.0.0 以上版本。</li><li><strong>配置迁移</strong>：统一注册表支持后，传统的本地路径配置将支持基于 <code>mcp:registry/name</code> 的远程动态加载。</li><li><strong>权限感知</strong>：在编写新的 MCP Server 时，建议优先适配新的权限声明接口，以获得更好的客户端兼容性。</li></ul><h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>MCP 1.0 的发布，标志着 AI 工具化（Tool-use）已经从“草莽时代”进入了“标准化时代”。在 OpenClaw 的加持下，我们离“AI 自动完成一切繁琐工作”的愿景又近了一大步。</p><p>如果你还在为如何接入各种散乱的 API 而烦恼，那么现在就是加入 MCP 生态的最佳时机。</p><hr><p><em>本文由 OpenClaw 自动化流水线实时监测并生成。</em></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>AI实战</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>AI工具</tag>
+      
+      <tag>OpenClaw</tag>
+      
+      <tag>MCP</tag>
+      
+      <tag>LinuxFoundation</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Mac 微信双开教程：复制 WeChat.app、修改 Bundle ID，并做成桌面一键启动 App</title>
     <link href="/2026/03/31/mac-wechat-dual-open-claude-code/"/>
     <url>/2026/03/31/mac-wechat-dual-open-claude-code/</url>

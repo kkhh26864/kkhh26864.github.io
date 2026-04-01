@@ -1,0 +1,534 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/logo.png">
+  <link rel="icon" href="/img/logo.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3232532601275150"
+     crossorigin="anonymous"></script>
+    <meta name="twitter:card" content="/img/chrome-devtools-mcp-ai-debugging.png" />
+    <meta name="twitter:site" content="自由码农" />
+    <meta name="twitter:creator" content="@corder2025">
+    <meta name="twitter:title" content="AI 调试浏览器终于不用反复登录了：Chrome DevTools MCP 实战指南 - 自由码农" />
+    <meta name="twitter:description" content="Chrome 官方发布 DevTools MCP Server，让 AI 编程助手（Claude、Cursor、Gemini）直接接管你的浏览器调试会话。支持复用已登录的 Chrome 实例、分析网络请求、截图、执行自动化操作，26 个工具覆盖日常调试全场景。" />
+    <meta name="twitter:image" content="/img/chrome-devtools-mcp-ai-debugging.png" />
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="spatacus">
+  <meta name="keywords" content="自由码农,技术博客,工具分享，网站开发，App开发，小程序开发，H5开发">
+  
+    <meta name="description" content="Chrome 官方发布 DevTools MCP Server，让 AI 编程助手（Claude、Cursor、Gemini）直接接管你的浏览器调试会话。支持复用已登录的 Chrome 实例、分析网络请求、截图、执行自动化操作，26 个工具覆盖日常调试全场景。">
+<meta property="og:type" content="website">
+<meta property="og:title" content="AI 调试浏览器终于不用反复登录了：Chrome DevTools MCP 实战指南">
+<meta property="og:url" content="https://blog.fxcxy.com/dify_kb_batch_1/chrome-devtools-mcp-ai-debugging.html">
+<meta property="og:site_name" content="自由码农">
+<meta property="og:description" content="Chrome 官方发布 DevTools MCP Server，让 AI 编程助手（Claude、Cursor、Gemini）直接接管你的浏览器调试会话。支持复用已登录的 Chrome 实例、分析网络请求、截图、执行自动化操作，26 个工具覆盖日常调试全场景。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://blog.fxcxy.com/img/chrome-devtools-mcp-ai-debugging.png">
+<meta property="article:published_time" content="2026-03-16T08:30:00.000Z">
+<meta property="article:modified_time" content="2026-03-16T08:31:35.700Z">
+<meta property="article:author" content="spatacus">
+<meta property="article:tag" content="AI工具">
+<meta property="article:tag" content="MCP">
+<meta property="article:tag" content="开发工具">
+<meta property="article:tag" content="Chrome DevTools">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://blog.fxcxy.com/img/chrome-devtools-mcp-ai-debugging.png">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>AI 调试浏览器终于不用反复登录了：Chrome DevTools MCP 实战指南 - 自由码农</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+  
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_4443546_u6jwvi2qcka.css">
+<link rel="stylesheet" href="/css/social-share.min.css">
+<link rel="stylesheet" href="/css/myreward.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"blog.fxcxy.com","root":"/","version":"1.9.7","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"复制"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"J7kyQXV9R3CXOiA1eubrlflY-gzGzoHsz","app_key":"qHZzPzRcvsutXvHvBewqGmhw","server_url":"https://leancloud.fxcxy.com","path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+
+  
+    <!-- Google tag (gtag.js) -->
+    <script async>
+      if (!Fluid.ctx.dnt) {
+        Fluid.utils.createScript("https://www.googletagmanager.com/gtag/js?id=", function() {
+          window.dataLayer = window.dataLayer || [];
+          function gtag() {
+            dataLayer.push(arguments);
+          }
+          gtag('js', new Date());
+          gtag('config', '');
+        });
+      }
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+    
+  
+
+
+
+  
+<meta name="generator" content="Hexo 7.1.1"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 60vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>自由码农</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="AI 调试浏览器终于不用反复登录了：Chrome DevTools MCP 实战指南"></span>
+          
+        </div>
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      <div class="container nopadding-x-md">
+        <div id="board"
+          >
+          
+          <div class="container">
+            <div class="row">
+              <div class="col-12 col-md-10 m-auto">
+                
+
+<article class="page-content">
+  <p>调试 Web 应用时，你是不是经常遇到这个场景：让 AI 帮你分析一个需要登录才能看到的页面，但 AI 每次都启动一个全新的浏览器实例，什么 Cookie 都没有，根本进不去。</p>
+<p>Chrome DevTools MCP 就是来解决这个问题的。</p>
+<hr>
+<h2 id="什么是-Chrome-DevTools-MCP？"><a href="#什么是-Chrome-DevTools-MCP？" class="headerlink" title="什么是 Chrome DevTools MCP？"></a>什么是 Chrome DevTools MCP？</h2><p>Chrome DevTools MCP 是 Google 官方发布的一个 <a target="_blank" rel="noopener" href="https://github.com/ChromeDevTools/chrome-devtools-mcp">MCP Server</a>，让 AI 编程助手（Claude Code、Cursor、Gemini CLI、Copilot）可以直接操控和检查 Chrome 浏览器。</p>
+<p>最新版本的核心突破：<strong>支持直接接入你正在使用的 Chrome 实例</strong>，而不是每次都启动一个干净的新浏览器。这意味着：</p>
+<ul>
+<li>✅ AI 能访问你已经登录的网站</li>
+<li>✅ AI 能看到你正在调试的页面</li>
+<li>✅ 你可以手动探索到某个问题，然后直接”丢”给 AI 分析</li>
+</ul>
+<h2 id="能做什么？"><a href="#能做什么？" class="headerlink" title="能做什么？"></a>能做什么？</h2><p>MCP Server 共暴露了 <strong>26 个工具</strong>，分为 6 大类：</p>
+<table>
+<thead>
+<tr>
+<th>类别</th>
+<th>工具</th>
+<th>能做什么</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>导航</td>
+<td>navigate_page、new_page、list_pages</td>
+<td>打开页面、切换标签页</td>
+</tr>
+<tr>
+<td>输入自动化</td>
+<td>click、fill、fill_form、hover、drag</td>
+<td>模拟用户操作</td>
+</tr>
+<tr>
+<td>调试</td>
+<td>console_messages、network_requests</td>
+<td>查看控制台、抓网络请求</td>
+</tr>
+<tr>
+<td>截图</td>
+<td>screenshot、snapshot</td>
+<td>截图、获取 DOM 结构</td>
+</tr>
+<tr>
+<td>性能</td>
+<td>性能追踪、DevTools 分析</td>
+<td>分析页面性能瓶颈</td>
+</tr>
+<tr>
+<td>等待</td>
+<td>wait_for、handle_dialog</td>
+<td>等待元素、处理弹窗</td>
+</tr>
+</tbody></table>
+<p>简单说：DevTools 里能看到的，AI 现在都能访问了。</p>
+<h2 id="安装配置"><a href="#安装配置" class="headerlink" title="安装配置"></a>安装配置</h2><h3 id="前置条件"><a href="#前置条件" class="headerlink" title="前置条件"></a>前置条件</h3><ul>
+<li>Node.js v20.19+</li>
+<li>Chrome 当前稳定版（无需 Beta）</li>
+</ul>
+<h3 id="Claude-Code-一行安装"><a href="#Claude-Code-一行安装" class="headerlink" title="Claude Code 一行安装"></a>Claude Code 一行安装</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">claude mcp add chrome-devtools npx chrome-devtools-mcp@latest<br></code></pre></td></tr></table></figure>
+
+<h3 id="Cursor-其他支持-MCP-的工具"><a href="#Cursor-其他支持-MCP-的工具" class="headerlink" title="Cursor &#x2F; 其他支持 MCP 的工具"></a>Cursor &#x2F; 其他支持 MCP 的工具</h3><p>在 MCP 配置文件（<code>~/.cursor/mcp.json</code> 或对应位置）中添加：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs json"><span class="hljs-punctuation">&#123;</span><br>  <span class="hljs-attr">&quot;mcpServers&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>    <span class="hljs-attr">&quot;chrome-devtools&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>      <span class="hljs-attr">&quot;command&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;npx&quot;</span><span class="hljs-punctuation">,</span><br>      <span class="hljs-attr">&quot;args&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">&quot;-y&quot;</span><span class="hljs-punctuation">,</span> <span class="hljs-string">&quot;chrome-devtools-mcp@latest&quot;</span><span class="hljs-punctuation">]</span><br>    <span class="hljs-punctuation">&#125;</span><br>  <span class="hljs-punctuation">&#125;</span><br><span class="hljs-punctuation">&#125;</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="Gemini-CLI"><a href="#Gemini-CLI" class="headerlink" title="Gemini CLI"></a>Gemini CLI</h3><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs json"><span class="hljs-punctuation">&#123;</span><br>  <span class="hljs-attr">&quot;mcpServers&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>    <span class="hljs-attr">&quot;chrome-devtools&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>      <span class="hljs-attr">&quot;command&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;npx&quot;</span><span class="hljs-punctuation">,</span><br>      <span class="hljs-attr">&quot;args&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><br>        <span class="hljs-string">&quot;chrome-devtools-mcp@latest&quot;</span><span class="hljs-punctuation">,</span><br>        <span class="hljs-string">&quot;--autoConnect&quot;</span><span class="hljs-punctuation">,</span><br>        <span class="hljs-string">&quot;--channel=beta&quot;</span><br>      <span class="hljs-punctuation">]</span><br>    <span class="hljs-punctuation">&#125;</span><br>  <span class="hljs-punctuation">&#125;</span><br><span class="hljs-punctuation">&#125;</span><br></code></pre></td></tr></table></figure>
+
+<h2 id="连接已登录的-Chrome-实例（高级用法）"><a href="#连接已登录的-Chrome-实例（高级用法）" class="headerlink" title="连接已登录的 Chrome 实例（高级用法）"></a>连接已登录的 Chrome 实例（高级用法）</h2><p>默认配置下，MCP Server 每次都会启动一个隔离的全新 Chrome 实例——干净、但没有任何登录状态。</p>
+<p><strong>如果你需要访问需要身份验证的页面</strong>，要分两步走：</p>
+<h3 id="第一步：启动-Chrome-开启远程调试"><a href="#第一步：启动-Chrome-开启远程调试" class="headerlink" title="第一步：启动 Chrome 开启远程调试"></a>第一步：启动 Chrome 开启远程调试</h3><p><strong>macOS：</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome \<br>  --remote-debugging-port=9222<br></code></pre></td></tr></table></figure>
+
+<p><strong>Windows：</strong></p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cmd">&quot;C:\Program Files\Google\Chrome\Application\chrome.exe&quot; --remote-debugging-port=<span class="hljs-number">9222</span><br></code></pre></td></tr></table></figure>
+
+<p>然后在 Chrome 地址栏输入 <code>chrome://inspect/#remote-debugging</code>，确认远程调试已启用。</p>
+<blockquote>
+<p><strong>注意</strong>：Chrome 136+ 出于安全考虑，默认禁止在正常 profile 上开启远程调试。需要你主动到 <code>chrome://inspect/#remote-debugging</code> 授权，Chrome 会弹出确认对话框，同时在页面顶部显示”automated test software”横幅提示。</p>
+</blockquote>
+<h3 id="第二步：配置-MCP-Server-接入你的-Chrome"><a href="#第二步：配置-MCP-Server-接入你的-Chrome" class="headerlink" title="第二步：配置 MCP Server 接入你的 Chrome"></a>第二步：配置 MCP Server 接入你的 Chrome</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">claude mcp add --transport stdio chrome-devtools -- \<br>  npx -y chrome-devtools-mcp@latest \<br>  --browserUrl=http://127.0.0.1:9222<br></code></pre></td></tr></table></figure>
+
+<p>或在配置文件中：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs json"><span class="hljs-punctuation">&#123;</span><br>  <span class="hljs-attr">&quot;mcpServers&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>    <span class="hljs-attr">&quot;chrome-devtools&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>      <span class="hljs-attr">&quot;command&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;npx&quot;</span><span class="hljs-punctuation">,</span><br>      <span class="hljs-attr">&quot;args&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><br>        <span class="hljs-string">&quot;-y&quot;</span><span class="hljs-punctuation">,</span><br>        <span class="hljs-string">&quot;chrome-devtools-mcp@latest&quot;</span><span class="hljs-punctuation">,</span><br>        <span class="hljs-string">&quot;--browserUrl=http://127.0.0.1:9222&quot;</span><br>      <span class="hljs-punctuation">]</span><br>    <span class="hljs-punctuation">&#125;</span><br>  <span class="hljs-punctuation">&#125;</span><br><span class="hljs-punctuation">&#125;</span><br></code></pre></td></tr></table></figure>
+
+<p>配置完成后，AI 就能访问你已经登录的 Chrome 了。</p>
+<h2 id="实际使用场景"><a href="#实际使用场景" class="headerlink" title="实际使用场景"></a>实际使用场景</h2><p><strong>场景一：调试需要登录的 API</strong></p>
+<p>你在 Chrome 里登录了公司内网系统，打开了某个响应异常的页面。直接对 Claude 说：</p>
+<blockquote>
+<p>“帮我分析当前页面的网络请求，找出哪个接口返回了错误”</p>
+</blockquote>
+<p>AI 会自动接入你的浏览器，扫描网络请求，定位问题。</p>
+<p><strong>场景二：性能分析</strong></p>
+<figure class="highlight 1c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs 1c">检查 https:<span class="hljs-comment">//your-app.com 的性能，找出 LCP 超慢的原因</span><br></code></pre></td></tr></table></figure>
+
+<p>AI 会自动录制性能追踪、分析关键渲染路径，给出具体的优化建议。</p>
+<p><strong>场景三：自动化填表测试</strong></p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs">帮我在当前打开的表单页面填入测试数据并提交，截图保存结果<br></code></pre></td></tr></table></figure>
+
+<p>无需写 Playwright 脚本，AI 直接操作就行。</p>
+<p><strong>场景四：抓取控制台报错</strong></p>
+<p>打开一个出现白屏的页面，然后：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs">看看控制台有什么错误，帮我定位问题<br></code></pre></td></tr></table></figure>
+
+<h2 id="隐私说明"><a href="#隐私说明" class="headerlink" title="隐私说明"></a>隐私说明</h2><p>默认情况下，Google 会收集工具调用成功率、延迟、环境信息等匿名统计数据。如果不想上报，加一个参数：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs json"><span class="hljs-attr">&quot;args&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">&quot;-y&quot;</span><span class="hljs-punctuation">,</span> <span class="hljs-string">&quot;chrome-devtools-mcp@latest&quot;</span><span class="hljs-punctuation">,</span> <span class="hljs-string">&quot;--no-usage-statistics&quot;</span><span class="hljs-punctuation">]</span><br></code></pre></td></tr></table></figure>
+
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>Chrome DevTools MCP 的价值不只是”让 AI 能开浏览器”，更关键的是<strong>打通了人工操作和 AI 调试之间的上下文壁垒</strong>。你手动探索到的问题现场，可以直接移交给 AI 分析，不需要截图、描述、粘贴日志——AI 自己去看。</p>
+<p>对于日常做 Web 开发调试的人，这个工具值得立刻装上试试。一行命令的事。</p>
+<hr>
+<p><em>参考链接：<a target="_blank" rel="noopener" href="https://developer.chrome.com/blog/chrome-devtools-mcp-debug-your-browser-session">Chrome DevTools MCP 官方公告</a> · <a target="_blank" rel="noopener" href="https://github.com/ChromeDevTools/chrome-devtools-mcp">GitHub 仓库</a></em></p>
+
+
+  
+
+</article>
+
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  <div class="footer-links" style="margin: 20px 0 10px 0; text-align: center;">
+    <a href="https://tv.zymn.cc" target="_blank" style="margin: 0 12px; color: #bdbdbd; text-decoration: none; font-weight: 500;">免费电影</a>
+    <a href="https://sl.zymn.cc" target="_blank" style="margin: 0 12px; color: #bdbdbd; text-decoration: none; font-weight: 500;">短链生成器</a>
+    <a href="https://yhjf.zymn.cc" target="_blank" style="margin: 0 12px; color: #bdbdbd; text-decoration: none; font-weight: 500;">隐秘信使</a>
+  </div>
+  
+    <div class="footer-content">
+       <a href="https://www.youtube.com/channel/UCn0Yarp_h6oqn1-QLvlgbDg?sub_confirmation=1" target="_blank" rel="nofollow noopener"><span>Youtube</span></a>- <a href="https://x.com/corder2025" target="_blank" rel="nofollow noopener"><span>X</span></a>- <a href="https://t.me/+FEyFQq_5u004OWU0" target="_blank" rel="nofollow noopener"><span>电报群</span></a>- <a href="https://v.douyin.com/iNpPYY4E/" target="_blank" rel="nofollow noopener"><span>抖音</span></a>- <a href="https://www.ixigua.com/home/103680436540" target="_blank" rel="nofollow noopener"><span>西瓜视频</span></a> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+  
+</div>
+
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  <script defer src="/js/leancloud.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

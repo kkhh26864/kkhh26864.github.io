@@ -1,0 +1,536 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/logo.png">
+  <link rel="icon" href="/img/logo.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3232532601275150"
+     crossorigin="anonymous"></script>
+    <meta name="twitter:card" content="/img/claude-code-codex-workflow.png" />
+    <meta name="twitter:site" content="自由码农" />
+    <meta name="twitter:creator" content="@corder2025">
+    <meta name="twitter:title" content="Claude Code + Codex 怎么分工？我用这套双 AI 编程流，把写代码到提 PR 串起来了 - 自由码农" />
+    <meta name="twitter:description" content="只装一个 AI 编程工具，很多人最后都会卡在边界上。这篇文章基于 Claude Code 官方文档和 Codex 官方 README，讲清楚两者各自擅长什么、怎么分工，以及怎么把它们接成一条更顺手的双 AI 编程工作流。" />
+    <meta name="twitter:image" content="/img/claude-code-codex-workflow.png" />
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="独立开发">
+  <meta name="keywords" content="自由码农,技术博客,工具分享，网站开发，App开发，小程序开发，H5开发">
+  
+    <meta name="description" content="只装一个 AI 编程工具，很多人最后都会卡在边界上。这篇文章基于 Claude Code 官方文档和 Codex 官方 README，讲清楚两者各自擅长什么、怎么分工，以及怎么把它们接成一条更顺手的双 AI 编程工作流。">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Claude Code + Codex 怎么分工？我用这套双 AI 编程流，把写代码到提 PR 串起来了">
+<meta property="og:url" content="https://blog.fxcxy.com/dify_kb_batch_1/claude-code-codex-workflow.html">
+<meta property="og:site_name" content="自由码农">
+<meta property="og:description" content="只装一个 AI 编程工具，很多人最后都会卡在边界上。这篇文章基于 Claude Code 官方文档和 Codex 官方 README，讲清楚两者各自擅长什么、怎么分工，以及怎么把它们接成一条更顺手的双 AI 编程工作流。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://blog.fxcxy.com/img/claude-code-codex-workflow.png">
+<meta property="article:published_time" content="2026-03-22T02:45:39.000Z">
+<meta property="article:modified_time" content="2026-03-22T14:41:41.838Z">
+<meta property="article:author" content="spatacus">
+<meta property="article:tag" content="AI工具">
+<meta property="article:tag" content="Claude Code">
+<meta property="article:tag" content="Codex">
+<meta property="article:tag" content="编程工作流">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://blog.fxcxy.com/img/claude-code-codex-workflow.png">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>Claude Code + Codex 怎么分工？我用这套双 AI 编程流，把写代码到提 PR 串起来了 - 自由码农</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+  
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_4443546_u6jwvi2qcka.css">
+<link rel="stylesheet" href="/css/social-share.min.css">
+<link rel="stylesheet" href="/css/myreward.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"blog.fxcxy.com","root":"/","version":"1.9.7","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"复制"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"J7kyQXV9R3CXOiA1eubrlflY-gzGzoHsz","app_key":"qHZzPzRcvsutXvHvBewqGmhw","server_url":"https://leancloud.fxcxy.com","path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+
+  
+    <!-- Google tag (gtag.js) -->
+    <script async>
+      if (!Fluid.ctx.dnt) {
+        Fluid.utils.createScript("https://www.googletagmanager.com/gtag/js?id=", function() {
+          window.dataLayer = window.dataLayer || [];
+          function gtag() {
+            dataLayer.push(arguments);
+          }
+          gtag('js', new Date());
+          gtag('config', '');
+        });
+      }
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+    
+  
+
+
+
+  
+<meta name="generator" content="Hexo 7.1.1"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 60vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>自由码农</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Claude Code + Codex 怎么分工？我用这套双 AI 编程流，把写代码到提 PR 串起来了"></span>
+          
+        </div>
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      <div class="container nopadding-x-md">
+        <div id="board"
+          >
+          
+          <div class="container">
+            <div class="row">
+              <div class="col-12 col-md-10 m-auto">
+                
+
+<article class="page-content">
+  <p>这两个月如果你一直在折腾 AI 编程工具，大概率会遇到一个很现实的问题：不是工具不够强，而是工具一多，反而更不知道该怎么配。</p>
+<p>有人把所有事都丢给 Claude Code，有人把所有入口都切到 Codex。结果通常都差不多：能用，但不顺。真正卡住你的，不是模型能力，而是<strong>每个工具到底应该负责哪一段工作流</strong>。</p>
+<p>我最近重新看了一遍 Claude Code 官方文档和 Codex 官方 README，越来越确定一件事：<strong>这两个工具最好的用法，不是二选一，而是分工。</strong> 如果你已经开始用 AI 写代码、查仓库、跑命令、提 PR，这个思路比单独研究某个命令更值得现在就理顺。</p>
+<h2 id="先给结论：Claude-Code-适合“推进完整任务”，Codex-更适合“多入口接入你的编码环境”"><a href="#先给结论：Claude-Code-适合“推进完整任务”，Codex-更适合“多入口接入你的编码环境”" class="headerlink" title="先给结论：Claude Code 适合“推进完整任务”，Codex 更适合“多入口接入你的编码环境”"></a>先给结论：Claude Code 适合“推进完整任务”，Codex 更适合“多入口接入你的编码环境”</h2><p>先说结论。</p>
+<p>基于 Claude Code 官方 Overview 页能确认的信息，Claude Code 的定位非常清楚：它是一个 agentic coding tool，能读取代码库、编辑文件、运行命令，并且接入你的开发工具。官方文档明确写到，它可用在终端、IDE、桌面 App 和浏览器里。</p>
+<p>而 Codex 官方 README 给出的定位是另一个方向：<strong>本地运行的 coding agent</strong>。你可以在终端里直接跑 <code>codex</code>，也可以通过 <code>codex app</code> 打开桌面入口，还能和 VS Code、Cursor、Windsurf 这类 IDE 结合使用，另外也有 Web 入口 <code>chatgpt.com/codex</code>。</p>
+<p>这两者的差别，不只是“谁更强”，而是更像下面这种分工：</p>
+<ul>
+<li><strong>Claude Code</strong>：更像一个能跨代码、命令、工具、Git 流程持续推进任务的执行层</li>
+<li><strong>Codex</strong>：更像一个可以快速接入你本地和 IDE 环境的多入口编码助手</li>
+</ul>
+<p>如果你只把它们当成两个聊天框，确实很难看出差异；但如果你把它们放进完整开发流里，区别就会很明显。</p>
+<h2 id="为什么很多人装了两个工具，效率反而没上去？"><a href="#为什么很多人装了两个工具，效率反而没上去？" class="headerlink" title="为什么很多人装了两个工具，效率反而没上去？"></a>为什么很多人装了两个工具，效率反而没上去？</h2><p>原因通常不是工具重复，而是你没有先定义“哪一段由谁做”。</p>
+<p>最常见的混乱方式是：</p>
+<ul>
+<li>一会儿在 Claude Code 里看代码</li>
+<li>一会儿又切去 Codex 里问同一个问题</li>
+<li>改到一半又回来跑命令</li>
+<li>最后两个会话都留了一半上下文，谁也没真正把任务收口</li>
+</ul>
+<p>这类用法最大的问题，不是浪费 token，而是工作流没有边界。AI 工具一旦没有边界，你得到的就不是协作，而是来回切换。</p>
+<p>所以更实用的思路不是“谁替代谁”，而是先想清楚：</p>
+<ol>
+<li>谁负责理解并推进完整任务？</li>
+<li>谁负责在你当前入口里更快接手局部工作？</li>
+<li>谁来收尾，包括命令执行、提交、PR、外部工具连接？</li>
+</ol>
+<p>把这 3 个问题想清楚之后，双 AI 工作流才会开始顺。</p>
+<h2 id="Claude-Code-更适合放在主流程中间，因为它天生就是“带工具的执行型助手”"><a href="#Claude-Code-更适合放在主流程中间，因为它天生就是“带工具的执行型助手”" class="headerlink" title="Claude Code 更适合放在主流程中间，因为它天生就是“带工具的执行型助手”"></a>Claude Code 更适合放在主流程中间，因为它天生就是“带工具的执行型助手”</h2><p>Claude Code 官方文档里已经明确给了几类典型使用方式。</p>
+<p>第一类，是<strong>直接在代码库里推进任务</strong>。文档写得很直接：你用自然语言描述目标，它会规划方法、跨多个文件写代码，并验证结果。</p>
+<p>第二类，是<strong>自动处理那些你一直拖着不想做的活</strong>。比如给老模块补测试、修 lint、解决 merge conflict、更新依赖、写 release notes。官方文档甚至直接给了这类提示词示例：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">claude <span class="hljs-string">&quot;write tests for the auth module, run them, and fix any failures&quot;</span><br></code></pre></td></tr></table></figure>
+
+<p>第三类，是<strong>直接接 Git 流程</strong>。Claude Code 文档明确写到，它可以和 git 直接工作，能 stage 变更、写 commit message、创建分支、开 pull request。</p>
+<p>第四类，是<strong>通过 MCP 接外部工具</strong>。官方文档对 MCP 的描述也很清晰：它是连接外部数据源和工具的开放标准，你可以让 Claude Code 去读 Google Drive 设计文档、更新 Jira、拉 Slack 数据，或者接你自己的工具。</p>
+<p>第五类，是<strong>通过 instructions、skills、hooks 自定义团队工作流</strong>。也就是说，Claude Code 不只是一个“问答工具”，而是能被持续塑形成你团队自己的开发入口。</p>
+<p>如果你把这些能力放在一起看，会发现 Claude Code 最适合待在工作流的“主干”位置。它不是只负责回答问题，而是更像一个能一路把任务往前推的代理层。</p>
+<h2 id="Codex-更适合做“轻入口-多入口”的辅助层"><a href="#Codex-更适合做“轻入口-多入口”的辅助层" class="headerlink" title="Codex 更适合做“轻入口 + 多入口”的辅助层"></a>Codex 更适合做“轻入口 + 多入口”的辅助层</h2><p>再看 Codex 官方 README，信息也很明确。</p>
+<p>首先，它强调的是 <strong>runs locally on your computer</strong>。安装方式也很直接：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">npm install -g @openai/codex<br></code></pre></td></tr></table></figure>
+
+<p>或者：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">brew install --cask codex<br></code></pre></td></tr></table></figure>
+
+<p>装完直接执行：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">codex<br></code></pre></td></tr></table></figure>
+
+<p>这说明 Codex 的核心体验，首先就是本地终端入口。</p>
+<p>但它不止有终端。README 里同时列了几个入口：</p>
+<ul>
+<li>终端里的 Codex CLI</li>
+<li><code>codex app</code> 桌面入口</li>
+<li>VS Code、Cursor、Windsurf 这类 IDE 集成</li>
+<li>Web 端 <code>chatgpt.com/codex</code></li>
+</ul>
+<p>这个特征很关键。</p>
+<p>因为它意味着 Codex 的一个明显优势，不一定是“任务链条更长”，而是<strong>你可以更容易在自己已经习惯的编码界面里调用它</strong>。尤其对那些长期在 Cursor、VS Code、Windsurf 之间切换的人来说，这种多入口会更顺手。</p>
+<p>另外，README 还明确写到，Codex 可以通过 ChatGPT 账号登录，流程是运行 <code>codex</code> 后选择 “Sign in with ChatGPT”。支持的账号类型包括 Plus、Pro、Team、Edu、Enterprise。对于已经在用 ChatGPT 体系的人，这一点会降低接入门槛。</p>
+<p>所以如果让我一句话概括 Codex 更适合什么场景，我会说：<strong>它更适合放在你已经熟悉的编码入口上，快速接手局部编码任务，而不是天然承担整条工具链编排。</strong></p>
+<h2 id="一条更顺手的双-AI-编程流，可以怎么分？"><a href="#一条更顺手的双-AI-编程流，可以怎么分？" class="headerlink" title="一条更顺手的双 AI 编程流，可以怎么分？"></a>一条更顺手的双 AI 编程流，可以怎么分？</h2><p>如果你手上两个工具都有，我更建议按下面这个思路分工。</p>
+<h3 id="第一步：先让-Codex-在你最顺手的入口里接住“局部问题”"><a href="#第一步：先让-Codex-在你最顺手的入口里接住“局部问题”" class="headerlink" title="第一步：先让 Codex 在你最顺手的入口里接住“局部问题”"></a>第一步：先让 Codex 在你最顺手的入口里接住“局部问题”</h3><p>比如你正在 IDE 里看一个模块，或者刚打开终端，只想先快速理一下：</p>
+<ul>
+<li>这个函数在干什么</li>
+<li>这个目录大概怎么分层</li>
+<li>某段代码要怎么改更快</li>
+<li>某个报错先该往哪查</li>
+</ul>
+<p>这种时候，Codex 的优势是“开得快、接得顺”。你不用先想完整流程，也不用立刻切到一个更重的任务代理模式里。对很多开发者来说，这一步更像热身。</p>
+<h3 id="第二步：一旦任务开始跨文件、跨命令、跨工具，就切-Claude-Code-接主流程"><a href="#第二步：一旦任务开始跨文件、跨命令、跨工具，就切-Claude-Code-接主流程" class="headerlink" title="第二步：一旦任务开始跨文件、跨命令、跨工具，就切 Claude Code 接主流程"></a>第二步：一旦任务开始跨文件、跨命令、跨工具，就切 Claude Code 接主流程</h3><p>只要你发现任务已经不再是“解释一下”或者“改一个点”，而是变成：</p>
+<ul>
+<li>需要改多个文件</li>
+<li>需要跑测试或脚本</li>
+<li>需要查整个仓库</li>
+<li>需要顺手接 Git 提交或 PR</li>
+<li>需要连外部工具或 MCP</li>
+</ul>
+<p>这时候 Claude Code 会更自然。</p>
+<p>因为这本来就是它官方文档里主打的工作方式：读代码库、编辑文件、运行命令、连接工具，然后把任务一路推进到可验证、可提交的状态。</p>
+<h3 id="第三步：把收尾动作固定交给-Claude-Code"><a href="#第三步：把收尾动作固定交给-Claude-Code" class="headerlink" title="第三步：把收尾动作固定交给 Claude Code"></a>第三步：把收尾动作固定交给 Claude Code</h3><p>这一点我尤其建议固定下来。</p>
+<p>原因很简单：Claude Code 官方文档已经明确把 commit、branch、PR、MCP、hooks、skills 这些都纳入主流程能力里。既然它天然更适合做“任务收口”，那就不要在最后一步再来回切。</p>
+<p>换句话说，你完全可以把工作流定成这样：</p>
+<ul>
+<li><strong>Codex</strong>：负责你当前编码入口里的快速理解、局部辅助</li>
+<li><strong>Claude Code</strong>：负责完整执行、验证、提交、连接工具</li>
+</ul>
+<p>只要边界稳定下来，整个协作感会明显顺很多。</p>
+<h2 id="这种分工最适合哪几类人？"><a href="#这种分工最适合哪几类人？" class="headerlink" title="这种分工最适合哪几类人？"></a>这种分工最适合哪几类人？</h2><p>我觉得至少有 3 类人会特别适合。</p>
+<h3 id="第一类：已经在多个编码入口之间切换的人"><a href="#第一类：已经在多个编码入口之间切换的人" class="headerlink" title="第一类：已经在多个编码入口之间切换的人"></a>第一类：已经在多个编码入口之间切换的人</h3><p>如果你平时就是终端 + VS Code &#x2F; Cursor &#x2F; Windsurf 混着用，那 Codex 的多入口特性会比较顺，而 Claude Code 更适合承担“主任务代理”的角色。</p>
+<h3 id="第二类：已经不满足于“让-AI-解释代码”的人"><a href="#第二类：已经不满足于“让-AI-解释代码”的人" class="headerlink" title="第二类：已经不满足于“让 AI 解释代码”的人"></a>第二类：已经不满足于“让 AI 解释代码”的人</h3><p>如果你现在更想要的是：让 AI 真正跑命令、改文件、接 git、连工具，而不是只在对话框里说思路，那 Claude Code 的价值会更大。</p>
+<h3 id="第三类：想把-AI-编程从单次问答升级成工作流的人"><a href="#第三类：想把-AI-编程从单次问答升级成工作流的人" class="headerlink" title="第三类：想把 AI 编程从单次问答升级成工作流的人"></a>第三类：想把 AI 编程从单次问答升级成工作流的人</h3><p>这也是我最推荐的一类。</p>
+<p>单次问答式 AI 编程，价值是有限的；真正能持续提效的，是把“理解问题—修改代码—运行验证—提交结果”串成一条稳定流水线。双 AI 分工，本质上是把不同工具放回它们各自最合适的位置。</p>
+<h2 id="选工具时，不要再问“谁更强”，先问“谁放在哪一段”"><a href="#选工具时，不要再问“谁更强”，先问“谁放在哪一段”" class="headerlink" title="选工具时，不要再问“谁更强”，先问“谁放在哪一段”"></a>选工具时，不要再问“谁更强”，先问“谁放在哪一段”</h2><p>到了这里，其实问题已经很清楚了。</p>
+<p>Claude Code 和 Codex 真正值得比较的，不是抽象层面的“谁最强”，而是：</p>
+<ul>
+<li>你现在缺的是更强的任务推进能力，还是更顺手的入口？</li>
+<li>你更常做的是局部编码辅助，还是完整开发流？</li>
+<li>你需不需要把 Git、MCP、团队自定义工作流都接进来？</li>
+</ul>
+<p>如果你主要关心完整任务推进、仓库级修改、命令执行、工具连接、Git 收尾，那 Claude Code 更应该放在主流程。</p>
+<p>如果你更关心本地和 IDE 里的轻量接入、快速开始、在现有开发入口里顺滑调用，那 Codex 会更适合放在前段或侧边。</p>
+<p>很多时候，不是工具选错了，而是工具放错了位置。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>如果你已经开始同时接触 Claude Code 和 Codex，最值得马上调整的，不是再去背更多命令，而是先把两者的工作边界划清楚。</p>
+<p>Claude Code 官方文档已经很明确：它擅长读代码库、改文件、跑命令、接 Git、连 MCP、通过 skills 和 hooks 定制工作流。Codex 官方 README 也很明确：它本地运行，能通过终端、桌面、IDE 和 Web 多入口接入你的编码环境。</p>
+<p>所以更高效的用法不是二选一，而是让 Codex 成为你最顺手的“快速接入层”，让 Claude Code 成为真正负责推进和收尾的“主执行层”。</p>
+<p>一旦这样分工，你会发现双 AI 不是重复，而是终于开始像一套真正能落地的编程工作流。</p>
+<h2 id="下一步怎么做"><a href="#下一步怎么做" class="headerlink" title="下一步怎么做"></a>下一步怎么做</h2><p>如果你更关心怎么把这些工具真正接到日常工作里，下一步可以继续看合集《AI工具与工作流》，里面会把高频场景拆成更具体的流程。</p>
+<p>这篇解决的是“双 AI 编程工具怎么分工”，下一步更值得补的是把代码生成、测试、提交、PR、远程协作继续串成完整工作流，这部分后面可以继续看相关实战案例。</p>
+
+
+  
+
+</article>
+
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  <div class="footer-links" style="margin: 20px 0 10px 0; text-align: center;">
+    <a href="https://tv.zymn.cc" target="_blank" style="margin: 0 12px; color: #bdbdbd; text-decoration: none; font-weight: 500;">免费电影</a>
+    <a href="https://sl.zymn.cc" target="_blank" style="margin: 0 12px; color: #bdbdbd; text-decoration: none; font-weight: 500;">短链生成器</a>
+    <a href="https://yhjf.zymn.cc" target="_blank" style="margin: 0 12px; color: #bdbdbd; text-decoration: none; font-weight: 500;">隐秘信使</a>
+  </div>
+  
+    <div class="footer-content">
+       <a href="https://www.youtube.com/channel/UCn0Yarp_h6oqn1-QLvlgbDg?sub_confirmation=1" target="_blank" rel="nofollow noopener"><span>Youtube</span></a>- <a href="https://x.com/corder2025" target="_blank" rel="nofollow noopener"><span>X</span></a>- <a href="https://t.me/+FEyFQq_5u004OWU0" target="_blank" rel="nofollow noopener"><span>电报群</span></a>- <a href="https://v.douyin.com/iNpPYY4E/" target="_blank" rel="nofollow noopener"><span>抖音</span></a>- <a href="https://www.ixigua.com/home/103680436540" target="_blank" rel="nofollow noopener"><span>西瓜视频</span></a> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+  
+</div>
+
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  <script defer src="/js/leancloud.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
