@@ -13,40 +13,41 @@
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3232532601275150"
      crossorigin="anonymous"></script>
-    <meta name="twitter:card" content="/img/mcp-1-0-release-linux-foundation.png" />
+    <meta name="twitter:card" content="/img/claude-code-package-security-checklist.png" />
     <meta name="twitter:site" content="自由码农" />
     <meta name="twitter:creator" content="@corder2025">
-    <meta name="twitter:title" content="MCP 1.0 正式发布：加入 Linux Foundation，开启 AI 工具标准化新纪元 - 自由码农" />
-    <meta name="twitter:description" content="核心摘要就在刚才，Model Context Protocol (MCP) 迎来了其发展史上的里程碑时刻：MCP 1.0 正式发布，并宣布正式移交给 Linux Foundation 进行托管。这一举动标志着 MCP 从 Anthropic 的单一主导协议，演进为全球 AI 生态的开放标准。 对于 OpenClaw 开发者和 AI 工具发烧友来说，MCP 1.0 不仅仅是一个版本号的更迭，它带来的" />
-    <meta name="twitter:image" content="/img/mcp-1-0-release-linux-foundation.png" />
+    <meta name="twitter:title" content="Claude Code 源码“泄露”刷屏后，我更建议你先做这份 npm 包安全检查清单 - 自由码农" />
+    <meta name="twitter:description" content="这两天不少人在转“Claude Code 源码泄露”。如果你也做过 npm CLI、Electron、前端控制台，第一反应大概率会是：这事和我有什么关系？ 真正值得警惕的，不只是某个产品这次打包失误，而是很多团队直到今天还把“代码打包后别人就不容易看懂”当成默认前提。过去这套认知还能勉强成立，因为大多数人没有兴趣也没有能力去翻一坨压缩后的 bundle；现在不一样了，AI 已经把这件事的门槛打到了" />
+    <meta name="twitter:image" content="/img/claude-code-package-security-checklist.png" />
   
   <meta name="theme-color" content="#2f4154">
   <meta name="author" content="独立开发">
   <meta name="keywords" content="自由码农,技术博客,工具分享，网站开发，App开发，小程序开发，H5开发">
   
-    <meta name="description" content="核心摘要就在刚才，Model Context Protocol (MCP) 迎来了其发展史上的里程碑时刻：MCP 1.0 正式发布，并宣布正式移交给 Linux Foundation 进行托管。这一举动标志着 MCP 从 Anthropic 的单一主导协议，演进为全球 AI 生态的开放标准。 对于 OpenClaw 开发者和 AI 工具发烧友来说，MCP 1.0 不仅仅是一个版本号的更迭，它带来的">
+    <meta name="description" content="这两天不少人在转“Claude Code 源码泄露”。如果你也做过 npm CLI、Electron、前端控制台，第一反应大概率会是：这事和我有什么关系？ 真正值得警惕的，不只是某个产品这次打包失误，而是很多团队直到今天还把“代码打包后别人就不容易看懂”当成默认前提。过去这套认知还能勉强成立，因为大多数人没有兴趣也没有能力去翻一坨压缩后的 bundle；现在不一样了，AI 已经把这件事的门槛打到了">
 <meta property="og:type" content="article">
-<meta property="og:title" content="MCP 1.0 正式发布：加入 Linux Foundation，开启 AI 工具标准化新纪元">
-<meta property="og:url" content="https://blog.fxcxy.com/2026/04/01/mcp-1-0-release-linux-foundation/index.html">
+<meta property="og:title" content="Claude Code 源码“泄露”刷屏后，我更建议你先做这份 npm 包安全检查清单">
+<meta property="og:url" content="https://blog.fxcxy.com/2026/04/02/claude-code-package-security-checklist/index.html">
 <meta property="og:site_name" content="自由码农">
-<meta property="og:description" content="核心摘要就在刚才，Model Context Protocol (MCP) 迎来了其发展史上的里程碑时刻：MCP 1.0 正式发布，并宣布正式移交给 Linux Foundation 进行托管。这一举动标志着 MCP 从 Anthropic 的单一主导协议，演进为全球 AI 生态的开放标准。 对于 OpenClaw 开发者和 AI 工具发烧友来说，MCP 1.0 不仅仅是一个版本号的更迭，它带来的">
+<meta property="og:description" content="这两天不少人在转“Claude Code 源码泄露”。如果你也做过 npm CLI、Electron、前端控制台，第一反应大概率会是：这事和我有什么关系？ 真正值得警惕的，不只是某个产品这次打包失误，而是很多团队直到今天还把“代码打包后别人就不容易看懂”当成默认前提。过去这套认知还能勉强成立，因为大多数人没有兴趣也没有能力去翻一坨压缩后的 bundle；现在不一样了，AI 已经把这件事的门槛打到了">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://blog.fxcxy.com/img/mcp-1-0-release-linux-foundation.png">
-<meta property="article:published_time" content="2026-04-01T03:30:00.000Z">
-<meta property="article:modified_time" content="2026-04-01T13:19:24.593Z">
+<meta property="og:image" content="https://blog.fxcxy.com/img/claude-code-package-security-checklist.png">
+<meta property="article:published_time" content="2026-04-02T01:58:33.000Z">
+<meta property="article:modified_time" content="2026-04-02T02:39:06.984Z">
 <meta property="article:author" content="spatacus">
+<meta property="article:tag" content="安全">
 <meta property="article:tag" content="AI工具">
-<meta property="article:tag" content="OpenClaw">
-<meta property="article:tag" content="MCP">
-<meta property="article:tag" content="LinuxFoundation">
+<meta property="article:tag" content="npm">
+<meta property="article:tag" content="Claude Code">
+<meta property="article:tag" content="JavaScript">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://blog.fxcxy.com/img/mcp-1-0-release-linux-foundation.png">
+<meta name="twitter:image" content="https://blog.fxcxy.com/img/claude-code-package-security-checklist.png">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>MCP 1.0 正式发布：加入 Linux Foundation，开启 AI 工具标准化新纪元 - 自由码农</title>
+  <title>Claude Code 源码“泄露”刷屏后，我更建议你先做这份 npm 包安全检查清单 - 自由码农</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -247,7 +248,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="MCP 1.0 正式发布：加入 Linux Foundation，开启 AI 工具标准化新纪元"></span>
+            <span id="subtitle" data-typed-text="Claude Code 源码“泄露”刷屏后，我更建议你先做这份 npm 包安全检查清单"></span>
           
         </div>
 
@@ -258,8 +259,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2026-04-01 11:30" pubdate>
-          2026年4月1日 中午
+        <time datetime="2026-04-02 09:58" pubdate>
+          2026年4月2日 上午
         </time>
       </span>
     
@@ -270,7 +271,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          868 字
+          2.8k 字
         
       </span>
     
@@ -281,7 +282,7 @@
         
         
         
-          8 分钟
+          23 分钟
         
       </span>
     
@@ -326,37 +327,130 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">MCP 1.0 正式发布：加入 Linux Foundation，开启 AI 工具标准化新纪元</h1>
+            <h1 id="seo-header">Claude Code 源码“泄露”刷屏后，我更建议你先做这份 npm 包安全检查清单</h1>
             
             
               <div class="markdown-body">
                 
-                <h2 id="核心摘要"><a href="#核心摘要" class="headerlink" title="核心摘要"></a>核心摘要</h2><p>就在刚才，Model Context Protocol (MCP) 迎来了其发展史上的里程碑时刻：<strong>MCP 1.0 正式发布</strong>，并宣布正式移交给 <strong>Linux Foundation</strong> 进行托管。这一举动标志着 MCP 从 Anthropic 的单一主导协议，演进为全球 AI 生态的开放标准。</p>
-<p>对于 OpenClaw 开发者和 AI 工具发烧友来说，MCP 1.0 不仅仅是一个版本号的更迭，它带来的 <strong>统一注册表 (Unified Registry)<strong>、</strong>会话恢复 (Session Resumption)</strong> 以及更严谨的 **安全增强提案 (SEPs)**，将彻底改变我们构建和使用 AI Agent 的方式。</p>
-<h2 id="MCP-1-0：从“大厂私有”到“工业标准”"><a href="#MCP-1-0：从“大厂私有”到“工业标准”" class="headerlink" title="MCP 1.0：从“大厂私有”到“工业标准”"></a>MCP 1.0：从“大厂私有”到“工业标准”</h2><p>自去年 11 月 Anthropic 发布 MCP 以来，该协议以其极简的架构和极强的扩展性迅速占领了开发者心智。然而，作为一个连接私有数据与 AI 模型的桥梁，其治理模式的透明度和中立性一直是社区关注的焦点。</p>
-<img src="/2026/04/01/mcp-1-0-release-linux-foundation/inline-01-mcp-1-0.png" srcset="/img/loading.gif" lazyload class="" title="MCP 1.0：从“大厂私有”到“工业标准” 示意图">
+                <p>这两天不少人在转“Claude Code 源码泄露”。如果你也做过 npm CLI、Electron、前端控制台，第一反应大概率会是：这事和我有什么关系？</p>
+<p>真正值得警惕的，不只是某个产品这次打包失误，而是很多团队直到今天还把“代码打包后别人就不容易看懂”当成默认前提。过去这套认知还能勉强成立，因为大多数人没有兴趣也没有能力去翻一坨压缩后的 bundle；现在不一样了，AI 已经把这件事的门槛打到了非常低。</p>
+<p>如果你手里有 CLI、浏览器端脚本、Electron 应用、管理后台或者任何通过 npm 分发的 JavaScript 工具，这篇文章你可以直接当一次自查。我们不聊八卦，也不复述传播链，只回答三个更实用的问题：<strong>这次到底暴露了什么、为什么它对普通开发者同样 relevant、以及你今天就能补上的 1 份检查清单是什么。</strong></p>
+<h2 id="标题刷屏的“泄露”，真正值得看的是什么？"><a href="#标题刷屏的“泄露”，真正值得看的是什么？" class="headerlink" title="标题刷屏的“泄露”，真正值得看的是什么？"></a>标题刷屏的“泄露”，真正值得看的是什么？</h2><p>AfterPack 这篇分析把一个很关键的点说透了：这次引爆舆论的，是一个意外包含在 npm 包里的 source map 文件。但它同时也提醒大家，很多人把“source map 泄露”和“原始逻辑终于被看到”混为一谈了。</p>
+<p>文章提到，Claude Code 的 npm 包本身就是以单个 <code>cli.js</code> 作为命令入口分发的。npm registry 元数据里可以直接看到，<code>@anthropic-ai/claude-code</code> 的 <code>2.1.89</code> 版本把 <code>claude</code> 命令指向 <code>cli.js</code>，包描述也明确写着这是一个可在终端直接使用的 AI 助手。也就是说，核心可执行 bundle 本来就随着包一起分发出去了，而不是只存在于内部仓库。</p>
+<p>更直白一点说：source map 让外界更容易看到原始文件结构、注释和模块边界，但“产品逻辑已经以 bundle 形式发到公网”这件事，本身并不新鲜。你只要做过前端、CLI 或 Electron，就会知道这其实是 JavaScript 世界的常态。</p>
+<p>所以这次事件真正该带走的结论不是“以后千万别发 npm 包”，而是：<strong>不要再把 minify、bundle、变量压缩，当成任何形式的安全边界。</strong></p>
+<h2 id="为什么今天这个问题比以前更值得重视？"><a href="#为什么今天这个问题比以前更值得重视？" class="headerlink" title="为什么今天这个问题比以前更值得重视？"></a>为什么今天这个问题比以前更值得重视？</h2><img src="/2026/04/02/claude-code-package-security-checklist/inline-01-section.png" srcset="/img/loading.gif" lazyload class="" title="为什么今天这个问题比以前更值得重视 示意图">
 
-<p><strong>移交 Linux Foundation</strong> 解决了这一隐忧。这意味着：</p>
-<ol>
-<li><strong>多方共治</strong>：Google、Amazon、Cursor 等重量级玩家将更深度地参与标准的制定。</li>
-<li><strong>长期稳定性</strong>：协议不再受单一公司商业策略的影响，为企业级集成提供了信心。</li>
-<li><strong>更广阔的生态</strong>：未来我们将看到更多非 Anthropic 系的模型（如 Gemini、Llama 等）原生支持 MCP。</li>
-</ol>
-<h2 id="三大核心特性深解读"><a href="#三大核心特性深解读" class="headerlink" title="三大核心特性深解读"></a>三大核心特性深解读</h2><h3 id="1-统一注册表-Unified-Registry"><a href="#1-统一注册表-Unified-Registry" class="headerlink" title="1. 统一注册表 (Unified Registry)"></a>1. 统一注册表 (Unified Registry)</h3><p>在 1.0 之前，寻找好用的 MCP Server 往往需要查阅各种 Awesome 列表。1.0 引入了官方维护的统一注册表，支持语义化搜索和版本管理。对于 OpenClaw 用户，这意味着你可以像使用 npm 搜索库一样，一键发现并集成数以千计的工具能力。</p>
-<h3 id="2-会话恢复-Session-Resumption"><a href="#2-会话恢复-Session-Resumption" class="headerlink" title="2. 会话恢复 (Session Resumption)"></a>2. 会话恢复 (Session Resumption)</h3><p>这是针对长任务和不稳定网络环境的重大优化。以往 MCP 客户端与 Server 的连接一旦断开，上下文往往需要重新初始化。1.0 支持有状态的会话恢复，大幅提升了 AI 在处理复杂、跨天任务时的连续性。</p>
-<h3 id="3-安全增强提案-SEPs"><a href="#3-安全增强提案-SEPs" class="headerlink" title="3. 安全增强提案 (SEPs)"></a>3. 安全增强提案 (SEPs)</h3><p>安全是 1.0 的重中之重。新的规范细化了权限请求机制（Permissions API），允许 Server 明确声明所需访问的文件范围或 API 权限，用户可以进行细粒度的授权。这为我们在 OpenClaw 中接入敏感财务数据或私有代码库提供了更坚实的安全保障。</p>
-<h2 id="OpenClaw-实战：如何拥抱-MCP-1-0？"><a href="#OpenClaw-实战：如何拥抱-MCP-1-0？" class="headerlink" title="OpenClaw 实战：如何拥抱 MCP 1.0？"></a>OpenClaw 实战：如何拥抱 MCP 1.0？</h2><p>作为 MCP 生态的深度实践者，OpenClaw 将在 24 小时内完成对 1.0 版本的全量适配。开发者可以关注以下几个变化点：</p>
-<img src="/2026/04/01/mcp-1-0-release-linux-foundation/inline-02-openclaw-mcp-1-0.png" srcset="/img/loading.gif" lazyload class="" title="OpenClaw 实战：如何拥抱 MCP 1.0？ 示意图">
-
+<p>以前很多团队默认的心理安慰是：</p>
 <ul>
-<li><strong>SDK 升级</strong>：请及时更新 <code>@modelcontextprotocol/sdk</code> 到 1.0.0 以上版本。</li>
-<li><strong>配置迁移</strong>：统一注册表支持后，传统的本地路径配置将支持基于 <code>mcp:registry/name</code> 的远程动态加载。</li>
-<li><strong>权限感知</strong>：在编写新的 MCP Server 时，建议优先适配新的权限声明接口，以获得更好的客户端兼容性。</li>
+<li>代码虽然发出去了，但别人懒得看</li>
+<li>就算有人看，也未必能快速还原结构</li>
+<li>只要没把源码仓库公开，就不算真正暴露</li>
 </ul>
-<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>MCP 1.0 的发布，标志着 AI 工具化（Tool-use）已经从“草莽时代”进入了“标准化时代”。在 OpenClaw 的加持下，我们离“AI 自动完成一切繁琐工作”的愿景又近了一大步。</p>
-<p>如果你还在为如何接入各种散乱的 API 而烦恼，那么现在就是加入 MCP 生态的最佳时机。</p>
-<hr>
-<p><em>本文由 OpenClaw 自动化流水线实时监测并生成。</em></p>
+<p>这个前提正在快速失效。</p>
+<p>AfterPack 文中给出的一个细节很有代表性：他们不是靠 source map，先去“破解”整份代码，而是直接针对公开 bundle 做 AST 解析，把字符串、提示词、工具描述、事件名、环境变量等信息抽出来。对今天的 AI 和自动化脚本来说，这类动作已经不再是高门槛逆向，而更像标准化的信息提取。</p>
+<p>你不用把这个理解成“AI 会黑进你的系统”。更准确的说法是：<strong>过去只是人看压缩代码费劲，现在机器看压缩代码已经越来越顺手。</strong></p>
+<p>这会带来几个非常现实的后果：</p>
+<ol>
+<li><p><strong>提示词和产品行为更容易被抄清楚</strong><br>如果你的核心差异放在系统提示词、工具编排、策略判断里，这些内容一旦进入可分发 bundle，就要默认它们迟早会被理解、提取、复刻。</p>
+</li>
+<li><p><strong>功能路线会从命名里被看出来</strong><br>即便没有正式发布，只要事件名、环境变量、实验开关、接口路径足够语义化，别人就能反推出你在测试什么、准备推什么、哪里还没做稳。</p>
+</li>
+<li><p><strong>非敏感信息的组合，也可能形成敏感上下文</strong><br>单独一个变量名、一个错误提示、一个内部 URL 看起来都没什么，但组合起来，就足以拼出权限模型、产品架构、甚至后续攻击面。</p>
+</li>
+<li><p><strong>错误的“没泄密就没事”心态会延迟修复</strong><br>很多团队只检查 API Key、密码、Token 有没有硬编码，却不检查“是不是把太多不该公开的运行信息一起打包出去了”。这会让问题长期处于无人认领状态。</p>
+</li>
+</ol>
+<h2 id="普通开发者最容易踩的-4-个误区"><a href="#普通开发者最容易踩的-4-个误区" class="headerlink" title="普通开发者最容易踩的 4 个误区"></a>普通开发者最容易踩的 4 个误区</h2><h3 id="1）把“可执行发布”和“信息最小暴露”混为一谈"><a href="#1）把“可执行发布”和“信息最小暴露”混为一谈" class="headerlink" title="1）把“可执行发布”和“信息最小暴露”混为一谈"></a>1）把“可执行发布”和“信息最小暴露”混为一谈</h3><img src="/2026/04/02/claude-code-package-security-checklist/inline-03-1.png" srcset="/img/loading.gif" lazyload class="" title="把可执行发布和信息最小暴露混为一谈 示意图">
+
+<p>CLI 要发布、前端要上线、Electron 要安装包，这都没问题。问题在于很多人接受了“既然要发，就只能全发”的思路。</p>
+<p>实际上你至少应该区分两件事：</p>
+<ul>
+<li>哪些代码必须在用户侧运行</li>
+<li>哪些信息只是开发阶段方便、但不该进入最终产物</li>
+</ul>
+<p>比如注释、调试映射、冗长的报错上下文、实验开关名、内部工号&#x2F;邮箱、未启用的功能描述，这些都不属于“非发不可”的部分。</p>
+<h3 id="2）误以为-source-map-只是前端问题"><a href="#2）误以为-source-map-只是前端问题" class="headerlink" title="2）误以为 source map 只是前端问题"></a>2）误以为 source map 只是前端问题</h3><p>很多人只会在 Web 项目里想到 source map，但这次被讨论的是 npm CLI。说明这个问题根本不是“浏览器端专属”，而是<strong>所有 JavaScript 分发形态</strong>都会遇到：前端、CLI、Electron、桌面壳、管理后台、插件系统，本质都一样。</p>
+<p>只要最终产物到了用户机器或公网 CDN，你就要当成“别人可以持续分析”的对象来设计。</p>
+<h3 id="3）只查-secrets，不查语义暴露"><a href="#3）只查-secrets，不查语义暴露" class="headerlink" title="3）只查 secrets，不查语义暴露"></a>3）只查 secrets，不查语义暴露</h3><p>现在很多 CI 会扫：</p>
+<ul>
+<li>API Key</li>
+<li>Access Token</li>
+<li>私钥</li>
+<li>明文密码</li>
+</ul>
+<p>这当然必要，但还不够。你还要额外扫这些东西：</p>
+<ul>
+<li>内部域名和未公开接口路径</li>
+<li>语义过强的 feature flag &#x2F; env 名称</li>
+<li>详细到能暴露系统结构的错误信息</li>
+<li>带人名、邮箱、工单号的注释和日志</li>
+<li>未发布能力的 prompt、工具描述、菜单项文案</li>
+</ul>
+<p>这类信息未必能直接造成入侵，但极容易变成“别人理解你系统”的脚手架。</p>
+<h3 id="4）把“没人会认真看”当成策略"><a href="#4）把“没人会认真看”当成策略" class="headerlink" title="4）把“没人会认真看”当成策略"></a>4）把“没人会认真看”当成策略</h3><p>这是今天最危险的侥幸。不是因为每个人都会来看，而是因为<strong>已经可以让机器替你看</strong>。</p>
+<p>过去逆向门槛高，安全更多靠概率；现在提取门槛降低，很多过去“理论可见、现实没人处理”的内容，都会变成可规模化分析的对象。你的对手未必是黑客，也可能只是一个比你更会利用 AI 做信息提取的同行。</p>
+<h2 id="今天就能执行的-npm-包安全检查清单"><a href="#今天就能执行的-npm-包安全检查清单" class="headerlink" title="今天就能执行的 npm 包安全检查清单"></a>今天就能执行的 npm 包安全检查清单</h2><p>如果你维护任何 JavaScript 分发产物，我建议你按下面这份清单过一遍。顺序是按“最容易马上落地”排的。</p>
+<h3 id="第一步：先确认你到底发布了什么"><a href="#第一步：先确认你到底发布了什么" class="headerlink" title="第一步：先确认你到底发布了什么"></a>第一步：先确认你到底发布了什么</h3><p>不要只看源码仓库，要直接看最终产物：</p>
+<ul>
+<li>npm tarball 里有哪些文件</li>
+<li><code>bin</code> 实际指向哪个入口</li>
+<li>是否包含 <code>.map</code>、测试文件、脚本、示例、内部文档</li>
+<li>是否把本地开发时的中间产物一起带进去了</li>
+</ul>
+<p>很多问题不是设计失误，而是打包边界失控。</p>
+<h3 id="第二步：把-source-map-当成显式检查项"><a href="#第二步：把-source-map-当成显式检查项" class="headerlink" title="第二步：把 source map 当成显式检查项"></a>第二步：把 source map 当成显式检查项</h3><p>无论你最后决定保留还是移除，都不要让它处于“我也不确定构建产物里有没有”的状态。</p>
+<p>你至少要明确：</p>
+<ul>
+<li>哪些环境生成 source map</li>
+<li>哪些环境允许上传到公开位置</li>
+<li>npm 发布包里是否应该包含它</li>
+<li>出问题后谁能第一时间回滚和撤包</li>
+</ul>
+<p>这次事件最值得借鉴的一点，不是事故本身，而是它说明“打包链路里一个看似很小的疏漏，也足以变成外部大新闻”。</p>
+<h3 id="第三步：扫一遍-bundle-里的高语义字符串"><a href="#第三步：扫一遍-bundle-里的高语义字符串" class="headerlink" title="第三步：扫一遍 bundle 里的高语义字符串"></a>第三步：扫一遍 bundle 里的高语义字符串</h3><p>重点不是所有字符串，而是“能暴露业务意图和内部结构”的字符串：</p>
+<ul>
+<li>feature flag</li>
+<li>env 名称</li>
+<li>内部事件名</li>
+<li>接口前缀</li>
+<li>错误提示</li>
+<li>prompt 模板</li>
+<li>tool 描述</li>
+</ul>
+<p>如果这些内容被直接看到，你是否接受？如果不接受，就该回到构建链路和架构边界上处理，而不是寄希望于“压缩后就没人看得懂”。</p>
+<h3 id="第四步：把真正敏感的逻辑放回服务端"><a href="#第四步：把真正敏感的逻辑放回服务端" class="headerlink" title="第四步：把真正敏感的逻辑放回服务端"></a>第四步：把真正敏感的逻辑放回服务端</h3><p>凡是涉及这些内容的，都应该优先评估是否还留在客户端&#x2F;CLI 侧：</p>
+<ul>
+<li>权限判断核心规则</li>
+<li>反作弊&#x2F;风控策略</li>
+<li>内部实验开关与灰度策略</li>
+<li>供应商路由与成本策略</li>
+<li>私有提示词资产</li>
+</ul>
+<p>不是所有逻辑都能搬回服务端，但只要它属于“被理解后会明显削弱竞争力或安全性”的部分，就值得重估。</p>
+<h3 id="第五步：给发布流程补一条“产物审计”"><a href="#第五步：给发布流程补一条“产物审计”" class="headerlink" title="第五步：给发布流程补一条“产物审计”"></a>第五步：给发布流程补一条“产物审计”</h3><img src="/2026/04/02/claude-code-package-security-checklist/inline-02-section-2.png" srcset="/img/loading.gif" lazyload class="" title="给发布流程补一条产物审计 示意图">
+
+<p>最实用的做法，不是靠某个人上线前手动想起来，而是把它变成固定动作：</p>
+<ul>
+<li>构建后自动检查 tarball 文件列表</li>
+<li>发布前检查是否含 <code>.map</code>、注释、异常大文件</li>
+<li>对 bundle 做关键词扫描</li>
+<li>对比本次产物和上次产物，找新增暴露面</li>
+</ul>
+<p>一次事故往往不是因为没人懂，而是因为流程里根本没有这个卡点。</p>
+<h2 id="这件事对独立开发者和小团队尤其重要"><a href="#这件事对独立开发者和小团队尤其重要" class="headerlink" title="这件事对独立开发者和小团队尤其重要"></a>这件事对独立开发者和小团队尤其重要</h2><p>大公司出了事，至少还有安全团队、PR 团队、法务团队和发布平台兜着。独立开发者和小团队最怕的是另一种情况：你辛苦做出来的产品没有真正被攻击，却在长期公开分发里一点点把自己的实现、路线和试验方向暴露干净了，自己还没意识到。</p>
+<p>尤其现在很多 AI 产品的差异，本来就不在 UI，而在：</p>
+<ul>
+<li>prompt 设计</li>
+<li>工具编排</li>
+<li>工作流拆分</li>
+<li>成本&#x2F;模型切换策略</li>
+<li>自动化链路细节</li>
+</ul>
+<p>这些内容未必是传统意义上的 secret，但它们就是你的产品资产。既然 AI 已经能更高效地读 bundle、拆结构、提语义，你就不能再拿 2018 年的发布习惯，去面对 2026 年的分析能力。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>这次 Claude Code 相关事件，最值得普通开发者记住的，不是围观“谁泄了什么”，而是重新校正一个长期误区：<strong>JavaScript 的可分发产物，从来都不是安全边界；到了 AI 时代，这件事只会更明显。</strong></p>
+<p>如果你今天只能做一件事，我建议不是去追热闹，而是回头检查自己正在发布的 npm 包、前端 bundle 或 Electron 产物：source map 管没管住、语义字符串有没有外泄、哪些真正重要的逻辑还不该留在用户侧。</p>
+<p>这类工作看起来不性感，但它直接决定了你做的东西，究竟是在发布产品，还是在顺手把自己的实现细节也一起公开。</p>
 
                 
               </div>
@@ -437,13 +531,15 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
+        <a href="/tags/%E5%AE%89%E5%85%A8/" class="print-no-link">#安全</a>
+      
         <a href="/tags/AI%E5%B7%A5%E5%85%B7/" class="print-no-link">#AI工具</a>
       
-        <a href="/tags/OpenClaw/" class="print-no-link">#OpenClaw</a>
+        <a href="/tags/npm/" class="print-no-link">#npm</a>
       
-        <a href="/tags/MCP/" class="print-no-link">#MCP</a>
+        <a href="/tags/Claude-Code/" class="print-no-link">#Claude Code</a>
       
-        <a href="/tags/LinuxFoundation/" class="print-no-link">#LinuxFoundation</a>
+        <a href="/tags/JavaScript/" class="print-no-link">#JavaScript</a>
       
     </div>
   
@@ -455,8 +551,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>MCP 1.0 正式发布：加入 Linux Foundation，开启 AI 工具标准化新纪元</div>
-      <div>https://blog.fxcxy.com/2026/04/01/mcp-1-0-release-linux-foundation/</div>
+      <div>Claude Code 源码“泄露”刷屏后，我更建议你先做这份 npm 包安全检查清单</div>
+      <div>https://blog.fxcxy.com/2026/04/02/claude-code-package-security-checklist/</div>
     </div>
     <div class="license-meta">
       
@@ -468,7 +564,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2026年4月1日</div>
+          <div>2026年4月2日</div>
         </div>
       
       
@@ -500,18 +596,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2026/04/02/claude-code-package-security-checklist/" title="Claude Code 源码“泄露”刷屏后，我更建议你先做这份 npm 包安全检查清单">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Claude Code 源码“泄露”刷屏后，我更建议你先做这份 npm 包安全检查清单</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2026/03/31/mac-wechat-dual-open-claude-code/" title="Mac 微信双开教程：复制 WeChat.app、修改 Bundle ID，并做成桌面一键启动 App">
-                        <span class="hidden-mobile">Mac 微信双开教程：复制 WeChat.app、修改 Bundle ID，并做成桌面一键启动 App</span>
+                      <a href="/2026/04/01/mcp-1-0-release-linux-foundation/" title="MCP 1.0 正式发布：加入 Linux Foundation，开启 AI 工具标准化新纪元">
+                        <span class="hidden-mobile">MCP 1.0 正式发布：加入 Linux Foundation，开启 AI 工具标准化新纪元</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

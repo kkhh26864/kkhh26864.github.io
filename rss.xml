@@ -5,6 +5,13 @@
         <link>https://www.zymn.cc</link>
         <description>欢迎来到我的个人博客！在这里，我将分享关于技术、编程、以及个人成长的经验和见解，帮助你在学习和工作中更进一步。</description>
         <item>
+            <title>Claude Code 源码“泄露”刷屏后，我更建议你先做这份 npm 包安全检查清单</title>
+            <link>https://www.zymn.cc/2026/04/02/claude-code-package-security-checklist/</link>
+            <description>这篇文章借 Claude Code 相关事件，提醒开发者不要再把 minify、bundle 和 source map 当成安全边界。正文聚焦 npm 包、前端 bundle、Electron 和 CLI 的信息暴露问题，并给出一份今天就能执行的发布产物安全检查清单。</description>
+            <pubDate>Thu, 02 Apr 2026 09:58:33 +0800</pubDate>
+            <category>AI实战</category>
+        </item>
+        <item>
             <title>MCP 1.0 正式发布：加入 Linux Foundation，开启 AI 工具标准化新纪元</title>
             <link>https://www.zymn.cc/2026/04/01/mcp-1-0-release-linux-foundation/</link>
             <description>这篇文章围绕 MCP 1.0 正式发布展开，重点解释它加入 Linux Foundation 的意义，以及统一注册表、会话恢复、安全增强提案这三项关键变化。文章面向 OpenClaw 和 AI 工具工作流读者，强调标准化之后，AI 工具接入会更稳、更安全、更容易扩展。</description>
