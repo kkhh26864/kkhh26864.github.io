@@ -4,6 +4,39 @@
   
   
   <entry>
+    <title>Cursor 3 实战：把本地 Agent 无缝切到云端，开发、验收、提 PR 终于能一条线跑完</title>
+    <link href="/2026/04/03/cursor-3-agent-workspace-handoff-workflow/"/>
+    <url>/2026/04/03/cursor-3-agent-workspace-handoff-workflow/</url>
+    
+    <content type="html"><![CDATA[<h2 id="还在单线程盯着-AI-写代码的人，最先卡住的不是模型，而是工作区"><a href="#还在单线程盯着-AI-写代码的人，最先卡住的不是模型，而是工作区" class="headerlink" title="还在单线程盯着 AI 写代码的人，最先卡住的不是模型，而是工作区"></a>还在单线程盯着 AI 写代码的人，最先卡住的不是模型，而是工作区</h2><p>很多人已经习惯让 AI 帮自己补代码、改函数、解释报错，但一到真实项目就会掉速。原因很简单：任务一旦变成长链路，你就得在本地编辑器、终端、预览页、Git 提交流程之间来回切。AI 负责“生成”，人负责“搬运”，最后真正浪费时间的不是写代码，而是切上下文。</p><p>Cursor 3 这次值得关注，不是因为它又加了几个模型入口，而是它开始把 <strong>Agent 工作流本身</strong> 当成主产品来做。官方把它定义成一个统一的软件构建工作区：你可以在同一个界面里看本地 Agent、云端 Agent、跨仓库任务、diff 审查、浏览器验证，甚至继续接 GitHub、Linear、Slack 这些外部入口。</p><p>如果你现在最头疼的是“AI 能写，但流程还是不顺”，这篇文章要解决的就是这个问题：<strong>怎么把 Cursor 3 用成一条完整开发流，而不是一个更贵的补全器。</strong></p><h2 id="先说结论：最值钱的不是新界面，而是-handoff-多-Agent-验收闭环"><a href="#先说结论：最值钱的不是新界面，而是-handoff-多-Agent-验收闭环" class="headerlink" title="先说结论：最值钱的不是新界面，而是 handoff + 多 Agent + 验收闭环"></a>先说结论：最值钱的不是新界面，而是 handoff + 多 Agent + 验收闭环</h2><p>Cursor 3 的核心不是单点功能，而是三件事终于被接到一起了。</p><p>第一，<strong>本地和云端 Agent 可以来回 handoff</strong>。你可以先在本机把需求讲清楚、打开仓库、做初步修改；如果任务比较长，就把 session 切到云端继续跑。等它产出 diff、日志、预览后，再拉回本地做调试和最后确认。这比过去“关电脑任务就断掉”顺太多。</p><p>第二，<strong>多个 Agent 可以并行工作</strong>。官方这次明确把 local agents 和 cloud agents 都放进统一侧栏，还提到任务可能来自 mobile、web、desktop、Slack、GitHub、Linear。翻译成人话就是：你终于可以把“查资料、改代码、跑长任务、准备 PR”拆开，而不是所有事都塞进一个会话。</p><p>第三，<strong>审查和验收更靠近交付</strong>。新 diff view 继续保留 stage、commit、manage PRs，内置 browser 又能直接打开和操作本地网站。这意味着 Agent 不只是把代码吐给你，而是能更接近“改完—验证—审查—提交”这一整段流程。</p><h2 id="一个今天就能用的实战方式：本地起步，云端接力，浏览器验收"><a href="#一个今天就能用的实战方式：本地起步，云端接力，浏览器验收" class="headerlink" title="一个今天就能用的实战方式：本地起步，云端接力，浏览器验收"></a>一个今天就能用的实战方式：本地起步，云端接力，浏览器验收</h2><img src="/2026/04/03/cursor-3-agent-workspace-handoff-workflow/inline-01.png" class="" title="本地起步到云端接力再到验收提PR的 Cursor 3 工作流示意图"><p>如果你第一次上手 Cursor 3，我更建议你直接按下面这条线来，而不是先研究一堆设置。</p><h3 id="第一步：先在本地把任务定义成“可交付事项”"><a href="#第一步：先在本地把任务定义成“可交付事项”" class="headerlink" title="第一步：先在本地把任务定义成“可交付事项”"></a>第一步：先在本地把任务定义成“可交付事项”</h3><p>不要只写“帮我改一下这个页面”。更有效的写法是一次把目标、边界和验收条件讲清楚，比如：</p><ul><li>改哪个仓库、哪个页面或模块</li><li>目标是什么：修 bug、补功能、重构还是接接口</li><li>不允许动哪些部分</li><li>最后要给你什么：diff、测试结果、预览路径、待确认事项</li></ul><p>官方在 Cursor 3 之外的相关文章里也反复强调一点：Agent 时代更重要的不是逐行微操，而是任务委派。你给的信息越像一个完整任务单，后面的 handoff 和并行协作越顺。</p><h3 id="第二步：需要长时间运行时，把-session-切到云端"><a href="#第二步：需要长时间运行时，把-session-切到云端" class="headerlink" title="第二步：需要长时间运行时，把 session 切到云端"></a>第二步：需要长时间运行时，把 session 切到云端</h3><p>这是 Cursor 3 最适合写进工作流的地方。比如你已经让 Agent 跑了一轮改动，但后面还要继续生成、跑命令、补文档，或者你要离开电脑，这时候就可以把 local handoff 到 cloud。</p><p>这样做最直接的收益有三个：</p><ul><li>笔记本合盖后任务不会直接中断</li><li>长任务不会一直占着你本地环境</li><li>云端结果回来看时，通常已经带着更完整的产物，比如 diff、日志、预览信息</li></ul><p>对个人开发者尤其有用。你不一定需要全天盯着 Agent，但你需要一条“人不在工位，任务还能继续推进”的链路。</p><h3 id="第三步：回到本地做最后调试和确认"><a href="#第三步：回到本地做最后调试和确认" class="headerlink" title="第三步：回到本地做最后调试和确认"></a>第三步：回到本地做最后调试和确认</h3><p>云端适合长跑，本地适合最后一公里。官方明确提到可以从 cloud 再 handoff 回 local，用 Composer 2 这类更适合高频迭代的能力继续改动，然后直接跑本地测试、看终端输出、做精修。</p><p>这一步别偷懒。真正决定能不能放心提交的，往往不是 Agent 第一次写得多快，而是你能不能低成本完成最后验证。</p><h2 id="Cursor-3-还有两个很容易被低估的点"><a href="#Cursor-3-还有两个很容易被低估的点" class="headerlink" title="Cursor 3 还有两个很容易被低估的点"></a>Cursor 3 还有两个很容易被低估的点</h2><img src="/2026/04/03/cursor-3-agent-workspace-handoff-workflow/inline-02.png" class="" title="Cursor 3 统一工作区整合本地Agent云端Agent浏览器和Diff审查示意图"><h3 id="1-Integrated-browser-让前端和全栈验收顺手很多"><a href="#1-Integrated-browser-让前端和全栈验收顺手很多" class="headerlink" title="1. Integrated browser 让前端和全栈验收顺手很多"></a>1. Integrated browser 让前端和全栈验收顺手很多</h3><p>官方文档里写得很直接，browser 工具可以打开网站、导航页面，还能对本地站点进行 prompt。对于前端、全栈、后台管理系统这种需要“改完立刻看结果”的任务，这比来回切浏览器和聊天窗口舒服得多。</p><p>更重要的是，它把验收信息也拉回了 Agent 工作流里。你不只是看到页面，而是可以把“这里文案溢出、那个按钮状态不对、这个流程还少一步”继续作为下一轮修改输入。</p><h3 id="2-Marketplace-让团队工作流更像一套系统"><a href="#2-Marketplace-让团队工作流更像一套系统" class="headerlink" title="2. Marketplace 让团队工作流更像一套系统"></a>2. Marketplace 让团队工作流更像一套系统</h3><p>Cursor 3 同时把插件市场抬到了更靠前的位置。官方说插件可以带来 MCPs、skills、subagents，还支持 team marketplace。对个人用户来说，这意味着你能快速扩展 Agent 能力；对小团队来说，价值更大：把常用的能力、提示模板、外部工具接法沉淀成团队可复用资产，而不是每个人都从零拼一遍。</p><h2 id="适合谁现在就去试？"><a href="#适合谁现在就去试？" class="headerlink" title="适合谁现在就去试？"></a>适合谁现在就去试？</h2><p>如果你只是拿 AI 偶尔补几行代码，Cursor 3 不一定会立刻让你感到质变。但下面几类人，很值得尽快试：</p><ul><li>已经在用 Agent 写中等以上复杂任务的开发者</li><li>经常要跨 repo、跨终端、跨验收页面切换的人</li><li>想把 AI 接进真实 PR 流程，而不是只当草稿机的人</li><li>需要把长任务交给云端继续跑的个人开发者和小团队</li></ul><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>Cursor 3 最值得上的地方，不是“又多了一个会写代码的 AI”，而是它开始认真处理开发者真正掉速的地方：<strong>任务怎么持续推进、怎么在人机之间交接、怎么把验收和提交流程接起来。</strong></p><p>如果你最近已经明显感觉到，问题不再是 AI 会不会写，而是你有没有一套能把它稳定用起来的工作区，那 Cursor 3 值得你现在就上手。最推荐的起步方式也很简单：先用一个真实项目，把“本地起步 → 云端接力 → 本地验收 → diff 提交”完整跑一遍。只要这条线顺了，Cursor 3 的价值就不是一个新版本，而是一套更接近生产环境的 Agent 开发流。</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>AI实战</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>AI工具</tag>
+      
+      <tag>Cursor</tag>
+      
+      <tag>开发工作流</tag>
+      
+      <tag>Agent</tag>
+      
+      <tag>云端协作</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Claude Code 源码“泄露”刷屏后，我更建议你先做这份 npm 包安全检查清单</title>
     <link href="/2026/04/02/claude-code-package-security-checklist/"/>
     <url>/2026/04/02/claude-code-package-security-checklist/</url>

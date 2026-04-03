@@ -13,41 +13,41 @@
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3232532601275150"
      crossorigin="anonymous"></script>
-    <meta name="twitter:card" content="/img/claude-code-package-security-checklist.png" />
+    <meta name="twitter:card" content="/img/cursor-3-agent-workspace-handoff-workflow.png" />
     <meta name="twitter:site" content="自由码农" />
     <meta name="twitter:creator" content="@corder2025">
-    <meta name="twitter:title" content="Claude Code 源码“泄露”刷屏后，我更建议你先做这份 npm 包安全检查清单 - 自由码农" />
-    <meta name="twitter:description" content="这两天不少人在转“Claude Code 源码泄露”。如果你也做过 npm CLI、Electron、前端控制台，第一反应大概率会是：这事和我有什么关系？ 真正值得警惕的，不只是某个产品这次打包失误，而是很多团队直到今天还把“代码打包后别人就不容易看懂”当成默认前提。过去这套认知还能勉强成立，因为大多数人没有兴趣也没有能力去翻一坨压缩后的 bundle；现在不一样了，AI 已经把这件事的门槛打到了" />
-    <meta name="twitter:image" content="/img/claude-code-package-security-checklist.png" />
+    <meta name="twitter:title" content="Cursor 3 实战：把本地 Agent 无缝切到云端，开发、验收、提 PR 终于能一条线跑完 - 自由码农" />
+    <meta name="twitter:description" content="Cursor 3 把本地 Agent、云端 Agent、diff 审查、内置浏览器和插件市场放进了同一个工作区。本文不做发布会复述，只讲清楚它为什么值得开发者现在上手，以及怎样把 handoff、多 Agent 和浏览器验收串成一条能落地的开发流。" />
+    <meta name="twitter:image" content="/img/cursor-3-agent-workspace-handoff-workflow.png" />
   
   <meta name="theme-color" content="#2f4154">
   <meta name="author" content="独立开发">
   <meta name="keywords" content="自由码农,技术博客,工具分享，网站开发，App开发，小程序开发，H5开发">
   
-    <meta name="description" content="这两天不少人在转“Claude Code 源码泄露”。如果你也做过 npm CLI、Electron、前端控制台，第一反应大概率会是：这事和我有什么关系？ 真正值得警惕的，不只是某个产品这次打包失误，而是很多团队直到今天还把“代码打包后别人就不容易看懂”当成默认前提。过去这套认知还能勉强成立，因为大多数人没有兴趣也没有能力去翻一坨压缩后的 bundle；现在不一样了，AI 已经把这件事的门槛打到了">
+    <meta name="description" content="Cursor 3 把本地 Agent、云端 Agent、diff 审查、内置浏览器和插件市场放进了同一个工作区。本文不做发布会复述，只讲清楚它为什么值得开发者现在上手，以及怎样把 handoff、多 Agent 和浏览器验收串成一条能落地的开发流。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Claude Code 源码“泄露”刷屏后，我更建议你先做这份 npm 包安全检查清单">
-<meta property="og:url" content="https://blog.fxcxy.com/2026/04/02/claude-code-package-security-checklist/index.html">
+<meta property="og:title" content="Cursor 3 实战：把本地 Agent 无缝切到云端，开发、验收、提 PR 终于能一条线跑完">
+<meta property="og:url" content="https://blog.fxcxy.com/2026/04/03/cursor-3-agent-workspace-handoff-workflow/index.html">
 <meta property="og:site_name" content="自由码农">
-<meta property="og:description" content="这两天不少人在转“Claude Code 源码泄露”。如果你也做过 npm CLI、Electron、前端控制台，第一反应大概率会是：这事和我有什么关系？ 真正值得警惕的，不只是某个产品这次打包失误，而是很多团队直到今天还把“代码打包后别人就不容易看懂”当成默认前提。过去这套认知还能勉强成立，因为大多数人没有兴趣也没有能力去翻一坨压缩后的 bundle；现在不一样了，AI 已经把这件事的门槛打到了">
+<meta property="og:description" content="Cursor 3 把本地 Agent、云端 Agent、diff 审查、内置浏览器和插件市场放进了同一个工作区。本文不做发布会复述，只讲清楚它为什么值得开发者现在上手，以及怎样把 handoff、多 Agent 和浏览器验收串成一条能落地的开发流。">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://blog.fxcxy.com/img/claude-code-package-security-checklist.png">
-<meta property="article:published_time" content="2026-04-02T01:58:33.000Z">
-<meta property="article:modified_time" content="2026-04-02T02:39:06.984Z">
+<meta property="og:image" content="https://blog.fxcxy.com/img/cursor-3-agent-workspace-handoff-workflow.png">
+<meta property="article:published_time" content="2026-04-02T22:11:35.000Z">
+<meta property="article:modified_time" content="2026-04-03T04:58:11.809Z">
 <meta property="article:author" content="spatacus">
-<meta property="article:tag" content="安全">
 <meta property="article:tag" content="AI工具">
-<meta property="article:tag" content="npm">
-<meta property="article:tag" content="Claude Code">
-<meta property="article:tag" content="JavaScript">
+<meta property="article:tag" content="Cursor">
+<meta property="article:tag" content="开发工作流">
+<meta property="article:tag" content="Agent">
+<meta property="article:tag" content="云端协作">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://blog.fxcxy.com/img/claude-code-package-security-checklist.png">
+<meta name="twitter:image" content="https://blog.fxcxy.com/img/cursor-3-agent-workspace-handoff-workflow.png">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>Claude Code 源码“泄露”刷屏后，我更建议你先做这份 npm 包安全检查清单 - 自由码农</title>
+  <title>Cursor 3 实战：把本地 Agent 无缝切到云端，开发、验收、提 PR 终于能一条线跑完 - 自由码农</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -248,7 +248,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Claude Code 源码“泄露”刷屏后，我更建议你先做这份 npm 包安全检查清单"></span>
+            <span id="subtitle" data-typed-text="Cursor 3 实战：把本地 Agent 无缝切到云端，开发、验收、提 PR 终于能一条线跑完"></span>
           
         </div>
 
@@ -259,8 +259,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2026-04-02 09:58" pubdate>
-          2026年4月2日 上午
+        <time datetime="2026-04-03 06:11" pubdate>
+          2026年4月3日 早上
         </time>
       </span>
     
@@ -271,7 +271,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          2.8k 字
+          1.7k 字
         
       </span>
     
@@ -282,7 +282,7 @@
         
         
         
-          23 分钟
+          15 分钟
         
       </span>
     
@@ -327,130 +327,53 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">Claude Code 源码“泄露”刷屏后，我更建议你先做这份 npm 包安全检查清单</h1>
+            <h1 id="seo-header">Cursor 3 实战：把本地 Agent 无缝切到云端，开发、验收、提 PR 终于能一条线跑完</h1>
             
             
               <div class="markdown-body">
                 
-                <p>这两天不少人在转“Claude Code 源码泄露”。如果你也做过 npm CLI、Electron、前端控制台，第一反应大概率会是：这事和我有什么关系？</p>
-<p>真正值得警惕的，不只是某个产品这次打包失误，而是很多团队直到今天还把“代码打包后别人就不容易看懂”当成默认前提。过去这套认知还能勉强成立，因为大多数人没有兴趣也没有能力去翻一坨压缩后的 bundle；现在不一样了，AI 已经把这件事的门槛打到了非常低。</p>
-<p>如果你手里有 CLI、浏览器端脚本、Electron 应用、管理后台或者任何通过 npm 分发的 JavaScript 工具，这篇文章你可以直接当一次自查。我们不聊八卦，也不复述传播链，只回答三个更实用的问题：<strong>这次到底暴露了什么、为什么它对普通开发者同样 relevant、以及你今天就能补上的 1 份检查清单是什么。</strong></p>
-<h2 id="标题刷屏的“泄露”，真正值得看的是什么？"><a href="#标题刷屏的“泄露”，真正值得看的是什么？" class="headerlink" title="标题刷屏的“泄露”，真正值得看的是什么？"></a>标题刷屏的“泄露”，真正值得看的是什么？</h2><p>AfterPack 这篇分析把一个很关键的点说透了：这次引爆舆论的，是一个意外包含在 npm 包里的 source map 文件。但它同时也提醒大家，很多人把“source map 泄露”和“原始逻辑终于被看到”混为一谈了。</p>
-<p>文章提到，Claude Code 的 npm 包本身就是以单个 <code>cli.js</code> 作为命令入口分发的。npm registry 元数据里可以直接看到，<code>@anthropic-ai/claude-code</code> 的 <code>2.1.89</code> 版本把 <code>claude</code> 命令指向 <code>cli.js</code>，包描述也明确写着这是一个可在终端直接使用的 AI 助手。也就是说，核心可执行 bundle 本来就随着包一起分发出去了，而不是只存在于内部仓库。</p>
-<p>更直白一点说：source map 让外界更容易看到原始文件结构、注释和模块边界，但“产品逻辑已经以 bundle 形式发到公网”这件事，本身并不新鲜。你只要做过前端、CLI 或 Electron，就会知道这其实是 JavaScript 世界的常态。</p>
-<p>所以这次事件真正该带走的结论不是“以后千万别发 npm 包”，而是：<strong>不要再把 minify、bundle、变量压缩，当成任何形式的安全边界。</strong></p>
-<h2 id="为什么今天这个问题比以前更值得重视？"><a href="#为什么今天这个问题比以前更值得重视？" class="headerlink" title="为什么今天这个问题比以前更值得重视？"></a>为什么今天这个问题比以前更值得重视？</h2><img src="/2026/04/02/claude-code-package-security-checklist/inline-01-section.png" srcset="/img/loading.gif" lazyload class="" title="为什么今天这个问题比以前更值得重视 示意图">
+                <h2 id="还在单线程盯着-AI-写代码的人，最先卡住的不是模型，而是工作区"><a href="#还在单线程盯着-AI-写代码的人，最先卡住的不是模型，而是工作区" class="headerlink" title="还在单线程盯着 AI 写代码的人，最先卡住的不是模型，而是工作区"></a>还在单线程盯着 AI 写代码的人，最先卡住的不是模型，而是工作区</h2><p>很多人已经习惯让 AI 帮自己补代码、改函数、解释报错，但一到真实项目就会掉速。原因很简单：任务一旦变成长链路，你就得在本地编辑器、终端、预览页、Git 提交流程之间来回切。AI 负责“生成”，人负责“搬运”，最后真正浪费时间的不是写代码，而是切上下文。</p>
+<p>Cursor 3 这次值得关注，不是因为它又加了几个模型入口，而是它开始把 <strong>Agent 工作流本身</strong> 当成主产品来做。官方把它定义成一个统一的软件构建工作区：你可以在同一个界面里看本地 Agent、云端 Agent、跨仓库任务、diff 审查、浏览器验证，甚至继续接 GitHub、Linear、Slack 这些外部入口。</p>
+<p>如果你现在最头疼的是“AI 能写，但流程还是不顺”，这篇文章要解决的就是这个问题：<strong>怎么把 Cursor 3 用成一条完整开发流，而不是一个更贵的补全器。</strong></p>
+<h2 id="先说结论：最值钱的不是新界面，而是-handoff-多-Agent-验收闭环"><a href="#先说结论：最值钱的不是新界面，而是-handoff-多-Agent-验收闭环" class="headerlink" title="先说结论：最值钱的不是新界面，而是 handoff + 多 Agent + 验收闭环"></a>先说结论：最值钱的不是新界面，而是 handoff + 多 Agent + 验收闭环</h2><p>Cursor 3 的核心不是单点功能，而是三件事终于被接到一起了。</p>
+<p>第一，<strong>本地和云端 Agent 可以来回 handoff</strong>。你可以先在本机把需求讲清楚、打开仓库、做初步修改；如果任务比较长，就把 session 切到云端继续跑。等它产出 diff、日志、预览后，再拉回本地做调试和最后确认。这比过去“关电脑任务就断掉”顺太多。</p>
+<p>第二，<strong>多个 Agent 可以并行工作</strong>。官方这次明确把 local agents 和 cloud agents 都放进统一侧栏，还提到任务可能来自 mobile、web、desktop、Slack、GitHub、Linear。翻译成人话就是：你终于可以把“查资料、改代码、跑长任务、准备 PR”拆开，而不是所有事都塞进一个会话。</p>
+<p>第三，<strong>审查和验收更靠近交付</strong>。新 diff view 继续保留 stage、commit、manage PRs，内置 browser 又能直接打开和操作本地网站。这意味着 Agent 不只是把代码吐给你，而是能更接近“改完—验证—审查—提交”这一整段流程。</p>
+<h2 id="一个今天就能用的实战方式：本地起步，云端接力，浏览器验收"><a href="#一个今天就能用的实战方式：本地起步，云端接力，浏览器验收" class="headerlink" title="一个今天就能用的实战方式：本地起步，云端接力，浏览器验收"></a>一个今天就能用的实战方式：本地起步，云端接力，浏览器验收</h2><img src="/2026/04/03/cursor-3-agent-workspace-handoff-workflow/inline-01.png" srcset="/img/loading.gif" lazyload class="" title="本地起步到云端接力再到验收提PR的 Cursor 3 工作流示意图">
 
-<p>以前很多团队默认的心理安慰是：</p>
+<p>如果你第一次上手 Cursor 3，我更建议你直接按下面这条线来，而不是先研究一堆设置。</p>
+<h3 id="第一步：先在本地把任务定义成“可交付事项”"><a href="#第一步：先在本地把任务定义成“可交付事项”" class="headerlink" title="第一步：先在本地把任务定义成“可交付事项”"></a>第一步：先在本地把任务定义成“可交付事项”</h3><p>不要只写“帮我改一下这个页面”。更有效的写法是一次把目标、边界和验收条件讲清楚，比如：</p>
 <ul>
-<li>代码虽然发出去了，但别人懒得看</li>
-<li>就算有人看，也未必能快速还原结构</li>
-<li>只要没把源码仓库公开，就不算真正暴露</li>
+<li>改哪个仓库、哪个页面或模块</li>
+<li>目标是什么：修 bug、补功能、重构还是接接口</li>
+<li>不允许动哪些部分</li>
+<li>最后要给你什么：diff、测试结果、预览路径、待确认事项</li>
 </ul>
-<p>这个前提正在快速失效。</p>
-<p>AfterPack 文中给出的一个细节很有代表性：他们不是靠 source map，先去“破解”整份代码，而是直接针对公开 bundle 做 AST 解析，把字符串、提示词、工具描述、事件名、环境变量等信息抽出来。对今天的 AI 和自动化脚本来说，这类动作已经不再是高门槛逆向，而更像标准化的信息提取。</p>
-<p>你不用把这个理解成“AI 会黑进你的系统”。更准确的说法是：<strong>过去只是人看压缩代码费劲，现在机器看压缩代码已经越来越顺手。</strong></p>
-<p>这会带来几个非常现实的后果：</p>
-<ol>
-<li><p><strong>提示词和产品行为更容易被抄清楚</strong><br>如果你的核心差异放在系统提示词、工具编排、策略判断里，这些内容一旦进入可分发 bundle，就要默认它们迟早会被理解、提取、复刻。</p>
-</li>
-<li><p><strong>功能路线会从命名里被看出来</strong><br>即便没有正式发布，只要事件名、环境变量、实验开关、接口路径足够语义化，别人就能反推出你在测试什么、准备推什么、哪里还没做稳。</p>
-</li>
-<li><p><strong>非敏感信息的组合，也可能形成敏感上下文</strong><br>单独一个变量名、一个错误提示、一个内部 URL 看起来都没什么，但组合起来，就足以拼出权限模型、产品架构、甚至后续攻击面。</p>
-</li>
-<li><p><strong>错误的“没泄密就没事”心态会延迟修复</strong><br>很多团队只检查 API Key、密码、Token 有没有硬编码，却不检查“是不是把太多不该公开的运行信息一起打包出去了”。这会让问题长期处于无人认领状态。</p>
-</li>
-</ol>
-<h2 id="普通开发者最容易踩的-4-个误区"><a href="#普通开发者最容易踩的-4-个误区" class="headerlink" title="普通开发者最容易踩的 4 个误区"></a>普通开发者最容易踩的 4 个误区</h2><h3 id="1）把“可执行发布”和“信息最小暴露”混为一谈"><a href="#1）把“可执行发布”和“信息最小暴露”混为一谈" class="headerlink" title="1）把“可执行发布”和“信息最小暴露”混为一谈"></a>1）把“可执行发布”和“信息最小暴露”混为一谈</h3><img src="/2026/04/02/claude-code-package-security-checklist/inline-03-1.png" srcset="/img/loading.gif" lazyload class="" title="把可执行发布和信息最小暴露混为一谈 示意图">
+<p>官方在 Cursor 3 之外的相关文章里也反复强调一点：Agent 时代更重要的不是逐行微操，而是任务委派。你给的信息越像一个完整任务单，后面的 handoff 和并行协作越顺。</p>
+<h3 id="第二步：需要长时间运行时，把-session-切到云端"><a href="#第二步：需要长时间运行时，把-session-切到云端" class="headerlink" title="第二步：需要长时间运行时，把 session 切到云端"></a>第二步：需要长时间运行时，把 session 切到云端</h3><p>这是 Cursor 3 最适合写进工作流的地方。比如你已经让 Agent 跑了一轮改动，但后面还要继续生成、跑命令、补文档，或者你要离开电脑，这时候就可以把 local handoff 到 cloud。</p>
+<p>这样做最直接的收益有三个：</p>
+<ul>
+<li>笔记本合盖后任务不会直接中断</li>
+<li>长任务不会一直占着你本地环境</li>
+<li>云端结果回来看时，通常已经带着更完整的产物，比如 diff、日志、预览信息</li>
+</ul>
+<p>对个人开发者尤其有用。你不一定需要全天盯着 Agent，但你需要一条“人不在工位，任务还能继续推进”的链路。</p>
+<h3 id="第三步：回到本地做最后调试和确认"><a href="#第三步：回到本地做最后调试和确认" class="headerlink" title="第三步：回到本地做最后调试和确认"></a>第三步：回到本地做最后调试和确认</h3><p>云端适合长跑，本地适合最后一公里。官方明确提到可以从 cloud 再 handoff 回 local，用 Composer 2 这类更适合高频迭代的能力继续改动，然后直接跑本地测试、看终端输出、做精修。</p>
+<p>这一步别偷懒。真正决定能不能放心提交的，往往不是 Agent 第一次写得多快，而是你能不能低成本完成最后验证。</p>
+<h2 id="Cursor-3-还有两个很容易被低估的点"><a href="#Cursor-3-还有两个很容易被低估的点" class="headerlink" title="Cursor 3 还有两个很容易被低估的点"></a>Cursor 3 还有两个很容易被低估的点</h2><img src="/2026/04/03/cursor-3-agent-workspace-handoff-workflow/inline-02.png" srcset="/img/loading.gif" lazyload class="" title="Cursor 3 统一工作区整合本地Agent云端Agent浏览器和Diff审查示意图">
 
-<p>CLI 要发布、前端要上线、Electron 要安装包，这都没问题。问题在于很多人接受了“既然要发，就只能全发”的思路。</p>
-<p>实际上你至少应该区分两件事：</p>
+<h3 id="1-Integrated-browser-让前端和全栈验收顺手很多"><a href="#1-Integrated-browser-让前端和全栈验收顺手很多" class="headerlink" title="1. Integrated browser 让前端和全栈验收顺手很多"></a>1. Integrated browser 让前端和全栈验收顺手很多</h3><p>官方文档里写得很直接，browser 工具可以打开网站、导航页面，还能对本地站点进行 prompt。对于前端、全栈、后台管理系统这种需要“改完立刻看结果”的任务，这比来回切浏览器和聊天窗口舒服得多。</p>
+<p>更重要的是，它把验收信息也拉回了 Agent 工作流里。你不只是看到页面，而是可以把“这里文案溢出、那个按钮状态不对、这个流程还少一步”继续作为下一轮修改输入。</p>
+<h3 id="2-Marketplace-让团队工作流更像一套系统"><a href="#2-Marketplace-让团队工作流更像一套系统" class="headerlink" title="2. Marketplace 让团队工作流更像一套系统"></a>2. Marketplace 让团队工作流更像一套系统</h3><p>Cursor 3 同时把插件市场抬到了更靠前的位置。官方说插件可以带来 MCPs、skills、subagents，还支持 team marketplace。对个人用户来说，这意味着你能快速扩展 Agent 能力；对小团队来说，价值更大：把常用的能力、提示模板、外部工具接法沉淀成团队可复用资产，而不是每个人都从零拼一遍。</p>
+<h2 id="适合谁现在就去试？"><a href="#适合谁现在就去试？" class="headerlink" title="适合谁现在就去试？"></a>适合谁现在就去试？</h2><p>如果你只是拿 AI 偶尔补几行代码，Cursor 3 不一定会立刻让你感到质变。但下面几类人，很值得尽快试：</p>
 <ul>
-<li>哪些代码必须在用户侧运行</li>
-<li>哪些信息只是开发阶段方便、但不该进入最终产物</li>
+<li>已经在用 Agent 写中等以上复杂任务的开发者</li>
+<li>经常要跨 repo、跨终端、跨验收页面切换的人</li>
+<li>想把 AI 接进真实 PR 流程，而不是只当草稿机的人</li>
+<li>需要把长任务交给云端继续跑的个人开发者和小团队</li>
 </ul>
-<p>比如注释、调试映射、冗长的报错上下文、实验开关名、内部工号&#x2F;邮箱、未启用的功能描述，这些都不属于“非发不可”的部分。</p>
-<h3 id="2）误以为-source-map-只是前端问题"><a href="#2）误以为-source-map-只是前端问题" class="headerlink" title="2）误以为 source map 只是前端问题"></a>2）误以为 source map 只是前端问题</h3><p>很多人只会在 Web 项目里想到 source map，但这次被讨论的是 npm CLI。说明这个问题根本不是“浏览器端专属”，而是<strong>所有 JavaScript 分发形态</strong>都会遇到：前端、CLI、Electron、桌面壳、管理后台、插件系统，本质都一样。</p>
-<p>只要最终产物到了用户机器或公网 CDN，你就要当成“别人可以持续分析”的对象来设计。</p>
-<h3 id="3）只查-secrets，不查语义暴露"><a href="#3）只查-secrets，不查语义暴露" class="headerlink" title="3）只查 secrets，不查语义暴露"></a>3）只查 secrets，不查语义暴露</h3><p>现在很多 CI 会扫：</p>
-<ul>
-<li>API Key</li>
-<li>Access Token</li>
-<li>私钥</li>
-<li>明文密码</li>
-</ul>
-<p>这当然必要，但还不够。你还要额外扫这些东西：</p>
-<ul>
-<li>内部域名和未公开接口路径</li>
-<li>语义过强的 feature flag &#x2F; env 名称</li>
-<li>详细到能暴露系统结构的错误信息</li>
-<li>带人名、邮箱、工单号的注释和日志</li>
-<li>未发布能力的 prompt、工具描述、菜单项文案</li>
-</ul>
-<p>这类信息未必能直接造成入侵，但极容易变成“别人理解你系统”的脚手架。</p>
-<h3 id="4）把“没人会认真看”当成策略"><a href="#4）把“没人会认真看”当成策略" class="headerlink" title="4）把“没人会认真看”当成策略"></a>4）把“没人会认真看”当成策略</h3><p>这是今天最危险的侥幸。不是因为每个人都会来看，而是因为<strong>已经可以让机器替你看</strong>。</p>
-<p>过去逆向门槛高，安全更多靠概率；现在提取门槛降低，很多过去“理论可见、现实没人处理”的内容，都会变成可规模化分析的对象。你的对手未必是黑客，也可能只是一个比你更会利用 AI 做信息提取的同行。</p>
-<h2 id="今天就能执行的-npm-包安全检查清单"><a href="#今天就能执行的-npm-包安全检查清单" class="headerlink" title="今天就能执行的 npm 包安全检查清单"></a>今天就能执行的 npm 包安全检查清单</h2><p>如果你维护任何 JavaScript 分发产物，我建议你按下面这份清单过一遍。顺序是按“最容易马上落地”排的。</p>
-<h3 id="第一步：先确认你到底发布了什么"><a href="#第一步：先确认你到底发布了什么" class="headerlink" title="第一步：先确认你到底发布了什么"></a>第一步：先确认你到底发布了什么</h3><p>不要只看源码仓库，要直接看最终产物：</p>
-<ul>
-<li>npm tarball 里有哪些文件</li>
-<li><code>bin</code> 实际指向哪个入口</li>
-<li>是否包含 <code>.map</code>、测试文件、脚本、示例、内部文档</li>
-<li>是否把本地开发时的中间产物一起带进去了</li>
-</ul>
-<p>很多问题不是设计失误，而是打包边界失控。</p>
-<h3 id="第二步：把-source-map-当成显式检查项"><a href="#第二步：把-source-map-当成显式检查项" class="headerlink" title="第二步：把 source map 当成显式检查项"></a>第二步：把 source map 当成显式检查项</h3><p>无论你最后决定保留还是移除，都不要让它处于“我也不确定构建产物里有没有”的状态。</p>
-<p>你至少要明确：</p>
-<ul>
-<li>哪些环境生成 source map</li>
-<li>哪些环境允许上传到公开位置</li>
-<li>npm 发布包里是否应该包含它</li>
-<li>出问题后谁能第一时间回滚和撤包</li>
-</ul>
-<p>这次事件最值得借鉴的一点，不是事故本身，而是它说明“打包链路里一个看似很小的疏漏，也足以变成外部大新闻”。</p>
-<h3 id="第三步：扫一遍-bundle-里的高语义字符串"><a href="#第三步：扫一遍-bundle-里的高语义字符串" class="headerlink" title="第三步：扫一遍 bundle 里的高语义字符串"></a>第三步：扫一遍 bundle 里的高语义字符串</h3><p>重点不是所有字符串，而是“能暴露业务意图和内部结构”的字符串：</p>
-<ul>
-<li>feature flag</li>
-<li>env 名称</li>
-<li>内部事件名</li>
-<li>接口前缀</li>
-<li>错误提示</li>
-<li>prompt 模板</li>
-<li>tool 描述</li>
-</ul>
-<p>如果这些内容被直接看到，你是否接受？如果不接受，就该回到构建链路和架构边界上处理，而不是寄希望于“压缩后就没人看得懂”。</p>
-<h3 id="第四步：把真正敏感的逻辑放回服务端"><a href="#第四步：把真正敏感的逻辑放回服务端" class="headerlink" title="第四步：把真正敏感的逻辑放回服务端"></a>第四步：把真正敏感的逻辑放回服务端</h3><p>凡是涉及这些内容的，都应该优先评估是否还留在客户端&#x2F;CLI 侧：</p>
-<ul>
-<li>权限判断核心规则</li>
-<li>反作弊&#x2F;风控策略</li>
-<li>内部实验开关与灰度策略</li>
-<li>供应商路由与成本策略</li>
-<li>私有提示词资产</li>
-</ul>
-<p>不是所有逻辑都能搬回服务端，但只要它属于“被理解后会明显削弱竞争力或安全性”的部分，就值得重估。</p>
-<h3 id="第五步：给发布流程补一条“产物审计”"><a href="#第五步：给发布流程补一条“产物审计”" class="headerlink" title="第五步：给发布流程补一条“产物审计”"></a>第五步：给发布流程补一条“产物审计”</h3><img src="/2026/04/02/claude-code-package-security-checklist/inline-02-section-2.png" srcset="/img/loading.gif" lazyload class="" title="给发布流程补一条产物审计 示意图">
-
-<p>最实用的做法，不是靠某个人上线前手动想起来，而是把它变成固定动作：</p>
-<ul>
-<li>构建后自动检查 tarball 文件列表</li>
-<li>发布前检查是否含 <code>.map</code>、注释、异常大文件</li>
-<li>对 bundle 做关键词扫描</li>
-<li>对比本次产物和上次产物，找新增暴露面</li>
-</ul>
-<p>一次事故往往不是因为没人懂，而是因为流程里根本没有这个卡点。</p>
-<h2 id="这件事对独立开发者和小团队尤其重要"><a href="#这件事对独立开发者和小团队尤其重要" class="headerlink" title="这件事对独立开发者和小团队尤其重要"></a>这件事对独立开发者和小团队尤其重要</h2><p>大公司出了事，至少还有安全团队、PR 团队、法务团队和发布平台兜着。独立开发者和小团队最怕的是另一种情况：你辛苦做出来的产品没有真正被攻击，却在长期公开分发里一点点把自己的实现、路线和试验方向暴露干净了，自己还没意识到。</p>
-<p>尤其现在很多 AI 产品的差异，本来就不在 UI，而在：</p>
-<ul>
-<li>prompt 设计</li>
-<li>工具编排</li>
-<li>工作流拆分</li>
-<li>成本&#x2F;模型切换策略</li>
-<li>自动化链路细节</li>
-</ul>
-<p>这些内容未必是传统意义上的 secret，但它们就是你的产品资产。既然 AI 已经能更高效地读 bundle、拆结构、提语义，你就不能再拿 2018 年的发布习惯，去面对 2026 年的分析能力。</p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>这次 Claude Code 相关事件，最值得普通开发者记住的，不是围观“谁泄了什么”，而是重新校正一个长期误区：<strong>JavaScript 的可分发产物，从来都不是安全边界；到了 AI 时代，这件事只会更明显。</strong></p>
-<p>如果你今天只能做一件事，我建议不是去追热闹，而是回头检查自己正在发布的 npm 包、前端 bundle 或 Electron 产物：source map 管没管住、语义字符串有没有外泄、哪些真正重要的逻辑还不该留在用户侧。</p>
-<p>这类工作看起来不性感，但它直接决定了你做的东西，究竟是在发布产品，还是在顺手把自己的实现细节也一起公开。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>Cursor 3 最值得上的地方，不是“又多了一个会写代码的 AI”，而是它开始认真处理开发者真正掉速的地方：<strong>任务怎么持续推进、怎么在人机之间交接、怎么把验收和提交流程接起来。</strong></p>
+<p>如果你最近已经明显感觉到，问题不再是 AI 会不会写，而是你有没有一套能把它稳定用起来的工作区，那 Cursor 3 值得你现在就上手。最推荐的起步方式也很简单：先用一个真实项目，把“本地起步 → 云端接力 → 本地验收 → diff 提交”完整跑一遍。只要这条线顺了，Cursor 3 的价值就不是一个新版本，而是一套更接近生产环境的 Agent 开发流。</p>
 
                 
               </div>
@@ -531,15 +454,15 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/%E5%AE%89%E5%85%A8/" class="print-no-link">#安全</a>
-      
         <a href="/tags/AI%E5%B7%A5%E5%85%B7/" class="print-no-link">#AI工具</a>
       
-        <a href="/tags/npm/" class="print-no-link">#npm</a>
+        <a href="/tags/Cursor/" class="print-no-link">#Cursor</a>
       
-        <a href="/tags/Claude-Code/" class="print-no-link">#Claude Code</a>
+        <a href="/tags/%E5%BC%80%E5%8F%91%E5%B7%A5%E4%BD%9C%E6%B5%81/" class="print-no-link">#开发工作流</a>
       
-        <a href="/tags/JavaScript/" class="print-no-link">#JavaScript</a>
+        <a href="/tags/Agent/" class="print-no-link">#Agent</a>
+      
+        <a href="/tags/%E4%BA%91%E7%AB%AF%E5%8D%8F%E4%BD%9C/" class="print-no-link">#云端协作</a>
       
     </div>
   
@@ -551,8 +474,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>Claude Code 源码“泄露”刷屏后，我更建议你先做这份 npm 包安全检查清单</div>
-      <div>https://blog.fxcxy.com/2026/04/02/claude-code-package-security-checklist/</div>
+      <div>Cursor 3 实战：把本地 Agent 无缝切到云端，开发、验收、提 PR 终于能一条线跑完</div>
+      <div>https://blog.fxcxy.com/2026/04/03/cursor-3-agent-workspace-handoff-workflow/</div>
     </div>
     <div class="license-meta">
       
@@ -564,7 +487,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2026年4月2日</div>
+          <div>2026年4月3日</div>
         </div>
       
       
@@ -596,18 +519,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2026/04/03/cursor-3-agent-workspace-handoff-workflow/" title="Cursor 3 实战：把本地 Agent 无缝切到云端，开发、验收、提 PR 终于能一条线跑完">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Cursor 3 实战：把本地 Agent 无缝切到云端，开发、验收、提 PR 终于能一条线跑完</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2026/04/01/mcp-1-0-release-linux-foundation/" title="MCP 1.0 正式发布：加入 Linux Foundation，开启 AI 工具标准化新纪元">
-                        <span class="hidden-mobile">MCP 1.0 正式发布：加入 Linux Foundation，开启 AI 工具标准化新纪元</span>
+                      <a href="/2026/04/02/claude-code-package-security-checklist/" title="Claude Code 源码“泄露”刷屏后，我更建议你先做这份 npm 包安全检查清单">
+                        <span class="hidden-mobile">Claude Code 源码“泄露”刷屏后，我更建议你先做这份 npm 包安全检查清单</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

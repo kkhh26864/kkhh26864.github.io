@@ -5,6 +5,13 @@
         <link>https://www.zymn.cc</link>
         <description>欢迎来到我的个人博客！在这里，我将分享关于技术、编程、以及个人成长的经验和见解，帮助你在学习和工作中更进一步。</description>
         <item>
+            <title>Cursor 3 实战：把本地 Agent 无缝切到云端，开发、验收、提 PR 终于能一条线跑完</title>
+            <link>https://www.zymn.cc/2026/04/03/cursor-3-agent-workspace-handoff-workflow/</link>
+            <description>Cursor 3 把本地 Agent、云端 Agent、diff 审查、内置浏览器和插件市场放进了同一个工作区。本文不做发布会复述，只讲清楚它为什么值得开发者现在上手，以及怎样把 handoff、多 Agent 和浏览器验收串成一条能落地的开发流。</description>
+            <pubDate>Fri, 03 Apr 2026 06:11:35 +0800</pubDate>
+            <category>AI实战</category>
+        </item>
+        <item>
             <title>Claude Code 源码“泄露”刷屏后，我更建议你先做这份 npm 包安全检查清单</title>
             <link>https://www.zymn.cc/2026/04/02/claude-code-package-security-checklist/</link>
             <description>这篇文章借 Claude Code 相关事件，提醒开发者不要再把 minify、bundle 和 source map 当成安全边界。正文聚焦 npm 包、前端 bundle、Electron 和 CLI 的信息暴露问题，并给出一份今天就能执行的发布产物安全检查清单。</description>
