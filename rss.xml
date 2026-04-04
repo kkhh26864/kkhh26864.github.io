@@ -5,6 +5,13 @@
         <link>https://www.zymn.cc</link>
         <description>欢迎来到我的个人博客！在这里，我将分享关于技术、编程、以及个人成长的经验和见解，帮助你在学习和工作中更进一步。</description>
         <item>
+            <title>AI 文档助手总答不准？Mintlify 用虚拟文件系统把响应从 46 秒压到 100 毫秒</title>
+            <link>https://www.zymn.cc/2026/04/04/mintlify-virtual-filesystem-docs-assistant/</link>
+            <description>Mintlify 没继续给文档助手堆更多 Top-K 检索和沙箱容器，而是把文档索引包装成一个只读虚拟文件系统，让 Agent 用 ls、cat、grep 去读文档。本文拆清楚这套方案为什么更稳、更快，也给出你可以直接复用的落地思路。</description>
+            <pubDate>Sat, 04 Apr 2026 06:12:11 +0800</pubDate>
+            <category>AI实战</category>
+        </item>
+        <item>
             <title>Cursor 3 实战：把本地 Agent 无缝切到云端，开发、验收、提 PR 终于能一条线跑完</title>
             <link>https://www.zymn.cc/2026/04/03/cursor-3-agent-workspace-handoff-workflow/</link>
             <description>Cursor 3 把本地 Agent、云端 Agent、diff 审查、内置浏览器和插件市场放进了同一个工作区。本文不做发布会复述，只讲清楚它为什么值得开发者现在上手，以及怎样把 handoff、多 Agent 和浏览器验收串成一条能落地的开发流。</description>
