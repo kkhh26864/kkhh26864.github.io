@@ -5,6 +5,13 @@
         <link>https://www.zymn.cc</link>
         <description>欢迎来到我的个人博客！在这里，我将分享关于技术、编程、以及个人成长的经验和见解，帮助你在学习和工作中更进一步。</description>
         <item>
+            <title>OpenCLI 实战：网站一改版就失效？这套自修复链路把排障时间从小时级压到分钟级</title>
+            <link>https://www.zymn.cc/2026/04/06/opencli-self-healing-adapter-repair/</link>
+            <description>很多抓取和热点监控工具难的不是第一次跑起来，而是网站一改版后怎么快速修回来。本文围绕 OpenCLI 最近补上的诊断、分类、验证与修复链路，拆清楚怎样把 adapter 失效后的排障时间从小时级压到分钟级。</description>
+            <pubDate>Mon, 06 Apr 2026 20:44:53 +0800</pubDate>
+            <category>AI实战</category>
+        </item>
+        <item>
             <title>AI 文档助手总答不准？Mintlify 用虚拟文件系统把响应从 46 秒压到 100 毫秒</title>
             <link>https://www.zymn.cc/2026/04/04/mintlify-virtual-filesystem-docs-assistant/</link>
             <description>Mintlify 没继续给文档助手堆更多 Top-K 检索和沙箱容器，而是把文档索引包装成一个只读虚拟文件系统，让 Agent 用 ls、cat、grep 去读文档。本文拆清楚这套方案为什么更稳、更快，也给出你可以直接复用的落地思路。</description>

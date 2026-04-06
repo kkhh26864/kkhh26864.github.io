@@ -13,41 +13,41 @@
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3232532601275150"
      crossorigin="anonymous"></script>
-    <meta name="twitter:card" content="/img/mintlify-virtual-filesystem-docs-assistant.png" />
+    <meta name="twitter:card" content="/img/opencli-self-healing-adapter-repair.png" />
     <meta name="twitter:site" content="自由码农" />
     <meta name="twitter:creator" content="@corder2025">
-    <meta name="twitter:title" content="AI 文档助手总答不准？Mintlify 用虚拟文件系统把响应从 46 秒压到 100 毫秒 - 自由码农" />
-    <meta name="twitter:description" content="Mintlify 没继续给文档助手堆更多 Top-K 检索和沙箱容器，而是把文档索引包装成一个只读虚拟文件系统，让 Agent 用 ls、cat、grep 去读文档。本文拆清楚这套方案为什么更稳、更快，也给出你可以直接复用的落地思路。" />
-    <meta name="twitter:image" content="/img/mintlify-virtual-filesystem-docs-assistant.png" />
+    <meta name="twitter:title" content="OpenCLI 实战：网站一改版就失效？这套自修复链路把排障时间从小时级压到分钟级 - 自由码农" />
+    <meta name="twitter:description" content="很多人做信息抓取、热点监控、内容采集，最头疼的不是“第一次跑不起来”，而是跑起来以后总会坏。 今天能抓到，明天网站一改版，DOM 变了、接口变了、登录态变了，整条链路就断掉。你不是在做自动化，而是在做一个不断返工的半自动系统。 所以我今天更想写的，不是 OpenCLI 又加了多少命令，而是它最近这轮更新里更值得普通开发者关注的一件事：开始把 adapter 失效后的诊断、修复、验证，做成一条更接近" />
+    <meta name="twitter:image" content="/img/opencli-self-healing-adapter-repair.png" />
   
   <meta name="theme-color" content="#2f4154">
   <meta name="author" content="独立开发">
   <meta name="keywords" content="自由码农,技术博客,工具分享，网站开发，App开发，小程序开发，H5开发">
   
-    <meta name="description" content="Mintlify 没继续给文档助手堆更多 Top-K 检索和沙箱容器，而是把文档索引包装成一个只读虚拟文件系统，让 Agent 用 ls、cat、grep 去读文档。本文拆清楚这套方案为什么更稳、更快，也给出你可以直接复用的落地思路。">
+    <meta name="description" content="很多人做信息抓取、热点监控、内容采集，最头疼的不是“第一次跑不起来”，而是跑起来以后总会坏。 今天能抓到，明天网站一改版，DOM 变了、接口变了、登录态变了，整条链路就断掉。你不是在做自动化，而是在做一个不断返工的半自动系统。 所以我今天更想写的，不是 OpenCLI 又加了多少命令，而是它最近这轮更新里更值得普通开发者关注的一件事：开始把 adapter 失效后的诊断、修复、验证，做成一条更接近">
 <meta property="og:type" content="article">
-<meta property="og:title" content="AI 文档助手总答不准？Mintlify 用虚拟文件系统把响应从 46 秒压到 100 毫秒">
-<meta property="og:url" content="https://blog.fxcxy.com/2026/04/04/mintlify-virtual-filesystem-docs-assistant/index.html">
+<meta property="og:title" content="OpenCLI 实战：网站一改版就失效？这套自修复链路把排障时间从小时级压到分钟级">
+<meta property="og:url" content="https://blog.fxcxy.com/2026/04/06/opencli-self-healing-adapter-repair/index.html">
 <meta property="og:site_name" content="自由码农">
-<meta property="og:description" content="Mintlify 没继续给文档助手堆更多 Top-K 检索和沙箱容器，而是把文档索引包装成一个只读虚拟文件系统，让 Agent 用 ls、cat、grep 去读文档。本文拆清楚这套方案为什么更稳、更快，也给出你可以直接复用的落地思路。">
+<meta property="og:description" content="很多人做信息抓取、热点监控、内容采集，最头疼的不是“第一次跑不起来”，而是跑起来以后总会坏。 今天能抓到，明天网站一改版，DOM 变了、接口变了、登录态变了，整条链路就断掉。你不是在做自动化，而是在做一个不断返工的半自动系统。 所以我今天更想写的，不是 OpenCLI 又加了多少命令，而是它最近这轮更新里更值得普通开发者关注的一件事：开始把 adapter 失效后的诊断、修复、验证，做成一条更接近">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://blog.fxcxy.com/img/mintlify-virtual-filesystem-docs-assistant.png">
-<meta property="article:published_time" content="2026-04-03T22:12:11.000Z">
-<meta property="article:modified_time" content="2026-04-04T14:49:12.731Z">
+<meta property="og:image" content="https://blog.fxcxy.com/img/opencli-self-healing-adapter-repair.png">
+<meta property="article:published_time" content="2026-04-06T12:44:53.000Z">
+<meta property="article:modified_time" content="2026-04-06T13:57:40.752Z">
 <meta property="article:author" content="spatacus">
 <meta property="article:tag" content="AI工具">
-<meta property="article:tag" content="Agent">
-<meta property="article:tag" content="Mintlify">
-<meta property="article:tag" content="文档助手">
-<meta property="article:tag" content="RAG">
+<meta property="article:tag" content="OpenCLI">
+<meta property="article:tag" content="热点监控">
+<meta property="article:tag" content="自动修复">
+<meta property="article:tag" content="CLI">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://blog.fxcxy.com/img/mintlify-virtual-filesystem-docs-assistant.png">
+<meta name="twitter:image" content="https://blog.fxcxy.com/img/opencli-self-healing-adapter-repair.png">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>AI 文档助手总答不准？Mintlify 用虚拟文件系统把响应从 46 秒压到 100 毫秒 - 自由码农</title>
+  <title>OpenCLI 实战：网站一改版就失效？这套自修复链路把排障时间从小时级压到分钟级 - 自由码农</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -248,7 +248,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="AI 文档助手总答不准？Mintlify 用虚拟文件系统把响应从 46 秒压到 100 毫秒"></span>
+            <span id="subtitle" data-typed-text="OpenCLI 实战：网站一改版就失效？这套自修复链路把排障时间从小时级压到分钟级"></span>
           
         </div>
 
@@ -259,8 +259,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2026-04-04 06:12" pubdate>
-          2026年4月4日 早上
+        <time datetime="2026-04-06 20:44" pubdate>
+          2026年4月6日 晚上
         </time>
       </span>
     
@@ -271,7 +271,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          2.8k 字
+          2.6k 字
         
       </span>
     
@@ -282,7 +282,7 @@
         
         
         
-          24 分钟
+          22 分钟
         
       </span>
     
@@ -327,133 +327,112 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">AI 文档助手总答不准？Mintlify 用虚拟文件系统把响应从 46 秒压到 100 毫秒</h1>
+            <h1 id="seo-header">OpenCLI 实战：网站一改版就失效？这套自修复链路把排障时间从小时级压到分钟级</h1>
             
             
               <div class="markdown-body">
                 
-                <h2 id="AI-文档助手最常见的问题，不是模型太弱，而是“拿上下文”的方式太笨"><a href="#AI-文档助手最常见的问题，不是模型太弱，而是“拿上下文”的方式太笨" class="headerlink" title="AI 文档助手最常见的问题，不是模型太弱，而是“拿上下文”的方式太笨"></a>AI 文档助手最常见的问题，不是模型太弱，而是“拿上下文”的方式太笨</h2><p>如果你做过文档问答、API 助手，应该很熟悉一种尴尬：用户问的是一个很具体的问题，比如某个参数能不能和另一个字段一起用、某个 SDK 片段在什么前提下成立、某个 OpenAPI schema 里到底少了哪一级嵌套，但助手给出来的却总像“差一点”。</p>
-<p>问题往往不在模型，而在经典 RAG 流程太粗。</p>
-<p>你把文档切 chunk、做 embedding、Top-K 检索，再把几段文本塞给模型。它能回答大方向，却经常处理不好三类高频需求：</p>
-<ul>
-<li>需要跨页面拼上下文</li>
-<li>需要精确读取原始代码块、参数名和 schema</li>
-<li>需要像人一样继续“翻目录、看文件、搜关键词”</li>
-</ul>
-<p>Mintlify 这篇官方工程文让我觉得最值得写的，不是它又做了一个 AI 助手，而是它承认了一个现实：<strong>很多文档问答场景，本质上已经不是“召回几段文本”，而是“让 Agent 像读代码一样读文档”。</strong></p>
-<img src="/2026/04/04/mintlify-virtual-filesystem-docs-assistant/inline-01-ai.png" srcset="/img/loading.gif" lazyload class="" title="上下文入口从 chunk 检索升级为文件系统式阅读示意图">
+                <p>很多人做信息抓取、热点监控、内容采集，最头疼的不是“第一次跑不起来”，而是<strong>跑起来以后总会坏</strong>。</p>
+<p>今天能抓到，明天网站一改版，DOM 变了、接口变了、登录态变了，整条链路就断掉。你不是在做自动化，而是在做一个不断返工的半自动系统。</p>
+<p>所以我今天更想写的，不是 OpenCLI 又加了多少命令，而是它最近这轮更新里更值得普通开发者关注的一件事：<strong>开始把 adapter 失效后的诊断、修复、验证，做成一条更接近“自修复”的工作流。</strong>如果你平时要盯 B 站、知乎、X、V2EX、新闻站、论坛，或者自己在维护一堆站点脚本，这篇内容能直接帮你少掉很多重复排障时间。</p>
+<h2 id="为什么网站抓取工具最难的部分，从来不是“抓”，而是“持续可用”"><a href="#为什么网站抓取工具最难的部分，从来不是“抓”，而是“持续可用”" class="headerlink" title="为什么网站抓取工具最难的部分，从来不是“抓”，而是“持续可用”"></a>为什么网站抓取工具最难的部分，从来不是“抓”，而是“持续可用”</h2><p>很多人第一次接触这类工具时，会把重点放在“支持多少站”“能不能拿到数据”“有没有浏览器插件”。这些当然重要，但真正影响长期效率的，其实是另一个问题：</p>
+<img src="/2026/04/06/opencli-self-healing-adapter-repair/inline-02-section.png" srcset="/img/loading.gif" lazyload class="" title="为什么网站抓取工具最难的部分，从来不是“抓”，而是“持续可用” 示意图">
 
-<h2 id="先说结论：Mintlify-不是继续补-RAG，而是给助手加了一层只读文件系统"><a href="#先说结论：Mintlify-不是继续补-RAG，而是给助手加了一层只读文件系统" class="headerlink" title="先说结论：Mintlify 不是继续补 RAG，而是给助手加了一层只读文件系统"></a>先说结论：Mintlify 不是继续补 RAG，而是给助手加了一层只读文件系统</h2><p>Mintlify 的文档助手已经不是简单聊天框。官方文档里给出的能力包括：</p>
+<blockquote>
+<p>当目标网站改版后，你多久能把坏掉的链路修回来？</p>
+</blockquote>
+<p>这件事之所以麻烦，是因为站点失效通常不是一种错误，而是一整组错误：</p>
 <ul>
-<li>基于当前页面上下文回答问题</li>
-<li>自动引用相关文档来源</li>
-<li>结合 API schema 生成代码示例</li>
-<li>支持用 <code>.mintlify/Assistant.md</code> 对助手行为做项目级定制</li>
+<li>选择器失效，原来能抓到的元素突然没了</li>
+<li>API 响应结构改了，字段路径不再对</li>
+<li>页面开始依赖新的异步加载逻辑</li>
+<li>登录流程、cookie、权限校验发生变化</li>
+<li>你知道它坏了，但不知道到底坏在哪一步</li>
 </ul>
-<p>但他们在真实流量里发现，只靠传统检索还是会卡住。于是团队没有继续往提示词里硬塞 chunk，也没有把所有问题都丢进沙箱容器，而是把整套文档索引抽象成一个虚拟文件系统 <code>ChromaFs</code>。</p>
-<p>换句话说，助手不再只是“拿到几段候选文本后回答”，而是多了几种更接近开发者习惯的读文档方式：</p>
-<ul>
-<li><code>ls</code>：看目录结构</li>
-<li><code>cd</code>：进入某个文档路径</li>
-<li><code>cat</code>：读取完整页面或片段</li>
-<li><code>grep</code>：按关键词做精确搜索</li>
-<li><code>find</code>：按路径定位目标文件</li>
-</ul>
-<p>这一步非常关键。因为一旦接口变成“文件系统”，模型就能按任务需要逐步探索，而不是被一次性的 Top-K 检索绑死。</p>
-<h2 id="为什么他们要放弃“容器里跑-bash”这条路？"><a href="#为什么他们要放弃“容器里跑-bash”这条路？" class="headerlink" title="为什么他们要放弃“容器里跑 bash”这条路？"></a>为什么他们要放弃“容器里跑 bash”这条路？</h2><p>Mintlify 其实试过更重的方案。</p>
-<p>他们一开始做了一个沙箱容器，让 Agent 在里面直接运行 bash，用 <code>ls</code>、<code>cat</code>、<code>grep</code> 去访问文档。这个思路听起来很合理，因为 Agent 天然会用这些命令。</p>
-<p>但上线后问题很快暴露：</p>
-<ul>
-<li>每次对话都起一个容器，启动和挂载成本太高</li>
-<li>文档助手本质是只读场景，却承担了完整执行环境的额外开销</li>
-<li>流量上来以后，成本和延迟都不划算</li>
-</ul>
-<p>官方给出的数字很直接：按当时的规模估算，月会话量大约 <code>85</code> 万，继续跑容器的话，年成本会超过 <code>7</code> 万美元；而 <code>p90</code> 延迟最高能到 <code>46</code> 秒。对于“问文档”这种本该秒回的场景，这基本不可接受。</p>
-<p>所以他们最后做了一个更适合只读任务的折中：<strong>保留“像文件系统一样探索”的交互方式，但把底层实现换成轻量级虚拟层。</strong></p>
-<img src="/2026/04/04/mintlify-virtual-filesystem-docs-assistant/inline-02-bash.png" srcset="/img/loading.gif" lazyload class="" title="容器加 bash 与只读虚拟文件系统的取舍示意图">
+<p>以前大多数人处理这类问题，靠的是手工排查：重跑命令、开浏览器、开 DevTools、看 console、抓 network、翻脚本、猜页面哪里变了。问题不是做不到，而是<strong>每次都得从头来一遍</strong>。</p>
+<p>如果你维护的命令只有 2 个，也许还能忍；但 OpenCLI 这种面向多站点、多命令的工具，官方仓库已经把目标放在“把网站、桌面应用、本地 CLI 统一成 AI 可调用入口”上了。站点一多，adapter 的维护成本就会线性增长，这才是最容易拖垮工作流的地方。</p>
+<h2 id="OpenCLI-这次更新，重点不是“又多几个命令”，而是开始把修复流程产品化"><a href="#OpenCLI-这次更新，重点不是“又多几个命令”，而是开始把修复流程产品化" class="headerlink" title="OpenCLI 这次更新，重点不是“又多几个命令”，而是开始把修复流程产品化"></a>OpenCLI 这次更新，重点不是“又多几个命令”，而是开始把修复流程产品化</h2><p>从最近几天的版本和代码可以看出，OpenCLI 在做两件事。</p>
+<img src="/2026/04/06/opencli-self-healing-adapter-repair/inline-01-opencli.png" srcset="/img/loading.gif" lazyload class="" title="OpenCLI 这次更新，重点不是“又多几个命令”，而是开始把修复流程产品化 示意图">
 
-<h2 id="ChromaFs-真正聪明的地方，不是像文件系统，而是只实现文档助手真正需要的那一半"><a href="#ChromaFs-真正聪明的地方，不是像文件系统，而是只实现文档助手真正需要的那一半" class="headerlink" title="ChromaFs 真正聪明的地方，不是像文件系统，而是只实现文档助手真正需要的那一半"></a>ChromaFs 真正聪明的地方，不是像文件系统，而是只实现文档助手真正需要的那一半</h2><p>如果你看这套设计，会发现它不是在浏览器里模拟一个完整 Linux，而是只保留最值钱的读取能力。</p>
-<h3 id="1-用路径树解决“先知道去哪找”的问题"><a href="#1-用路径树解决“先知道去哪找”的问题" class="headerlink" title="1. 用路径树解决“先知道去哪找”的问题"></a>1. 用路径树解决“先知道去哪找”的问题</h3><p>纯 RAG 最大的问题之一，是你不知道模型有没有看到正确的文档区域。</p>
-<p>Mintlify 先把所有文档路径整理成树结构，再把压缩后的路径树放进 Chroma 的 metadata 里。这样助手一开始就能拿到整个站点的大致目录，知道应该先去 <code>/sdk</code>、<code>/api</code> 还是 <code>/guides</code>。</p>
-<p>这个设计很像你第一次进陌生代码库时，先 <code>ls</code> 一遍目录，而不是直接全文检索所有文件。</p>
-<p>对文档助手来说，这很重要，因为很多问题其实依赖“文档位置感”。比如：</p>
+<p>第一件事，是给“失败现场”补结构化上下文。</p>
+<p>仓库里的 <code>src/diagnostic.ts</code> 明确写了：当你设置 <code>OPENCLI_DIAGNOSTIC=1</code> 时，失败的命令会向 stderr 输出一份 <code>RepairContext</code> JSON。里面不只是一个报错字符串，而是会尽量带上：</p>
 <ul>
-<li>这个能力是产品说明，还是 API 参考</li>
-<li>这个字段定义是在 REST 章节，还是 SDK 示例</li>
-<li>这是一篇概念页，还是某个 endpoint 的细节页</li>
+<li>错误码和错误提示</li>
+<li>当前 adapter 的源码路径和截断后的源码内容</li>
+<li>当前页面 URL</li>
+<li>DOM snapshot</li>
+<li>network requests</li>
+<li>console errors</li>
+<li>时间戳</li>
 </ul>
-<p>如果没有这层路径树，模型只能靠关键词瞎猜。</p>
-<h3 id="2-用-cat-还原完整页面，而不是永远困在-chunk-里"><a href="#2-用-cat-还原完整页面，而不是永远困在-chunk-里" class="headerlink" title="2. 用 cat 还原完整页面，而不是永远困在 chunk 里"></a>2. 用 <code>cat</code> 还原完整页面，而不是永远困在 chunk 里</h3><p>RAG 常见的第二个坑，是拿到的是切碎后的文本，不是用户真正想看的“页面”。</p>
-<p>Mintlify 的做法是把文档 chunk 继续保留在索引里，但在需要读取时，通过 <code>slug</code> 和 <code>chunk_index</code> 把同一页面重新拼起来。这样模型调用 <code>cat</code> 时，看到的是更接近原文结构的内容，而不是几段脱离上下文的碎片。</p>
-<p>他们还做了一个很实用的补丁：对体积很大的 OpenAPI schema，不直接把全文塞进数据库，而是放到对象存储里，只在索引里保留“懒加载指针”。只有真正读这个文件时，才去取内容。</p>
-<p>这意味着两件事：</p>
+<p>这一步很关键。因为过去很多“AI 帮你修脚本”的方案，最大问题就是上下文不完整：模型只知道“报错了”，但不知道页面长什么样、请求发了什么、原脚本在做什么。现在 OpenCLI 至少开始把这些一手材料主动打包出来。</p>
+<p>更重要的是，官方还专门放了一份 <code>skills/opencli-repair/SKILL.md</code>，把修复流程拆成了可执行步骤：先收集诊断上下文，再判断是 DOM 变化、API 变化还是认证变化，然后用浏览器操作能力去验证，最后做最小补丁并重新跑命令验证结果。</p>
+<p>第二件事，是往“自动研究 + 自动修复”的方向继续推。</p>
+<p>候选里提到的 <code>autoresearch fix</code>，仓库里已经能找到对应命令。它的思路很直接：先自动检测当前坏的是 build、test 还是 browse task，再让系统按“一次只修一个错误”的方式迭代验证。配套设计文档里也能看到，OpenCLI 正在用 AutoResearch 迭代浏览能力和 Skill 指南本身，而不是只堆新功能。</p>
+<p>这说明它的方向已经不只是“提供命令”，而是想把<strong>命令失效后的恢复成本</strong>也一起压下去。</p>
+<h2 id="这条“自修复链路”到底怎么用？我建议你先掌握最小闭环"><a href="#这条“自修复链路”到底怎么用？我建议你先掌握最小闭环" class="headerlink" title="这条“自修复链路”到底怎么用？我建议你先掌握最小闭环"></a>这条“自修复链路”到底怎么用？我建议你先掌握最小闭环</h2><p>如果你今天就想把这套东西落地，不用等到它完全自动化。先按下面这个最小闭环走，就已经比纯手工排查高效很多。</p>
+<h3 id="第一步：先把失败现场结构化留下来"><a href="#第一步：先把失败现场结构化留下来" class="headerlink" title="第一步：先把失败现场结构化留下来"></a>第一步：先把失败现场结构化留下来</h3><p>最基础的命令就是：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">OPENCLI_DIAGNOSTIC=1 opencli &lt;site&gt; &lt;<span class="hljs-built_in">command</span>&gt; [args...] 2&gt;diagnostic.json<br></code></pre></td></tr></table></figure>
+
+<p>这一步的意义不是“多打一条日志”，而是把原来零散的排障信息打包成一个 AI 和人都能读的统一对象。</p>
+<p>如果你做的是热点监控、舆情采集、竞品追踪，这一步尤其重要。因为这类任务常常是定时跑、批量跑，等你发现数据不对时，现场已经过去了。提前把失败上下文保存下来，后面无论你自己修，还是交给 Claude Code &#x2F; OpenClaw &#x2F; 其他 Agent 来修，都会快很多。</p>
+<h3 id="第二步：按错误类型决定排查路径，不要一上来就盲改脚本"><a href="#第二步：按错误类型决定排查路径，不要一上来就盲改脚本" class="headerlink" title="第二步：按错误类型决定排查路径，不要一上来就盲改脚本"></a>第二步：按错误类型决定排查路径，不要一上来就盲改脚本</h3><p>OpenCLI 的 repair skill 已经把常见错误分得比较清楚：</p>
 <ul>
-<li>大文件不会把常规检索拖慢</li>
-<li>Agent 又保留了“需要时再精读”的能力</li>
+<li><code>SELECTOR</code>：多半是 DOM 结构变了</li>
+<li><code>EMPTY_RESULT</code>：可能是接口结构改了，或者数据搬家了</li>
+<li><code>API_ERROR</code> &#x2F; <code>NETWORK</code>：接口地址、参数或请求方式变了</li>
+<li><code>AUTH_REQUIRED</code>：登录态、cookie、权限校验出了问题</li>
+<li><code>TIMEOUT</code>：页面加载方式变了，等待条件不对</li>
 </ul>
-<p>如果你现在做的是 API 助手，这个思路尤其值得抄。因为 schema 和示例往往最有价值，但也是最容易把上下文窗口和索引成本一起拉爆的部分。</p>
-<h3 id="3-用两段式-grep，把“找关键词”做成低成本高精度操作"><a href="#3-用两段式-grep，把“找关键词”做成低成本高精度操作" class="headerlink" title="3. 用两段式 grep，把“找关键词”做成低成本高精度操作"></a>3. 用两段式 <code>grep</code>，把“找关键词”做成低成本高精度操作</h3><p>很多文档问题并不适合向量检索。比如用户直接问：</p>
-<ul>
-<li>某个 header 名字在哪些页面出现过</li>
-<li>某个错误码在文档里有没有明确解释</li>
-<li>某个配置项是不是只在 Python SDK 里出现</li>
-</ul>
-<p>这类问题，本质上更像 <code>grep</code>，而不是语义相似度。</p>
-<p>Mintlify 的做法是先用向量库做一轮粗筛，拿到可能相关的 chunk，再做内存里的正则匹配精筛。为了降低延迟，他们还把 Redis 预取接进来，减少二次读取的等待时间。</p>
-<p>这就是很典型的工程化思路：<strong>语义检索负责缩小范围，精确匹配负责给最终答案。</strong></p>
-<p>别把所有搜索问题都塞进 embedding。很多时候，关键词就是关键词。</p>
-<h3 id="4-把权限和只读限制做进文件系统层，而不是事后补救"><a href="#4-把权限和只读限制做进文件系统层，而不是事后补救" class="headerlink" title="4. 把权限和只读限制做进文件系统层，而不是事后补救"></a>4. 把权限和只读限制做进文件系统层，而不是事后补救</h3><p>这套方案还有一个容易被忽略的优点：权限控制更自然。</p>
-<p>Mintlify 直接根据会话 token 和用户组，把能看到的路径树裁出来。也就是说，Agent 从一开始就只会“看到该看到的文件”。再加上整个系统明确是只读的，很多安全边界都比容器方案更容易收紧。</p>
-<p>这点很适合企业文档、内部知识库、客户分层文档这些场景。</p>
-<p>很多团队做 AI 助手，喜欢先把资料都喂进去，再想办法在回答时限制输出。这个顺序其实是反的。更稳的做法是像文件系统权限一样，<strong>先限制可见范围，再允许模型在范围内探索。</strong></p>
-<h2 id="如果你也想做一个文档助手，这-5-条比“继续调-Prompt”更重要"><a href="#如果你也想做一个文档助手，这-5-条比“继续调-Prompt”更重要" class="headerlink" title="如果你也想做一个文档助手，这 5 条比“继续调 Prompt”更重要"></a>如果你也想做一个文档助手，这 5 条比“继续调 Prompt”更重要</h2><p>看完 Mintlify 这套实现，我觉得最值得直接拿走的是下面 5 条。</p>
-<h3 id="1-先判断你的助手到底是“问答器”还是“阅读器”"><a href="#1-先判断你的助手到底是“问答器”还是“阅读器”" class="headerlink" title="1. 先判断你的助手到底是“问答器”还是“阅读器”"></a>1. 先判断你的助手到底是“问答器”还是“阅读器”</h3><p>如果用户问的都是概念型问题，普通 RAG 可能已经够用。</p>
-<p>但如果用户经常会问参数、示例、版本差异、文件位置、SDK 行为，那你的助手更像“阅读器”。这时候让模型拥有 <code>ls / cat / grep</code> 这类阅读动作，价值会明显高于再堆几层检索重排。</p>
-<h3 id="2-不要为只读场景支付完整执行环境的税"><a href="#2-不要为只读场景支付完整执行环境的税" class="headerlink" title="2. 不要为只读场景支付完整执行环境的税"></a>2. 不要为只读场景支付完整执行环境的税</h3><p>容器、沙箱、shell 很灵活，但如果你的任务只是读文档、读 schema、做搜索，很多执行能力其实根本用不上。</p>
-<p>只保留读操作，通常能同时换来：</p>
-<ul>
-<li>更低延迟</li>
-<li>更低成本</li>
-<li>更简单的权限控制</li>
-<li>更容易规模化</li>
-</ul>
-<h3 id="3-保留-chunk-索引，但别让用户永远只看到-chunk"><a href="#3-保留-chunk-索引，但别让用户永远只看到-chunk" class="headerlink" title="3. 保留 chunk 索引，但别让用户永远只看到 chunk"></a>3. 保留 chunk 索引，但别让用户永远只看到 chunk</h3><p>chunk 适合召回，不适合最终阅读。</p>
-<p>一个更稳的模式是：</p>
+<p>这一步看起来像常识，但很多人真正浪费时间，就浪费在这里。</p>
+<p>比如页面其实已经不再把数据渲染到 DOM，而是走新的 JSON 接口；你还在疯狂改选择器。又比如真正的问题是登录失效，你却在怀疑页面结构。先做分类，能直接少走一大圈弯路。</p>
+<h3 id="第三步：优先用现有浏览能力验证，不要靠猜"><a href="#第三步：优先用现有浏览能力验证，不要靠猜" class="headerlink" title="第三步：优先用现有浏览能力验证，不要靠猜"></a>第三步：优先用现有浏览能力验证，不要靠猜</h3><p>repair skill 的建议很实用：不要继续拿坏掉的 adapter 反复试，而是直接打开目标页面，检查当前 DOM、网络请求和页面状态，再决定补丁怎么写。</p>
+<p>对普通开发者来说，这里最有价值的不是“AI 全自动改完”，而是<strong>把猜测变成证据链</strong>：</p>
 <ol>
-<li>用 chunk 找候选</li>
-<li>用页面级拼接恢复完整上下文</li>
-<li>再让模型回答</li>
+<li>adapter 原来想抓什么</li>
+<li>页面现在实际长什么样</li>
+<li>网络层到底返回了什么</li>
+<li>两者差在哪</li>
 </ol>
-<p>这样既保留了检索效率，也不会丢掉页面结构。</p>
-<h3 id="4-目录结构本身就是上下文"><a href="#4-目录结构本身就是上下文" class="headerlink" title="4. 目录结构本身就是上下文"></a>4. 目录结构本身就是上下文</h3><p>很多团队只给模型正文，不给模型“文档长什么样”。但路径树、栏目结构、文件名，其实本身就是强信号。</p>
-<p>对技术文档来说，<code>/getting-started/</code> 和 <code>/api-reference/</code> 的语义完全不同。把这个层次信息也喂给模型，常常比多给一段正文更有用。</p>
-<h3 id="5-把精确搜索和语义搜索分开做"><a href="#5-把精确搜索和语义搜索分开做" class="headerlink" title="5. 把精确搜索和语义搜索分开做"></a>5. 把精确搜索和语义搜索分开做</h3><p>别试图让一个检索器包打天下。</p>
+<p>只要这四步清楚了，大多数修复其实都是很小的改动：</p>
 <ul>
-<li>语义问题，用 embedding</li>
-<li>精确字段、错误码、参数名，用 <code>grep</code></li>
-<li>大文件，做 lazy load</li>
-<li>权限问题，前置到路径层</li>
+<li>改一个 selector</li>
+<li>改一个响应字段路径</li>
+<li>改一个等待条件</li>
+<li>换一个更稳定的接口入口</li>
 </ul>
-<p>当这些能力拆开以后，助手的行为会更像一个真正能工作的 Agent，而不是一个“只能在候选段落里猜答案”的聊天机器人。</p>
-<h2 id="对普通开发者最现实的启发：AI-助手的下一步，可能不是更大的模型，而是更像操作系统"><a href="#对普通开发者最现实的启发：AI-助手的下一步，可能不是更大的模型，而是更像操作系统" class="headerlink" title="对普通开发者最现实的启发：AI 助手的下一步，可能不是更大的模型，而是更像操作系统"></a>对普通开发者最现实的启发：AI 助手的下一步，可能不是更大的模型，而是更像操作系统</h2><p>Mintlify 这篇文章最打动我的点，是它没有把问题理解成“模型不够聪明”，而是把问题还原成“接口不对”。</p>
-<p>当你让模型只能看 Top-K chunk，它就只能做“段落猜题”。</p>
-<p>当你给它一个只读文件系统，它才开始像真正的工程师那样工作：</p>
+<p>真正难的从来不是那一行补丁，而是找到该改哪一行。</p>
+<h2 id="对内容工作流和热点监控来说，这个能力为什么比“支持更多站点”还重要？"><a href="#对内容工作流和热点监控来说，这个能力为什么比“支持更多站点”还重要？" class="headerlink" title="对内容工作流和热点监控来说，这个能力为什么比“支持更多站点”还重要？"></a>对内容工作流和热点监控来说，这个能力为什么比“支持更多站点”还重要？</h2><p>因为你真正想要的不是“今天抓到了”，而是“这条链路以后别总靠我盯着”。</p>
+<p>比如你现在在做这些事：</p>
 <ul>
-<li>先看目录</li>
-<li>再找位置</li>
-<li>再读原文</li>
-<li>不确定时继续搜</li>
-<li>最后再组织答案</li>
+<li>每天抓多个平台热榜做选题池</li>
+<li>盯竞品账号、作者账号或关键词变化</li>
+<li>追踪论坛、社区、新闻站的异常波动</li>
+<li>把采集结果喂给 AI 做摘要、分类、打标、推送</li>
 </ul>
-<p>这也是为什么我越来越觉得，很多 AI 工具真正该优化的，不是提示词花样，而是<strong>模型和信息之间的交互层</strong>。</p>
-<p>对文档助手、知识库助手、内部 Copilot、API 支持机器人来说，这条思路都值得现在就重视。因为用户真正需要的，从来不是“再一段更像人的话”，而是<strong>更接近正确原文、更接近真实结构、更接近可验证来源</strong>的答案。</p>
-<p>Mintlify 只是把这件事先做出来了。</p>
-<p>如果你正准备重做自己的文档问答，先别急着继续堆 RAG。也许更值钱的一步，是先问自己一句：</p>
-<p><strong>你的助手，究竟是在“检索几段文本”，还是应该被允许“读完整个文档系统”？</strong></p>
-<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
-<li>Mintlify 官方工程博客：How we built a virtual filesystem for our AI documentation assistant</li>
-<li>Mintlify 官方文档：Assistant</li>
-</ul>
+<p>那你的瓶颈几乎一定不在模型，而在最前面的数据入口稳定性。</p>
+<p>入口不稳定，后面所有自动化都是空的。你公众号选题流跑得再顺，前面 X 或知乎 adapter 一坏，今天就没有素材；你监控面板做得再漂亮，前面接口结构一变，明天数据就全空了。</p>
+<p>所以我很认可 OpenCLI 这轮更新的方向：<strong>先把“坏掉以后怎么更快修回来”这件事做标准化。</strong></p>
+<p>这比单纯宣传“我支持 55 个站点”更有现实意义。因为对长期维护者来说，命令数量决定天花板，自修复能力决定下限。</p>
+<h2 id="如果你现在就在用-OpenCLI，我建议优先把这-4-件事补上"><a href="#如果你现在就在用-OpenCLI，我建议优先把这-4-件事补上" class="headerlink" title="如果你现在就在用 OpenCLI，我建议优先把这 4 件事补上"></a>如果你现在就在用 OpenCLI，我建议优先把这 4 件事补上</h2><h3 id="1）给关键命令加失败留档"><a href="#1）给关键命令加失败留档" class="headerlink" title="1）给关键命令加失败留档"></a>1）给关键命令加失败留档</h3><p>凡是你高频跑、而且一旦失效就会影响业务的命令，都应该在失败时保留 diagnostic 输出。不要等坏了再现抓现场。</p>
+<h3 id="2）把修复流程写成固定-SOP"><a href="#2）把修复流程写成固定-SOP" class="headerlink" title="2）把修复流程写成固定 SOP"></a>2）把修复流程写成固定 SOP</h3><p>不是每次出问题都临场发挥，而是固定成：</p>
+<img src="/2026/04/06/opencli-self-healing-adapter-repair/inline-03-2-sop.png" srcset="/img/loading.gif" lazyload class="" title="2）把修复流程写成固定 SOP 示意图">
+
+<ol>
+<li>收集 <code>RepairContext</code></li>
+<li>分类错误类型</li>
+<li>验证 DOM &#x2F; network &#x2F; auth 哪层出了问题</li>
+<li>做最小补丁</li>
+<li>重新验证</li>
+</ol>
+<p>这样以后你自己修、让同事修、让 AI 修，口径都一致。</p>
+<h3 id="3）优先追求“更稳的抓取入口”"><a href="#3）优先追求“更稳的抓取入口”" class="headerlink" title="3）优先追求“更稳的抓取入口”"></a>3）优先追求“更稳的抓取入口”</h3><p>如果 network 层已经能拿到稳定 JSON，就别强行从脆弱 DOM 抠文本。repair skill 里也明确建议，能切 API 就尽量切 API，这对长期维护非常重要。</p>
+<h3 id="4）把它接进你的-AI-工作流，而不是单独当命令用"><a href="#4）把它接进你的-AI-工作流，而不是单独当命令用" class="headerlink" title="4）把它接进你的 AI 工作流，而不是单独当命令用"></a>4）把它接进你的 AI 工作流，而不是单独当命令用</h3><p>真正的收益，不是修好一次 adapter，而是把它接到你的内容流、情报流、研究流里。这样当某个站点失效时，你不仅知道“坏了”，还可以把修复上下文直接交给 AI 接着处理。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>如果你只把 OpenCLI 当成“一个能抓很多网站的 CLI”，那你看到的只是它的一半价值。</p>
+<p>我这次更看重的是另一半：它开始认真解决这类工具最痛的老问题——<strong>网站一改版，怎么把修复成本降下来</strong>。</p>
+<p>结构化诊断、repair skill、AutoResearch 迭代，这几块单看都不算惊艳；但连起来看，很像一条更成熟的工程化路线：先把失败现场记录清楚，再把排查步骤标准化，最后再把修复动作逐步自动化。</p>
+<p>对做热点监控、内容采集、AI 工作流的人来说，这比再多几个新站点更值得关注。因为只有当入口足够稳，你后面的写稿、打标、推送、分发，才真的配叫“自动化”。</p>
+<p>如果你手里正维护一堆容易失效的网站脚本，我会建议你先别急着重写全套系统。先把 OpenCLI 这套“诊断 → 分类 → 验证 → 补丁 → 复验”的闭环学会，光这一层，就足够帮你把大量低价值返工砍掉。</p>
 
                 
               </div>
@@ -536,13 +515,13 @@
       
         <a href="/tags/AI%E5%B7%A5%E5%85%B7/" class="print-no-link">#AI工具</a>
       
-        <a href="/tags/Agent/" class="print-no-link">#Agent</a>
+        <a href="/tags/OpenCLI/" class="print-no-link">#OpenCLI</a>
       
-        <a href="/tags/Mintlify/" class="print-no-link">#Mintlify</a>
+        <a href="/tags/%E7%83%AD%E7%82%B9%E7%9B%91%E6%8E%A7/" class="print-no-link">#热点监控</a>
       
-        <a href="/tags/%E6%96%87%E6%A1%A3%E5%8A%A9%E6%89%8B/" class="print-no-link">#文档助手</a>
+        <a href="/tags/%E8%87%AA%E5%8A%A8%E4%BF%AE%E5%A4%8D/" class="print-no-link">#自动修复</a>
       
-        <a href="/tags/RAG/" class="print-no-link">#RAG</a>
+        <a href="/tags/CLI/" class="print-no-link">#CLI</a>
       
     </div>
   
@@ -554,8 +533,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>AI 文档助手总答不准？Mintlify 用虚拟文件系统把响应从 46 秒压到 100 毫秒</div>
-      <div>https://blog.fxcxy.com/2026/04/04/mintlify-virtual-filesystem-docs-assistant/</div>
+      <div>OpenCLI 实战：网站一改版就失效？这套自修复链路把排障时间从小时级压到分钟级</div>
+      <div>https://blog.fxcxy.com/2026/04/06/opencli-self-healing-adapter-repair/</div>
     </div>
     <div class="license-meta">
       
@@ -567,7 +546,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2026年4月4日</div>
+          <div>2026年4月6日</div>
         </div>
       
       
@@ -599,18 +578,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2026/04/06/opencli-self-healing-adapter-repair/" title="OpenCLI 实战：网站一改版就失效？这套自修复链路把排障时间从小时级压到分钟级">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">OpenCLI 实战：网站一改版就失效？这套自修复链路把排障时间从小时级压到分钟级</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2026/04/03/cursor-3-agent-workspace-handoff-workflow/" title="Cursor 3 实战：把本地 Agent 无缝切到云端，开发、验收、提 PR 终于能一条线跑完">
-                        <span class="hidden-mobile">Cursor 3 实战：把本地 Agent 无缝切到云端，开发、验收、提 PR 终于能一条线跑完</span>
+                      <a href="/2026/04/04/mintlify-virtual-filesystem-docs-assistant/" title="AI 文档助手总答不准？Mintlify 用虚拟文件系统把响应从 46 秒压到 100 毫秒">
+                        <span class="hidden-mobile">AI 文档助手总答不准？Mintlify 用虚拟文件系统把响应从 46 秒压到 100 毫秒</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
