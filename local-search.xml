@@ -4,6 +4,37 @@
   
   
   <entry>
+    <title>不想再花几千块找设计师？Google Stitch 新工作流让 Claude Code 直接按设计系统改页面</title>
+    <link href="/2026/04/07/Google-Stitch-Claude-Code%E5%AE%9E%E6%88%98%EF%BC%9A1%E5%B0%8F%E6%97%B6%E6%8A%8AAI%E4%BA%A7%E5%93%81%E7%95%8C%E9%9D%A2%E4%BB%8E%E6%AF%9B%E5%9D%AF%E6%8B%89%E5%88%B0%E5%8F%AF%E4%B8%8A%E7%BA%BF/"/>
+    <url>/2026/04/07/Google-Stitch-Claude-Code%E5%AE%9E%E6%88%98%EF%BC%9A1%E5%B0%8F%E6%97%B6%E6%8A%8AAI%E4%BA%A7%E5%93%81%E7%95%8C%E9%9D%A2%E4%BB%8E%E6%AF%9B%E5%9D%AF%E6%8B%89%E5%88%B0%E5%8F%AF%E4%B8%8A%E7%BA%BF/</url>
+    
+    <content type="html"><![CDATA[<h2 id="不是你不会写前端，而是少了一层“设计约束”"><a href="#不是你不会写前端，而是少了一层“设计约束”" class="headerlink" title="不是你不会写前端，而是少了一层“设计约束”"></a>不是你不会写前端，而是少了一层“设计约束”</h2><p>现在很多 AI 产品卡的不是功能，而是最后那一层界面质感。</p><img src="/2026/04/07/Google-Stitch-Claude-Code%E5%AE%9E%E6%88%98%EF%BC%9A1%E5%B0%8F%E6%97%B6%E6%8A%8AAI%E4%BA%A7%E5%93%81%E7%95%8C%E9%9D%A2%E4%BB%8E%E6%AF%9B%E5%9D%AF%E6%8B%89%E5%88%B0%E5%8F%AF%E4%B8%8A%E7%BA%BF/inline-01-section.png" class="" title="不是你不会写前端，而是少了一层“设计约束” 示意图"><p>你让 Claude Code、Cursor 或别的编码工具把功能搭出来，逻辑通常没问题，页面也能跑。但只要多做两三个页面，问题就马上出来了：字体不统一、颜色越改越飘、按钮和卡片的层级关系乱掉，最后整个产品像是不同会话拼出来的。</p><p>这也是为什么很多人明明已经把“AI 写功能”跑通了，最后还是得回到老路：找设计师、等 Figma、再做还原。流程并不高级，但它至少能解决一个核心问题——<strong>一致性</strong>。</p><p>这两天我重点研究了一下 <strong>Google Stitch</strong> 和 <strong>Claude Code</strong> 这套新组合，越看越觉得它不是一个“又多了个 AI 设计工具”的小更新，而是把设计和开发之间那段最容易掉链子的流程重新接上了。先让 Stitch 产出设计方向和设计系统，再让 Claude Code 按同一套规则持续落地到真实项目，这条链路对独立开发者、小团队，甚至做 MVP 的人来说，参考价值非常高。</p><h2 id="先看清-Stitch-值在哪里：它不是只给你一张好看的图"><a href="#先看清-Stitch-值在哪里：它不是只给你一张好看的图" class="headerlink" title="先看清 Stitch 值在哪里：它不是只给你一张好看的图"></a>先看清 Stitch 值在哪里：它不是只给你一张好看的图</h2><p>很多 AI 设计工具最大的问题，不是第一屏不好看，而是<strong>第二屏开始就散</strong>。</p><p>我现在越来越认同一个判断：以前大家总以为“AI 生成的界面不高级”是模型问题，实际上经常是工作流问题。你直接让编码模型输出页面，它能给你一个像样的首页，但很难自然维持跨页面的一致视觉语言。</p><p>Stitch 这次更有意思的地方，在于它不只是吐一张参考图，而是把一套设计约束也一起整理出来。根据 2026 年 3 月的公开资料，Stitch 更新后强化了几件事：</p><ul><li>支持用截图、灵感图甚至现有网页作为设计输入</li><li>可以在 AI Native Canvas 里继续迭代页面方向</li><li>提供语音输入，减少来回打字改提示词的成本</li><li>能导出包含设计规则的 <code>DESIGN.md</code></li><li>可以通过 MCP 连接 Claude Code 这类 coding agent</li></ul><p>注意，真正改变开发节奏的，不是“它能出几张图”，而是 <code>DESIGN.md</code> 这种产物。</p><h2 id="为什么-DESIGN-md-很关键？因为它解决的是“越写越不像一个产品”"><a href="#为什么-DESIGN-md-很关键？因为它解决的是“越写越不像一个产品”" class="headerlink" title="为什么 DESIGN.md 很关键？因为它解决的是“越写越不像一个产品”"></a>为什么 <code>DESIGN.md</code> 很关键？因为它解决的是“越写越不像一个产品”</h2><p>如果你做过 AI Coding，就会很熟悉这个问题。</p><p>第一天你让 Claude Code 帮你做了首页，挺满意；第二天让它补一个后台页，颜色浅了一点；第三天再补设置页，按钮圆角又变了；到第五天时，虽然每个页面单看都还行，但整个产品已经不像同一套系统。</p><p>而 Stitch 的思路，是把设计规则落成一个 agent 更容易理解的 Markdown 文件。公开实测资料里提到，这个文件会覆盖颜色、字体、间距、层级、组件模式和使用规范。你把它放进项目根目录，本质上就等于给 Claude Code 增加了一份“以后都照这个来”的视觉说明书。</p><p>这个动作听起来小，但意义非常大：以后你再让 Claude Code 新增页面、补弹窗、改表单，它不是每次都从空提示词猜，而是基于同一套设计约束去延展。这样出来的产品，才更像“持续构建”，而不是“持续拼接”。</p><h2 id="我更建议你这样用：先定方向，再落代码，不要反过来"><a href="#我更建议你这样用：先定方向，再落代码，不要反过来" class="headerlink" title="我更建议你这样用：先定方向，再落代码，不要反过来"></a>我更建议你这样用：先定方向，再落代码，不要反过来</h2><p>如果你今天就想把这套流程用起来，我建议按下面这条顺序走，比直接对编码模型说“帮我做一个高级点的 SaaS UI”更稳。</p><h3 id="第一步：把现有页面或参考图喂给-Stitch"><a href="#第一步：把现有页面或参考图喂给-Stitch" class="headerlink" title="第一步：把现有页面或参考图喂给 Stitch"></a>第一步：把现有页面或参考图喂给 Stitch</h3><p>如果你已经有一版产品，就直接截核心页面给 Stitch；如果还没有，就准备 2 到 3 张你认同的参考图，重点不是抄，而是定气质：偏极简、偏编辑感、偏专业后台，还是偏数据面板。</p><h3 id="第二步：明确告诉它你要改什么屏"><a href="#第二步：明确告诉它你要改什么屏" class="headerlink" title="第二步：明确告诉它你要改什么屏"></a>第二步：明确告诉它你要改什么屏</h3><p>不要写大而空的提示词。直接说产品做什么、这次重点改哪些页面、想保留什么、想增强什么。比如：</p><ul><li>首页要更像正式产品，不要再像默认模板</li><li>数据列表页要更易扫读</li><li>表单页要更清晰的层级和留白</li><li>整体风格偏深色、稳重、适合 B 端</li></ul><h3 id="第三步：从多个方案里挑元素，不要只收第一版"><a href="#第三步：从多个方案里挑元素，不要只收第一版" class="headerlink" title="第三步：从多个方案里挑元素，不要只收第一版"></a>第三步：从多个方案里挑元素，不要只收第一版</h3><p>我自己现在会刻意避免只收第一版。第一张图最多只能算候选，不该直接当答案。更稳的做法，是拿第一版的排版、第二版的配色、第三版的信息层次，最后拼成自己真正想要的方向。</p><h3 id="第四步：导出并落地-DESIGN-md"><a href="#第四步：导出并落地-DESIGN-md" class="headerlink" title="第四步：导出并落地 DESIGN.md"></a>第四步：导出并落地 <code>DESIGN.md</code></h3><p>这一步别省。把设计规则文件放进项目根目录，后面 Claude Code 改任何页面时，都让它优先参考这份文件。</p><img src="/2026/04/07/Google-Stitch-Claude-Code%E5%AE%9E%E6%88%98%EF%BC%9A1%E5%B0%8F%E6%97%B6%E6%8A%8AAI%E4%BA%A7%E5%93%81%E7%95%8C%E9%9D%A2%E4%BB%8E%E6%AF%9B%E5%9D%AF%E6%8B%89%E5%88%B0%E5%8F%AF%E4%B8%8A%E7%BA%BF/inline-02-section-3.png" class="" title="DESIGN.md 示意图"><h3 id="第五步：再通过-MCP-让-Claude-Code-去还原和扩展"><a href="#第五步：再通过-MCP-让-Claude-Code-去还原和扩展" class="headerlink" title="第五步：再通过 MCP 让 Claude Code 去还原和扩展"></a>第五步：再通过 MCP 让 Claude Code 去还原和扩展</h3><p>公开实测文章里已经演示了 Stitch 通过 MCP 接到 Claude Code 的方式：接好服务后，Claude Code 可以读取 Stitch 项目里的设计元数据、页面结构和设计细节。对我来说，最实际的价值不是“炫技”，而是少掉大量描述成本。我不用反复说“卡片阴影再轻一点、间距按上一页来、按钮状态跟首页一致”，而是直接让它按 Stitch 中的桌面 frame 或设计规范去对齐。</p><h2 id="这套工作流最适合谁？"><a href="#这套工作流最适合谁？" class="headerlink" title="这套工作流最适合谁？"></a>这套工作流最适合谁？</h2><p>不是所有人都需要它，但下面这几类人会很受用：</p><h3 id="1-已经会用-AI-写功能，但-UI-总是差最后一口气的人"><a href="#1-已经会用-AI-写功能，但-UI-总是差最后一口气的人" class="headerlink" title="1. 已经会用 AI 写功能，但 UI 总是差最后一口气的人"></a>1. 已经会用 AI 写功能，但 UI 总是差最后一口气的人</h3><p>你不是不会做页面，而是没有稳定的设计锚点。Stitch 给你的正是这层锚点。</p><h3 id="2-做-MVP、SaaS、小工具的独立开发者"><a href="#2-做-MVP、SaaS、小工具的独立开发者" class="headerlink" title="2. 做 MVP、SaaS、小工具的独立开发者"></a>2. 做 MVP、SaaS、小工具的独立开发者</h3><p>以前为了让产品看起来“像个正式产品”，常常要在设计和开发之间来回切。现在可以先用 Stitch 定出视觉骨架，再让 Claude Code 接着往下实现。</p><h3 id="3-想把“设计一致性”也纳入-AI-工作流的人"><a href="#3-想把“设计一致性”也纳入-AI-工作流的人" class="headerlink" title="3. 想把“设计一致性”也纳入 AI 工作流的人"></a>3. 想把“设计一致性”也纳入 AI 工作流的人</h3><p>很多人现在谈 AI 工作流，只盯功能、自动化、部署。但真正影响用户第一印象的，往往是视觉和交互是否统一。这一步以前最难自动化，现在开始有可行解了。</p><h2 id="也别神化：它不是一键出成品，仍然有几个坑"><a href="#也别神化：它不是一键出成品，仍然有几个坑" class="headerlink" title="也别神化：它不是一键出成品，仍然有几个坑"></a>也别神化：它不是一键出成品，仍然有几个坑</h2><p>这套流程很强，但并不等于完全无脑。</p><img src="/2026/04/07/Google-Stitch-Claude-Code%E5%AE%9E%E6%88%98%EF%BC%9A1%E5%B0%8F%E6%97%B6%E6%8A%8AAI%E4%BA%A7%E5%93%81%E7%95%8C%E9%9D%A2%E4%BB%8E%E6%AF%9B%E5%9D%AF%E6%8B%89%E5%88%B0%E5%8F%AF%E4%B8%8A%E7%BA%BF/inline-02-section-2.png" class="" title="也别神化它不是一键出成品，仍然有几个坑 示意图"><p>第一，Stitch 产出的设计和你现有业务能力未必完全匹配，有时会顺手加进一些“看起来应该有”的模块。接给 Claude Code 落地时，一定要明确哪些功能真实存在，哪些只是视觉提案。</p><p>第二，字体、颜色细节和复杂布局在落代码时仍可能需要人工校准。MCP 提高的是还原效率，不是保证 100% 零偏差。</p><p>第三，越长的会话越吃 token。如果你把“定设计、接鉴权、接支付、接部署”全塞进一个超长上下文里，成本和漂移都会上来。更稳的做法，是把“设计定稿”和“功能落地”拆成几个小阶段推进。</p><h2 id="结尾：2026-年做-AI-产品，别再只卷“能不能做出来”了"><a href="#结尾：2026-年做-AI-产品，别再只卷“能不能做出来”了" class="headerlink" title="结尾：2026 年做 AI 产品，别再只卷“能不能做出来”了"></a>结尾：2026 年做 AI 产品，别再只卷“能不能做出来”了</h2><p>真正拉开差距的，已经不是你能不能让 AI 写出一个能跑的页面，而是你能不能让它<strong>持续写出同一种产品感</strong>。</p><img src="/2026/04/07/Google-Stitch-Claude-Code%E5%AE%9E%E6%88%98%EF%BC%9A1%E5%B0%8F%E6%97%B6%E6%8A%8AAI%E4%BA%A7%E5%93%81%E7%95%8C%E9%9D%A2%E4%BB%8E%E6%AF%9B%E5%9D%AF%E6%8B%89%E5%88%B0%E5%8F%AF%E4%B8%8A%E7%BA%BF/inline-03-2026-ai.png" class="" title="结尾2026 年做 AI 产品，别再只卷“能不能做出来”了 示意图"><p>Google Stitch + Claude Code 这条新链路，最值得关注的地方不在于又多了一个设计工具，而在于它开始把“设计系统”也变成了 AI 能直接消费的上下文。对独立开发者来说，这比单纯多一个模版库更值钱，因为它解决的是长期一致性。</p><p>如果你最近也在做自己的产品，我建议你至少试一次这条流程：<strong>先用 Stitch 定设计方向和规则，再把 <code>DESIGN.md</code> 交给 Claude Code 持续落地。</strong> 很多以前必须靠多人协作才能稳住的事情，现在一个人已经能跑通了。</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>AI实战</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>AI工具</tag>
+      
+      <tag>Claude Code</tag>
+      
+      <tag>MCP</tag>
+      
+      <tag>Google Stitch</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>OpenCLI 实战：网站一改版就失效？这套自修复链路把排障时间从小时级压到分钟级</title>
     <link href="/2026/04/06/opencli-self-healing-adapter-repair/"/>
     <url>/2026/04/06/opencli-self-healing-adapter-repair/</url>

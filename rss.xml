@@ -5,6 +5,13 @@
         <link>https://www.zymn.cc</link>
         <description>欢迎来到我的个人博客！在这里，我将分享关于技术、编程、以及个人成长的经验和见解，帮助你在学习和工作中更进一步。</description>
         <item>
+            <title>不想再花几千块找设计师？Google Stitch 新工作流让 Claude Code 直接按设计系统改页面</title>
+            <link>https://www.zymn.cc/2026/04/07/Google-Stitch-Claude-Code实战：1小时把AI产品界面从毛坯拉到可上线/</link>
+            <description>如果你已经能用 AI 把功能写出来，但页面还是一眼“AI 味”，这套 Google Stitch + Claude Code 的新工作流，正在把“先找设计师、再切图、再还原”的链路压缩成一次可迭代的实战流程。</description>
+            <pubDate>Tue, 07 Apr 2026 07:30:56 +0800</pubDate>
+            <category>AI实战</category>
+        </item>
+        <item>
             <title>OpenCLI 实战：网站一改版就失效？这套自修复链路把排障时间从小时级压到分钟级</title>
             <link>https://www.zymn.cc/2026/04/06/opencli-self-healing-adapter-repair/</link>
             <description>很多抓取和热点监控工具难的不是第一次跑起来，而是网站一改版后怎么快速修回来。本文围绕 OpenCLI 最近补上的诊断、分类、验证与修复链路，拆清楚怎样把 adapter 失效后的排障时间从小时级压到分钟级。</description>
