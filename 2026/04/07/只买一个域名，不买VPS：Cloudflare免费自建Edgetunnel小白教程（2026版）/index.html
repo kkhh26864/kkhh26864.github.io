@@ -1,0 +1,1094 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/logo.png">
+  <link rel="icon" href="/img/logo.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3232532601275150"
+     crossorigin="anonymous"></script>
+    <meta name="twitter:card" content="/img/只买一个域名，不买VPS：Cloudflare免费自建Edgetunnel小白教程（2026版）.png" />
+    <meta name="twitter:site" content="自由码农" />
+    <meta name="twitter:creator" content="@corder2025">
+    <meta name="twitter:title" content="不买 VPS，只用一个域名：免费搭建梯子教程（2026） - 自由码农" />
+    <meta name="twitter:description" content="这篇文章整理了一套低成本搭建方案：不用买 VPS，只用一个自己的域名，就能借助 Cloudflare 免费搭好一套可用的梯子。正文按实际操作顺序展开，覆盖上传项目、绑定域名、登录后台和生成订阅地址。" />
+    <meta name="twitter:image" content="/img/只买一个域名，不买VPS：Cloudflare免费自建Edgetunnel小白教程（2026版）.png" />
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="独立开发">
+  <meta name="keywords" content="自由码农,技术博客,工具分享，网站开发，App开发，小程序开发，H5开发">
+  
+    <meta name="description" content="这篇文章整理了一套低成本搭建方案：不用买 VPS，只用一个自己的域名，就能借助 Cloudflare 免费搭好一套可用的梯子。正文按实际操作顺序展开，覆盖上传项目、绑定域名、登录后台和生成订阅地址。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="不买 VPS，只用一个域名：免费搭建梯子教程（2026）">
+<meta property="og:url" content="https://blog.fxcxy.com/2026/04/07/%E5%8F%AA%E4%B9%B0%E4%B8%80%E4%B8%AA%E5%9F%9F%E5%90%8D%EF%BC%8C%E4%B8%8D%E4%B9%B0VPS%EF%BC%9ACloudflare%E5%85%8D%E8%B4%B9%E8%87%AA%E5%BB%BAEdgetunnel%E5%B0%8F%E7%99%BD%E6%95%99%E7%A8%8B%EF%BC%882026%E7%89%88%EF%BC%89/index.html">
+<meta property="og:site_name" content="自由码农">
+<meta property="og:description" content="这篇文章整理了一套低成本搭建方案：不用买 VPS，只用一个自己的域名，就能借助 Cloudflare 免费搭好一套可用的梯子。正文按实际操作顺序展开，覆盖上传项目、绑定域名、登录后台和生成订阅地址。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://blog.fxcxy.com/img/%E5%8F%AA%E4%B9%B0%E4%B8%80%E4%B8%AA%E5%9F%9F%E5%90%8D%EF%BC%8C%E4%B8%8D%E4%B9%B0VPS%EF%BC%9ACloudflare%E5%85%8D%E8%B4%B9%E8%87%AA%E5%BB%BAEdgetunnel%E5%B0%8F%E7%99%BD%E6%95%99%E7%A8%8B%EF%BC%882026%E7%89%88%EF%BC%89.png">
+<meta property="article:published_time" content="2026-04-07T07:48:00.000Z">
+<meta property="article:modified_time" content="2026-04-07T11:27:21.164Z">
+<meta property="article:author" content="spatacus">
+<meta property="article:tag" content="翻墙工具">
+<meta property="article:tag" content="科学上网">
+<meta property="article:tag" content="教程">
+<meta property="article:tag" content="Cloudflare">
+<meta property="article:tag" content="Edgetunnel">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://blog.fxcxy.com/img/%E5%8F%AA%E4%B9%B0%E4%B8%80%E4%B8%AA%E5%9F%9F%E5%90%8D%EF%BC%8C%E4%B8%8D%E4%B9%B0VPS%EF%BC%9ACloudflare%E5%85%8D%E8%B4%B9%E8%87%AA%E5%BB%BAEdgetunnel%E5%B0%8F%E7%99%BD%E6%95%99%E7%A8%8B%EF%BC%882026%E7%89%88%EF%BC%89.png">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>不买 VPS，只用一个域名：免费搭建梯子教程（2026） - 自由码农</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+  
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_4443546_u6jwvi2qcka.css">
+<link rel="stylesheet" href="/css/social-share.min.css">
+<link rel="stylesheet" href="/css/myreward.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"blog.fxcxy.com","root":"/","version":"1.9.7","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"复制"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"J7kyQXV9R3CXOiA1eubrlflY-gzGzoHsz","app_key":"qHZzPzRcvsutXvHvBewqGmhw","server_url":"https://leancloud.fxcxy.com","path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+
+  
+    <!-- Google tag (gtag.js) -->
+    <script async>
+      if (!Fluid.ctx.dnt) {
+        Fluid.utils.createScript("https://www.googletagmanager.com/gtag/js?id=", function() {
+          window.dataLayer = window.dataLayer || [];
+          function gtag() {
+            dataLayer.push(arguments);
+          }
+          gtag('js', new Date());
+          gtag('config', '');
+        });
+      }
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+    
+  
+
+
+
+  
+<meta name="generator" content="Hexo 7.1.1"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>自由码农</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="不买 VPS，只用一个域名：免费搭建梯子教程（2026）"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2026-04-07 15:48" pubdate>
+          2026年4月7日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          1.9k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          16 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="busuanzi_value_page_pv"></span>次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">不买 VPS，只用一个域名：免费搭建梯子教程（2026）</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <p>这篇文章讲的是一种<strong>几乎零服务器成本</strong>的搭建方案：<strong>不用买 VPS，只用一个自己的域名，就能借助 Cloudflare 免费搭好一套能用的梯子。</strong></p>
+<p>如果你想要的是：</p>
+<ul>
+<li>有一个自己的订阅地址</li>
+<li>不想碰 Linux、SSH、运维</li>
+<li>不想长期付 VPS 月租</li>
+<li>想按教程一步一步搭好后台</li>
+</ul>
+<p>那这套方法就比较适合你。</p>
+<p>它本质上不是“买了域名就等于有了 VPS”，而是把页面托管、配置存储和域名接入，都交给 Cloudflare 这套免费能力来完成。</p>
+<h2 id="配套视频"><a href="#配套视频" class="headerlink" title="配套视频"></a>配套视频</h2><p>如果你更习惯跟着视频操作，可以先看这个 YouTube 视频，再回来对照本文逐步配置：</p>
+<div style="position: relative; width: 100%; padding-bottom: 56.25%; margin: 1rem 0;">
+  <iframe
+    src="https://www.youtube.com/embed/79UA0fhJ0n0"
+    title="Cloudflare 免费自建 Edgetunnel 教程"
+    style="position: absolute; inset: 0; width: 100%; height: 100%; border: 0; border-radius: 12px;"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+    referrerpolicy="strict-origin-when-cross-origin"
+    allowfullscreen>
+  </iframe>
+</div>
+
+<p>如果播放器没有显示，也可以直接打开： <a target="_blank" rel="noopener" href="https://youtu.be/79UA0fhJ0n0">https://youtu.be/79UA0fhJ0n0</a></p>
+<hr>
+<h2 id="先准备这-4-样东西"><a href="#先准备这-4-样东西" class="headerlink" title="先准备这 4 样东西"></a>先准备这 4 样东西</h2><p>开始前准备下面 4 样东西：</p>
+<ol>
+<li><p><strong>一个域名</strong><br>优先用二级域名，例如 <code>edt.yourdomain.com</code>，操作起来比根域名更省事。</p>
+</li>
+<li><p><strong>一个 Cloudflare 账号</strong><br>注册地址：<code>https://dash.cloudflare.com/sign-up</code></p>
+</li>
+<li><p><strong>项目压缩包</strong><br>官方仓库：<code>https://github.com/cmliu/edgetunnel</code><br>本文按仓库里的 <code>main.zip</code> 来操作。</p>
+</li>
+<li><p><strong>一个客户端</strong><br>部署完成后，你需要用它来导入订阅地址。</p>
+</li>
+</ol>
+<hr>
+<h2 id="这套东西到底是怎么搭起来的"><a href="#这套东西到底是怎么搭起来的" class="headerlink" title="这套东西到底是怎么搭起来的"></a>这套东西到底是怎么搭起来的</h2><p>你可以把它简单理解成：</p>
+<ul>
+<li><code>Cloudflare Pages</code>：帮你放网页和后台入口</li>
+<li><code>Workers KV</code>：帮你保存后台配置</li>
+<li><code>自定义域名</code>：把访问地址变成你自己的域名</li>
+</ul>
+<p>最终你登录后台的入口一般就是：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs text">https://你的域名/admin<br></code></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="实操开始：一步一步跟着做"><a href="#实操开始：一步一步跟着做" class="headerlink" title="实操开始：一步一步跟着做"></a>实操开始：一步一步跟着做</h2><h2 id="第一步：把域名准备好"><a href="#第一步：把域名准备好" class="headerlink" title="第一步：把域名准备好"></a>第一步：把域名准备好</h2><p>先准备一个域名，再决定你要用哪个二级域名，例如：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs text">edt.yourdomain.com<br></code></pre></td></tr></table></figure>
+
+<h3 id="1-先用二级域名"><a href="#1-先用二级域名" class="headerlink" title="1. 先用二级域名"></a>1. 先用二级域名</h3><p>建议先用二级域名，设置更简单，出问题也更容易排查。</p>
+<h3 id="2-如果要用根域名"><a href="#2-如果要用根域名" class="headerlink" title="2. 如果要用根域名"></a>2. 如果要用根域名</h3><p>如果你想直接用根域名，那通常需要先把整个域名托管到 Cloudflare，再去改 nameserver。</p>
+<img src="/2026/04/07/%E5%8F%AA%E4%B9%B0%E4%B8%80%E4%B8%AA%E5%9F%9F%E5%90%8D%EF%BC%8C%E4%B8%8D%E4%B9%B0VPS%EF%BC%9ACloudflare%E5%85%8D%E8%B4%B9%E8%87%AA%E5%BB%BAEdgetunnel%E5%B0%8F%E7%99%BD%E6%95%99%E7%A8%8B%EF%BC%882026%E7%89%88%EF%BC%89/inline-01-2.png" srcset="/img/loading.gif" lazyload class="" title="2. 如果要用根域名 示意图">
+
+<p>如果你是第一次折腾，建议先别上来就用根域名。</p>
+<blockquote>
+<p><strong>先用二级域名跑通全流程，等你确认没问题了，再考虑要不要换成根域名。</strong></p>
+</blockquote>
+<hr>
+<h2 id="第二步：下载-main-zip"><a href="#第二步：下载-main-zip" class="headerlink" title="第二步：下载 main.zip"></a>第二步：下载 <code>main.zip</code></h2><p>打开官方仓库：</p>
+<p><code>https://github.com/cmliu/edgetunnel</code></p>
+<p>下载项目压缩包 <code>main.zip</code>。</p>
+<p>在仓库页面点：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs text">Code -&gt; Download ZIP<br></code></pre></td></tr></table></figure>
+
+<p>下载后放到桌面，后面上传时更方便找到。</p>
+<hr>
+<h2 id="第三步：在-Cloudflare-创建-Pages-项目"><a href="#第三步：在-Cloudflare-创建-Pages-项目" class="headerlink" title="第三步：在 Cloudflare 创建 Pages 项目"></a>第三步：在 Cloudflare 创建 Pages 项目</h2><p>登录 Cloudflare 后，进入：</p>
+<img src="/2026/04/07/%E5%8F%AA%E4%B9%B0%E4%B8%80%E4%B8%AA%E5%9F%9F%E5%90%8D%EF%BC%8C%E4%B8%8D%E4%B9%B0VPS%EF%BC%9ACloudflare%E5%85%8D%E8%B4%B9%E8%87%AA%E5%BB%BAEdgetunnel%E5%B0%8F%E7%99%BD%E6%95%99%E7%A8%8B%EF%BC%882026%E7%89%88%EF%BC%89/inline-02-cloudflare-pages.png" srcset="/img/loading.gif" lazyload class="" title="第三步在 Cloudflare 创建 Pages 项目 示意图">
+
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs text">Workers &amp; Pages<br></code></pre></td></tr></table></figure>
+
+<p>然后按下面步骤操作：</p>
+<ol>
+<li>进入 <code>Workers &amp; Pages</code></li>
+<li>新建一个 Pages 项目</li>
+<li>给项目取一个名字</li>
+<li>上传刚才下载的 <code>main.zip</code></li>
+<li>点击部署</li>
+</ol>
+<p>项目名称最好用<strong>一个全新的名字</strong>。</p>
+<p>如果这个名字以前被你用过，或者和别的项目撞名，可能会遇到 <strong>1101 错误</strong>。</p>
+<p>最简单的办法，就是在名字后面加一串随机数字：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs text">项目名 + 一串随机数字<br></code></pre></td></tr></table></figure>
+
+<p>比如：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs text">edt202604071234<br></code></pre></td></tr></table></figure>
+
+<p>部署成功后，Cloudflare 会给你一个默认地址，类似：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs text">https://xxxx.pages.dev<br></code></pre></td></tr></table></figure>
+
+<p>先把这个地址记下来，后面绑定域名时会用到。</p>
+<hr>
+<h2 id="第四步：设置后台管理员密码"><a href="#第四步：设置后台管理员密码" class="headerlink" title="第四步：设置后台管理员密码"></a>第四步：设置后台管理员密码</h2><p>项目部署完后，进入这个 Pages 项目。</p>
+<p>然后找到：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs text">设置 -&gt; 环境变量<br></code></pre></td></tr></table></figure>
+
+<p>添加一个变量：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs text">变量名：ADMIN<br>变量值：你自己设置的后台密码<br></code></pre></td></tr></table></figure>
+
+<p>这里的 <code>ADMIN</code>，你可以简单理解成：<strong>后台登录密码</strong>。</p>
+<img src="/2026/04/07/%E5%8F%AA%E4%B9%B0%E4%B8%80%E4%B8%AA%E5%9F%9F%E5%90%8D%EF%BC%8C%E4%B8%8D%E4%B9%B0VPS%EF%BC%9ACloudflare%E5%85%8D%E8%B4%B9%E8%87%AA%E5%BB%BAEdgetunnel%E5%B0%8F%E7%99%BD%E6%95%99%E7%A8%8B%EF%BC%882026%E7%89%88%EF%BC%89/inline-04.png" srcset="/img/loading.gif" lazyload class="" title="示意图">
+
+<p>密码尽量设置得复杂一点，例如：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs text">Abc#2026!myvpn<br></code></pre></td></tr></table></figure>
+
+<p><strong>改完变量后，要重新部署一次，变量才会生效。</strong></p>
+<hr>
+<h2 id="第五步：创建-Workers-KV-命名空间"><a href="#第五步：创建-Workers-KV-命名空间" class="headerlink" title="第五步：创建 Workers KV 命名空间"></a>第五步：创建 Workers KV 命名空间</h2><p>接着在 Cloudflare 后台里进入：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs text">存储和数据库 -&gt; Workers KV<br></code></pre></td></tr></table></figure>
+
+<p>然后：</p>
+<ol>
+<li>点击 <code>Create instance</code></li>
+<li>创建一个新的命名空间</li>
+<li>名字随便起，自己能认出来就行</li>
+</ol>
+<p>例如 <code>EDT2</code>、<code>EDT_KV</code>。</p>
+<p>这里你可以把它理解成：<strong>专门用来存后台配置的一块小存储空间</strong>。</p>
+<hr>
+<h2 id="第六步：把-KV-绑定到-Pages-项目"><a href="#第六步：把-KV-绑定到-Pages-项目" class="headerlink" title="第六步：把 KV 绑定到 Pages 项目"></a>第六步：把 KV 绑定到 Pages 项目</h2><p>回到刚才的 Pages 项目，进入：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs text">设置 -&gt; 绑定<br></code></pre></td></tr></table></figure>
+
+<p>然后：</p>
+<ol>
+<li>点击 <code>+ 添加</code></li>
+<li>选择 <code>KV 命名空间</code></li>
+<li>在变量名称里填写：</li>
+</ol>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs text">KV<br></code></pre></td></tr></table></figure>
+
+<p>这里直接填大写的 <code>KV</code>。</p>
+<ol start="4">
+<li>在下拉框里选择你刚才创建的命名空间</li>
+<li>保存</li>
+</ol>
+<img src="/2026/04/07/%E5%8F%AA%E4%B9%B0%E4%B8%80%E4%B8%AA%E5%9F%9F%E5%90%8D%EF%BC%8C%E4%B8%8D%E4%B9%B0VPS%EF%BC%9ACloudflare%E5%85%8D%E8%B4%B9%E8%87%AA%E5%BB%BAEdgetunnel%E5%B0%8F%E7%99%BD%E6%95%99%E7%A8%8B%EF%BC%882026%E7%89%88%EF%BC%89/inline-05.png" srcset="/img/loading.gif" lazyload class="" title="示意图">
+
+<p>按项目默认要求填写：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs text">变量名称 = KV<br></code></pre></td></tr></table></figure>
+
+<p>这一步的意思其实就是：<strong>把刚才那块存储空间接到这个项目上，让后台能正常读写配置。</strong></p>
+<hr>
+<h2 id="第七步：重新部署一次"><a href="#第七步：重新部署一次" class="headerlink" title="第七步：重新部署一次"></a>第七步：重新部署一次</h2><p>你做完下面两件事之后：</p>
+<ul>
+<li>设置了 <code>ADMIN</code></li>
+<li>绑定了 <code>KV</code></li>
+</ul>
+<p>都需要<strong>重新部署</strong>。</p>
+<p>你可以直接理解成：<strong>前面这些设置改完了，得让 Cloudflare 重新加载一次，新的配置才会真正生效。</strong></p>
+<p>进入项目的部署页面后：</p>
+<ol>
+<li>点击创建新部署</li>
+<li>再次上传 <code>main.zip</code></li>
+<li>点击保存并部署</li>
+</ol>
+<p>等部署完成。</p>
+<blockquote>
+<p><strong>变量改了，绑定加了，就重新部署。</strong></p>
+</blockquote>
+<hr>
+<h2 id="第八步：绑定你自己的域名"><a href="#第八步：绑定你自己的域名" class="headerlink" title="第八步：绑定你自己的域名"></a>第八步：绑定你自己的域名</h2><p>接下来把自己的域名接进来。</p>
+<p>进入 Pages 项目后，找到：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs text">Custom domains / 自定义域<br></code></pre></td></tr></table></figure>
+
+<p>然后：</p>
+<ol>
+<li>点击 <code>Set up a domain</code></li>
+<li>输入你准备好的二级域名</li>
+</ol>
+<p>例如：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs text">edt.yourdomain.com<br></code></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>按页面提示继续</li>
+</ol>
+<h3 id="如果域名不在-Cloudflare-托管"><a href="#如果域名不在-Cloudflare-托管" class="headerlink" title="如果域名不在 Cloudflare 托管"></a>如果域名不在 Cloudflare 托管</h3><p>根据 Cloudflare 当前文档，你需要去你的域名服务商后台，加一条 <strong>CNAME</strong>。</p>
+<img src="/2026/04/07/%E5%8F%AA%E4%B9%B0%E4%B8%80%E4%B8%AA%E5%9F%9F%E5%90%8D%EF%BC%8C%E4%B8%8D%E4%B9%B0VPS%EF%BC%9ACloudflare%E5%85%8D%E8%B4%B9%E8%87%AA%E5%BB%BAEdgetunnel%E5%B0%8F%E7%99%BD%E6%95%99%E7%A8%8B%EF%BC%882026%E7%89%88%EF%BC%89/inline-03-cloudflare.png" srcset="/img/loading.gif" lazyload class="" title="如果域名不在 Cloudflare 托管 示意图">
+
+<p>如果你对 CNAME 不熟，可以把它简单理解成：<strong>告诉你的域名商，这个二级域名要指向 Cloudflare 给你的那个 pages.dev 地址。</strong></p>
+<p>填写时一般像这样：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs text">类型：CNAME<br>主机记录：你设置的二级域名前缀<br>目标值：你的 pages.dev 地址<br></code></pre></td></tr></table></figure>
+
+<p>例如：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs text">edt.yourdomain.com -&gt; xxxx.pages.dev<br></code></pre></td></tr></table></figure>
+
+<p>先在 Pages 项目里走完“添加自定义域”的流程，再去手动加这条记录。</p>
+<p>一般等几分钟到半小时。</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs text">10 ~ 30 分钟<br></code></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="第九步：访问-admin-登录后台"><a href="#第九步：访问-admin-登录后台" class="headerlink" title="第九步：访问 /admin 登录后台"></a>第九步：访问 <code>/admin</code> 登录后台</h2><p>域名生效之后，直接访问：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs text">https://你的域名/admin<br></code></pre></td></tr></table></figure>
+
+<p>例如：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs text">https://edt.yourdomain.com/admin<br></code></pre></td></tr></table></figure>
+
+<p>然后输入你刚才设置的 <code>ADMIN</code> 密码登录。</p>
+<p>你可以把这里理解成：<strong>这是这套系统真正的管理后台入口。</strong></p>
+<img src="/2026/04/07/%E5%8F%AA%E4%B9%B0%E4%B8%80%E4%B8%AA%E5%9F%9F%E5%90%8D%EF%BC%8C%E4%B8%8D%E4%B9%B0VPS%EF%BC%9ACloudflare%E5%85%8D%E8%B4%B9%E8%87%AA%E5%BB%BAEdgetunnel%E5%B0%8F%E7%99%BD%E6%95%99%E7%A8%8B%EF%BC%882026%E7%89%88%EF%BC%89/inline-06.png" srcset="/img/loading.gif" lazyload class="" title="示意图">
+
+<hr>
+<h2 id="第十步：如果看到-Welcome-to-nginx"><a href="#第十步：如果看到-Welcome-to-nginx" class="headerlink" title="第十步：如果看到 Welcome to nginx!"></a>第十步：如果看到 Welcome to nginx!</h2><p>如果你部署成功了，但打开首页看到的是：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs text">Welcome to nginx!<br></code></pre></td></tr></table></figure>
+
+<p>先别慌，这通常不是部署失败。</p>
+<p>很多人会以为首页长这样就是没成功，但这个项目里它往往只是一个“伪装首页”。</p>
+<p>真正需要访问的是 <code>/admin</code>。</p>
+<p>只要能打开：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs text">https://你的域名/admin<br></code></pre></td></tr></table></figure>
+
+<p>并成功登录，基本就说明没问题。</p>
+<hr>
+<h2 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a>常见问题</h2><h2 id="1-出现-1101-错误怎么办？"><a href="#1-出现-1101-错误怎么办？" class="headerlink" title="1. 出现 1101 错误怎么办？"></a>1. 出现 1101 错误怎么办？</h2><p>先检查项目名是不是重复了。</p>
+<ul>
+<li>换一个全新的项目名</li>
+<li>末尾加一串随机数字</li>
+</ul>
+<p>一般这样处理，问题就能解决。</p>
+<hr>
+<h2 id="2-改了密码，后台还是登不上？"><a href="#2-改了密码，后台还是登不上？" class="headerlink" title="2. 改了密码，后台还是登不上？"></a>2. 改了密码，后台还是登不上？</h2><p>通常是改了 <code>ADMIN</code> 变量，但<strong>没有重新部署</strong>。</p>
+<ul>
+<li>回到部署页</li>
+<li>重新上传 <code>main.zip</code></li>
+<li>再部署一次</li>
+</ul>
+<p>很多卡住的人，问题都出在这里。</p>
+<hr>
+<h2 id="3-首页显示-Welcome-to-nginx-是不是失败了？"><a href="#3-首页显示-Welcome-to-nginx-是不是失败了？" class="headerlink" title="3. 首页显示 Welcome to nginx! 是不是失败了？"></a>3. 首页显示 Welcome to nginx! 是不是失败了？</h2><p>先直接访问：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs text">/admin<br></code></pre></td></tr></table></figure>
+
+<p>能进后台，就说明部署基本正常。</p>
+<p>所以判断有没有成功，不要看首页，要看 <code>/admin</code> 能不能打开。</p>
+<hr>
+<h2 id="最后总结"><a href="#最后总结" class="headerlink" title="最后总结"></a>最后总结</h2><p>如果你只是想低成本弄一个自己的订阅地址，又不想碰 VPS 和服务器运维，那这条路线确实比较适合新手。</p>
+<p>核心就三件事：</p>
+<ul>
+<li>把项目传到 Cloudflare</li>
+<li>把密码和 KV 配好</li>
+<li>把自己的域名绑定上去</li>
+</ul>
+<p>跑通一次之后，后面再看这套东西就没那么玄了。</p>
+<hr>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
+<li>官方仓库：<code>https://github.com/cmliu/edgetunnel</code></li>
+<li>Cloudflare Pages 自定义域名文档：<code>https://developers.cloudflare.com/pages/configuration/custom-domains/</code></li>
+<li>Cloudflare Workers KV 文档：<code>https://developers.cloudflare.com/kv/get-started/</code></li>
+</ul>
+
+                
+              </div>
+            
+
+              <!--打赏-->
+              <div class="reward">
+                  <div class="reward-button">赏 <span class="reward-code">
+		<span class="alipay-code"> <img class="alipay-img wdp-appear" src="/img/alipay.png" srcset="/img/loading.gif" lazyload><b>支付宝打赏</b> </span>
+		<span class="wechat-code"> <img class="wechat-img wdp-appear" src="/img/wechat.png" srcset="/img/loading.gif" lazyload><b>微信打赏</b> </span> </span>
+                  </div>
+                  <p class="reward-notice">如果文章对你有帮助，欢迎点击上方按钮打赏作者，更多功能请访问<a href="https://blog.fxcxy.com">博客站</a></p>
+              </div>
+              <!--打赏-->
+              <hr/>
+              <div style="text-align:right;"> <!-- 自己添加的“分享到”模块：开始。用的是 social-share.js。让所有的分享按钮右对齐-->
+
+                  <div class="social-share-container" style="margin-top: 15px;"> <!-- 生成一组分享按钮 -->
+                       <!--如果博客语言是中文，就显示“点击分享到：”，非中文一律显示“Share it:”-->
+                      点击分享到：&nbsp;&nbsp;
+                      
+                  </div>
+                  <!-- 加载 jQuery 库 -->
+                  
+<script src="/js/jquery.min.js"></script>
+
+                  <!-- 导入 qrcode.min.js -->
+                  
+<script src="/js/qrcode.min.js"></script>
+
+                  <!-- 加载 social-share.js 的 js 库，另外还要加载 social-share.js 的 CSS，可以修改 `_config.fluid.yml` 的 `custom_css` 加载，也可以修改 `themes/fluid/layout/_partial/css.ejs` 加载。-->
+                  
+<script src="/js/social-share.min.js"></script>
+
+                  <script>
+                    /* 执行 js 代码，new 一个新对象，详见 social-share.js 在 GitHub 的文档 */
+                    new SocialShare('.social-share-container', {
+                      theme: 'circle',  // 使用圆形主题
+                      // 单独定义wechat分享参数
+                      wechat: {
+                        sort: 1, // 排序参数，数字较小的展示在前面,默认999
+                      },
+                      twitter: {
+                        sort: 2, // 排序参数，数字较小的展示在前面,默认999
+                      },
+                      facebook: {
+                        sort: 3, // 排序参数，数字较小的展示在前面,默认999
+                      }
+                    });
+                  </script>
+              </div> <!-- 自己添加的“分享到”模块：结束。-->
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%B7%A5%E5%85%B7%E5%88%86%E4%BA%AB/" class="category-chain-item">工具分享</a>
+  
+  
+
+      </span>
+    
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E6%8A%80%E6%9C%AF%E6%95%99%E7%A8%8B/" class="category-chain-item">技术教程</a>
+  
+  
+
+      </span>
+    
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E8%A7%86%E9%A2%91%E6%95%99%E7%A8%8B/" class="category-chain-item">视频教程</a>
+  
+  
+
+      </span>
+    
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/" class="category-chain-item">科学上网</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E7%BF%BB%E5%A2%99%E5%B7%A5%E5%85%B7/" class="print-no-link">#翻墙工具</a>
+      
+        <a href="/tags/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/" class="print-no-link">#科学上网</a>
+      
+        <a href="/tags/%E6%95%99%E7%A8%8B/" class="print-no-link">#教程</a>
+      
+        <a href="/tags/Cloudflare/" class="print-no-link">#Cloudflare</a>
+      
+        <a href="/tags/Edgetunnel/" class="print-no-link">#Edgetunnel</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>不买 VPS，只用一个域名：免费搭建梯子教程（2026）</div>
+      <div>https://blog.fxcxy.com/2026/04/07/只买一个域名，不买VPS：Cloudflare免费自建Edgetunnel小白教程（2026版）/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>独立开发</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2026年4月7日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2026/04/07/Google-Stitch-Claude-Code%E5%AE%9E%E6%88%98%EF%BC%9A1%E5%B0%8F%E6%97%B6%E6%8A%8AAI%E4%BA%A7%E5%93%81%E7%95%8C%E9%9D%A2%E4%BB%8E%E6%AF%9B%E5%9D%AF%E6%8B%89%E5%88%B0%E5%8F%AF%E4%B8%8A%E7%BA%BF/" title="不想再花几千块找设计师？Google Stitch 新工作流让 Claude Code 直接按设计系统改页面">
+                        <span class="hidden-mobile">不想再花几千块找设计师？Google Stitch 新工作流让 Claude Code 直接按设计系统改页面</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://lib.baomitu.com/valine/1.5.1/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"J7kyQXV9R3CXOiA1eubrlflY-gzGzoHsz","appKey":"qHZzPzRcvsutXvHvBewqGmhw","path":"window.location.pathname","placeholder":"输入您的评论","avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":false},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          var imgSelector = '#valine .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  <div class="footer-links" style="margin: 20px 0 10px 0; text-align: center;">
+    <a href="https://tv.zymn.cc" target="_blank" style="margin: 0 12px; color: #bdbdbd; text-decoration: none; font-weight: 500;">免费电影</a>
+    <a href="https://sl.zymn.cc" target="_blank" style="margin: 0 12px; color: #bdbdbd; text-decoration: none; font-weight: 500;">短链生成器</a>
+    <a href="https://yhjf.zymn.cc" target="_blank" style="margin: 0 12px; color: #bdbdbd; text-decoration: none; font-weight: 500;">隐秘信使</a>
+  </div>
+  
+    <div class="footer-content">
+       <a href="https://www.youtube.com/channel/UCn0Yarp_h6oqn1-QLvlgbDg?sub_confirmation=1" target="_blank" rel="nofollow noopener"><span>Youtube</span></a>- <a href="https://x.com/corder2025" target="_blank" rel="nofollow noopener"><span>X</span></a>- <a href="https://t.me/+FEyFQq_5u004OWU0" target="_blank" rel="nofollow noopener"><span>电报群</span></a>- <a href="https://v.douyin.com/iNpPYY4E/" target="_blank" rel="nofollow noopener"><span>抖音</span></a>- <a href="https://www.ixigua.com/home/103680436540" target="_blank" rel="nofollow noopener"><span>西瓜视频</span></a> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+  
+</div>
+
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script defer src="/js/leancloud.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
