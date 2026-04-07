@@ -18,9 +18,9 @@
   --fx-text-muted-dark: #93a4b8;
   --fx-heading: #162033;
   --fx-heading-dark: #f8fafc;
-  --fx-radius-lg: 28px;
-  --fx-radius-md: 20px;
-  --fx-radius-sm: 14px;
+  --fx-radius-lg: 18px;
+  --fx-radius-md: 12px;
+  --fx-radius-sm: 10px;
   --fx-content-width: 760px;
 }
 
@@ -106,17 +106,17 @@ main .container.nopadding-x-md,
 }
 
 #board {
-  background: var(--fx-surface-strong);
-  border: 1px solid var(--fx-border);
-  border-radius: calc(var(--fx-radius-lg) + 4px);
-  box-shadow: var(--fx-shadow);
+  background: rgba(255, 255, 255, 0.82);
+  border: 1px solid rgba(148, 163, 184, 0.14);
+  border-radius: calc(var(--fx-radius-lg) + 2px);
+  box-shadow: 0 12px 28px rgba(15, 23, 42, 0.05);
 }
 
 html[data-user-color-scheme='dark'] #board,
 html[data-default-color-scheme='dark'] #board {
-  background: var(--fx-surface-strong-dark);
-  border-color: var(--fx-border-dark);
-  box-shadow: var(--fx-shadow-dark);
+  background: rgba(15, 23, 34, 0.82);
+  border-color: rgba(125, 211, 252, 0.12);
+  box-shadow: 0 16px 34px rgba(2, 6, 23, 0.22);
 }
 
 .index-card {
@@ -125,21 +125,21 @@ html[data-default-color-scheme='dark'] #board {
   background: rgba(255, 255, 255, 0.65);
   border: 1px solid rgba(148, 163, 184, 0.18);
   border-radius: var(--fx-radius-md);
-  box-shadow: 0 18px 38px rgba(15, 23, 42, 0.06);
+  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.04);
   transition: transform 0.24s ease, box-shadow 0.24s ease, border-color 0.24s ease;
 }
 
 .index-card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 24px 46px rgba(15, 23, 42, 0.1);
-  border-color: rgba(37, 99, 235, 0.22);
+  transform: translateY(-2px);
+  box-shadow: 0 14px 28px rgba(15, 23, 42, 0.07);
+  border-color: rgba(37, 99, 235, 0.18);
 }
 
 html[data-user-color-scheme='dark'] .index-card,
 html[data-default-color-scheme='dark'] .index-card {
   background: rgba(15, 23, 34, 0.72);
   border-color: rgba(125, 211, 252, 0.14);
-  box-shadow: 0 24px 48px rgba(2, 6, 23, 0.26);
+  box-shadow: 0 12px 26px rgba(2, 6, 23, 0.18);
 }
 
 .index-img img {
@@ -147,7 +147,7 @@ html[data-default-color-scheme='dark'] .index-card {
   height: 100%;
   min-height: 180px;
   object-fit: cover;
-  border-radius: 18px;
+  border-radius: 10px;
 }
 
 .index-header {
