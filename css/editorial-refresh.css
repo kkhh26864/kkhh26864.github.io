@@ -741,6 +741,33 @@ html[data-user-color-scheme='dark'].list-group-item-title {
   background: rgba(255, 255, 255, 0.58);
 }
 
+#local-search-result .search-list-title {
+  padding-left: 0.85rem;
+  padding-top: 0.9rem;
+  padding-bottom: 0.75rem;
+  margin-top: 0.9rem;
+  border-radius: 8px 8px 0 0;
+}
+
+#local-search-result .search-list-content {
+  margin-bottom: 0.9rem;
+  padding-top: 0.25rem;
+  padding-bottom: 0.95rem;
+}
+
+#local-search-result .list-group-item {
+  border-radius: 8px;
+}
+
+#local-search-result .list-group-item-action {
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+#local-search-result .list-group-item-action:hover,
+#local-search-result .list-group-item-action:focus {
+  background: rgba(37, 99, 235, 0.05);
+}
+
 html[data-user-color-scheme='dark'].pagination .page-number,
 html[data-user-color-scheme='dark'].pagination .extend,
 html[data-user-color-scheme='dark'].pagination .space {
