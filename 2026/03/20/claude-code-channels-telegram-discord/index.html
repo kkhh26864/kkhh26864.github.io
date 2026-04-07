@@ -20,7 +20,7 @@
     <meta name="twitter:description" content="Claude Code Channels 能把 Telegram、Discord 里的消息直接推到正在运行的 Claude Code 会话里。本文用安装、配对、权限控制、典型场景四个部分讲清楚怎么把它搭成一个真正能远程收消息、回消息、处理任务的 AI 工作台。" />
     <meta name="twitter:image" content="/img/claude-code-channels-telegram-discord.png" />
   
-  <meta name="theme-color" content="#2f4154">
+  <meta name="theme-color" content="#f6f0e5">
   <meta name="author" content="spatacus">
   <meta name="keywords" content="自由码农,技术博客,工具分享，网站开发，App开发，小程序开发，H5开发">
   
@@ -85,6 +85,7 @@
 <link rel="stylesheet" href="//at.alicdn.com/t/c/font_4443546_u6jwvi2qcka.css">
 <link rel="stylesheet" href="/css/social-share.min.css">
 <link rel="stylesheet" href="/css/myreward.css">
+<link rel="stylesheet" href="/css/editorial-refresh.css">
 
 
 
@@ -142,7 +143,7 @@
   <header>
     
 
-<div class="header-inner" style="height: 70vh;">
+<div class="header-inner" style="height: 62vh;">
   <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand" href="/">
@@ -260,7 +261,7 @@
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
         <time datetime="2026-03-20 08:40" pubdate>
-          2026年3月20日 早上
+          2026-03-20
         </time>
       </span>
     
@@ -547,53 +548,48 @@
               </div>
             
 
-              <!--打赏-->
-              <div class="reward">
+              <section class="post-support">
+                <div class="reward">
                   <div class="reward-button">赏 <span class="reward-code">
 		<span class="alipay-code"> <img class="alipay-img wdp-appear" src="/img/alipay.png" srcset="/img/loading.gif" lazyload><b>支付宝打赏</b> </span>
 		<span class="wechat-code"> <img class="wechat-img wdp-appear" src="/img/wechat.png" srcset="/img/loading.gif" lazyload><b>微信打赏</b> </span> </span>
                   </div>
                   <p class="reward-notice">如果文章对你有帮助，欢迎点击上方按钮打赏作者，更多功能请访问<a href="https://blog.fxcxy.com">博客站</a></p>
-              </div>
-              <!--打赏-->
-              <hr/>
-              <div style="text-align:right;"> <!-- 自己添加的“分享到”模块：开始。用的是 social-share.js。让所有的分享按钮右对齐-->
+                </div>
 
-                  <div class="social-share-container" style="margin-top: 15px;"> <!-- 生成一组分享按钮 -->
-                       <!--如果博客语言是中文，就显示“点击分享到：”，非中文一律显示“Share it:”-->
-                      点击分享到：&nbsp;&nbsp;
-                      
+                <div class="post-share">
+                  <div class="post-share__label">
+                    
+                      点击分享到
+                    
                   </div>
-                  <!-- 加载 jQuery 库 -->
-                  
+                  <div class="social-share-container"></div>
+                </div>
+              </section>
+              
 <script src="/js/jquery.min.js"></script>
 
-                  <!-- 导入 qrcode.min.js -->
-                  
+              
 <script src="/js/qrcode.min.js"></script>
 
-                  <!-- 加载 social-share.js 的 js 库，另外还要加载 social-share.js 的 CSS，可以修改 `_config.fluid.yml` 的 `custom_css` 加载，也可以修改 `themes/fluid/layout/_partial/css.ejs` 加载。-->
-                  
+              
 <script src="/js/social-share.min.js"></script>
 
-                  <script>
-                    /* 执行 js 代码，new 一个新对象，详见 social-share.js 在 GitHub 的文档 */
-                    new SocialShare('.social-share-container', {
-                      theme: 'circle',  // 使用圆形主题
-                      // 单独定义wechat分享参数
-                      wechat: {
-                        sort: 1, // 排序参数，数字较小的展示在前面,默认999
-                      },
-                      twitter: {
-                        sort: 2, // 排序参数，数字较小的展示在前面,默认999
-                      },
-                      facebook: {
-                        sort: 3, // 排序参数，数字较小的展示在前面,默认999
-                      }
-                    });
-                  </script>
-              </div> <!-- 自己添加的“分享到”模块：结束。-->
-            <hr/>
+              <script>
+                new SocialShare('.social-share-container', {
+                  theme: 'circle',
+                  wechat: {
+                    sort: 1,
+                  },
+                  twitter: {
+                    sort: 2,
+                  },
+                  facebook: {
+                    sort: 3,
+                  }
+                });
+              </script>
+            <hr class="post-support-divider"/>
             <div>
               <div class="post-metas my-3">
   

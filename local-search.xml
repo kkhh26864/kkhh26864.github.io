@@ -63,9 +63,9 @@
       
       <tag>Claude Code</tag>
       
-      <tag>MCP</tag>
-      
       <tag>Google Stitch</tag>
+      
+      <tag>MCP</tag>
       
     </tags>
     
@@ -92,9 +92,9 @@
       
       <tag>AI工具</tag>
       
-      <tag>OpenCLI</tag>
-      
       <tag>热点监控</tag>
+      
+      <tag>OpenCLI</tag>
       
       <tag>自动修复</tag>
       
@@ -158,9 +158,9 @@
       
       <tag>AI工具</tag>
       
-      <tag>Cursor</tag>
-      
       <tag>开发工作流</tag>
+      
+      <tag>Cursor</tag>
       
       <tag>Agent</tag>
       
@@ -189,13 +189,13 @@
     
     <tags>
       
-      <tag>安全</tag>
-      
       <tag>AI工具</tag>
       
-      <tag>npm</tag>
-      
       <tag>Claude Code</tag>
+      
+      <tag>安全</tag>
+      
+      <tag>npm</tag>
       
       <tag>JavaScript</tag>
       
@@ -222,9 +222,9 @@
     
     <tags>
       
-      <tag>AI工具</tag>
-      
       <tag>OpenClaw</tag>
+      
+      <tag>AI工具</tag>
       
       <tag>MCP</tag>
       
@@ -255,11 +255,11 @@
       
       <tag>AI工具</tag>
       
+      <tag>Claude Code</tag>
+      
       <tag>效率工具</tag>
       
       <tag>macOS</tag>
-      
-      <tag>Claude Code</tag>
       
       <tag>微信</tag>
       
@@ -321,9 +321,9 @@
       
       <tag>AI工具</tag>
       
-      <tag>OpenCLI</tag>
-      
       <tag>工作流</tag>
+      
+      <tag>OpenCLI</tag>
       
       <tag>opencli-rs</tag>
       
@@ -352,13 +352,13 @@
     
     <tags>
       
-      <tag>AI工具</tag>
-      
-      <tag>自动化</tag>
-      
       <tag>OpenClaw</tag>
       
+      <tag>AI工具</tag>
+      
       <tag>MCP</tag>
+      
+      <tag>自动化</tag>
       
       <tag>内容工作流</tag>
       
@@ -385,9 +385,9 @@
     
     <tags>
       
-      <tag>OpenCLI</tag>
-      
       <tag>热点监控</tag>
+      
+      <tag>OpenCLI</tag>
       
       <tag>舆情监控</tag>
       
@@ -418,9 +418,9 @@
       
       <tag>AI工具</tag>
       
-      <tag>AI编程</tag>
-      
       <tag>Claude Code</tag>
+      
+      <tag>AI编程</tag>
       
       <tag>开发工作流</tag>
       
@@ -478,9 +478,9 @@
     
     <tags>
       
-      <tag>AI工具</tag>
-      
       <tag>OpenClaw</tag>
+      
+      <tag>AI工具</tag>
       
       <tag>Claude Code</tag>
       
@@ -544,9 +544,9 @@
     
     <tags>
       
-      <tag>AI工具</tag>
-      
       <tag>OpenClaw</tag>
+      
+      <tag>AI工具</tag>
       
       <tag>AI Agent</tag>
       
@@ -606,13 +606,13 @@
     
     <tags>
       
-      <tag>AI工具</tag>
-      
       <tag>OpenClaw</tag>
       
-      <tag>自动化工作流</tag>
+      <tag>AI工具</tag>
       
       <tag>Skills</tag>
+      
+      <tag>自动化工作流</tag>
       
     </tags>
     
@@ -637,9 +637,9 @@
     
     <tags>
       
-      <tag>AI工具</tag>
-      
       <tag>OpenClaw</tag>
+      
+      <tag>AI工具</tag>
       
       <tag>自动化工作流</tag>
       
@@ -670,11 +670,11 @@
       
       <tag>OpenClaw</tag>
       
-      <tag>股票监控</tag>
-      
       <tag>A股</tag>
       
       <tag>AI炒股</tag>
+      
+      <tag>股票监控</tag>
       
       <tag>投资工具</tag>
       
@@ -703,9 +703,9 @@
       
       <tag>AI工具</tag>
       
-      <tag>自动化</tag>
-      
       <tag>Claude Code</tag>
+      
+      <tag>自动化</tag>
       
       <tag>Telegram</tag>
       
@@ -767,13 +767,13 @@
     
     <tags>
       
+      <tag>AI自动化</tag>
+      
       <tag>开发工具</tag>
       
       <tag>效率工具</tag>
       
       <tag>教程</tag>
-      
-      <tag>AI自动化</tag>
       
     </tags>
     
@@ -798,13 +798,13 @@
     
     <tags>
       
+      <tag>AI自动化</tag>
+      
       <tag>开发工具</tag>
       
       <tag>效率工具</tag>
       
       <tag>教程</tag>
-      
-      <tag>AI自动化</tag>
       
     </tags>
     
@@ -922,15 +922,15 @@
     
     <tags>
       
-      <tag>自动化</tag>
-      
       <tag>OpenClaw</tag>
       
       <tag>多Agent</tag>
       
-      <tag>AI工作流</tag>
-      
       <tag>Claude Code</tag>
+      
+      <tag>自动化</tag>
+      
+      <tag>AI工作流</tag>
       
     </tags>
     
@@ -955,15 +955,15 @@
     
     <tags>
       
-      <tag>开发效率</tag>
+      <tag>AI编程</tag>
       
-      <tag>OpenAI</tag>
+      <tag>开发效率</tag>
       
       <tag>Codex CLI</tag>
       
-      <tag>AI编程</tag>
-      
       <tag>命令行工具</tag>
+      
+      <tag>OpenAI</tag>
       
     </tags>
     
@@ -990,13 +990,13 @@
       
       <tag>OpenClaw</tag>
       
+      <tag>股票监控</tag>
+      
       <tag>金融AI</tag>
       
       <tag>ClawHub</tag>
       
       <tag>投研工具</tag>
-      
-      <tag>股票监控</tag>
       
     </tags>
     
@@ -1087,9 +1087,9 @@
     
     <tags>
       
-      <tag>AI工具</tag>
-      
       <tag>OpenClaw</tag>
+      
+      <tag>AI工具</tag>
       
       <tag>Windows 11</tag>
       
@@ -1221,13 +1221,13 @@
     
     <tags>
       
-      <tag>自动化</tag>
-      
       <tag>OpenClaw</tag>
       
       <tag>AI Agent</tag>
       
       <tag>飞书</tag>
+      
+      <tag>自动化</tag>
       
       <tag>工作效率</tag>
       
@@ -1318,9 +1318,9 @@
     
     <tags>
       
-      <tag>人工智能</tag>
-      
       <tag>OpenClaw</tag>
+      
+      <tag>人工智能</tag>
       
       <tag>AI Agent</tag>
       
@@ -1351,11 +1351,11 @@
     
     <tags>
       
+      <tag>OpenClaw</tag>
+      
       <tag>AI工具</tag>
       
       <tag>自动化</tag>
-      
-      <tag>OpenClaw</tag>
       
       <tag>效率提升</tag>
       
@@ -1370,7 +1370,7 @@
     <link href="/2026/03/04/OpenClaw%E9%87%8D%E6%9E%84%E9%87%8F%E5%8C%96%E4%BA%A4%E6%98%93%E9%80%BB%E8%BE%91%EF%BC%9AAI%E5%85%A8%E8%87%AA%E5%8A%A8%E7%82%92%E8%82%A1%E7%BB%88%E6%9E%81%E6%8C%87%E5%8D%97/"/>
     <url>/2026/03/04/OpenClaw%E9%87%8D%E6%9E%84%E9%87%8F%E5%8C%96%E4%BA%A4%E6%98%93%E9%80%BB%E8%BE%91%EF%BC%9AAI%E5%85%A8%E8%87%AA%E5%8A%A8%E7%82%92%E8%82%A1%E7%BB%88%E6%9E%81%E6%8C%87%E5%8D%97/</url>
     
-    <content type="html"><![CDATA[<p><strong>让AI帮你24小时自动盯盘交易，真的靠谱吗？</strong></p><p>最近OpenClaw这个AI交易工具火了，原因是有人用它做了个实验：投入50美元，让AI自动交易48小时，最后变成了2980美元，赚了58倍！它是怎么做到的？</p><p>简单来说，OpenClaw每10分钟自动扫描Polymarket上近千个交易机会，通过Claude AI进行分析判断，同时参考天气数据、体育赛事、加密货币市场情绪等多种信息，找出价格偏差超过8%的交易机会，然后按照凯利公式（一种风险控制方法）自动下单，每次交易金额不超过总资金的6%，通过高频低风险交易积累收益。</p><p>这个案例最大的意义是：<strong>普通人也能用AI做自动交易了，不再是专业机构的专利。</strong></p><p>本文会手把手教你如何部署OpenClaw，如何让它自动盯盘、分析市场、提醒你买卖时机，以及如何控制风险。</p><p><strong>⚠️ 重要提醒：本文仅作技术学习，不构成投资建议。股市有风险，投资需谨慎！</strong></p><h2 id="一、OpenClaw是什么？为什么能自动炒股？"><a href="#一、OpenClaw是什么？为什么能自动炒股？" class="headerlink" title="一、OpenClaw是什么？为什么能自动炒股？"></a>一、OpenClaw是什么？为什么能自动炒股？</h2><h3 id="（一）AI自动炒股-vs-人工炒股的区别"><a href="#（一）AI自动炒股-vs-人工炒股的区别" class="headerlink" title="（一）AI自动炒股 vs 人工炒股的区别"></a>（一）AI自动炒股 vs 人工炒股的区别</h3><p>人工炒股的痛点，正是AI的优势：</p><table><thead><tr><th>对比项目</th><th>人工炒股</th><th>OpenClaw AI自动炒股</th></tr></thead><tbody><tr><td><strong>盯盘时间</strong></td><td>白天要上班，晚上要休息，盯不住</td><td>24小时不间断监控，不会错过机会</td></tr><tr><td><strong>情绪控制</strong></td><td>涨了贪婪想多赚，跌了恐慌割肉</td><td>严格按设定规则执行，不受情绪影响</td></tr><tr><td><strong>信息分析</strong></td><td>一个人看不了太多股票和信息</td><td>同时分析多个市场和海量数据</td></tr></tbody></table><h3 id="（二）OpenClaw有哪些功能？（2026版本）"><a href="#（二）OpenClaw有哪些功能？（2026版本）" class="headerlink" title="（二）OpenClaw有哪些功能？（2026版本）"></a>（二）OpenClaw有哪些功能？（2026版本）</h3><p>经过不断升级，OpenClaw已经能做很多事情了：</p><ol><li><strong>自动盯盘</strong>：可以同时监控股票、基金、加密货币等，行情数据几乎是实时的（延迟只有几毫秒），覆盖全球主要交易所</li><li><strong>功能模块化</strong>：把”市场监控”、”情绪分析”、”财报分析”、”风险控制”等功能分成一个个模块，你可以根据自己需要自由组合</li><li><strong>手机提醒</strong>：可以通过飞书、钉钉等工具发送交易提醒到手机，随时随地掌握动态</li></ol><h3 id="（三）使用OpenClaw需要注意什么？"><a href="#（三）使用OpenClaw需要注意什么？" class="headerlink" title="（三）使用OpenClaw需要注意什么？"></a>（三）使用OpenClaw需要注意什么？</h3><p><strong>重点来了</strong>：OpenClaw是个执行工具，不是赚钱机器。它的作用是帮你执行交易策略，但交易策略需要你自己定。</p><p>比如：</p><ul><li>你要告诉它：买哪些股票（比如科技股、白酒股）</li><li>什么时候买（比如跌破某个价格、技术指标出现信号）</li><li>买多少（比如每次不超过总资金的5%）</li><li>什么时候卖（比如涨到目标价位、止损价）</li></ul><p>简单说，你是老板定策略，OpenClaw是员工来执行。策略对不对，决定了能不能赚钱。</p><h2 id="二、手把手教你部署OpenClaw（阿里云2026版）"><a href="#二、手把手教你部署OpenClaw（阿里云2026版）" class="headerlink" title="二、手把手教你部署OpenClaw（阿里云2026版）"></a>二、手把手教你部署OpenClaw（阿里云2026版）</h2><p>阿里云为OpenClaw提供了三种部署方式：轻量服务器、云电脑、ECS服务器。都预装好了系统，不需要复杂配置。<strong>对普通人来说，选轻量服务器最简单</strong>，几百块一年就够了。</p><h3 id="（一）部署前要准备什么？"><a href="#（一）部署前要准备什么？" class="headerlink" title="（一）部署前要准备什么？"></a>（一）部署前要准备什么？</h3><ol><li><p><strong>阿里云账号</strong></p><ul><li>先注册阿里云账号，然后实名认证</li><li>个人用户：用身份证拍照或支付宝授权就行，很快</li><li>企业用户：要上传营业执照，审核1-3天</li></ul></li><li><p><strong>服务器配置怎么选？</strong></p><ul><li>推荐：2核CPU + 8G内存 + 100G硬盘 + 10M带宽</li><li>这个配置能同时监控多个市场，不会卡</li></ul></li><li><p><strong>服务器放哪里？</strong></p><ul><li><strong>建议选香港或美国节点</strong>，不用备案，买了就能用</li><li>选国内的话，要先备案才能用，比较麻烦</li></ul></li><li><p><strong>需要哪些账号？</strong></p><ul><li>阿里云百炼API密钥（用来调用AI分析）</li><li>金融数据接口账号（比如通联数据，用来获取股票行情）</li><li>飞书或钉钉账号（用来接收买卖提醒）</li></ul></li></ol><h3 id="（二）具体怎么操作？"><a href="#（二）具体怎么操作？" class="headerlink" title="（二）具体怎么操作？"></a>（二）具体怎么操作？</h3><h4 id="步骤1：购买服务器"><a href="#步骤1：购买服务器" class="headerlink" title="步骤1：购买服务器"></a>步骤1：购买服务器</h4><p>进入阿里云官网，找到”轻量应用服务器”：</p><ul><li><strong>选镜像</strong>：搜索”OpenClaw（原Clawdbot）”，选择2026版本（v2026.1.25）</li><li><strong>选配置</strong>：最低2核2G就能跑，想流畅点可以选4核4G</li><li><strong>选时长</strong>：长期用建议买一年，测试可以按月买</li></ul><p>买完后等几分钟，状态变成”运行中”，记下服务器的IP地址（比如119.xxx.xxx.xxx）。</p><h4 id="步骤2：打开端口"><a href="#步骤2：打开端口" class="headerlink" title="步骤2：打开端口"></a>步骤2：打开端口</h4><p>有些阿里云账号需要手动开放端口，如果控制台有”一键放通”按钮，直接点就行。</p><h4 id="步骤3：配置AI密钥"><a href="#步骤3：配置AI密钥" class="headerlink" title="步骤3：配置AI密钥"></a>步骤3：配置AI密钥</h4><p>登录服务器，添加阿里云百炼API密钥：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 编辑配置文件</span><br>vim ~/.openclaw/config.yaml<br><br><span class="hljs-comment"># 添加你的密钥</span><br>api:<br>  provider: alibaba_bailian<br>  key: 你的密钥<br></code></pre></td></tr></table></figure><h4 id="步骤4：配置股票数据源"><a href="#步骤4：配置股票数据源" class="headerlink" title="步骤4：配置股票数据源"></a>步骤4：配置股票数据源</h4><p>以通联数据为例，配置金融数据接口：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 编辑数据源配置</span><br>vim ~/.openclaw/datasource.yaml<br><br><span class="hljs-comment"># 添加配置</span><br>datasource:<br>  provider: tushare  <span class="hljs-comment"># 或者用 wind</span><br>  token: 你的token<br></code></pre></td></tr></table></figure><h4 id="步骤5：接入飞书提醒"><a href="#步骤5：接入飞书提醒" class="headerlink" title="步骤5：接入飞书提醒"></a>步骤5：接入飞书提醒</h4><p>让OpenClaw把交易信号发到你手机：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 配置消息通知</span><br>vim ~/.openclaw/notification.yaml<br><br><span class="hljs-comment"># 添加飞书webhook</span><br>notification:<br>  feishu:<br>    webhook: https://open.feishu.cn/open-apis/bot/v2/hook/你的webhook地址<br></code></pre></td></tr></table></figure><h4 id="步骤6：安装交易功能"><a href="#步骤6：安装交易功能" class="headerlink" title="步骤6：安装交易功能"></a>步骤6：安装交易功能</h4><p>安装几个常用的交易模块：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash">openclaw skill install stock-monitor        <span class="hljs-comment"># 股票监控</span><br>openclaw skill install market-sentiment     <span class="hljs-comment"># 市场情绪分析</span><br>openclaw skill install financial-report-analysis  <span class="hljs-comment"># 财报分析</span><br>openclaw skill install risk-calculator      <span class="hljs-comment"># 风险计算</span><br></code></pre></td></tr></table></figure><h4 id="步骤7：设置管理员密码"><a href="#步骤7：设置管理员密码" class="headerlink" title="步骤7：设置管理员密码"></a>步骤7：设置管理员密码</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">openclaw admin set-password<br></code></pre></td></tr></table></figure><h3 id="（三）常见问题怎么解决？"><a href="#（三）常见问题怎么解决？" class="headerlink" title="（三）常见问题怎么解决？"></a>（三）常见问题怎么解决？</h3><ol><li><p><strong>API密钥配置失败</strong></p><ul><li>检查密钥是否复制完整</li><li>确认账号有没有余额（要先充值才能调用）</li><li>看看服务器位置和密钥是否匹配</li></ul></li><li><p><strong>端口访问不了</strong></p><ul><li>检查防火墙规则</li><li>国内服务器必须先备案</li></ul></li><li><p><strong>防止系统崩溃</strong></p></li></ol><p>配置一个守护进程，OpenClaw挂了能自动重启：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 创建守护进程</span><br><span class="hljs-built_in">cat</span> &gt; /etc/systemd/system/openclaw-monitor.service &lt;&lt; <span class="hljs-string">EOF</span><br><span class="hljs-string">[Unit]</span><br><span class="hljs-string">Description=OpenClaw Monitor Service</span><br><span class="hljs-string">After=openclaw.service</span><br><span class="hljs-string"></span><br><span class="hljs-string">[Service]</span><br><span class="hljs-string">User=root</span><br><span class="hljs-string">ExecStart=/bin/bash -c &quot;while true; do if ! systemctl is-active --quiet openclaw; then systemctl start openclaw; fi; sleep 60; done&quot;</span><br><span class="hljs-string">Restart=always</span><br><span class="hljs-string">RestartSec=5</span><br><span class="hljs-string"></span><br><span class="hljs-string">[Install]</span><br><span class="hljs-string">WantedBy=multi-user.target</span><br><span class="hljs-string">EOF</span><br><br><span class="hljs-comment"># 启动守护进程</span><br>systemctl daemon-reload<br>systemctl <span class="hljs-built_in">enable</span> openclaw-monitor<br>systemctl start openclaw-monitor<br></code></pre></td></tr></table></figure><h2 id="三、OpenClaw能干什么？四个实战场景"><a href="#三、OpenClaw能干什么？四个实战场景" class="headerlink" title="三、OpenClaw能干什么？四个实战场景"></a>三、OpenClaw能干什么？四个实战场景</h2><h3 id="（一）场景1：24小时自动盯盘，发现买卖机会"><a href="#（一）场景1：24小时自动盯盘，发现买卖机会" class="headerlink" title="（一）场景1：24小时自动盯盘，发现买卖机会"></a>（一）场景1：24小时自动盯盘，发现买卖机会</h3><p>上班没时间盯盘？OpenClaw可以帮你24小时监控股票，只要达到你设定的条件（比如涨跌超过3%），就立刻发消息到你手机。</p><h4 id="怎么用？"><a href="#怎么用？" class="headerlink" title="怎么用？"></a>怎么用？</h4><p>很简单，告诉OpenClaw你的需求就行：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 用说人话的方式告诉它</span><br>openclaw chat <span class="hljs-string">&quot;帮我盯着腾讯、茅台、苹果这三只股票，只要涨跌超过3%，或者成交量突然放大，或者创新高新低，就立刻发消息到我飞书&quot;</span><br></code></pre></td></tr></table></figure><h4 id="效果是什么样的？"><a href="#效果是什么样的？" class="headerlink" title="效果是什么样的？"></a>效果是什么样的？</h4><figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs asciidoc">监控开始运行！<br>检测到异常：<br>⚠️ 腾讯控股（00700.HK）<br><span class="hljs-bullet">- </span>当前价格：543港币<br><span class="hljs-bullet">- </span>今天跌了3%（触发预警）<br><span class="hljs-bullet">- </span>成交量比昨天多12%<br><span class="hljs-bullet">- </span>预警时间：2026-02-12 10:30<br><br>其他股票正常：<br><span class="hljs-bullet">- </span>茅台：1785元，涨1.25%<br><span class="hljs-bullet">- </span>苹果：192.50美元，涨0.82%<br><br>已发送到你的飞书<br></code></pre></td></tr></table></figure><h4 id="进阶玩法"><a href="#进阶玩法" class="headerlink" title="进阶玩法"></a>进阶玩法</h4><p>还可以加更多技术指标：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">openclaw chat <span class="hljs-string">&quot;除了之前的条件，再加上：RSI超过70（超买）或低于30（超卖）、MACD金叉死叉、突破布林带上下轨，综合判断后再提醒我&quot;</span><br></code></pre></td></tr></table></figure><h3 id="（二）场景2：市场情绪分析——把握资金动向"><a href="#（二）场景2：市场情绪分析——把握资金动向" class="headerlink" title="（二）场景2：市场情绪分析——把握资金动向"></a>（二）场景2：市场情绪分析——把握资金动向</h3><p>市场情绪是短期涨跌的关键。OpenClaw可24小时抓取社交媒体、财经大V、行业新闻，快速判断情绪倾向，为交易决策提供参考。</p><h4 id="核心技能：market-sentiment（市场情绪分析技能）"><a href="#核心技能：market-sentiment（市场情绪分析技能）" class="headerlink" title="核心技能：market-sentiment（市场情绪分析技能）"></a>核心技能：market-sentiment（市场情绪分析技能）</h4><p><strong>配置与使用</strong></p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 自然语言指令</span><br>openclaw chat <span class="hljs-string">&quot;帮我24小时监控人工智能、新能源汽车、白酒、半导体板块的市场情绪，监控来源包括财经大V、微博、Twitter、行业新闻，每小时分析一次情绪倾向（正面/中性/负面），生成结构化报告发送到我的飞书，每天导出一份Excel报表保存到服务器&quot;</span><br></code></pre></td></tr></table></figure><p><strong>实战效果</strong></p><figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs asciidoc"><span class="hljs-section">=== 市场情绪分析报告 ===</span><br>分析时间：2026-02-12 14:00:00<br><br>【人工智能板块】<br><span class="hljs-bullet">- </span>情绪指数：82/100（极度乐观）<br><span class="hljs-bullet">- </span>核心驱动：DeepSeek发布V3模型，性能超预期<br><span class="hljs-bullet">- </span>热门标的：科大讯飞、商汤科技<br><span class="hljs-bullet">- </span>建议：短期情绪过热，注意回调风险<br><br>【新能源汽车板块】<br><span class="hljs-bullet">- </span>情绪指数：45/100（中性偏悲观）<br><span class="hljs-bullet">- </span>核心驱动：补贴政策退坡，价格战加剧<br><span class="hljs-bullet">- </span>热门标的：比亚迪、理想汽车<br><span class="hljs-bullet">- </span>建议：等待政策明朗后再介入<br><br>已发送至飞书 | Excel报表保存至：/data/sentiment_report_20260212.xlsx<br></code></pre></td></tr></table></figure><p><strong>核心价值</strong></p><p>多项金融研究显示，社交媒体情绪与股票短期回报存在显著相关性，精准捕捉情绪变化可带来1-2%的超额收益。</p><h3 id="（三）场景3：财报异常分析——AI帮你”扫雷”"><a href="#（三）场景3：财报异常分析——AI帮你”扫雷”" class="headerlink" title="（三）场景3：财报异常分析——AI帮你”扫雷”"></a>（三）场景3：财报异常分析——AI帮你”扫雷”</h3><p>财报是价值投资的核心，但普通投资者难以发现隐藏风险。OpenClaw可深度解析财报数据，聚焦”异常点”，帮你避开雷区、找到价值洼地。</p><h4 id="核心技能：financial-report-analysis（财报分析技能）"><a href="#核心技能：financial-report-analysis（财报分析技能）" class="headerlink" title="核心技能：financial-report-analysis（财报分析技能）"></a>核心技能：financial-report-analysis（财报分析技能）</h4><p><strong>配置与使用</strong></p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 自然语言指令</span><br>openclaw chat <span class="hljs-string">&quot;帮我分析网易（NTES/9999）2025年第三季度财报，重点关注这几个方面：财报故意不提的关键信息、大额非经常性损益、库存周转率变化、成本结构异常，分析完成后生成风险评级报告发送到我的飞书，同时设置自动抓取腾讯控股（00700.HK）、贵州茅台（600519.SH）的季度财报并分析&quot;</span><br></code></pre></td></tr></table></figure><p><strong>实战效果</strong></p><figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs asciidoc"><span class="hljs-section">=== 财报异常分析报告 ===</span><br>公司：网易（NTES）<br>报告期：2025Q3<br><br>【关键发现】<br>⚠️ 风险1：研发费用同比下降15%，但管理层未在财报中说明原因<br>⚠️ 风险2：应收账款周转天数从45天延长至62天，现金流承压<br>⚠️ 风险3：非经常性损益占净利润比例达28%，剔除后实际盈利能力存疑<br><br>【积极信号】<br>✅ 游戏业务毛利率提升3个百分点<br>✅ 云音乐用户付费率持续增长<br><br>风险评级：中等偏高（建议谨慎持有）<br></code></pre></td></tr></table></figure><p><strong>进阶功能：多财报趋势对比</strong></p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">openclaw chat <span class="hljs-string">&quot;对比网易最近4个季度的财报，找出经营趋势的变化点，重点关注营收增长率、利润率、现金流变化&quot;</span><br></code></pre></td></tr></table></figure><h3 id="（四）场景4：竞对分析——寻找价值洼地"><a href="#（四）场景4：竞对分析——寻找价值洼地" class="headerlink" title="（四）场景4：竞对分析——寻找价值洼地"></a>（四）场景4：竞对分析——寻找价值洼地</h3><p>价值投资的核心是找到”好公司”，而好公司的评判离不开行业对比。OpenClaw可自动抓取同行业公司核心数据，从业务健康度、盈利能力、增长潜力等维度对比分析。</p><h4 id="核心技能：competitor-analysis（竞对分析技能）"><a href="#核心技能：competitor-analysis（竞对分析技能）" class="headerlink" title="核心技能：competitor-analysis（竞对分析技能）"></a>核心技能：competitor-analysis（竞对分析技能）</h4><p><strong>配置与使用</strong></p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 自然语言指令</span><br>openclaw chat <span class="hljs-string">&quot;帮我对比沃尔玛和亚马逊的核心业务数据，分析维度包括营收、增长率、利润率、研发投入、现金流，生成详细的经营健康度对比报告，重点找出哪家公司更具投资价值，每月1日自动更新报告并发送到我的邮箱&quot;</span><br></code></pre></td></tr></table></figure><p><strong>实战效果</strong></p><figure class="highlight gherkin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs gherkin">=== 竞对分析报告 ===<br>对比公司：沃尔玛 vs 亚马逊<br>更新时间：2026-02-01<br><br>【核心指标对比】<br>|<span class="hljs-string"> 指标 </span>|<span class="hljs-string"> 沃尔玛 </span>|<span class="hljs-string"> 亚马逊 </span>|<span class="hljs-string"> 优势方 </span>|<br>|<span class="hljs-string">------</span>|<span class="hljs-string">--------</span>|<span class="hljs-string">--------</span>|<span class="hljs-string">--------</span>|<br>|<span class="hljs-string"> 营收（亿美元） </span>|<span class="hljs-string"> 6,480 </span>|<span class="hljs-string"> 5,750 </span>|<span class="hljs-string"> 沃尔玛 </span>|<br>|<span class="hljs-string"> 营收增长率 </span>|<span class="hljs-string"> 3.2% </span>|<span class="hljs-string"> 11.5% </span>|<span class="hljs-string"> 亚马逊 </span>|<br>|<span class="hljs-string"> 净利率 </span>|<span class="hljs-string"> 2.1% </span>|<span class="hljs-string"> 5.8% </span>|<span class="hljs-string"> 亚马逊 </span>|<br>|<span class="hljs-string"> 研发投入占比 </span>|<span class="hljs-string"> 0.3% </span>|<span class="hljs-string"> 12.7% </span>|<span class="hljs-string"> 亚马逊 </span>|<br>|<span class="hljs-string"> 自由现金流（亿美元） </span>|<span class="hljs-string"> 248 </span>|<span class="hljs-string"> 362 </span>|<span class="hljs-string"> 亚马逊 </span>|<br><br>【综合评估】<br>- 沃尔玛：成熟稳定，现金牛属性明显，适合防御型投资者<br>- 亚马逊：高成长、高投入，云计算业务驱动利润率提升，适合成长型投资者<br><br>投资建议：看好长期成长选亚马逊，追求稳定股息选沃尔玛<br></code></pre></td></tr></table></figure><h2 id="四、风险控制体系：AI交易的安全防线"><a href="#四、风险控制体系：AI交易的安全防线" class="headerlink" title="四、风险控制体系：AI交易的安全防线"></a>四、风险控制体系：AI交易的安全防线</h2><p>OpenClaw虽能提升交易效率，但无法消除市场风险。建立完善的风险控制体系，是长期盈利的关键。</p><h3 id="（一）仓位管理：避免风险集中"><a href="#（一）仓位管理：避免风险集中" class="headerlink" title="（一）仓位管理：避免风险集中"></a>（一）仓位管理：避免风险集中</h3><p><strong>核心原则</strong>：</p><ul><li>单一标的持仓不超过总资金的20%</li><li>同一行业持仓不超过总资金的30%</li><li>高风险标的（创业板、科技股）总仓位不超过40%</li></ul><p><strong>OpenClaw实现</strong>：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">openclaw chat <span class="hljs-string">&quot;设置仓位管理规则：单一标的上限20%、同一行业上限30%、高风险标的上限40%，每次交易前自动校验，超限则拒绝执行并通知我&quot;</span><br></code></pre></td></tr></table></figure><h3 id="（二）策略回测：实盘前验证有效性"><a href="#（二）策略回测：实盘前验证有效性" class="headerlink" title="（二）策略回测：实盘前验证有效性"></a>（二）策略回测：实盘前验证有效性</h3><p><strong>回测关键指标参考</strong>：</p><ul><li>年化收益率：&gt;15%</li><li>最大回撤：&lt;20%</li><li>夏普比率：&gt;1.5</li><li>胜率：&gt;55%</li></ul><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">openclaw chat <span class="hljs-string">&quot;用2023-2025年的历史数据回测我的趋势交易策略，输出年化收益率、最大回撤、夏普比率、胜率等指标&quot;</span><br></code></pre></td></tr></table></figure><h3 id="（三）日志审计：定期复盘"><a href="#（三）日志审计：定期复盘" class="headerlink" title="（三）日志审计：定期复盘"></a>（三）日志审计：定期复盘</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">openclaw chat <span class="hljs-string">&quot;每周五晚上8点，自动生成本周交易日志，包括：交易次数、盈亏统计、策略执行情况、异常事件记录，发送到我的邮箱&quot;</span><br></code></pre></td></tr></table></figure><h3 id="（四）技能权限控制：防范安全风险"><a href="#（四）技能权限控制：防范安全风险" class="headerlink" title="（四）技能权限控制：防范安全风险"></a>（四）技能权限控制：防范安全风险</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 设置技能权限</span><br>openclaw chat <span class="hljs-string">&quot;禁用自动下单技能，所有交易信号只推送通知，由我手动确认后再执行&quot;</span><br></code></pre></td></tr></table></figure><h3 id="（五）定期策略优化：适应市场变化"><a href="#（五）定期策略优化：适应市场变化" class="headerlink" title="（五）定期策略优化：适应市场变化"></a>（五）定期策略优化：适应市场变化</h3><p>市场环境会变化,策略需要持续优化。建议每季度复盘一次策略有效性，根据市场变化调整参数。</p><h2 id="五、三大经典交易策略组合：直接抄作业"><a href="#五、三大经典交易策略组合：直接抄作业" class="headerlink" title="五、三大经典交易策略组合：直接抄作业"></a>五、三大经典交易策略组合：直接抄作业</h2><p>单一技能的能力有限，通过多技能组合，可实现更复杂的交易逻辑。以下是三大经典策略的现成配置方案：</p><h3 id="（一）策略1：趋势交易策略（适合短线投资者）"><a href="#（一）策略1：趋势交易策略（适合短线投资者）" class="headerlink" title="（一）策略1：趋势交易策略（适合短线投资者）"></a>（一）策略1：趋势交易策略（适合短线投资者）</h3><p><strong>核心逻辑</strong>：跟随市场趋势，捕捉上涨波段</p><p><strong>技能组合</strong>：stock-monitor + market-sentiment + trend-analysis + risk-calculator</p><p><strong>配置命令</strong>：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash">openclaw chat <span class="hljs-string">&quot;配置趋势交易策略：</span><br><span class="hljs-string">1. 监控科技股（特斯拉、英伟达、微软等），发现突破60日均线+成交量放大+市场情绪积极，推送买入信号</span><br><span class="hljs-string">2. 持有期间，跌破10日均线或情绪转负，推送卖出信号</span><br><span class="hljs-string">3. 单笔交易风险控制在总资金5%以内</span><br><span class="hljs-string">4. 每日收盘后生成策略执行报告&quot;</span><br></code></pre></td></tr></table></figure><h3 id="（二）策略2：价值投资策略（适合中长期投资者）"><a href="#（二）策略2：价值投资策略（适合中长期投资者）" class="headerlink" title="（二）策略2：价值投资策略（适合中长期投资者）"></a>（二）策略2：价值投资策略（适合中长期投资者）</h3><p><strong>核心逻辑</strong>：聚焦基本面，低估时买入</p><p><strong>技能组合</strong>：financial-report-analysis + competitor-analysis + valuation-calculator + dividend-tracker</p><p><strong>配置命令</strong>：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs bash">openclaw chat <span class="hljs-string">&quot;配置价值投资策略：</span><br><span class="hljs-string">1. 筛选条件：PE&lt;15、PB&lt;2、ROE&gt;15%、连续5年分红、负债率&lt;50%</span><br><span class="hljs-string">2. 每季度财报发布后，自动分析基本面变化</span><br><span class="hljs-string">3. 估值低于行业平均30%时推送买入信号</span><br><span class="hljs-string">4. 估值回归合理或基本面恶化时推送卖出信号</span><br><span class="hljs-string">5. 每月生成持仓组合健康度报告&quot;</span><br></code></pre></td></tr></table></figure><h3 id="（三）策略3：套利策略（适合低风险偏好投资者）"><a href="#（三）策略3：套利策略（适合低风险偏好投资者）" class="headerlink" title="（三）策略3：套利策略（适合低风险偏好投资者）"></a>（三）策略3：套利策略（适合低风险偏好投资者）</h3><p><strong>核心逻辑</strong>：捕捉定价偏差，低风险获利</p><p><strong>技能组合</strong>：arbitrage-scanner + finance-data + risk-calculator + order-executor</p><p><strong>配置命令</strong>：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs bash">openclaw chat <span class="hljs-string">&quot;配置套利策略：</span><br><span class="hljs-string">1. 扫描A股与港股同一公司的价差，发现价差&gt;5%时推送套利机会</span><br><span class="hljs-string">2. 扫描可转债与正股价差，发现折价&gt;8%时推送买入信号</span><br><span class="hljs-string">3. 自动计算套利空间、交易成本、预期收益</span><br><span class="hljs-string">4. 单笔套利风险控制在总资金3%以内</span><br><span class="hljs-string">5. 套利完成后自动平仓并记录收益&quot;</span><br></code></pre></td></tr></table></figure><h2 id="六、总结"><a href="#六、总结" class="headerlink" title="六、总结"></a>六、总结</h2><p>2026年，OpenClaw的崛起正在打破专业交易与普通投资者之间的壁垒。以前只有顶级银行、量化机构才能实现的高频盯盘、多维度数据分析、无情绪交易，现在通过阿里云部署+技能组合，普通人也能轻松实现。</p><p>从实时盯盘捕捉买卖信号，到市场情绪分析把握资金动向，再到财报扫雷规避风险、竞对对比寻找价值洼地，OpenClaw将交易的核心环节全部自动化，让你从重复劳动中解放出来，聚焦更有价值的策略制定与风险控制。</p><p><strong>但必须明确</strong>：OpenClaw是”工具”而非”圣杯”。它能100%执行你的策略，却无法替你创造策略；它能降低操作风险，却不能消除市场本身的系统性风险。成功的关键，在于你是否拥有清晰的交易逻辑，并能将其转化为AI可执行的指令。</p><p>随着AI技术的持续进化，OpenClaw的交易能力还将不断提升。现在开始部署、探索、优化，你将提前抢占AI交易的红利期，在效率革命中获得先机。</p><p>正如英伟达创始人黄仁勋所言，”物理AI”时代已来，而OpenClaw正在让每个人都拥有一个真正能干活的AI交易助理。</p><hr><h2 id="需要部署帮助？作者提供有偿服务"><a href="#需要部署帮助？作者提供有偿服务" class="headerlink" title="需要部署帮助？作者提供有偿服务"></a>需要部署帮助？作者提供有偿服务</h2><p>如果你看完教程还是不会部署，或者想节省时间直接用上OpenClaw，作者提供<strong>有偿部署服务</strong>：</p><h3 id="服务内容"><a href="#服务内容" class="headerlink" title="服务内容"></a>服务内容</h3><p>✅ <strong>远程部署</strong>：通过远程协助方式，帮你完成从购买服务器到配置完成的全部步骤<br>✅ <strong>同城上门</strong>（限特定城市）：可上门当面部署调试，确保系统正常运行<br>✅ <strong>策略配置</strong>：根据你的交易风格，配置适合的监控策略和风控规则<br>✅ <strong>使用培训</strong>：手把手教你如何使用OpenClaw，解答使用过程中的问题<br>✅ <strong>后期答疑</strong>：部署完成后一个月内免费技术支持</p><h3 id="适合人群"><a href="#适合人群" class="headerlink" title="适合人群"></a>适合人群</h3><ul><li>技术小白，看教程还是不会操作的</li><li>工作繁忙，没时间自己折腾的</li><li>想快速上手，直接开始用的</li><li>需要定制化策略配置的</li></ul><h3 id="联系方式"><a href="#联系方式" class="headerlink" title="联系方式"></a>联系方式</h3><p>有需要的朋友可以通过以下方式联系：</p><ul><li><strong>微信</strong>：freelance_coder</li><li><strong>邮箱</strong>：<a href="mailto:&#x77;&#104;&#x65;&#114;&#x65;&#x61;&#109;&#x32;&#x30;&#x31;&#51;&#x40;&#103;&#109;&#x61;&#105;&#x6c;&#46;&#x63;&#111;&#109;">&#x77;&#104;&#x65;&#114;&#x65;&#x61;&#109;&#x32;&#x30;&#x31;&#51;&#x40;&#103;&#109;&#x61;&#105;&#x6c;&#46;&#x63;&#111;&#109;</a></li></ul><p><strong>说明</strong>：部署服务收费合理，根据服务内容（远程&#x2F;上门）和配置复杂度定价。咨询免费，满意后再付款。</p><hr><p><strong>风险提示</strong>：投资有风险，入市需谨慎。本文仅为技术教程，不构成任何投资建议。</p>]]></content>
+    <content type="html"><![CDATA[<p><strong>让AI帮你24小时自动盯盘交易，真的靠谱吗？</strong></p><p>最近OpenClaw这个AI交易工具火了，原因是有人用它做了个实验：投入50美元，让AI自动交易48小时，最后变成了2980美元，赚了58倍！它是怎么做到的？</p><p>简单来说，OpenClaw每10分钟自动扫描Polymarket上近千个交易机会，通过Claude AI进行分析判断，同时参考天气数据、体育赛事、加密货币市场情绪等多种信息，找出价格偏差超过8%的交易机会，然后按照凯利公式（一种风险控制方法）自动下单，每次交易金额不超过总资金的6%，通过高频低风险交易积累收益。</p><p>这个案例最大的意义是：<strong>普通人也能用AI做自动交易了，不再是专业机构的专利。</strong></p><p>本文会手把手教你如何部署OpenClaw，如何让它自动盯盘、分析市场、提醒你买卖时机，以及如何控制风险。</p><p><strong>⚠️ 重要提醒：本文仅作技术学习，不构成投资建议。股市有风险，投资需谨慎！</strong></p><h2 id="一、OpenClaw是什么？为什么能自动炒股？"><a href="#一、OpenClaw是什么？为什么能自动炒股？" class="headerlink" title="一、OpenClaw是什么？为什么能自动炒股？"></a>一、OpenClaw是什么？为什么能自动炒股？</h2><h3 id="（一）AI自动炒股-vs-人工炒股的区别"><a href="#（一）AI自动炒股-vs-人工炒股的区别" class="headerlink" title="（一）AI自动炒股 vs 人工炒股的区别"></a>（一）AI自动炒股 vs 人工炒股的区别</h3><p>人工炒股的痛点，正是AI的优势：</p><table><thead><tr><th>对比项目</th><th>人工炒股</th><th>OpenClaw AI自动炒股</th></tr></thead><tbody><tr><td><strong>盯盘时间</strong></td><td>白天要上班，晚上要休息，盯不住</td><td>24小时不间断监控，不会错过机会</td></tr><tr><td><strong>情绪控制</strong></td><td>涨了贪婪想多赚，跌了恐慌割肉</td><td>严格按设定规则执行，不受情绪影响</td></tr><tr><td><strong>信息分析</strong></td><td>一个人看不了太多股票和信息</td><td>同时分析多个市场和海量数据</td></tr></tbody></table><h3 id="（二）OpenClaw有哪些功能？（2026版本）"><a href="#（二）OpenClaw有哪些功能？（2026版本）" class="headerlink" title="（二）OpenClaw有哪些功能？（2026版本）"></a>（二）OpenClaw有哪些功能？（2026版本）</h3><p>经过不断升级，OpenClaw已经能做很多事情了：</p><ol><li><strong>自动盯盘</strong>：可以同时监控股票、基金、加密货币等，行情数据几乎是实时的（延迟只有几毫秒），覆盖全球主要交易所</li><li><strong>功能模块化</strong>：把”市场监控”、”情绪分析”、”财报分析”、”风险控制”等功能分成一个个模块，你可以根据自己需要自由组合</li><li><strong>手机提醒</strong>：可以通过飞书、钉钉等工具发送交易提醒到手机，随时随地掌握动态</li></ol><h3 id="（三）使用OpenClaw需要注意什么？"><a href="#（三）使用OpenClaw需要注意什么？" class="headerlink" title="（三）使用OpenClaw需要注意什么？"></a>（三）使用OpenClaw需要注意什么？</h3><p><strong>重点来了</strong>：OpenClaw是个执行工具，不是赚钱机器。它的作用是帮你执行交易策略，但交易策略需要你自己定。</p><p>比如：</p><ul><li>你要告诉它：买哪些股票（比如科技股、白酒股）</li><li>什么时候买（比如跌破某个价格、技术指标出现信号）</li><li>买多少（比如每次不超过总资金的5%）</li><li>什么时候卖（比如涨到目标价位、止损价）</li></ul><p>简单说，你是老板定策略，OpenClaw是员工来执行。策略对不对，决定了能不能赚钱。</p><h2 id="二、手把手教你部署OpenClaw（阿里云2026版）"><a href="#二、手把手教你部署OpenClaw（阿里云2026版）" class="headerlink" title="二、手把手教你部署OpenClaw（阿里云2026版）"></a>二、手把手教你部署OpenClaw（阿里云2026版）</h2><p>阿里云为OpenClaw提供了三种部署方式：轻量服务器、云电脑、ECS服务器。都预装好了系统，不需要复杂配置。<strong>对普通人来说，选轻量服务器最简单</strong>，几百块一年就够了。</p><h3 id="（一）部署前要准备什么？"><a href="#（一）部署前要准备什么？" class="headerlink" title="（一）部署前要准备什么？"></a>（一）部署前要准备什么？</h3><ol><li><p><strong>阿里云账号</strong></p><ul><li>先注册阿里云账号，然后实名认证</li><li>个人用户：用身份证拍照或支付宝授权就行，很快</li><li>企业用户：要上传营业执照，审核1-3天</li></ul></li><li><p><strong>服务器配置怎么选？</strong></p><ul><li>推荐：2核CPU + 8G内存 + 100G硬盘 + 10M带宽</li><li>这个配置能同时监控多个市场，不会卡</li></ul></li><li><p><strong>服务器放哪里？</strong></p><ul><li><strong>建议选香港或美国节点</strong>，不用备案，买了就能用</li><li>选国内的话，要先备案才能用，比较麻烦</li></ul></li><li><p><strong>需要哪些账号？</strong></p><ul><li>阿里云百炼API密钥（用来调用AI分析）</li><li>金融数据接口账号（比如通联数据，用来获取股票行情）</li><li>飞书或钉钉账号（用来接收买卖提醒）</li></ul></li></ol><h3 id="（二）具体怎么操作？"><a href="#（二）具体怎么操作？" class="headerlink" title="（二）具体怎么操作？"></a>（二）具体怎么操作？</h3><h4 id="步骤1：购买服务器"><a href="#步骤1：购买服务器" class="headerlink" title="步骤1：购买服务器"></a>步骤1：购买服务器</h4><p>进入阿里云官网，找到”轻量应用服务器”：</p><ul><li><strong>选镜像</strong>：搜索”OpenClaw（原Clawdbot）”，选择2026版本（v2026.1.25）</li><li><strong>选配置</strong>：最低2核2G就能跑，想流畅点可以选4核4G</li><li><strong>选时长</strong>：长期用建议买一年，测试可以按月买</li></ul><p>买完后等几分钟，状态变成”运行中”，记下服务器的IP地址（比如119.xxx.xxx.xxx）。</p><h4 id="步骤2：打开端口"><a href="#步骤2：打开端口" class="headerlink" title="步骤2：打开端口"></a>步骤2：打开端口</h4><p>有些阿里云账号需要手动开放端口，如果控制台有”一键放通”按钮，直接点就行。</p><h4 id="步骤3：配置AI密钥"><a href="#步骤3：配置AI密钥" class="headerlink" title="步骤3：配置AI密钥"></a>步骤3：配置AI密钥</h4><p>登录服务器，添加阿里云百炼API密钥：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 编辑配置文件</span><br>vim ~/.openclaw/config.yaml<br><br><span class="hljs-comment"># 添加你的密钥</span><br>api:<br>  provider: alibaba_bailian<br>  key: 你的密钥<br></code></pre></td></tr></table></figure><h4 id="步骤4：配置股票数据源"><a href="#步骤4：配置股票数据源" class="headerlink" title="步骤4：配置股票数据源"></a>步骤4：配置股票数据源</h4><p>以通联数据为例，配置金融数据接口：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 编辑数据源配置</span><br>vim ~/.openclaw/datasource.yaml<br><br><span class="hljs-comment"># 添加配置</span><br>datasource:<br>  provider: tushare  <span class="hljs-comment"># 或者用 wind</span><br>  token: 你的token<br></code></pre></td></tr></table></figure><h4 id="步骤5：接入飞书提醒"><a href="#步骤5：接入飞书提醒" class="headerlink" title="步骤5：接入飞书提醒"></a>步骤5：接入飞书提醒</h4><p>让OpenClaw把交易信号发到你手机：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 配置消息通知</span><br>vim ~/.openclaw/notification.yaml<br><br><span class="hljs-comment"># 添加飞书webhook</span><br>notification:<br>  feishu:<br>    webhook: https://open.feishu.cn/open-apis/bot/v2/hook/你的webhook地址<br></code></pre></td></tr></table></figure><h4 id="步骤6：安装交易功能"><a href="#步骤6：安装交易功能" class="headerlink" title="步骤6：安装交易功能"></a>步骤6：安装交易功能</h4><p>安装几个常用的交易模块：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash">openclaw skill install stock-monitor        <span class="hljs-comment"># 股票监控</span><br>openclaw skill install market-sentiment     <span class="hljs-comment"># 市场情绪分析</span><br>openclaw skill install financial-report-analysis  <span class="hljs-comment"># 财报分析</span><br>openclaw skill install risk-calculator      <span class="hljs-comment"># 风险计算</span><br></code></pre></td></tr></table></figure><h4 id="步骤7：设置管理员密码"><a href="#步骤7：设置管理员密码" class="headerlink" title="步骤7：设置管理员密码"></a>步骤7：设置管理员密码</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">openclaw admin set-password<br></code></pre></td></tr></table></figure><h3 id="（三）常见问题怎么解决？"><a href="#（三）常见问题怎么解决？" class="headerlink" title="（三）常见问题怎么解决？"></a>（三）常见问题怎么解决？</h3><ol><li><p><strong>API密钥配置失败</strong></p><ul><li>检查密钥是否复制完整</li><li>确认账号有没有余额（要先充值才能调用）</li><li>看看服务器位置和密钥是否匹配</li></ul></li><li><p><strong>端口访问不了</strong></p><ul><li>检查防火墙规则</li><li>国内服务器必须先备案</li></ul></li><li><p><strong>防止系统崩溃</strong></p></li></ol><p>配置一个守护进程，OpenClaw挂了能自动重启：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 创建守护进程</span><br><span class="hljs-built_in">cat</span> &gt; /etc/systemd/system/openclaw-monitor.service &lt;&lt; <span class="hljs-string">EOF</span><br><span class="hljs-string">[Unit]</span><br><span class="hljs-string">Description=OpenClaw Monitor Service</span><br><span class="hljs-string">After=openclaw.service</span><br><span class="hljs-string"></span><br><span class="hljs-string">[Service]</span><br><span class="hljs-string">User=root</span><br><span class="hljs-string">ExecStart=/bin/bash -c &quot;while true; do if ! systemctl is-active --quiet openclaw; then systemctl start openclaw; fi; sleep 60; done&quot;</span><br><span class="hljs-string">Restart=always</span><br><span class="hljs-string">RestartSec=5</span><br><span class="hljs-string"></span><br><span class="hljs-string">[Install]</span><br><span class="hljs-string">WantedBy=multi-user.target</span><br><span class="hljs-string">EOF</span><br><br><span class="hljs-comment"># 启动守护进程</span><br>systemctl daemon-reload<br>systemctl <span class="hljs-built_in">enable</span> openclaw-monitor<br>systemctl start openclaw-monitor<br></code></pre></td></tr></table></figure><h2 id="三、OpenClaw能干什么？四个实战场景"><a href="#三、OpenClaw能干什么？四个实战场景" class="headerlink" title="三、OpenClaw能干什么？四个实战场景"></a>三、OpenClaw能干什么？四个实战场景</h2><h3 id="（一）场景1：24小时自动盯盘，发现买卖机会"><a href="#（一）场景1：24小时自动盯盘，发现买卖机会" class="headerlink" title="（一）场景1：24小时自动盯盘，发现买卖机会"></a>（一）场景1：24小时自动盯盘，发现买卖机会</h3><p>上班没时间盯盘？OpenClaw可以帮你24小时监控股票，只要达到你设定的条件（比如涨跌超过3%），就立刻发消息到你手机。</p><h4 id="怎么用？"><a href="#怎么用？" class="headerlink" title="怎么用？"></a>怎么用？</h4><p>很简单，告诉OpenClaw你的需求就行：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 用说人话的方式告诉它</span><br>openclaw chat <span class="hljs-string">&quot;帮我盯着腾讯、茅台、苹果这三只股票，只要涨跌超过3%，或者成交量突然放大，或者创新高新低，就立刻发消息到我飞书&quot;</span><br></code></pre></td></tr></table></figure><h4 id="效果是什么样的？"><a href="#效果是什么样的？" class="headerlink" title="效果是什么样的？"></a>效果是什么样的？</h4><figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs asciidoc">监控开始运行！<br>检测到异常：<br>⚠️ 腾讯控股（00700.HK）<br><span class="hljs-bullet">- </span>当前价格：543港币<br><span class="hljs-bullet">- </span>今天跌了3%（触发预警）<br><span class="hljs-bullet">- </span>成交量比昨天多12%<br><span class="hljs-bullet">- </span>预警时间：2026-02-12 10:30<br><br>其他股票正常：<br><span class="hljs-bullet">- </span>茅台：1785元，涨1.25%<br><span class="hljs-bullet">- </span>苹果：192.50美元，涨0.82%<br><br>已发送到你的飞书<br></code></pre></td></tr></table></figure><h4 id="进阶玩法"><a href="#进阶玩法" class="headerlink" title="进阶玩法"></a>进阶玩法</h4><p>还可以加更多技术指标：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">openclaw chat <span class="hljs-string">&quot;除了之前的条件，再加上：RSI超过70（超买）或低于30（超卖）、MACD金叉死叉、突破布林带上下轨，综合判断后再提醒我&quot;</span><br></code></pre></td></tr></table></figure><h3 id="（二）场景2：市场情绪分析——把握资金动向"><a href="#（二）场景2：市场情绪分析——把握资金动向" class="headerlink" title="（二）场景2：市场情绪分析——把握资金动向"></a>（二）场景2：市场情绪分析——把握资金动向</h3><p>市场情绪是短期涨跌的关键。OpenClaw可24小时抓取社交媒体、财经大V、行业新闻，快速判断情绪倾向，为交易决策提供参考。</p><h4 id="核心技能：market-sentiment（市场情绪分析技能）"><a href="#核心技能：market-sentiment（市场情绪分析技能）" class="headerlink" title="核心技能：market-sentiment（市场情绪分析技能）"></a>核心技能：market-sentiment（市场情绪分析技能）</h4><p><strong>配置与使用</strong></p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 自然语言指令</span><br>openclaw chat <span class="hljs-string">&quot;帮我24小时监控人工智能、新能源汽车、白酒、半导体板块的市场情绪，监控来源包括财经大V、微博、Twitter、行业新闻，每小时分析一次情绪倾向（正面/中性/负面），生成结构化报告发送到我的飞书，每天导出一份Excel报表保存到服务器&quot;</span><br></code></pre></td></tr></table></figure><p><strong>实战效果</strong></p><figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs asciidoc"><span class="hljs-section">=== 市场情绪分析报告 ===</span><br>分析时间：2026-02-12 14:00:00<br><br>【人工智能板块】<br><span class="hljs-bullet">- </span>情绪指数：82/100（极度乐观）<br><span class="hljs-bullet">- </span>核心驱动：DeepSeek发布V3模型，性能超预期<br><span class="hljs-bullet">- </span>热门标的：科大讯飞、商汤科技<br><span class="hljs-bullet">- </span>建议：短期情绪过热，注意回调风险<br><br>【新能源汽车板块】<br><span class="hljs-bullet">- </span>情绪指数：45/100（中性偏悲观）<br><span class="hljs-bullet">- </span>核心驱动：补贴政策退坡，价格战加剧<br><span class="hljs-bullet">- </span>热门标的：比亚迪、理想汽车<br><span class="hljs-bullet">- </span>建议：等待政策明朗后再介入<br><br>已发送至飞书 | Excel报表保存至：/data/sentiment_report_20260212.xlsx<br></code></pre></td></tr></table></figure><p><strong>核心价值</strong></p><p>多项金融研究显示，社交媒体情绪与股票短期回报存在显著相关性，精准捕捉情绪变化可带来1-2%的超额收益。</p><h3 id="（三）场景3：财报异常分析——AI帮你”扫雷”"><a href="#（三）场景3：财报异常分析——AI帮你”扫雷”" class="headerlink" title="（三）场景3：财报异常分析——AI帮你”扫雷”"></a>（三）场景3：财报异常分析——AI帮你”扫雷”</h3><p>财报是价值投资的核心，但普通投资者难以发现隐藏风险。OpenClaw可深度解析财报数据，聚焦”异常点”，帮你避开雷区、找到价值洼地。</p><h4 id="核心技能：financial-report-analysis（财报分析技能）"><a href="#核心技能：financial-report-analysis（财报分析技能）" class="headerlink" title="核心技能：financial-report-analysis（财报分析技能）"></a>核心技能：financial-report-analysis（财报分析技能）</h4><p><strong>配置与使用</strong></p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 自然语言指令</span><br>openclaw chat <span class="hljs-string">&quot;帮我分析网易（NTES/9999）2025年第三季度财报，重点关注这几个方面：财报故意不提的关键信息、大额非经常性损益、库存周转率变化、成本结构异常，分析完成后生成风险评级报告发送到我的飞书，同时设置自动抓取腾讯控股（00700.HK）、贵州茅台（600519.SH）的季度财报并分析&quot;</span><br></code></pre></td></tr></table></figure><p><strong>实战效果</strong></p><figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs asciidoc"><span class="hljs-section">=== 财报异常分析报告 ===</span><br>公司：网易（NTES）<br>报告期：2025Q3<br><br>【关键发现】<br>⚠️ 风险1：研发费用同比下降15%，但管理层未在财报中说明原因<br>⚠️ 风险2：应收账款周转天数从45天延长至62天，现金流承压<br>⚠️ 风险3：非经常性损益占净利润比例达28%，剔除后实际盈利能力存疑<br><br>【积极信号】<br>✅ 游戏业务毛利率提升3个百分点<br>✅ 云音乐用户付费率持续增长<br><br>风险评级：中等偏高（建议谨慎持有）<br></code></pre></td></tr></table></figure><p><strong>进阶功能：多财报趋势对比</strong></p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">openclaw chat <span class="hljs-string">&quot;对比网易最近4个季度的财报，找出经营趋势的变化点，重点关注营收增长率、利润率、现金流变化&quot;</span><br></code></pre></td></tr></table></figure><h3 id="（四）场景4：竞对分析——寻找价值洼地"><a href="#（四）场景4：竞对分析——寻找价值洼地" class="headerlink" title="（四）场景4：竞对分析——寻找价值洼地"></a>（四）场景4：竞对分析——寻找价值洼地</h3><p>价值投资的核心是找到”好公司”，而好公司的评判离不开行业对比。OpenClaw可自动抓取同行业公司核心数据，从业务健康度、盈利能力、增长潜力等维度对比分析。</p><h4 id="核心技能：competitor-analysis（竞对分析技能）"><a href="#核心技能：competitor-analysis（竞对分析技能）" class="headerlink" title="核心技能：competitor-analysis（竞对分析技能）"></a>核心技能：competitor-analysis（竞对分析技能）</h4><p><strong>配置与使用</strong></p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 自然语言指令</span><br>openclaw chat <span class="hljs-string">&quot;帮我对比沃尔玛和亚马逊的核心业务数据，分析维度包括营收、增长率、利润率、研发投入、现金流，生成详细的经营健康度对比报告，重点找出哪家公司更具投资价值，每月1日自动更新报告并发送到我的邮箱&quot;</span><br></code></pre></td></tr></table></figure><p><strong>实战效果</strong></p><figure class="highlight gherkin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs gherkin">=== 竞对分析报告 ===<br>对比公司：沃尔玛 vs 亚马逊<br>更新时间：2026-02-01<br><br>【核心指标对比】<br>|<span class="hljs-string"> 指标 </span>|<span class="hljs-string"> 沃尔玛 </span>|<span class="hljs-string"> 亚马逊 </span>|<span class="hljs-string"> 优势方 </span>|<br>|<span class="hljs-string">------</span>|<span class="hljs-string">--------</span>|<span class="hljs-string">--------</span>|<span class="hljs-string">--------</span>|<br>|<span class="hljs-string"> 营收（亿美元） </span>|<span class="hljs-string"> 6,480 </span>|<span class="hljs-string"> 5,750 </span>|<span class="hljs-string"> 沃尔玛 </span>|<br>|<span class="hljs-string"> 营收增长率 </span>|<span class="hljs-string"> 3.2% </span>|<span class="hljs-string"> 11.5% </span>|<span class="hljs-string"> 亚马逊 </span>|<br>|<span class="hljs-string"> 净利率 </span>|<span class="hljs-string"> 2.1% </span>|<span class="hljs-string"> 5.8% </span>|<span class="hljs-string"> 亚马逊 </span>|<br>|<span class="hljs-string"> 研发投入占比 </span>|<span class="hljs-string"> 0.3% </span>|<span class="hljs-string"> 12.7% </span>|<span class="hljs-string"> 亚马逊 </span>|<br>|<span class="hljs-string"> 自由现金流（亿美元） </span>|<span class="hljs-string"> 248 </span>|<span class="hljs-string"> 362 </span>|<span class="hljs-string"> 亚马逊 </span>|<br><br>【综合评估】<br>- 沃尔玛：成熟稳定，现金牛属性明显，适合防御型投资者<br>- 亚马逊：高成长、高投入，云计算业务驱动利润率提升，适合成长型投资者<br><br>投资建议：看好长期成长选亚马逊，追求稳定股息选沃尔玛<br></code></pre></td></tr></table></figure><h2 id="四、风险控制体系：AI交易的安全防线"><a href="#四、风险控制体系：AI交易的安全防线" class="headerlink" title="四、风险控制体系：AI交易的安全防线"></a>四、风险控制体系：AI交易的安全防线</h2><p>OpenClaw虽能提升交易效率，但无法消除市场风险。建立完善的风险控制体系，是长期盈利的关键。</p><h3 id="（一）仓位管理：避免风险集中"><a href="#（一）仓位管理：避免风险集中" class="headerlink" title="（一）仓位管理：避免风险集中"></a>（一）仓位管理：避免风险集中</h3><p><strong>核心原则</strong>：</p><ul><li>单一标的持仓不超过总资金的20%</li><li>同一行业持仓不超过总资金的30%</li><li>高风险标的（创业板、科技股）总仓位不超过40%</li></ul><p><strong>OpenClaw实现</strong>：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">openclaw chat <span class="hljs-string">&quot;设置仓位管理规则：单一标的上限20%、同一行业上限30%、高风险标的上限40%，每次交易前自动校验，超限则拒绝执行并通知我&quot;</span><br></code></pre></td></tr></table></figure><h3 id="（二）策略回测：实盘前验证有效性"><a href="#（二）策略回测：实盘前验证有效性" class="headerlink" title="（二）策略回测：实盘前验证有效性"></a>（二）策略回测：实盘前验证有效性</h3><p><strong>回测关键指标参考</strong>：</p><ul><li>年化收益率：&gt;15%</li><li>最大回撤：&lt;20%</li><li>夏普比率：&gt;1.5</li><li>胜率：&gt;55%</li></ul><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">openclaw chat <span class="hljs-string">&quot;用2023-2025年的历史数据回测我的趋势交易策略，输出年化收益率、最大回撤、夏普比率、胜率等指标&quot;</span><br></code></pre></td></tr></table></figure><h3 id="（三）日志审计：定期复盘"><a href="#（三）日志审计：定期复盘" class="headerlink" title="（三）日志审计：定期复盘"></a>（三）日志审计：定期复盘</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">openclaw chat <span class="hljs-string">&quot;每周五晚上8点，自动生成本周交易日志，包括：交易次数、盈亏统计、策略执行情况、异常事件记录，发送到我的邮箱&quot;</span><br></code></pre></td></tr></table></figure><h3 id="（四）技能权限控制：防范安全风险"><a href="#（四）技能权限控制：防范安全风险" class="headerlink" title="（四）技能权限控制：防范安全风险"></a>（四）技能权限控制：防范安全风险</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 设置技能权限</span><br>openclaw chat <span class="hljs-string">&quot;禁用自动下单技能，所有交易信号只推送通知，由我手动确认后再执行&quot;</span><br></code></pre></td></tr></table></figure><h3 id="（五）定期策略优化：适应市场变化"><a href="#（五）定期策略优化：适应市场变化" class="headerlink" title="（五）定期策略优化：适应市场变化"></a>（五）定期策略优化：适应市场变化</h3><p>市场环境会变化,策略需要持续优化。建议每季度复盘一次策略有效性，根据市场变化调整参数。</p><h2 id="五、三大经典交易策略组合：直接抄作业"><a href="#五、三大经典交易策略组合：直接抄作业" class="headerlink" title="五、三大经典交易策略组合：直接抄作业"></a>五、三大经典交易策略组合：直接抄作业</h2><p>单一技能的能力有限，通过多技能组合，可实现更复杂的交易逻辑。以下是三大经典策略的现成配置方案：</p><h3 id="（一）策略1：趋势交易策略（适合短线投资者）"><a href="#（一）策略1：趋势交易策略（适合短线投资者）" class="headerlink" title="（一）策略1：趋势交易策略（适合短线投资者）"></a>（一）策略1：趋势交易策略（适合短线投资者）</h3><p><strong>核心逻辑</strong>：跟随市场趋势，捕捉上涨波段</p><p><strong>技能组合</strong>：stock-monitor + market-sentiment + trend-analysis + risk-calculator</p><p><strong>配置命令</strong>：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash">openclaw chat <span class="hljs-string">&quot;配置趋势交易策略：</span><br><span class="hljs-string">1. 监控科技股（特斯拉、英伟达、微软等），发现突破60日均线+成交量放大+市场情绪积极，推送买入信号</span><br><span class="hljs-string">2. 持有期间，跌破10日均线或情绪转负，推送卖出信号</span><br><span class="hljs-string">3. 单笔交易风险控制在总资金5%以内</span><br><span class="hljs-string">4. 每日收盘后生成策略执行报告&quot;</span><br></code></pre></td></tr></table></figure><h3 id="（二）策略2：价值投资策略（适合中长期投资者）"><a href="#（二）策略2：价值投资策略（适合中长期投资者）" class="headerlink" title="（二）策略2：价值投资策略（适合中长期投资者）"></a>（二）策略2：价值投资策略（适合中长期投资者）</h3><p><strong>核心逻辑</strong>：聚焦基本面，低估时买入</p><p><strong>技能组合</strong>：financial-report-analysis + competitor-analysis + valuation-calculator + dividend-tracker</p><p><strong>配置命令</strong>：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs bash">openclaw chat <span class="hljs-string">&quot;配置价值投资策略：</span><br><span class="hljs-string">1. 筛选条件：PE&lt;15、PB&lt;2、ROE&gt;15%、连续5年分红、负债率&lt;50%</span><br><span class="hljs-string">2. 每季度财报发布后，自动分析基本面变化</span><br><span class="hljs-string">3. 估值低于行业平均30%时推送买入信号</span><br><span class="hljs-string">4. 估值回归合理或基本面恶化时推送卖出信号</span><br><span class="hljs-string">5. 每月生成持仓组合健康度报告&quot;</span><br></code></pre></td></tr></table></figure><h3 id="（三）策略3：套利策略（适合低风险偏好投资者）"><a href="#（三）策略3：套利策略（适合低风险偏好投资者）" class="headerlink" title="（三）策略3：套利策略（适合低风险偏好投资者）"></a>（三）策略3：套利策略（适合低风险偏好投资者）</h3><p><strong>核心逻辑</strong>：捕捉定价偏差，低风险获利</p><p><strong>技能组合</strong>：arbitrage-scanner + finance-data + risk-calculator + order-executor</p><p><strong>配置命令</strong>：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs bash">openclaw chat <span class="hljs-string">&quot;配置套利策略：</span><br><span class="hljs-string">1. 扫描A股与港股同一公司的价差，发现价差&gt;5%时推送套利机会</span><br><span class="hljs-string">2. 扫描可转债与正股价差，发现折价&gt;8%时推送买入信号</span><br><span class="hljs-string">3. 自动计算套利空间、交易成本、预期收益</span><br><span class="hljs-string">4. 单笔套利风险控制在总资金3%以内</span><br><span class="hljs-string">5. 套利完成后自动平仓并记录收益&quot;</span><br></code></pre></td></tr></table></figure><h2 id="六、总结"><a href="#六、总结" class="headerlink" title="六、总结"></a>六、总结</h2><p>2026年，OpenClaw的崛起正在打破专业交易与普通投资者之间的壁垒。以前只有顶级银行、量化机构才能实现的高频盯盘、多维度数据分析、无情绪交易，现在通过阿里云部署+技能组合，普通人也能轻松实现。</p><p>从实时盯盘捕捉买卖信号，到市场情绪分析把握资金动向，再到财报扫雷规避风险、竞对对比寻找价值洼地，OpenClaw将交易的核心环节全部自动化，让你从重复劳动中解放出来，聚焦更有价值的策略制定与风险控制。</p><p><strong>但必须明确</strong>：OpenClaw是”工具”而非”圣杯”。它能100%执行你的策略，却无法替你创造策略；它能降低操作风险，却不能消除市场本身的系统性风险。成功的关键，在于你是否拥有清晰的交易逻辑，并能将其转化为AI可执行的指令。</p><p>随着AI技术的持续进化，OpenClaw的交易能力还将不断提升。现在开始部署、探索、优化，你将提前抢占AI交易的红利期，在效率革命中获得先机。</p><p>正如英伟达创始人黄仁勋所言，”物理AI”时代已来，而OpenClaw正在让每个人都拥有一个真正能干活的AI交易助理。</p><hr><h2 id="需要部署帮助？作者提供有偿服务"><a href="#需要部署帮助？作者提供有偿服务" class="headerlink" title="需要部署帮助？作者提供有偿服务"></a>需要部署帮助？作者提供有偿服务</h2><p>如果你看完教程还是不会部署，或者想节省时间直接用上OpenClaw，作者提供<strong>有偿部署服务</strong>：</p><h3 id="服务内容"><a href="#服务内容" class="headerlink" title="服务内容"></a>服务内容</h3><p>✅ <strong>远程部署</strong>：通过远程协助方式，帮你完成从购买服务器到配置完成的全部步骤<br>✅ <strong>同城上门</strong>（限特定城市）：可上门当面部署调试，确保系统正常运行<br>✅ <strong>策略配置</strong>：根据你的交易风格，配置适合的监控策略和风控规则<br>✅ <strong>使用培训</strong>：手把手教你如何使用OpenClaw，解答使用过程中的问题<br>✅ <strong>后期答疑</strong>：部署完成后一个月内免费技术支持</p><h3 id="适合人群"><a href="#适合人群" class="headerlink" title="适合人群"></a>适合人群</h3><ul><li>技术小白，看教程还是不会操作的</li><li>工作繁忙，没时间自己折腾的</li><li>想快速上手，直接开始用的</li><li>需要定制化策略配置的</li></ul><h3 id="联系方式"><a href="#联系方式" class="headerlink" title="联系方式"></a>联系方式</h3><p>有需要的朋友可以通过以下方式联系：</p><ul><li><strong>微信</strong>：freelance_coder</li><li><strong>邮箱</strong>：<a href="mailto:&#x77;&#x68;&#x65;&#x72;&#101;&#97;&#109;&#x32;&#48;&#x31;&#x33;&#x40;&#103;&#109;&#x61;&#105;&#x6c;&#x2e;&#99;&#x6f;&#109;">&#x77;&#x68;&#x65;&#x72;&#101;&#97;&#109;&#x32;&#48;&#x31;&#x33;&#x40;&#103;&#109;&#x61;&#105;&#x6c;&#x2e;&#99;&#x6f;&#109;</a></li></ul><p><strong>说明</strong>：部署服务收费合理，根据服务内容（远程&#x2F;上门）和配置复杂度定价。咨询免费，满意后再付款。</p><hr><p><strong>风险提示</strong>：投资有风险，入市需谨慎。本文仅为技术教程，不构成任何投资建议。</p>]]></content>
     
     
     <categories>
@@ -1452,15 +1452,15 @@
     
     <tags>
       
+      <tag>AI工具</tag>
+      
       <tag>Claude</tag>
       
-      <tag>AI工具</tag>
+      <tag>OpenAI</tag>
       
       <tag>OpenCode</tag>
       
       <tag>Oh-My-OpenCode</tag>
-      
-      <tag>OpenAI</tag>
       
       <tag>Gemini</tag>
       
@@ -1518,9 +1518,9 @@
     
     <tags>
       
-      <tag>Claude</tag>
-      
       <tag>AI工具</tag>
+      
+      <tag>Claude</tag>
       
       <tag>开发工具</tag>
       
@@ -2011,9 +2011,9 @@
     
     <tags>
       
-      <tag>Git</tag>
-      
       <tag>自动化</tag>
+      
+      <tag>Git</tag>
       
       <tag>定时任务</tag>
       
@@ -2033,9 +2033,9 @@
     
     <categories>
       
-      <category>短信通</category>
-      
       <category>使用指南</category>
+      
+      <category>短信通</category>
       
     </categories>
     
@@ -2484,13 +2484,13 @@
     
     <tags>
       
+      <tag>Cursor</tag>
+      
       <tag>Ubuntu</tag>
       
       <tag>KasmVNC</tag>
       
       <tag>远程桌面</tag>
-      
-      <tag>Cursor</tag>
       
     </tags>
     
@@ -2773,9 +2773,9 @@
       
       <category>视频教程</category>
       
-      <category>技术分享</category>
-      
       <category>服务器管理</category>
+      
+      <category>技术分享</category>
       
     </categories>
     
@@ -3351,11 +3351,11 @@
       
       <tag>抓包</tag>
       
+      <tag>教程</tag>
+      
       <tag>Charles</tag>
       
       <tag>App</tag>
-      
-      <tag>教程</tag>
       
     </tags>
     
