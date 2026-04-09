@@ -5,6 +5,13 @@
         <link>https://www.zymn.cc</link>
         <description>欢迎来到我的个人博客！在这里，我将分享关于技术、编程、以及个人成长的经验和见解，帮助你在学习和工作中更进一步。</description>
         <item>
+<title>Google Stitch实操流程：我用 Claude 拆需求、Gemini 写提示词，定好产品界面风格</title>
+<link>https://www.zymn.cc/2026/04/09/google-stitch-practical-guide/</link>
+<guid>https://www.zymn.cc/2026/04/09/google-stitch-practical-guide/</guid>
+<pubDate>Thu, 09 Apr 2026 14:19:13 GMT</pubDate>
+<description><![CDATA[我把 Stitch 的实操链路固定成三步：先用 Claude 拆需求，再用 Gemini 生成高质量提示词，最后在 Google Stitch 里生成并迭代风格与页面。]]></description>
+</item>
+<item>
             <title>career-ops 自动化测试实战：从 doctor 到 verify，把求职流水线做成可回归系统</title>
             <link>https://www.zymn.cc/2026/04/08/career-ops-automation-testing-playbook/</link>
             <description>很多人做求职自动化会把注意力放在功能数量，却忽略了流程长期稳定性。本文基于 career-ops 拆解一套可直接执行的回归测试清单，覆盖环境体检、脚本回归、数据规范化、批处理合并校验与链接存活检测。</description>
