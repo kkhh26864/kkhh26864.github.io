@@ -5,6 +5,14 @@
         <link>https://www.zymn.cc</link>
         <description>欢迎来到我的个人博客！在这里，我将分享关于技术、编程、以及个人成长的经验和见解，帮助你在学习和工作中更进一步。</description>
         <item>
+<title>闲鱼自动客服怎么做？这个开源项目 XianyuAutoAgent，能帮你自动回复、自动议价、自动追单</title>
+<link>https://www.zymn.cc/2026/04/11/xianyu-autoagent-ai-customer-service/</link>
+<guid>https://www.zymn.cc/2026/04/11/xianyu-autoagent-ai-customer-service/</guid>
+<pubDate>Sat, 11 Apr 2026 09:06:00 +0800</pubDate>
+<description><![CDATA[闲鱼客服这件事，真的可以开始交给 AI 了。我最近研究了开源项目 XianyuAutoAgent，发现它已经能把自动回复、自动砍价、上下文记忆、人工接管这些关键环节接起来，适合想做闲鱼自动客服的人直接参考。]]></description>
+<category>AI实战</category>
+</item>
+        <item>
 <title>Google Stitch实操流程：我用 Claude 拆需求、Gemini 写提示词，定好产品界面风格</title>
 <link>https://www.zymn.cc/2026/04/09/google-stitch-practical-guide/</link>
 <guid>https://www.zymn.cc/2026/04/09/google-stitch-practical-guide/</guid>
